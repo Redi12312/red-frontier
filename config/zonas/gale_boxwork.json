@@ -1,0 +1,37 @@
+{
+  "id": "gale_boxwork",
+  "nombre": "Gale · Monte Sharp (boxwork)",
+  "descripcion": "Zona de salida a pie alrededor de la última posición publicada de Curiosity, en la región de boxwork del Monte Sharp.",
+  "fuentes": {
+    "dtm": {
+      "url": "https://astrogeo-ard.s3-us-west-2.amazonaws.com/mars/mro/hirise/controlled/dtm/ESP_019698_1750_ESP_019988_1750/DTEEC_019698_1750_019988_1750_U01.tif",
+      "nombre": "HiRISE DTM DTEEC_019698_1750_019988_1750_U01 (USGS Analysis Ready Data)",
+      "mision": "Mars Reconnaissance Orbiter"
+    },
+    "orto": {
+      "url": "https://astrogeo-ard.s3-us-west-2.amazonaws.com/mars/mro/hirise/controlled/dtm/ESP_019698_1750_ESP_019988_1750/ESP_019698_1750_RED_A_01_ORTHO.tif",
+      "nombre": "HiRISE ortoimagen ESP_019698_1750_RED_A_01 (USGS Analysis Ready Data)",
+      "mision": "Mars Reconnaissance Orbiter"
+    },
+    "curiosity_recorrido": {
+      "url": "https://mars.nasa.gov/mmgis-maps/MSL/Layers/json/MSL_traverse.json",
+      "nombre": "Recorrido de Curiosity (NASA/JPL MMGIS)",
+      "mision": "Mars Science Laboratory"
+    },
+    "curiosity_paradas": {
+      "url": "https://mars.nasa.gov/mmgis-maps/MSL/Layers/json/MSL_waypoints.json",
+      "nombre": "Paradas de Curiosity (NASA/JPL MMGIS)",
+      "mision": "Mars Science Laboratory"
+    }
+  },
+  "ventana": {
+    "centro": "curiosity_ultima_parada",
+    "ancho_m": 5000,
+    "alto_m": 10000,
+    "fraccion_valida_minima": 0.98
+  },
+  "salida": {
+    "paso_m": 2,
+    "rugosidad_ventana_m": 5
+  }
+}

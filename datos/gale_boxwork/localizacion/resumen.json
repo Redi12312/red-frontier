@@ -1,0 +1,133 @@
+{
+  "zona": "gale_boxwork",
+  "paradas": [
+    {
+      "sitio": 125,
+      "tramo": 558,
+      "error_m": 17.4,
+      "incertidumbre_95_m": 20.5,
+      "dentro_de_incertidumbre": true,
+      "puntaje_grados": 0.741,
+      "cobertura": 0.94,
+      "fotos": 33
+    },
+    {
+      "sitio": 125,
+      "tramo": 1326,
+      "error_m": 20.3,
+      "incertidumbre_95_m": 17.9,
+      "dentro_de_incertidumbre": false,
+      "puntaje_grados": 0.623,
+      "cobertura": 0.944,
+      "fotos": 26
+    },
+    {
+      "sitio": 124,
+      "tramo": 1978,
+      "error_m": 22.2,
+      "incertidumbre_95_m": 20.3,
+      "dentro_de_incertidumbre": false,
+      "puntaje_grados": 0.741,
+      "cobertura": 0.989,
+      "fotos": 24
+    },
+    {
+      "sitio": 124,
+      "tramo": 0,
+      "error_m": 29.6,
+      "incertidumbre_95_m": 23.6,
+      "dentro_de_incertidumbre": false,
+      "puntaje_grados": 0.826,
+      "cobertura": 0.947,
+      "fotos": 25
+    },
+    {
+      "sitio": 122,
+      "tramo": 1974,
+      "error_m": 19.9,
+      "incertidumbre_95_m": 28.8,
+      "dentro_de_incertidumbre": true,
+      "puntaje_grados": 0.835,
+      "cobertura": 0.96,
+      "fotos": 21
+    },
+    {
+      "sitio": 122,
+      "tramo": 2232,
+      "error_m": 20.1,
+      "incertidumbre_95_m": 38.1,
+      "dentro_de_incertidumbre": true,
+      "puntaje_grados": 0.78,
+      "cobertura": 0.735,
+      "fotos": 25
+    },
+    {
+      "sitio": 122,
+      "tramo": 1260,
+      "error_m": 20.2,
+      "incertidumbre_95_m": 25.3,
+      "dentro_de_incertidumbre": true,
+      "puntaje_grados": 0.873,
+      "cobertura": 0.99,
+      "fotos": 25
+    },
+    {
+      "sitio": 123,
+      "tramo": 0,
+      "error_m": 22.6,
+      "incertidumbre_95_m": 33.9,
+      "dentro_de_incertidumbre": true,
+      "puntaje_grados": 0.806,
+      "cobertura": 0.964,
+      "fotos": 24
+    },
+    {
+      "sitio": 122,
+      "tramo": 2508,
+      "error_m": 18.6,
+      "incertidumbre_95_m": 28.8,
+      "dentro_de_incertidumbre": true,
+      "puntaje_grados": 0.869,
+      "cobertura": 0.917,
+      "fotos": 22
+    },
+    {
+      "sitio": 123,
+      "tramo": 102,
+      "error_m": 22.5,
+      "incertidumbre_95_m": 45.5,
+      "dentro_de_incertidumbre": true,
+      "puntaje_grados": 1.026,
+      "cobertura": 0.855,
+      "fotos": 22
+    },
+    {
+      "sitio": 123,
+      "tramo": 2328,
+      "error_m": 14.0,
+      "incertidumbre_95_m": 26.2,
+      "dentro_de_incertidumbre": true,
+      "puntaje_grados": 0.828,
+      "cobertura": 0.982,
+      "fotos": 26
+    },
+    {
+      "sitio": 124,
+      "tramo": 348,
+      "error_m": 19.4,
+      "incertidumbre_95_m": 34.1,
+      "dentro_de_incertidumbre": true,
+      "puntaje_grados": 0.862,
+      "cobertura": 0.985,
+      "fotos": 22
+    }
+  ],
+  "estadistica": {
+    "n": 12,
+    "mediana_m": 20.1,
+    "p90_m": 22.6,
+    "max_m": 29.6,
+    "dentro_de_incertidumbre": 9
+  },
+  "nota": "Búsqueda a ciegas en toda la zona en cada parada; la posición real solo se usa para medir el error."
+}

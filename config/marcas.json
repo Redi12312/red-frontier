@@ -1,0 +1,249 @@
+{
+  "_nota": "Marcas de planificación, sin inventario real ni sensores. null significa sin informar; nunca implica disponibilidad. Colores, letras y campos son propuestas a calibrar. Hábitats, refugios y depósitos llevan inventario (oxígeno, agua, comida, energía, filtros de CO2, botiquín y capacidad): la app los usa solo si alcanzan.",
+  "radio_marte_m": {
+    "valor": 3396190,
+    "base": "verificado",
+    "fuente": "ARQUITECTURA.md y AGENTS.md: esfera IAU 2000 de Marte, latitud planetocéntrica y longitud este."
+  },
+  "tipos": {
+    "habitat": {
+      "nombre": "Hábitat",
+      "letra": "H",
+      "color": "#58C4A3",
+      "descripcion": "Base principal de la expedición.",
+      "base": "propuesta",
+      "fuente": "a calibrar: clasificación y presentación del equipo.",
+      "campos": {
+        "capacidad_personas": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "personas"
+        },
+        "oxigeno_kg": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "kg"
+        },
+        "agua_l": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "L"
+        },
+        "comida_kcal": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "kcal"
+        },
+        "energia_kwh": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "kWh"
+        },
+        "filtros_co2_h": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "h"
+        },
+        "botiquin": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "tipo": "booleano"
+        }
+      }
+    },
+    "refugio": {
+      "nombre": "Refugio",
+      "letra": "R",
+      "color": "#74B9FF",
+      "descripcion": "Refugio presurizado para la tripulación. Solo cuenta como refugio si tiene lo necesario para sostenerla hasta un rescate.",
+      "base": "propuesta",
+      "fuente": "a calibrar: clasificación y presentación del equipo.",
+      "campos": {
+        "capacidad_personas": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "personas"
+        },
+        "oxigeno_kg": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "kg"
+        },
+        "agua_l": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "L"
+        },
+        "comida_kcal": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "kcal"
+        },
+        "energia_kwh": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "kWh"
+        },
+        "filtros_co2_h": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "h"
+        },
+        "botiquin": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "tipo": "booleano"
+        }
+      }
+    },
+    "deposito": {
+      "nombre": "Depósito",
+      "letra": "D",
+      "color": "#E8C568",
+      "descripcion": "Recursos para recargar los trajes en el camino. Solo sirve de parada de recarga si tiene lo necesario.",
+      "base": "propuesta",
+      "fuente": "a calibrar: clasificación y presentación del equipo.",
+      "campos": {
+        "oxigeno_kg": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "kg"
+        },
+        "agua_l": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "L"
+        },
+        "comida_kcal": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "kcal"
+        },
+        "energia_kwh": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "kWh"
+        },
+        "filtros_co2_h": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "unidad": "h"
+        },
+        "botiquin": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).",
+          "tipo": "booleano"
+        },
+        "repuestos": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: detallar el inventario de repuestos."
+        }
+      }
+    },
+    "ciencia": {
+      "nombre": "Parada científica",
+      "letra": "C",
+      "color": "#C79AEB",
+      "descripcion": "Objetivo y trabajo científico previstos.",
+      "base": "propuesta",
+      "fuente": "a calibrar: clasificación y presentación del equipo.",
+      "campos": {
+        "objetivo": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: describir el objetivo científico."
+        },
+        "muestras_previstas": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: detallar las muestras previstas."
+        },
+        "minutos_trabajo": {
+          "valor": null,
+          "unidad": "min",
+          "base": "propuesta",
+          "fuente": "a calibrar: estimar el tiempo de trabajo."
+        }
+      }
+    },
+    "peligro": {
+      "nombre": "Peligro",
+      "letra": "P",
+      "color": "#F07872",
+      "descripcion": "Peligro anotado; no constituye una detección del terreno.",
+      "base": "propuesta",
+      "fuente": "a calibrar: clasificación y presentación del equipo.",
+      "campos": {
+        "descripcion": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: describir el peligro y su procedencia."
+        },
+        "radio_exclusion_m": {
+          "valor": null,
+          "unidad": "m",
+          "base": "propuesta",
+          "fuente": "a calibrar: definir y justificar el radio de exclusión."
+        }
+      }
+    },
+    "baliza": {
+      "nombre": "Baliza",
+      "letra": "B",
+      "color": "#76D6DE",
+      "descripcion": "Referencia de radio prevista, sin cobertura garantizada.",
+      "base": "propuesta",
+      "fuente": "a calibrar: clasificación y presentación del equipo.",
+      "campos": {
+        "alcance_radio_m": {
+          "valor": null,
+          "unidad": "m",
+          "base": "propuesta",
+          "fuente": "a calibrar: medir el alcance según equipo y relieve."
+        }
+      }
+    },
+    "rover": {
+      "nombre": "Rover estacionado",
+      "letra": "V",
+      "color": "#E9A66A",
+      "descripcion": "Posición y estado del rover anotados en el plan.",
+      "base": "propuesta",
+      "fuente": "a calibrar: clasificación y presentación del equipo.",
+      "campos": {
+        "estacionado": {
+          "valor": null,
+          "base": "propuesta",
+          "fuente": "a calibrar: informar si está estacionado."
+        },
+        "bateria_pct": {
+          "valor": null,
+          "unidad": "%",
+          "base": "propuesta",
+          "fuente": "a calibrar: informar la carga disponible."
+        }
+      }
+    }
+  }
+}

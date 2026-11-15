@@ -1,0 +1,141 @@
+{
+  "paradas": [
+    {
+      "id": "s122_d1260",
+      "sitio": 122,
+      "tramo": 1260,
+      "soles": [
+        4916,
+        4919
+      ],
+      "fotos": 22,
+      "cobertura": 0.99
+    },
+    {
+      "id": "s122_d1974",
+      "sitio": 122,
+      "tramo": 1974,
+      "soles": [
+        4923,
+        4923
+      ],
+      "fotos": 16,
+      "cobertura": 0.96
+    },
+    {
+      "id": "s122_d2232",
+      "sitio": 122,
+      "tramo": 2232,
+      "soles": [
+        4928,
+        4932
+      ],
+      "fotos": 18,
+      "cobertura": 0.735
+    },
+    {
+      "id": "s122_d2508",
+      "sitio": 122,
+      "tramo": 2508,
+      "soles": [
+        4936,
+        4937
+      ],
+      "fotos": 19,
+      "cobertura": 0.917
+    },
+    {
+      "id": "s123_d0",
+      "sitio": 123,
+      "tramo": 0,
+      "soles": [
+        4939,
+        4942
+      ],
+      "fotos": 21,
+      "cobertura": 0.964
+    },
+    {
+      "id": "s123_d102",
+      "sitio": 123,
+      "tramo": 102,
+      "soles": [
+        4942,
+        4944
+      ],
+      "fotos": 15,
+      "cobertura": 0.855
+    },
+    {
+      "id": "s123_d2328",
+      "sitio": 123,
+      "tramo": 2328,
+      "soles": [
+        4959,
+        4960
+      ],
+      "fotos": 18,
+      "cobertura": 0.982
+    },
+    {
+      "id": "s124_d0",
+      "sitio": 124,
+      "tramo": 0,
+      "soles": [
+        4966,
+        4969
+      ],
+      "fotos": 20,
+      "cobertura": 0.947
+    },
+    {
+      "id": "s124_d1978",
+      "sitio": 124,
+      "tramo": 1978,
+      "soles": [
+        4998,
+        5003
+      ],
+      "fotos": 17,
+      "cobertura": 0.989
+    },
+    {
+      "id": "s124_d348",
+      "sitio": 124,
+      "tramo": 348,
+      "soles": [
+        4973,
+        4976
+      ],
+      "fotos": 19,
+      "cobertura": 0.985
+    },
+    {
+      "id": "s125_d1326",
+      "sitio": 125,
+      "tramo": 1326,
+      "soles": [
+        5045,
+        5060
+      ],
+      "fotos": 22,
+      "cobertura": 0.944
+    },
+    {
+      "id": "s125_d558",
+      "sitio": 125,
+      "tramo": 558,
+      "soles": [
+        5021,
+        5040
+      ],
+      "fotos": 24,
+      "cobertura": 0.94
+    }
+  ],
+  "relieve_lejano": "region_20_gale_crater",
+  "sesgo_vertical_m": 4.9,
+  "altura_camara_m": 1.9,
+  "distancia_max_m": 70000,
+  "nota": "Horizonte medido con fotos Navcam de Curiosity (modelo de cámara CAHVOR y orientación del rover publicados por NASA)."
+}

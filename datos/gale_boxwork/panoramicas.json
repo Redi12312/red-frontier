@@ -1,0 +1,926 @@
+[
+  {
+    "sitio": 125,
+    "tramo": 558,
+    "soles": [
+      5021,
+      5041
+    ],
+    "dias": 11,
+    "fotos": 54,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3888471,
+      "lat": -4.82513971,
+      "elev_publicada_m": -3479.905,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 125,
+    "tramo": 1326,
+    "soles": [
+      5045,
+      5069
+    ],
+    "dias": 6,
+    "fotos": 45,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3876138,
+      "lat": -4.82466475,
+      "elev_publicada_m": -3487.995,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 124,
+    "tramo": 1978,
+    "soles": [
+      4998,
+      5004
+    ],
+    "dias": 5,
+    "fotos": 39,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3866745,
+      "lat": -4.82367388,
+      "elev_publicada_m": -3498.516,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 124,
+    "tramo": 0,
+    "soles": [
+      4966,
+      4970
+    ],
+    "dias": 4,
+    "fotos": 37,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3855089,
+      "lat": -4.82073326,
+      "elev_publicada_m": -3523.36,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 122,
+    "tramo": 1974,
+    "soles": [
+      4923,
+      4928
+    ],
+    "dias": 4,
+    "fotos": 36,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3829616,
+      "lat": -4.81685834,
+      "elev_publicada_m": -3554.121,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 122,
+    "tramo": 2232,
+    "soles": [
+      4928,
+      4932
+    ],
+    "dias": 3,
+    "fotos": 38,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3830614,
+      "lat": -4.81742792,
+      "elev_publicada_m": -3550.696,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 122,
+    "tramo": 1260,
+    "soles": [
+      4916,
+      4919
+    ],
+    "dias": 3,
+    "fotos": 37,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3824116,
+      "lat": -4.81563265,
+      "elev_publicada_m": -3562.188,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 123,
+    "tramo": 0,
+    "soles": [
+      4939,
+      4942
+    ],
+    "dias": 3,
+    "fotos": 37,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.383195,
+      "lat": -4.8191769,
+      "elev_publicada_m": -3539.047,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 122,
+    "tramo": 2508,
+    "soles": [
+      4936,
+      4939
+    ],
+    "dias": 3,
+    "fotos": 36,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3829211,
+      "lat": -4.81854903,
+      "elev_publicada_m": -3543.349,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 123,
+    "tramo": 102,
+    "soles": [
+      4942,
+      4946
+    ],
+    "dias": 3,
+    "fotos": 36,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3831921,
+      "lat": -4.81934719,
+      "elev_publicada_m": -3537.958,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 123,
+    "tramo": 2328,
+    "soles": [
+      4959,
+      4963
+    ],
+    "dias": 3,
+    "fotos": 36,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3850737,
+      "lat": -4.81991106,
+      "elev_publicada_m": -3531.088,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 124,
+    "tramo": 348,
+    "soles": [
+      4973,
+      4977
+    ],
+    "dias": 3,
+    "fotos": 36,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3857036,
+      "lat": -4.82122965,
+      "elev_publicada_m": -3516.727,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 124,
+    "tramo": 744,
+    "soles": [
+      4983,
+      4987
+    ],
+    "dias": 3,
+    "fotos": 36,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3860993,
+      "lat": -4.82149644,
+      "elev_publicada_m": -3512.648,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 124,
+    "tramo": 1482,
+    "soles": [
+      4994,
+      4996
+    ],
+    "dias": 3,
+    "fotos": 36,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3867203,
+      "lat": -4.82301157,
+      "elev_publicada_m": -3501.818,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 124,
+    "tramo": 2062,
+    "soles": [
+      5004,
+      5008
+    ],
+    "dias": 3,
+    "fotos": 36,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3866207,
+      "lat": -4.82381279,
+      "elev_publicada_m": -3496.879,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 124,
+    "tramo": 2368,
+    "soles": [
+      5008,
+      5011
+    ],
+    "dias": 3,
+    "fotos": 36,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3871122,
+      "lat": -4.82414128,
+      "elev_publicada_m": -3493.685,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 124,
+    "tramo": 2866,
+    "soles": [
+      5011,
+      5014
+    ],
+    "dias": 3,
+    "fotos": 36,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3875926,
+      "lat": -4.82460269,
+      "elev_publicada_m": -3488.925,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 125,
+    "tramo": 534,
+    "soles": [
+      5018,
+      5021
+    ],
+    "dias": 3,
+    "fotos": 36,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3888373,
+      "lat": -4.82512583,
+      "elev_publicada_m": -3480.041,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 123,
+    "tramo": 1548,
+    "soles": [
+      4955,
+      4957
+    ],
+    "dias": 3,
+    "fotos": 35,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3846486,
+      "lat": -4.82159942,
+      "elev_publicada_m": -3519.317,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 123,
+    "tramo": 2544,
+    "soles": [
+      4963,
+      4966
+    ],
+    "dias": 3,
+    "fotos": 35,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3854043,
+      "lat": -4.82018328,
+      "elev_publicada_m": -3528.521,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 125,
+    "tramo": 0,
+    "soles": [
+      5014,
+      5016
+    ],
+    "dias": 3,
+    "fotos": 35,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3881211,
+      "lat": -4.8246287,
+      "elev_publicada_m": -3486.334,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 123,
+    "tramo": 246,
+    "soles": [
+      4946,
+      4948
+    ],
+    "dias": 2,
+    "fotos": 38,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3832806,
+      "lat": -4.81962002,
+      "elev_publicada_m": -3535.681,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 123,
+    "tramo": 1116,
+    "soles": [
+      4950,
+      4953
+    ],
+    "dias": 2,
+    "fotos": 36,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3839674,
+      "lat": -4.82118531,
+      "elev_publicada_m": -3523.942,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 122,
+    "tramo": 690,
+    "soles": [
+      4912,
+      4914
+    ],
+    "dias": 2,
+    "fotos": 35,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3818215,
+      "lat": -4.81485743,
+      "elev_publicada_m": -3566.104,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 122,
+    "tramo": 966,
+    "soles": [
+      4914,
+      4916
+    ],
+    "dias": 2,
+    "fotos": 35,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3821546,
+      "lat": -4.81523765,
+      "elev_publicada_m": -3563.627,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 122,
+    "tramo": 1512,
+    "soles": [
+      4919,
+      4921
+    ],
+    "dias": 2,
+    "fotos": 35,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.382387,
+      "lat": -4.81610881,
+      "elev_publicada_m": -3558.803,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 124,
+    "tramo": 1248,
+    "soles": [
+      4989,
+      4994
+    ],
+    "dias": 2,
+    "fotos": 35,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3866647,
+      "lat": -4.82248841,
+      "elev_publicada_m": -3505.49,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 124,
+    "tramo": 1062,
+    "soles": [
+      4987,
+      4989
+    ],
+    "dias": 2,
+    "fotos": 34,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3866196,
+      "lat": -4.82207562,
+      "elev_publicada_m": -3508.268,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 125,
+    "tramo": 1194,
+    "soles": [
+      5041,
+      5045
+    ],
+    "dias": 2,
+    "fotos": 34,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3877779,
+      "lat": -4.82458563,
+      "elev_publicada_m": -3488.313,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 122,
+    "tramo": 1716,
+    "soles": [
+      4921,
+      4923
+    ],
+    "dias": 2,
+    "fotos": 33,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.382569,
+      "lat": -4.81638443,
+      "elev_publicada_m": -3557.603,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 123,
+    "tramo": 1344,
+    "soles": [
+      4953,
+      4955
+    ],
+    "dias": 2,
+    "fotos": 33,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3842025,
+      "lat": -4.82151478,
+      "elev_publicada_m": -3521.673,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 123,
+    "tramo": 1890,
+    "soles": [
+      4957,
+      4959
+    ],
+    "dias": 2,
+    "fotos": 33,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3847756,
+      "lat": -4.82081119,
+      "elev_publicada_m": -3526.324,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 124,
+    "tramo": 1872,
+    "soles": [
+      4996,
+      4998
+    ],
+    "dias": 2,
+    "fotos": 33,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3866964,
+      "lat": -4.82359728,
+      "elev_publicada_m": -3498.715,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 125,
+    "tramo": 2082,
+    "soles": [
+      5069,
+      5070
+    ],
+    "dias": 2,
+    "fotos": 33,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3889348,
+      "lat": -4.82525828,
+      "elev_publicada_m": -3478.776,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 122,
+    "tramo": 2352,
+    "soles": [
+      4932,
+      4932
+    ],
+    "dias": 1,
+    "fotos": 32,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3830992,
+      "lat": -4.81791731,
+      "elev_publicada_m": -3546.361,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 123,
+    "tramo": 540,
+    "soles": [
+      4948,
+      4948
+    ],
+    "dias": 1,
+    "fotos": 32,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.3833045,
+      "lat": -4.82020356,
+      "elev_publicada_m": -3531.713,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 125,
+    "tramo": 2490,
+    "soles": [
+      5073,
+      5073
+    ],
+    "dias": 1,
+    "fotos": 31,
+    "cobertura_grados": 360,
+    "verdad": {
+      "lon_este": 137.388886,
+      "lat": -4.82602331,
+      "elev_publicada_m": -3472.085,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 124,
+    "tramo": 480,
+    "soles": [
+      4977,
+      4983
+    ],
+    "dias": 4,
+    "fotos": 38,
+    "cobertura_grados": 359,
+    "verdad": {
+      "lon_este": 137.3858154,
+      "lat": -4.82142997,
+      "elev_publicada_m": -3514.602,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 125,
+    "tramo": 2274,
+    "soles": [
+      5070,
+      5073
+    ],
+    "dias": 3,
+    "fotos": 35,
+    "cobertura_grados": 325,
+    "verdad": {
+      "lon_este": 137.3891532,
+      "lat": -4.82567778,
+      "elev_publicada_m": -3473.684,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 124,
+    "tramo": 198,
+    "soles": [
+      4970,
+      4973
+    ],
+    "dias": 3,
+    "fotos": 36,
+    "cobertura_grados": 252,
+    "verdad": {
+      "lon_este": 137.3856038,
+      "lat": -4.82096424,
+      "elev_publicada_m": -3520.894,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 125,
+    "tramo": 198,
+    "soles": [
+      5016,
+      5018
+    ],
+    "dias": 2,
+    "fotos": 22,
+    "cobertura_grados": 191,
+    "verdad": {
+      "lon_este": 137.3884767,
+      "lat": -4.8246039,
+      "elev_publicada_m": -3484.839,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  },
+  {
+    "sitio": 122,
+    "tramo": 462,
+    "soles": [
+      4902,
+      4912
+    ],
+    "dias": 3,
+    "fotos": 5,
+    "cobertura_grados": 46,
+    "verdad": {
+      "lon_este": 137.3815811,
+      "lat": -4.81439703,
+      "elev_publicada_m": -3569.59,
+      "corrimiento_m": {
+        "este": 44.0,
+        "norte": -32.0,
+        "fuente": "validacion_curiosity.json"
+      },
+      "fuente": "NASA/JPL MMGIS MSL_waypoints"
+    }
+  }
+]

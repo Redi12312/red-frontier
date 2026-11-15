@@ -1,0 +1,58 @@
+/* Visor (HUD) de la simulación de la salida. Lo mantiene el módulo app/js/simulacion.js. */
+/* La caja (#hud.hud: posición, borde superior por nivel y alarma) viene de estilos.css; acá va el contenido. */
+
+#hud.hud { max-width: 640px; max-height: calc(100% - 28px); overflow: auto; padding: 8px 10px 9px;
+  background: linear-gradient(#0d1013, #080a0c); border-color: #3a424c; font-variant-numeric: tabular-nums; }
+#hud.hud[data-nivel="ambar"] { border-top-color: var(--alerta); }
+#hud.hud[data-nivel="rojo"] { border-top-color: var(--falla); }
+
+.visor-cabeza { display: flex; align-items: center; gap: 8px; }
+.visor-lampara { flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 8px var(--ok); }
+#hud[data-nivel="ambar"] .visor-lampara { background: var(--alerta); box-shadow: 0 0 8px var(--alerta); }
+#hud[data-nivel="rojo"] .visor-lampara { background: var(--falla); box-shadow: 0 0 10px var(--falla); }
+.visor-veredicto { font-size: 16px; letter-spacing: .08em; color: var(--ok); white-space: nowrap; }
+#hud[data-nivel="ambar"] .visor-veredicto { color: var(--alerta); }
+#hud[data-nivel="rojo"] .visor-veredicto { color: var(--falla); }
+.visor-titulo { flex: 1; min-width: 0; color: var(--suave); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.visor-motivo { margin: 4px 0 2px; font: 12px/1.35 system-ui, sans-serif; color: #cfd6dd; min-height: 1.35em; }
+.visor-camino { font-size: 10.5px; color: var(--suave); }
+.visor-aviso { margin: 3px 0; padding: 2px 6px; border-left: 2px solid var(--alerta); background: rgba(224, 160, 32, .1); color: #e9d9b0; font-size: 11px; }
+.visor-nota { margin-top: 3px; font-size: 10.5px; color: var(--alerta); }
+
+.visor-grilla, .visor-recursos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px 10px; margin-top: 6px; }
+.visor-recursos { grid-template-columns: repeat(5, minmax(0, 1fr)); padding-top: 6px; border-top: 1px solid #262c33; }
+.visor-grilla > div, .visor-recurso { display: flex; flex-direction: column; min-width: 0; }
+.visor-grilla span, .visor-recurso > span { font-size: 9.5px; color: var(--suave); text-transform: uppercase; letter-spacing: .05em; }
+.visor-grilla small, .visor-recurso small { font-size: 9px; text-transform: none; letter-spacing: 0; opacity: .8; }
+.visor-grilla b, .visor-recurso b { font-size: 13px; font-weight: 600; color: #e6edf3; white-space: nowrap; }
+.visor-recurso b { font-size: 11.5px; }
+.visor-barra { display: block; height: 4px; margin-top: 2px; background: #222a31; }
+.visor-barra u { display: block; height: 100%; width: 100%; background: var(--ok); transition: width .2s linear; }
+.visor-recurso[data-r="o2s"]:not(.en-uso) { opacity: .6; }
+.visor-recurso.en-uso .visor-barra u { background: var(--alerta); }
+.visor-recurso.limita > span { color: #e6edf3; }
+.visor-recurso.limita > span::after { content: " ◄"; color: var(--acento); }
+#hud[data-nivel="ambar"] .visor-recurso.limita .visor-barra u { background: var(--alerta); }
+#hud[data-nivel="rojo"] .visor-recurso.limita .visor-barra u { background: var(--falla); }
+
+.visor-plan { display: flex; flex-wrap: wrap; gap: 2px 10px; margin-top: 6px; font-size: 10.5px; color: var(--suave); }
+.visor-plan b { font-weight: 600; color: #cfd6dd; }
+.visor-plan .falla, .visor-plan .falla b { color: var(--falla); }
+
+.visor-activas, .visor-fallas, .visor-control { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; margin-top: 6px; }
+.visor-activas > span:first-child, .visor-fallas > span { color: var(--suave); font-size: 10.5px; }
+.visor-chip { display: inline-flex; gap: 6px; align-items: baseline; padding: 1px 6px; border: 1px solid var(--falla); border-radius: 2px;
+  background: rgba(211, 58, 44, .14); font-size: 11px; color: #f0d6d2; }
+.visor-chip[data-tipo="radio"], .visor-chip[data-tipo="volver"] { border-color: var(--alerta); background: rgba(224, 160, 32, .12); color: #e9d9b0; }
+.visor-chip b { font-weight: 700; color: #fff; }
+.visor-chip b:empty { display: none; }
+.visor-fallas button { border-color: #6e2a22; }
+.visor-fallas button.inyectada, .visor-control button.inyectada { border-color: var(--falla); color: #fff; background: #3a1512; }
+.visor-control button.activo { border-color: var(--acento); color: #fff; }
+.visor-reloj { flex: 1; min-width: 120px; color: var(--suave); font-size: 10.5px; margin: 0 4px; }
+
+@media (max-width: 700px) {
+  .visor-grilla { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .visor-recursos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

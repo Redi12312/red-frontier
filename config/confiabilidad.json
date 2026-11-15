@@ -1,0 +1,52 @@
+{
+  "_nota": "Escenario sintético para comparar rutas, no estadísticas de Marte ni garantía de supervivencia. Todas las tasas son propuestas, a calibrar. Son tasas agregadas por salida de la tripulación; no multiplicar otra vez por personas.",
+  "tasas_por_hora": {
+    "fuga": {
+      "valor": 0.001,
+      "unidad": "h^-1",
+      "base": "propuesta",
+      "fuente": "Ejemplo del equipo, a calibrar: fuga que permite usar el oxígeno secundario; no representa una rotura catastrófica. Sin estadística validada para EVA marciana."
+    },
+    "mochila": {
+      "valor": 0.001,
+      "unidad": "h^-1",
+      "base": "propuesta",
+      "fuente": "Ejemplo del equipo, a calibrar: pérdida completa del soporte vital de la mochila, sin respaldo de ventilación, enfriamiento o eliminación de CO₂ modelado."
+    },
+    "companero": {
+      "valor": 0.0005,
+      "unidad": "h^-1",
+      "base": "propuesta",
+      "fuente": "Ejemplo del equipo, a calibrar: incapacitamiento de un tripulante que permite rescate por arrastre. Sin estadística validada para Marte."
+    },
+    "tormenta": {
+      "valor": 0.0002,
+      "unidad": "h^-1",
+      "base": "propuesta",
+      "fuente": "Ejemplo del equipo, a calibrar: comienzo de un evento de partículas solares. No es una predicción de DONKI ni una tasa derivada de observaciones."
+    },
+    "radio": {
+      "valor": 0.002,
+      "unidad": "h^-1",
+      "base": "propuesta",
+      "fuente": "Ejemplo del equipo, a calibrar: pérdida de radio que obliga a terminar la salida; se supone navegación autónoma disponible para regresar."
+    }
+  },
+  "tasa_rover_por_km": {
+    "valor": 0.001,
+    "unidad": "km^-1",
+    "base": "propuesta",
+    "fuente": "Ejemplo del equipo, a calibrar: avería del rover que exige regresar a pie. Solo se aplica con limites.vehiculo = rover."
+  },
+  "mochila_s": {
+    "valor": 0,
+    "unidad": "s",
+    "base": "propuesta",
+    "fuente": "Hipótesis conservadora del equipo, a calibrar: sin soporte vital redundante no se acredita tiempo de regreso tras perder la mochila. No es una estimación fisiológica."
+  },
+  "modelo": {
+    "valor": "primera_falla",
+    "base": "propuesta",
+    "fuente": "Modelo del equipo, a calibrar: procesos de Poisson independientes con tasas constantes por hora o km; integración exacta del primer incidente por tramos. Regreso y rescate se interpolan linealmente, tasaO2 es constante por intervalo izquierdo. No incluye fallas encadenadas, exposición durante el regreso de emergencia, errores del mapa, dosis ni eficacia médica del refugio; supone viable el plan nominal."
+  }
+}

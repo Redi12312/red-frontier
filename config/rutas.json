@@ -1,0 +1,53 @@
+{
+  "_nota": "Perfil de ruta. Solo se ofrece la ruta segura: la herramienta prioriza la seguridad sobre el tiempo. El costo de cada celda es el tiempo de marcha multiplicado por (1 + penalizaciones). Los pesos son propuestas del equipo, a calibrar. peso_refugio: el costo crece con el tiempo de regreso de emergencia desde cada celda (propuesta, a calibrar). Rescate: se penaliza además el arrastre hasta el hábitat o refugio habilitado más cercano. Jornadas y stocks modelados, a calibrar.",
+  "perfiles": [
+    {
+      "id": "segura",
+      "nombre": "Más segura",
+      "descripcion": "Se aleja de pendientes altas, suelo áspero, bordes de zonas prohibidas y suelo blando, y prefiere pasar cerca de los refugios.",
+      "peso_pendiente": 3,
+      "peso_rugosidad": 2,
+      "peso_borde": 2,
+      "escala_borde_m": 20,
+      "peso_blando": 1,
+      "peso_refugio": 2,
+      "peso_rescate": {
+        "valor": 4,
+        "base": "propuesta",
+        "fuente": "a calibrar: peso del tiempo de rescate normalizado, adicional al regreso; no es una probabilidad medida"
+      }
+    }
+  ],
+  "planificacion": {
+    "jornada_eva_h": {
+      "valor": 8,
+      "base": "verificado_parcial",
+      "fuente": "8 h de consumibles primarios Artemis, config/riesgo.json; como jornada acumulada en Marte es una adaptación a calibrar"
+    },
+    "margen_jornada_min": {
+      "valor": 30,
+      "base": "propuesta",
+      "fuente": "a calibrar: reserva de jornada además del ingreso y la recarga"
+    },
+    "margen_luz_min": {
+      "valor": 30,
+      "base": "propuesta",
+      "fuente": "a calibrar: margen después del amanecer y antes del atardecer geométricos, sin certificar sombras locales"
+    },
+    "hora_salida_lmst": {
+      "valor": 9,
+      "base": "propuesta",
+      "fuente": "a calibrar: hora solar local inicial; se reemplaza por la elegida en Opciones"
+    },
+    "sol_s": {
+      "valor": 88775.24414688,
+      "base": "verificado",
+      "fuente": "Mars24 C-2: 1,0274912517 días terrestres por sol medio; mismo coeficiente de app/js/luz.js"
+    },
+    "max_estados": {
+      "valor": 20000,
+      "base": "propuesta",
+      "fuente": "a calibrar: presupuesto de etiquetas del planificador; al agotarse se informa búsqueda incompleta, sin afirmar que no exista ruta"
+    }
+  }
+}

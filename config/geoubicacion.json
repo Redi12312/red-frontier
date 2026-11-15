@@ -1,0 +1,23 @@
+{
+  "_nota": "Fusión modelada con errores gaussianos independientes. Cada error es 1 sigma salvo error_95_m. Las áreas son credibilidad del modelo, sin validación operativa. El horizonte se aproxima por una gaussiana circular local y conserva su estimación original cuando no se agregan medidas. Medidas del mismo instrumento o una posición ya fusionada no deben cargarse dos veces.",
+  "celdas_iniciales": { "valor": 2048, "base": "propuesta", "fuente": "a calibrar: presupuesto inicial de bloques para el refinamiento adaptativo" },
+  "celdas_maximas": { "valor": 32768, "base": "propuesta", "fuente": "a calibrar: presupuesto por distribución, procesada secuencialmente en el Worker" },
+  "masa_refinamiento": { "valor": 0.999, "base": "propuesta", "fuente": "a calibrar: masa priorizada al subdividir; se conservan las colas en bloques más grandes" },
+  "pixeles_mapa_max": { "valor": 512, "base": "propuesta", "fuente": "a calibrar: límite por lado del lienzo de cada región; solo afecta la visualización" },
+  "sigma_radio_m": { "valor": 10, "base": "propuesta", "fuente": "a calibrar: radio de tiempo de vuelo, depende de equipo, sincronización y multitrayecto" },
+  "sigma_uwb_m": { "valor": 3, "base": "propuesta", "fuente": "a calibrar: balizas UWB en superficie, sin validación marciana ni modelo de propagación" },
+  "sigma_reseccion_grados": { "valor": 1, "base": "propuesta", "fuente": "a calibrar: rumbo óptico referido al norte por IMU o Sol; incluye identificación del hito" },
+  "sigma_laser_m": { "valor": 2, "base": "propuesta", "fuente": "a calibrar: telémetro láser y coordenadas del hito; depende del equipo" },
+  "sigma_sol_grados": { "valor": 0.5, "base": "propuesta", "fuente": "a calibrar: medición de elevación y azimut con sensor solar y referencia de actitud" },
+  "sigma_odometria_fraccion": { "valor": 0.02, "base": "propuesta", "fuente": "a calibrar: odometría de ruedas, sin corrección de deslizamiento" },
+  "sigma_doppler_m": { "valor": 100, "base": "propuesta", "fuente": "a calibrar: error por eje de una solución de posición externa; la app no estima órbitas ni Doppler crudo" },
+  "sigma_estrellas_m": { "valor": 1000, "base": "propuesta", "fuente": "a calibrar: error por eje del posicionamiento astronómico con reloj y vertical local. Un minuto de arco sobre R=3396190 m equivale a 987,9 m" },
+  "presion_inicial_pa": { "valor": 750, "base": "propuesta", "fuente": "a calibrar: ejemplo editable de presión exterior simultánea, no es una lectura del traje" },
+  "temperatura_inicial_k": { "valor": 210, "base": "propuesta", "fuente": "a calibrar: ejemplo editable de temperatura media de la columna de aire" },
+  "fuentes": {
+    "doppler": "NASA/JPL, Mars Exploration Rover Navigation, sección VIII, https://descanso.jpl.nasa.gov/DPSummary/DESCANSO_MER_NAV_051215C_low.pdf — localización con Doppler UHF de dos vías entre los rovers y Odyssey. El error propuesto de esta app requiere calibración",
+    "rumbo": "NASA, Mars Global Surveyor Magnetic Field Investigation, https://mgs-mager.gsfc.nasa.gov/ — Marte carece de campo magnético global actual",
+    "sol": "NASA GISS Mars24, https://www.giss.nasa.gov/tools/mars24/help/algorithm.html — geometría reutilizada de luz.js",
+    "horizonte": "datos/gale_boxwork/localizacion/resumen.json — 12 paradas, mediana 20,1 m, 9 de 12 dentro del intervalo declarado; el 95 % no está calibrado empíricamente"
+  }
+}

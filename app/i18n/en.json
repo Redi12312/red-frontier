@@ -1,0 +1,2658 @@
+{
+ "frases": {
+  "La ruta necesita celdas, tiempos y regreso.": "The route needs cells, times and return data.",
+  "La ruta sale del relieve válido.": "The route leaves valid terrain.",
+  "La ruta contiene saltos entre celdas.": "The route contains jumps between cells.",
+  "Distancia y tiempo deben ser positivos.": "Distance and time must be positive.",
+  "El error debe ser mayor que cero.": "Error must be greater than zero.",
+  "Cada lectura necesita un id único; no repitas medidas.": "Each reading needs a unique ID; do not duplicate measurements.",
+  "La corrección queda fuera de la zona.": "The correction falls outside the zone.",
+  "Falta el radio 95 % de la corrección.": "The correction's 95 % radius is missing.",
+  "Sin relieve para corregir presión.": "No terrain data for pressure correction.",
+  "Usá geoubicar de T18 para este tipo de medida.": "Use T18 geolocation for this measurement type.",
+  "Tiempo negativo.": "Negative time.",
+  "Intervalo de sensores nulo.": "Zero sensor interval.",
+  "planetocéntricas, longitud este, esfera Marte": "planetocentric, east longitude, Mars sphere",
+  "Canvas 2D no está disponible.": "Canvas 2D is not available.",
+  "Canvas2D": "Canvas2D",
+  "nivel de oxigeno": "oxygen level",
+  "marcar peligro": "mark hazard",
+  "NFD": "NFD",
+  "Voice recognition needs browser support and may require internet. Use the buttons or keyboard offline.": "Voice recognition needs browser support and may require internet. Use the buttons or keyboard offline.",
+  "El reconocimiento requiere soporte del navegador y puede necesitar internet. Usá botones o teclado sin conexión.": "Voice recognition needs browser support and may require internet. Use the buttons or keyboard offline.",
+  "Command not recognized. Open Help.": "Command not recognized. Open Help.",
+  "No reconocí el comando. Abrí Ayuda.": "Command not recognized. Open Help.",
+  "a calibrar: intervalo de integración reproducible": "to calibrate: reproducible integration interval",
+  "a calibrar: error por eje del punto de partida": "to calibrate: per-axis starting-point error",
+  "a calibrar: difusión de navegación a estima": "to calibrate: dead-reckoning diffusion",
+  "a calibrar: sesgo persistente de IMU simulada": "to calibrate: persistent simulated IMU bias",
+  "a calibrar: sesgo persistente de longitud de paso": "to calibrate: persistent step-length bias",
+  "a calibrar: distancia lateral a la ruta aprobada": "to calibrate: lateral distance from the approved route",
+  "a calibrar: cercanía máxima a la parada de una foto; nunca se traslada una foto al caminante": "to calibrate: maximum proximity to a photo stop; photos are never moved to the walker's location",
+  "a calibrar: separación de hitos de guía": "to calibrate: guidance landmark spacing",
+  "a calibrar: factores del reloj de demostración; la velocidad física sale de la ruta Tobler": "to calibrate: demonstration clock factors; physical speed comes from the Tobler route",
+  "a calibrar: semilla de sensores simulados reproducibles": "to calibrate: reproducible simulated sensor seed",
+  "a calibrar: indicador simulado constante, sin modelo térmico": "to calibrate: constant simulated indicator, without a thermal model",
+  "a calibrar: indicador simulado constante, separado de presión exterior": "to calibrate: constant simulated indicator, separate from external pressure",
+  "a calibrar: incremento simulado por tasa metabólica nominal": "to calibrate: simulated increase based on nominal metabolic rate",
+  "a calibrar: radio de selección de un destino cercano a Curiosity": "to calibrate: selection radius for a destination near Curiosity",
+  "a calibrar: resolución interna del respaldo 2D, escalada al visor": "to calibrate: internal 2D fallback resolution, scaled to the visor",
+  "a calibrar: resolución interna del respaldo 2D": "to calibrate: internal 2D fallback resolution",
+  "a calibrar: rayos del relieve por cuadro": "to calibrate: terrain rays per frame",
+  "a calibrar: muestras LOD por rayo": "to calibrate: LOD samples per ray",
+  "a calibrar: horizonte visual con contexto regional": "to calibrate: visual horizon with regional context",
+  "a calibrar: cámara de astronauta": "to calibrate: astronaut camera",
+  "a calibrar: amplitud visual; se anula con movimiento reducido": "to calibrate: visual amplitude; disabled with reduced motion",
+  "a calibrar: refresco de texto y minimapa": "to calibrate: text and minimap refresh interval",
+  "Controles del tramo": "Leg checks",
+  "Plazas y stock de la base de salida": "Departure base capacity and stock",
+  "día": "day",
+  "días": "days",
+  "Falta la configuración de consumibles o de jornadas.": "Resource or daily schedule configuration is missing.",
+  "Fecha, hora de salida o jornada inválida.": "Invalid date, departure time or daily schedule.",
+  "Inicio o destino fuera de la zona.": "Start or destination is outside the zone.",
+  "Hay bases con identificadores repetidos.": "Some bases have duplicate identifiers.",
+  "Fuera de la zona.": "Outside the zone.",
+  "Regreso o rescate sin margen para la incertidumbre de posición.": "Return or rescue leaves no margin for position uncertainty.",
+  "Sin regreso de emergencia dentro del límite.": "No emergency return within the limit.",
+  "Sin rescate del compañero dentro del límite.": "No partner rescue within the limit.",
+  "Rescate o regreso sin margen para la incertidumbre de posición.": "Rescue or return leaves no margin for position uncertainty.",
+  "Terreno prohibido o peligro: un refugio por sí solo no abre un camino.": "Forbidden terrain or hazard: a shelter alone does not create a traversable path.",
+  "Stock insuficiente para el pernocte y la reserva de rescate posterior.": "Insufficient stock for the overnight stay and subsequent rescue reserve.",
+  "La base elegida no tiene plazas y stock de refugio suficientes.": "The selected base lacks sufficient shelter capacity and stock.",
+  "Jornada acumulada y luz de día": "Accumulated workday and daylight",
+  "El tramo no entra en la jornada o la luz disponible; hace falta pernoctar antes.": "The leg exceeds the available workday or daylight; an overnight stop is needed first.",
+  "El nodo de llegada no tiene stock para la siguiente recarga.": "The arrival node lacks stock for the next recharge.",
+  "Búsqueda incompleta: se agotó el presupuesto configurado de estados. No se descarta que exista una ruta.": "Incomplete search: the configured state budget was exhausted. A route may still exist.",
+  "No se encontró una cadena aprobada.": "No approved route through bases was found.",
+  "Terreno NASA/USGS; trayectos, consumos, inventarios, jornadas y probabilidades modelados. Parámetros propuestos, a calibrar. La probabilidad combina solo las EVA y no evalúa la estadía en los refugios. La salida inicial supone trajes cargados.": "NASA/USGS terrain; modeled routes, consumption, inventories, daily schedules and probabilities. Proposed parameters require calibration. The probability combines only EVAs and does not assess shelter stays. Initial departure assumes fully loaded suits.",
+  "a calibrar: peso del tiempo de rescate normalizado, adicional al regreso; no es una probabilidad medida": "to calibrate: weight of normalized rescue time, in addition to return; not a measured probability",
+  "8 h de consumibles primarios Artemis, config/riesgo.json; como jornada acumulada en Marte es una adaptación a calibrar": "8 h of Artemis primary consumables, config/riesgo.json; its use as an accumulated Martian workday is an adaptation requiring calibration",
+  "a calibrar: reserva de jornada además del ingreso y la recarga": "to calibrate: workday reserve in addition to ingress and recharge",
+  "a calibrar: margen después del amanecer y antes del atardecer geométricos, sin certificar sombras locales": "to calibrate: margin after geometric sunrise and before geometric sunset, without verifying local shadows",
+  "a calibrar: hora solar local inicial; se reemplaza por la elegida en Opciones": "to calibrate: initial local solar time; replaced by the time selected in Options",
+  "Mars24 C-2: 1,0274912517 días terrestres por sol medio; mismo coeficiente de app/js/luz.js": "Mars24 C-2: 1,0274912517 Earth days per mean sol; same coefficient as app/js/luz.js",
+  "a calibrar: presupuesto de etiquetas del planificador; al agotarse se informa búsqueda incompleta, sin afirmar que no exista ruta": "to calibrate: planner label budget; exhaustion reports an incomplete search without claiming no route exists",
+  "La presión y la temperatura iniciales son ejemplos editables. Cargá tus mediciones simultáneas.": "Initial pressure and temperature are editable examples. Enter your simultaneous measurements.",
+  "Radio": "Radio",
+  "Base de la ruta": "Route base",
+  "Z": "Z",
+  "fila del punto": "point row",
+  "columna del punto": "point column",
+  "error de presión": "pressure error",
+  "distancia de radio": "radio range",
+  "error de radio": "radio error",
+  "error de distancia": "distance error",
+  "error de rumbo": "bearing error",
+  "error del rumbo al hito": "landmark bearing error",
+  "distancia láser": "laser range",
+  "error del telémetro": "rangefinder error",
+  "elevación solar": "solar elevation",
+  "azimut solar": "solar azimuth",
+  "error de posición absoluta": "absolute position error",
+  "incertidumbre del horizonte": "skyline uncertainty",
+  "paso de grilla": "grid spacing",
+  "a calibrar: presupuesto inicial de bloques para el refinamiento adaptativo": "to calibrate: initial block budget for adaptive refinement",
+  "a calibrar: presupuesto por distribución, procesada secuencialmente en el Worker": "to calibrate: per-distribution budget, processed sequentially in the Worker",
+  "a calibrar: masa priorizada al subdividir; se conservan las colas en bloques más grandes": "to calibrate: mass prioritized for subdivision; tails remain in larger blocks",
+  "a calibrar: límite por lado del lienzo de cada región; solo afecta la visualización": "to calibrate: per-side canvas limit for each region; affects visualization only",
+  "a calibrar: radio de tiempo de vuelo, depende de equipo, sincronización y multitrayecto": "to calibrate: time-of-flight radio, depends on equipment, synchronization and multipath",
+  "a calibrar: balizas UWB en superficie, sin validación marciana ni modelo de propagación": "to calibrate: surface UWB beacons, without Martian validation or a propagation model",
+  "a calibrar: rumbo óptico referido al norte por IMU o Sol; incluye identificación del hito": "to calibrate: optical bearing referenced to north by IMU or Sun; includes landmark identification",
+  "a calibrar: telémetro láser y coordenadas del hito; depende del equipo": "to calibrate: laser rangefinder and landmark coordinates; equipment-dependent",
+  "a calibrar: medición de elevación y azimut con sensor solar y referencia de actitud": "to calibrate: elevation and azimuth measurement using Sun sensor and attitude reference",
+  "a calibrar: odometría de ruedas, sin corrección de deslizamiento": "to calibrate: wheel odometry, without slip correction",
+  "a calibrar: error por eje de una solución de posición externa; la app no estima órbitas ni Doppler crudo": "to calibrate: per-axis error of an external position solution; the app does not estimate orbits or raw Doppler",
+  "a calibrar: error por eje del posicionamiento astronómico con reloj y vertical local. Un minuto de arco sobre R=3396190 m equivale a 987,9 m": "to calibrate: per-axis error of astronomical positioning with clock and local vertical. One arcminute at R=3396190 m corresponds to 987.9 m",
+  "a calibrar: ejemplo editable de presión exterior simultánea, no es una lectura del traje": "to calibrate: editable example of simultaneous exterior pressure, not a suit reading",
+  "a calibrar: ejemplo editable de temperatura media de la columna de aire": "to calibrate: editable example of mean air-column temperature",
+  "Geoubicación sin GPS": "GPS-free geolocation",
+  "Geoubicación · barómetro": "Geolocation · barometer",
+  "Estimá tu posición como astronauta o en rover ante una falla de navegación, al perderte con polvo o antes del regreso de emergencia. Con visibilidad, el horizonte compara la silueta de las montañas de tus fotos con la calculada sobre HiRISE + MOLA-HRSC. Con polvo, sumá medidas de otros instrumentos.": "Estimate your position as an astronaut or in a rover after navigation failure, when lost in dust or before an emergency return. With visibility, skyline matching compares mountain silhouettes in your photos with horizons calculated from HiRISE + MOLA-HRSC terrain. In dust, add readings from other instruments.",
+  "Prueba a ciegas con Curiosity. Error mediano de $1 m en $2 paradas. $3 quedaron dentro del intervalo declarado. El 95 % del modelo sigue a calibrar.": "Blind test with Curiosity. Median error of $1 m across $2 stops. $3 fell within the declared interval. The model’s 95% coverage still needs calibration.",
+  "Sumar medidas": "Add measurements",
+  "Todas las medidas son opcionales. Cargá lecturas propias y sus errores de 1 sigma. Las precisiones típicas son propuestas a calibrar. Usá observaciones independientes y una misma posición y hora de referencia para combinarlas.": "All measurements are optional. Enter your readings and their 1-sigma errors. Typical precisions are proposals to calibrate. Combine independent observations for the same position and reference time.",
+  "Usar como posición actual": "Use as current position",
+  "Último punto conocido aquí": "Last known position here",
+  "Agregar referencia de resección aquí": "Add resection landmark here",
+  "Horizonte": "Skyline",
+  "Barómetro": "Barometer",
+  "Odometría del rover": "Rover odometry",
+  "Resección": "Resection",
+  "Baliza UWB": "UWB beacon",
+  "Doppler orbital": "Orbital Doppler",
+  "Estrellas": "Stars",
+  "Solución externa de radio UHF con un orbitador. Error típico por eje de $1 m, propuesta a calibrar. Cargá una posición ya resuelta con su error.": "External position solution from UHF radio with an orbiter. Typical per-axis error of $1 m, a proposal to calibrate. Enter an already solved position and its error.",
+  "Rastreador estelar con reloj y vertical local. Error típico por eje de $1 m, propuesta a calibrar. Un minuto de arco equivale a unos 988 m en Marte. Control grueso de posición.": "Star tracker with clock and local vertical. Typical per-axis error of $1 m, a proposal to calibrate. One arcminute corresponds to about 988 m on Mars. A coarse position check.",
+  "Latitud planetocéntrica (°)": "Planetocentric latitude (°)",
+  "Longitud este (°)": "East longitude (°)",
+  "Error por eje (m, 1 sigma)": "Per-axis error (m, 1 sigma)",
+  "Incluir el horizonte calculado": "Include calculated skyline",
+  "El horizonte se aproxima como una distribución circular local. Si hay otro lugar parecido, revisá la ambigüedad antes de combinar.": "The skyline is approximated by a local circular distribution. If another place looks similar, review the ambiguity before combining.",
+  "Último punto conocido": "Last known position",
+  "Elegí una base o hacé clic derecho en el mapa": "Choose a base or right-click the map",
+  "Sensores de presión exterior simultáneos en traje y hábitat. Ruido diferencial típico de $1 Pa, propuesta a calibrar. La presión interna del traje no sirve para medir altura.": "Simultaneous exterior pressure sensors on suit and habitat. Typical differential noise of $1 Pa, a proposal to calibrate. Suit internal pressure cannot measure terrain height.",
+  "Hábitat de referencia": "Reference habitat",
+  "Presión exterior en el hábitat (Pa)": "Exterior pressure at habitat (Pa)",
+  "Presión exterior en el traje (Pa)": "Exterior pressure at suit (Pa)",
+  "Temperatura media del aire (K)": "Mean air temperature (K)",
+  "Contador de pasos o distancia medida. Largo de paso de $1 m y error relativo de $2 %, propuestas a calibrar. El rumbo se obtiene del Sol, de una IMU o del rover. Marte carece de campo magnético global útil para una brújula.": "Step counter or measured distance. Step length of $1 m and relative error of $2%, proposals to calibrate. Heading comes from the Sun, an IMU or the rover. Mars lacks a global magnetic field suitable for compass navigation.",
+  "Cantidad de pasos": "Step count",
+  "O distancia recorrida (m)": "Or traveled distance (m)",
+  "Rumbo desde el norte (°)": "Bearing from north (°)",
+  "Error del rumbo (°, 1 sigma)": "Bearing error (°, 1 sigma)",
+  "Sensor solar y reloj UTC. Error angular típico de $1°, propuesta a calibrar. En 10 km la geometría solar aporta poca información. Las sombras del relieve requieren otra observación y quedan fuera de esta medida.": "Sun sensor and UTC clock. Typical angular error of $1°, a proposal to calibrate. Over 10 km solar geometry adds little information. Terrain shadows require a separate observation and are outside this measurement model.",
+  "Fecha y hora terrestre (UTC)": "Earth date and time (UTC)",
+  "Elevación solar medida (°)": "Measured solar elevation (°)",
+  "Azimut solar medido (°)": "Measured solar azimuth (°)",
+  "Error solar (°, 1 sigma)": "Sun angular error (°, 1 sigma)",
+  "Radio de tiempo de vuelo a una base o baliza. Error típico de $1 m, propuesta a calibrar. La distancia forma un anillo y requiere enlace y sincronización.": "Time-of-flight radio to a base or beacon. Typical error of $1 m, a proposal to calibrate. Distance defines an annulus and requires a radio link and synchronization.",
+  "Base o baliza": "Base or beacon",
+  "Distancia de radio (m)": "Radio range (m)",
+  "Error de distancia (m, 1 sigma)": "Range error (m, 1 sigma)",
+  "Odómetro de ruedas e IMU desde el último punto conocido. Error relativo típico de $1 %, propuesta a calibrar. El deslizamiento puede aumentar el error.": "Wheel odometry and IMU from the last known position. Typical relative error of $1%, a proposal to calibrate. Wheel slip can increase the error.",
+  "Distancia del odómetro (m)": "Odometer distance (m)",
+  "Resección y telémetro láser": "Resection and laser rangefinder",
+  "Visor óptico e IMU o referencia solar. Error típico de rumbo de $1° y de láser de $2 m, propuestas a calibrar. Marcá 2–3 cerros o bordes de cráter con clic derecho → Agregar referencia de resección aquí. Cada rumbo limita una dirección y cada distancia un anillo. La precisión depende de la geometría y del relieve.": "Optical sight and IMU or Sun reference. Typical bearing error of $1° and laser range error of $2 m, proposals to calibrate. Mark 2–3 hills or crater rims with right-click → Add resection landmark here. Each bearing constrains a direction and each range an annulus. Precision depends on geometry and terrain.",
+  "Balizas UWB del plan": "Plan UWB beacons",
+  "Radio UWB de tiempo de vuelo en hábitats, refugios o balizas del plan. Error típico de $1 m, propuesta a calibrar. Sumá distancias independientes a varias balizas para trilaterar. Revisá el multitrayecto y las posiciones de las marcas.": "UWB time-of-flight radio at plan habitats, shelters or beacons. Typical error of $1 m, a proposal to calibrate. Add independent ranges to several beacons for trilateration. Check multipath and marker coordinates.",
+  "Sumar distancia a una baliza": "Add a beacon range",
+  "Combinar medidas": "Combine measurements",
+  "Elegí una base del plan": "Choose a plan base",
+  "Punto marcado en el mapa": "Point marked on map",
+  "Punto conocido en $1° de latitud, $2° E.": "Known point at latitude $1°, $2° E.",
+  "Podés usar hasta tres referencias de resección.": "You can use up to three resection landmarks.",
+  "Referencia": "Landmark",
+  "Rumbo al hito (°)": "Bearing to landmark (°)",
+  "Distancia láser opcional (m)": "Optional laser range (m)",
+  "Error del láser (m, 1 sigma)": "Laser error (m, 1 sigma)",
+  "Quitar medida": "Remove measurement",
+  "Hábitat, refugio o baliza": "Habitat, shelter or beacon",
+  "Completá los números de cada medida seleccionada.": "Complete the numbers for each selected measurement.",
+  "Elegí una base del plan para la medida.": "Choose a plan base for this measurement.",
+  "Cargá pasos o distancia en la medida a estima.": "Enter either steps or distance for dead reckoning.",
+  "Usá una sola distancia por baliza para evitar contar la misma lectura dos veces.": "Use one range per beacon to avoid counting the same reading twice.",
+  "Sumá una medida o calculá el horizonte.": "Add a measurement or calculate the skyline.",
+  "Combinando medidas en el Worker…": "Combining measurements in the Worker…",
+  "Fusión modelada en $1 s. Resolución máxima de la región del 95 % de $2 m. Errores a calibrar.": "Modeled fusion in $1 s. Coarsest resolution in the 95% region of $2 m. Errors need calibration.",
+  "Estás a unos $1 m de este punto (95 % del modelo). Área combinada de $2 m².": "You are within about $1 m of this point (model 95%). Combined area of $2 m².",
+  "El horizonte solo daba unos $1 m. Las medidas combinadas dan unos $2 m.": "The skyline alone gave about $1 m. Combined measurements give about $2 m.",
+  "Blanco y cruz indican la región combinada del 95 % y su mejor punto. Las regiones pueden tener varios parches.": "White shading and the cross mark the combined 95% region and its best point. Regions may contain multiple patches.",
+  "$1 cambió el área de $2 a $3 m². Reducción de $4 m².": "$1 changed the area from $2 to $3 m². Reduction of $4 m².",
+  "Geoubicación combinada": "Combined geolocation",
+  "La decisión usa $1 m de incertidumbre de posición. Compará con los $2 m obtenidos antes de planificar el regreso.": "The decision uses $1 m of position uncertainty. Compare with the estimated $2 m before planning your return.",
+  "Error real de la fusión en la prueba con Curiosity de $1 m.": "Actual fusion error in the Curiosity test of $1 m.",
+  "Posición actual estimada": "Estimated current position",
+  "Posición actual marcada con un error estimado de $1 m. La decisión usa $2 m. Revisá esa diferencia antes de regresar.": "Current position marked with estimated error of $1 m. The decision uses $2 m. Review that difference before returning.",
+  "El barómetro delimita una franja de altura. Abrí «Geoubicación sin GPS» → «Sumar medidas» para combinar estas presiones con el horizonte, los pasos y otras lecturas.": "The barometer constrains an elevation band. Open “GPS-free geolocation” → “Add measurements” to combine these pressures with the skyline, steps and other readings.",
+  "Los barómetros exteriores del hábitat y del traje miden al mismo tiempo. La diferencia de presión da el desnivel; el relieve de HiRISE dice qué lugares cercanos están a esa altura. Último punto conocido: donde hiciste clic.": "The exterior habitat and suit barometers measure simultaneously. Pressure difference gives elevation difference; HiRISE terrain identifies nearby places at that height. Last known position is where you clicked.",
+  "Sumar esta medida": "Add this measurement",
+  "Calculá de nuevo el horizonte antes de fusionarlo.": "Calculate the skyline again before fusion.",
+  "Las medidas no tienen soporte válido sobre el terreno.": "The measurements have no valid support on the terrain.",
+  "Cada medida necesita un identificador único.": "Each measurement needs a unique identifier.",
+  "Revisá el presupuesto de la grilla.": "Check the grid budget.",
+  "Revisá la grilla de geoubicación.": "Check the geolocation grid.",
+  "Medida de geoubicación desconocida.": "Unknown geolocation measurement.",
+  "Elegí una referencia barométrica con altura válida dentro de la zona.": "Choose a barometric reference with valid terrain height inside the zone.",
+  "Revisá la elevación solar.": "Check the solar elevation.",
+  "Revisá la latitud.": "Check the latitude.",
+  "Revisá el identificador de la medida.": "Check the measurement identifier.",
+  "La geoubicación usa terreno real y lecturas ingresadas a mano. El resultado es modelado y las precisiones son propuestas a calibrar.": "Geolocation uses real terrain and manually entered readings. Results are modeled and precisions are proposals to calibrate.",
+  "Las fotos de Curiosity son una prueba a ciegas con respuesta conocida. Revelá la posición después de estimarla.": "Curiosity photos are a blind test with known ground truth. Reveal the position after estimating it.",
+  "Hacé clic derecho para elegir la base, el destino o agregar al plan.": "Right-click to choose the base, the destination or add to the plan.",
+  "GET": "GET",
+  "PUT": "PUT",
+  "Sin regreso conocido al refugio.": "No known return path to shelter.",
+  "ruta.tasaO2: el consumo relativo debe ser positivo.": "route.O₂Rate: relative consumption must be positive.",
+  "Inventario botiquin: usá sí/no (booleano) o null.": "Inventory firstAidKit: use yes/no (Boolean) or null.",
+  "plazo de rescate": "rescue deadline",
+  "plazo:rover": "deadline:rover",
+  "Oxígeno secundario": "Secondary oxygen",
+  "Propuesta del equipo: salir y volver con sol, 30 min de margen (de noche el suelo baja a −80 °C y no se ve el terreno). Amanecer y atardecer: Mars24, validado con 700 soles de Curiosity.": "Team proposal: depart and return in daylight with 30 min margin (at night the ground reaches −80 °C and terrain is not visible). Sunrise and sunset: Mars24, validated against 700 Curiosity sols.",
+  "Ejemplo del equipo, a calibrar: fuga que permite usar el oxígeno secundario; no representa una rotura catastrófica. Sin estadística validada para EVA marciana.": "Team example requiring calibration: leak allowing secondary oxygen use; not a catastrophic rupture. No validated Martian EVA statistics.",
+  "Ejemplo del equipo, a calibrar: pérdida completa del soporte vital de la mochila, sin respaldo de ventilación, enfriamiento o eliminación de CO₂ modelado.": "Team example requiring calibration: total backpack life-support loss; no backup ventilation, cooling or CO₂ removal modeled.",
+  "Ejemplo del equipo, a calibrar: incapacitamiento de un tripulante que permite rescate por arrastre. Sin estadística validada para Marte.": "Team example requiring calibration: crew incapacitation allowing drag rescue. No validated Mars statistics.",
+  "Ejemplo del equipo, a calibrar: comienzo de un evento de partículas solares. No es una predicción de DONKI ni una tasa derivada de observaciones.": "Team example requiring calibration: solar-particle event onset. Neither a DONKI prediction nor an observed event rate.",
+  "Ejemplo del equipo, a calibrar: pérdida de radio que obliga a terminar la salida; se supone navegación autónoma disponible para regresar.": "Team example requiring calibration: radio loss requires EVA termination; assumes autonomous navigation for return.",
+  "Ejemplo del equipo, a calibrar: avería del rover que exige regresar a pie. Solo se aplica con limites.vehiculo = rover.": "Team example requiring calibration: rover failure requires walkback. Applies only when limits.vehicle = rover.",
+  "Hipótesis conservadora del equipo, a calibrar: sin soporte vital redundante no se acredita tiempo de regreso tras perder la mochila. No es una estimación fisiológica.": "Conservative team assumption requiring calibration: no credited return time after backpack loss without redundant life support. Not a physiological estimate.",
+  "Modelo del equipo, a calibrar: procesos de Poisson independientes con tasas constantes por hora o km; integración exacta del primer incidente por tramos. Regreso y rescate se interpolan linealmente, tasaO2 es constante por intervalo izquierdo. No incluye fallas encadenadas, exposición durante el regreso de emergencia, errores del mapa, dosis ni eficacia médica del refugio; supone viable el plan nominal.": "Team model requiring calibration: independent Poisson processes with constant rates per hour or km; exact first-incident integration by leg. Return and rescue are linearly interpolated; O₂ rate is constant over each left interval. Excludes cascading failures, exposure during emergency return, map error, dose and shelter medical efficacy; assumes a feasible nominal plan.",
+  "Propuesta del equipo, a calibrar: ante un aviso de partículas solares (SEP) la tripulación debe estar dentro de un refugio en 30 min; las partículas más energéticas llegan a Marte en decenas de minutos a horas después de la erupción.": "Team proposal requiring calibration: after a solar particle event (SEP) alert, crew must reach shelter within 30 min; high-energy particles may reach Mars tens of minutes to hours after eruption.",
+  "Propuesta del equipo, a calibrar: 25 m es la incertidumbre al 95 % medida por nuestra localización a ciegas con fotos de Curiosity. Los controles de regreso, rescate y consumibles usan el peor valor del campo dentro de ese radio alrededor de cada celda de la ruta.": "Team proposal requiring calibration: 25 m is the 95 % uncertainty measured by our blind localization using Curiosity photos. Return, rescue and consumables checks use the worst field value within that radius around each route cell.",
+  "Propuesta del equipo, a calibrar: porcentaje máximo de celdas sin dato válido del modelo de terreno dentro del radio de incertidumbre de posición alrededor de la ruta. Sobre la ruta misma no se admite ninguna.": "Team proposal requiring calibration: maximum share of cells lacking valid terrain-model data within the position-uncertainty radius around the route. None are allowed on the route itself.",
+  "Propuesta del equipo, a calibrar: 25 m es la incertidumbre al 95 % medida por nuestra localización a ciegas con fotos de Curiosity. Los controles de regreso, rescate y consumibles usan el peor valor del campo dentro de ese radio alrededor de cada celda de la ruta. En las regiones de 200 m el radio es menor que una celda: no cambia el resultado y se avisa.": "Team proposal requiring calibration: 25 m is the 95 % uncertainty measured by blind localization using Curiosity photos. Return, rescue and consumables checks use the worst field value within that radius around each route cell. In 200 m regions the radius is smaller than one cell, so the result is unchanged and flagged.",
+  "Oxígeno, tripulación y unidades": "Oxygen, crew and units",
+  "⚙ Opciones": "⚙ Options",
+  "Hábitat: Base principal de la expedición.": "Habitat: main expedition base.",
+  "Refugio: Refugio previsto para la tripulación.": "Shelter: designated crew shelter.",
+  "Oxígeno primario del traje (h a ritmo moderado)": "Suit primary oxygen (h at moderate pace)",
+  "Carga actual del primario (%)": "Current primary load (%)",
+  "Oxígeno secundario (min)": "Secondary oxygen (min)",
+  "Hora de salida (hora solar local)": "Departure time (local solar time)",
+  "Ritmo de trabajo": "Work pace",
+  "liviano (×0.8 de consumo)": "light (×0.8 consumption)",
+  "moderado (×1.0 de consumo)": "moderate (×1.0 consumption)",
+  "intenso (×1.3 de consumo)": "intense (×1.3 consumption)",
+  "Horas útiles de primario:": "Usable primary hours:",
+  ". El ritmo es una propuesta a calibrar. Con menos de 2 tripulantes ninguna salida se aprueba.": ". Pace is a proposal requiring calibration. No EVA is GO with fewer than 2 crew.",
+  "Volver a los valores de NASA": "Restore NASA reference values",
+  "Salida y consumibles": "EVA and consumables",
+  "Tripulación en la salida": "EVA crew",
+  "Duración total (ida, trabajo, vuelta e ingreso)": "Total duration (outbound, work, return and ingress)",
+  "Salida en pareja (o más)": "Two-person EVA (or more)",
+  "Toda la salida con luz de día": "Entire EVA in daylight",
+  "Probabilidad estimada": "Estimated probability",
+  "(modelo de primera falla, tasas a calibrar)": "(first-failure model, rates require calibration)",
+  "Completar sin incidentes:": "Complete without incidents:",
+  "Volver a salvo si algo falla:": "Return safely if a failure occurs:",
+  "Supervivencia:": "Survival:",
+  "Supervivencia de la cadena:": "Chain survival:",
+  "Desde todos los puntos de la ruta hay regreso a tiempo para cada falla modelada.": "Timely return is possible from every route point for each modeled failure.",
+  "Se aleja de pendientes altas, suelo áspero, bordes de zonas prohibidas y suelo blando, y prefiere pasar cerca de los refugios.": "Avoids steep slopes, rough and soft ground, and prohibited area boundaries; favors nearby shelters.",
+  "Base principal de la expedición. Cuenta como refugio: agranda la zona segura.": "Main expedition base. Counts as a shelter and expands the safe area.",
+  "Capacidad (personas)": "Capacity (persons)",
+  "Oxígeno (kg)": "Oxygen (kg)",
+  "Agua (L)": "Water (L)",
+  "Comida (kcal)": "Food (kcal)",
+  "Energía (kWh)": "Energy (kWh)",
+  "Filtros de CO₂ (h)": "CO₂ filters (h)",
+  "Botiquín": "First-aid kit",
+  "Cargar el stock típico (propuesta)": "Load typical stock (proposal)",
+  "Mover": "Move",
+  "oxígeno primario": "primary oxygen",
+  "Tiempo afuera (h:min:s reales)": "Time outside (real h:min:s)",
+  "de ingreso": "for ingress",
+  "Margen para volver": "Return margin",
+  "Consumo ahora (× nominal)": "Current consumption (× nominal)",
+  "Lo que limita": "Limiting factor",
+  "CO₂ por absorber": "CO₂ absorption remaining",
+  "Agua de enfriamiento": "Cooling water",
+  "Ruta completa, por persona (modelado, a calibrar):": "Full route, per person (modeled, requires calibration):",
+  "batería": "battery",
+  "agua": "water",
+  "batería del traje": "suit battery",
+  "Trabajo en el destino.": "Work at destination.",
+  "CALCULANDO REGRESO": "COMPUTING RETURN",
+  "Partículas solares: hay que entrar al refugio dentro del plazo de la tormenta.": "Solar particles: reach shelter before the storm deadline.",
+  "Esperando el camino al refugio; los plazos siguen corriendo.": "Waiting for shelter path; deadlines are still running.",
+  "plazo de la tormenta": "storm deadline",
+  "reloj detenido: calculando el regreso": "clock paused: computing return",
+  "Fallas activas:": "Active failures:",
+  "Camino más seguro al refugio.": "Safest path to shelter.",
+  "A salvo en el refugio, con reserva para el ingreso.": "Safe in shelter, with ingress reserve.",
+  "simulación terminada": "simulation complete",
+  "configurado": "configured",
+  "Oxígeno": "Oxygen",
+  "Comida": "Food",
+  "Filtros de CO₂": "CO₂ filters",
+  "en el proyecto (guardado/estado.json) y en este navegador": "in the project (guardado/estado.json) and this browser",
+  "en este navegador (usá «Guardar plan» para llevarlo a otra computadora)": "in this browser (use “Save plan” to move it to another computer)",
+  "oxígeno": "oxygen",
+  "energía": "energy",
+  "filtros de CO₂": "CO₂ filters",
+  "(sin informar)": "(not provided)",
+  "· sin el stock necesario": "· required stock unavailable",
+  "sí": "yes",
+  "Configurado en Opciones. NASA: nunca un astronauta solo (mínimo 2).": "Set in Options. NASA: never send one astronaut alone (minimum 2).",
+  "luz": "light",
+  "Hora de salida en Opciones (hora solar local).": "Departure time in Options (local solar time).",
+  "fuga del traje": "suit leak",
+  "falla de la mochila": "life-support backpack failure",
+  "compañero incapacitado": "incapacitated buddy",
+  "pérdida de radio": "radio loss",
+  "falla del rover": "rover failure",
+  "Confiabilidad:": "Reliability:",
+  "Recalculando la ruta que tenías antes de recargar…": "Recomputing your route from before resupply…",
+  "La ruta debe tener al menos una celda.": "Route must contain at least one cell.",
+  "ruta.celdas": "route.cells",
+  "ruta.rescate": "route.rescue",
+  "ruta.tasaO2": "route.O₂Rate",
+  "ruta.t": "route.time",
+  "ruta.d": "route.distance",
+  "ruta.regreso": "route.return",
+  "ruta.celdas debe contener índices enteros no negativos.": "route.cells must contain nonnegative integer indices.",
+  "Los tiempos y las distancias acumuladas no pueden decrecer.": "Cumulative times and distances must not decrease.",
+  "No puede haber desplazamiento con duración cero.": "Movement cannot take zero time.",
+  "Los tiempos y las distancias acumuladas deben empezar en cero.": "Cumulative times and distances must start at zero.",
+  "Los márgenes de regreso son demasiado grandes para calcularlos.": "Return margins are too large to compute.",
+  "El tiempo de regreso con colchón e ingreso es demasiado grande.": "Return time with reserve and ingress is too large.",
+  "Faltan cfg o limites de confiabilidad.": "Reliability configuration or limits missing.",
+  "Elegí vehiculo pie o rover.": "Choose walking or rover as vehicle.",
+  "El colchón de regreso debe ser al menos uno.": "Return reserve factor must be at least one.",
+  "La exposición acumulada es demasiado grande.": "Cumulative exposure is too large.",
+  "El consumo acumulado de oxígeno es demasiado grande.": "Cumulative oxygen consumption is too large.",
+  "Estimación condicionada al modelo de primera falla y a un plan nominal viable.": "Estimate assumes the first-failure model and a feasible nominal plan.",
+  "No incluye fallas encadenadas ni incidentes durante el regreso de emergencia.": "Excludes cascading failures and incidents during emergency return.",
+  "Las tasas de ejemplo son propuestas, a calibrar; no son probabilidades medidas en Marte.": "Example rates are proposals requiring calibration; they are not measured Martian probabilities.",
+  "Fuga en el traje: primario perdido; regreso con oxígeno secundario.": "Suit leak: primary oxygen lost; return on secondary oxygen.",
+  "Compañero incapacitado: regreso por el campo de rescate con arrastre.": "Buddy incapacitated: drag-assisted return on rescue field.",
+  "Pérdida de radio: se termina la salida y se vuelve al refugio.": "Radio lost: terminate EVA and return to shelter.",
+  "Rover averiado: caminata de regreso al refugio.": "Rover failed: walkback to shelter.",
+  "Regreso ordenado al refugio.": "Ordered return to shelter.",
+  "Faltan ruta y configuración de la simulación.": "Simulation route or configuration missing.",
+  "ruta.recursos: id vacío, reservado o repetido.": "route.resources: empty, reserved or duplicate ID.",
+  "cfg.vehiculo: elegí pie o rover.": "cfg.vehicle: choose walking or rover.",
+  "Autonomía primaria a la tasa indicada": "Primary endurance at specified rate",
+  "Autonomía secundaria a la tasa indicada": "Secondary endurance at specified rate",
+  "Reserva de regreso": "Return reserve",
+  "Tipo de evento desconocido.": "Unknown event type.",
+  "Ese evento ya fue inyectado; se conserva su plazo original.": "Event already injected; original deadline retained.",
+  "La simulación ya terminó.": "Simulation has ended.",
+  "La salida es a pie: no hay rover.": "Walking EVA: no rover.",
+  "A salvo: el evento ocurrió en el refugio.": "Safe: event occurred at shelter.",
+  "Ya estás a salvo en el refugio.": "Already safe in shelter.",
+  "No hay camino al refugio dentro de los límites activos.": "No path to shelter within active limits.",
+  "camino.tiempos: deben ser segundos restantes no crecientes.": "path.times: remaining seconds must not increase.",
+  "El camino debe empezar en la celda actual y terminar con tiempo cero en el refugio.": "Path must start at current cell and end at shelter with zero time.",
+  "Se agotó el oxígeno o el plazo de una falla antes de llegar al refugio.": "Oxygen or a failure deadline expired before reaching shelter.",
+  "absorción de CO₂": "CO₂ absorption",
+  "Wh": "Wh",
+  "agua de enfriamiento": "cooling water",
+  "L": "L",
+  "Personas": "Persons",
+  "Personas: usá un entero positivo.": "Persons: use a positive integer.",
+  "Velocidad": "Speed",
+  "Pendiente: usá un número finito (desnivel/distancia).": "Slope: use a finite number (rise/distance).",
+  "Masa": "Mass",
+  "Gravedad": "Gravity",
+  "Configuración: el reposo supera la tasa nominal.": "Configuration: resting rate exceeds nominal rate.",
+  "Configuración: la eficiencia de subida supera uno.": "Configuration: uphill efficiency exceeds one.",
+  "Tasa metabólica": "Metabolic rate",
+  "Ruta: los arreglos deben tener igual largo.": "Route: arrays must have equal length.",
+  "Ruta: celda inválida.": "Route: invalid cell.",
+  "Ruta tiempo": "Route time",
+  "Ruta distancia": "Route distance",
+  "Ruta: elevación sin informar o inválida.": "Route: elevation missing or invalid.",
+  "Ruta: tiempo y distancia deben empezar en cero.": "Route: time and distance must start at zero.",
+  "Ruta: tiempo y distancia deben ser crecientes.": "Route: time and distance must increase.",
+  "Ruta: un desplazamiento necesita tiempo positivo.": "Route: movement requires positive time.",
+  "Ruta: hay desnivel sin distancia horizontal.": "Route: elevation change without horizontal distance.",
+  "Consumo modelado, a calibrar para Marte; Apollo aporta una referencia lunar de tareas EVA.": "Modeled consumption requires Mars calibration; Apollo provides a lunar EVA task reference.",
+  "Masa y gravedad tomadas de la configuración; cada intervalo usa velocidad media, incluso si incluye trabajo.": "Mass and gravity come from configuration; each interval uses mean speed, including work.",
+  "Agua total = enfriamiento expendible + bebida. Energía = electricidad del traje, sin confundirla con metabolismo.": "Total water = expendable cooling + drinking. Energy = suit electricity, separate from metabolism.",
+  "Inventario": "Inventory",
+  "Sin informar: no aporta autonomía acreditada.": "Not provided: no credited endurance.",
+  "Inventario informado, sin reposición.": "Inventory provided, without replenishment.",
+  "Necesidad": "Need",
+  "Necesidad sin informar: no se puede acreditar la recarga.": "Need not provided: resupply cannot be credited.",
+  "Inventario sin informar: no cuenta para recargar.": "Inventory not provided: cannot count toward resupply.",
+  "Inventario insuficiente.": "Insufficient inventory.",
+  "Capacidad sin informar: no cuenta como plazas disponibles.": "Capacity not provided: no available berths credited.",
+  "Botiquín sin informar.": "First-aid kit status not provided.",
+  "Sin botiquín informado disponible.": "No available first-aid kit reported.",
+  "Evaluación modelada de consumibles y plazas; no acredita protección ambiental ni atención médica.": "Modeled consumables and berths; does not certify environmental protection or medical care.",
+  "Regreso ordenado": "Ordered return",
+  "No se pudo leer config/consumibles.json: oxígeno a tasa nominal, sin CO₂, batería ni agua.": "Could not read config/consumibles.json: nominal oxygen rate; CO₂, battery and water unavailable.",
+  "En rover no se aplica el modelo de marcha: consumo nominal en todo el recorrido.": "Walking model does not apply in rover: nominal consumption throughout route.",
+  "La ruta no tiene alturas.": "Route has no elevation data.",
+  "O₂": "O₂",
+  "CO₂": "CO₂",
+  "Consumibles primarios": "Primary consumables",
+  "Simulación detenida:": "Simulation stopped:",
+  "El camino recibido no sirve: se toma como que no hay regreso.": "Received path is invalid; treating return as unavailable.",
+  "Camino más rápido al refugio: el más seguro no llega a tiempo.": "Fastest path to shelter: safest path misses deadline.",
+  "Camino más rápido al refugio.": "Fastest path to shelter.",
+  "No se pudo calcular el regreso.": "Could not compute return.",
+  "sin vuelta (el destino es un refugio)": "no return leg (destination is a shelter)",
+  "la vuelta por el mismo camino": "return along the same path",
+  "la vuelta por el mejor camino al refugio más cercano": "return on best path to nearest shelter",
+  "Avería del rover: volver a pie con lo que queda": "Rover failure: walkback on remaining resources",
+  "Regla de NASA: nunca un astronauta solo. También vale en rover.": "NASA rule: never send one astronaut alone. Applies to rover EVAs too.",
+  "Plan de rescate en toda la ruta": "Rescue plan along entire route",
+  "Celdas de la ruta con rescate del compañero posible.": "Route cells where buddy rescue is feasible.",
+  "Celdas de la ruta con regreso a pie junto al compañero dentro del límite.": "Route cells where walkback with buddy meets limit.",
+  "Exige pareja. Un tripulante que no puede caminar necesita otro vehículo: no está modelado (a calibrar).": "Requires a buddy. A crew member unable to walk needs another vehicle; not modeled (requires calibration).",
+  "y de la vuelta": "and return",
+  "Datos válidos del terreno en la ruta y alrededor": "Valid terrain data on and near route",
+  "corta la esquina de terreno prohibido": "cuts across prohibited terrain corner",
+  "a calibrar: inventario simulado; no es una especificación de Apollo ni xEMU": "Requires calibration: simulated inventory, not an Apollo or xEMU specification",
+  "a calibrar: reserva simulada independiente del primario": "Requires calibration: simulated reserve independent of primary",
+  "a calibrar: duración objetivo del modelo; no garantiza autonomía de todos los consumibles": "Requires calibration: modeled target duration; does not guarantee endurance of all consumables",
+  "a calibrar: duración objetivo; no modela purga, fugas ni un circuito de emergencia real": "Requires calibration: target duration; does not model purge, leaks or a real emergency circuit",
+  "a calibrar: agua expendible simulada, no el agua que recircula en la prenda": "Requires calibration: simulated expendable water, not water circulating through garment",
+  "a calibrar: reserva de bebida simulada": "Requires calibration: simulated drinking reserve",
+  "a calibrar: energía utilizable simulada del traje": "Requires calibration: simulated usable suit energy",
+  "a calibrar: capacidad simulada de captura, no masa del sorbente": "Requires calibration: simulated capture capacity, not sorbent mass",
+  "a calibrar: metabolismo detenido con traje": "Requires calibration: stationary metabolism in suit",
+  "a calibrar: velocidad elegida para anclar el modelo al promedio de Apollo": "Requires calibration: speed chosen to anchor model to Apollo mean",
+  "a calibrar: masa total de persona, traje y carga": "Requires calibration: total mass of person, suit and load",
+  "a calibrar: gravedad nominal adoptada para esta adaptación heurística a Marte": "Requires calibration: nominal gravity used in this heuristic Mars adaptation",
+  "a calibrar: eficiencia mecánica efectiva de la subida con traje": "Requires calibration: effective uphill mechanical efficiency in suit",
+  "a calibrar: equivalente energético aproximado, dependiente de la dieta; no se atribuye a una tabla NASA verificada": "Requires calibration: approximate diet-dependent energy equivalent; not attributed to a verified NASA table",
+  "a calibrar: densidad aproximada adoptada a 0 °C y 1 atm; no usar litros a presión del traje": "Requires calibration: approximate density at 0 °C and 1 atm; do not use suit-pressure liters",
+  "a calibrar: pérdida expendible proporcional al metabolismo, sin modelo térmico del ambiente": "Requires calibration: expendable loss proportional to metabolism; no environmental thermal model",
+  "a calibrar: bebida proporcional al metabolismo, sin recuperar agua metabólica": "Requires calibration: drinking proportional to metabolism; no metabolic water recovery",
+  "a calibrar: ventilación, control y comunicaciones simulados": "Requires calibration: simulated ventilation, control and communications",
+  "a calibrar: carga eléctrica adicional proporcional al metabolismo; no confundir energía metabólica con batería": "Requires calibration: additional electrical load proportional to metabolism; metabolic energy is not battery energy",
+  "Definición de kilocaloría termoquímica: 1 cal = 4,184 J (conversión de unidades)": "Thermochemical kilocalorie definition: 1 cal = 4,184 J (unit conversion)",
+  "a calibrar: aproximación para convertir inventario de agua líquida a masa": "Requires calibration: approximation for converting liquid water inventory to mass",
+  "a calibrar: presupuesto eléctrico de soporte vital y acondicionamiento; sin consumo fijo del edificio ni generación": "Requires calibration: life-support and conditioning electrical budget; excludes facility fixed load and generation",
+  "a calibrar: espera de rescate supuesta por el equipo; no es un plazo garantizado en Marte": "Requires calibration: assumed rescue wait; not a guaranteed Mars deadline",
+  "a calibrar: inventario simulado de agua utilizable": "Requires calibration: simulated usable water inventory",
+  "a calibrar: energía almacenada utilizable, sin generación": "Requires calibration: usable stored energy without generation",
+  "a calibrar: presencia simulada; no acredita contenido ni atención médica": "Requires calibration: simulated availability; does not certify contents or medical care",
+  "a calibrar: energía almacenada utilizable": "Requires calibration: usable stored energy",
+  "a calibrar: presencia simulada; sin validación médica": "Requires calibration: simulated availability without medical validation",
+  "a calibrar: capacidad equivalente de sorbentes, sin asegurar compatibilidad del cartucho": "Requires calibration: equivalent sorbent capacity; cartridge compatibility unverified",
+  "a calibrar: depósito simulado sin botiquín": "Requires calibration: simulated depot without first-aid kit",
+  "a calibrar: stock real del lugar, lo informa la tripulación. Vacío = sin informar (no cuenta).": "Requires calibration: crew reports actual site stock. Blank means unreported (not credited).",
+  "Refugio presurizado para la tripulación. Solo cuenta como refugio si tiene lo necesario para sostenerla hasta un rescate.": "Pressurized crew shelter. Counts only if it has enough resources until rescue.",
+  "Recursos para recargar los trajes en el camino. Solo sirve de parada de recarga si tiene lo necesario.": "Resources to replenish suits en route. Counts as a resupply stop only if sufficiently stocked.",
+  "Insignia del equipo Red Frontier PDE": "Red Frontier PDE team patch",
+  "Hora de Marte": "Mars time",
+  "Controles": "Controls",
+  "Franjas del sol para salir": "EVA time windows",
+  "Temperaturas de los últimos soles": "Temperature over recent sols",
+  "Forma de planificar": "Planning mode",
+  "Qué marca el próximo toque": "Next map tap",
+  "Perfil de altura de la ruta elegida": "Selected route elevation profile",
+  "Fotos de la parada": "Stop images",
+  "Horizonte medido y calculado": "Measured and predicted horizon",
+  "Red Frontier · Consola de salida": "Red Frontier · EVA console",
+  "RED": "RED",
+  "FRONTIER": "FRONTIER",
+  "PDE": "PDE",
+  "MSD": "MSD",
+  "MTC": "MTC",
+  "—": "—",
+  "Consola de planificación de salidas · Marte": "EVA planning console · Mars",
+  "Zona": "Area",
+  "zona": "area",
+  "Capas": "Layers",
+  "Ventana EVA · clima": "EVA window · weather",
+  "Actualizar desde NASA": "Update from NASA",
+  "Ruta a pie": "Walking route",
+  "Ruta en rover": "Rover route",
+  "Automática segura": "Automatic safe route",
+  "Trazado manual": "Manual route",
+  "Marcar base": "Set base",
+  "Marcar destino": "Set destination",
+  "Agregar puntos": "Add waypoints",
+  "Clic derecho en el mapa → «Base de la ruta aquí».": "Right-click the map → «Set route base here».",
+  "Calcular ruta segura": "Compute safe route",
+  "Borrar": "Delete",
+  "Deshacer punto": "Undo waypoint",
+  "Borrar todo": "Clear all",
+  "¿Dónde estoy? · Horizonte": "Where am I? · Horizon",
+  "Prueba con fotos reales de Curiosity: el motor busca en toda la zona, sin saber dónde estaba el rover, el punto cuyo horizonte coincide con el de las fotos.": "Test with actual Curiosity images: search the entire area for the matching horizon without using the rover's position.",
+  "Parada": "Stop",
+  "parada": "stop",
+  "Ubicar a ciegas": "Locate blind",
+  "Revelar posición real": "Reveal actual position",
+  "Probar con tus propias fotos": "Try your own images",
+  "Subí fotos Navcam de Curiosity tomadas dentro de esta zona (las originales de NASA, sin recortar). Opcional: el archivo de metadatos (.json). Si no lo subís, la app se lo pide a NASA por el nombre de cada foto (necesita internet).": "Upload original, uncropped NASA Curiosity Navcam images from this area. Optionally include the metadata file (.json). Otherwise, metadata is retrieved from NASA using each filename (internet required).",
+  "Ubicar con estas fotos": "Locate with these images",
+  "Cálculo en vivo · registro": "Live computation · log",
+  "Descargar registro (.txt)": "Download log (.txt)",
+  "Fuentes": "Sources",
+  "Cargando…": "Loading…",
+  "Pasá el cursor por el mapa": "Move the pointer over the map",
+  "rover": "rover",
+  "el rover": "the rover",
+  "el traje": "the suit",
+  "base": "base",
+  "mapa": "map",
+  "Imagen HiRISE": "HiRISE image",
+  "pendiente": "slope",
+  "Pendiente": "Slope",
+  "Rugosidad del suelo": "Terrain roughness",
+  "Sombrear lo que queda fuera de la zona segura": "Shade terrain outside the safe area",
+  "Suelo blando probable (modelado)": "Likely soft ground (modeled)",
+  "Suelo blando probable": "Likely soft ground",
+  "frío: fino y suelto": "cold: fine, loose material",
+  "tibio: roca": "warm: rock",
+  "Recorrido de Curiosity": "Curiosity traverse",
+  "Mapas de caminata (1 m) dentro de la región": "Walking maps (1 m) within this region",
+  "Preparando la capa": "Preparing layer",
+  "S": "S",
+  "N": "N",
+  "E": "E",
+  "O": "W",
+  "NE": "NE",
+  "SE": "SE",
+  "SO": "SW",
+  "NO": "NW",
+  "B": "B",
+  "D": "D",
+  "Fuera del mapa": "Outside map",
+  "Fuera de la zona": "Outside area",
+  "· suelo blando probable": "· likely soft ground",
+  "Tocá el mapa para agregar puntos en orden. Cada tramo se verifica solo; los rojos se pueden ajustar.": "Tap the map to add ordered waypoints. Each leg is checked automatically; red legs can be rerouted.",
+  "Arrastrá un punto para moverlo y hacé clic derecho para quitarlo.": "Drag a waypoint to move it; right-click to remove it.",
+  "Ahora clic derecho en el mapa → «Destino aquí».": "Now right-click the map → «Set destination here».",
+  "Tocá «Calcular rutas». Podés mover la base o el destino arrastrándolos.": "Tap “Compute routes”. Drag the base or destination to move it.",
+  "Base": "Base",
+  "Destino": "Destination",
+  "Marcá primero la base.": "Set the base first.",
+  "Calculando rutas…": "Computing routes…",
+  "ruta": "route",
+  "la base está en zona prohibida": "the base is in a prohibited area",
+  "el destino está en zona prohibida": "the destination is in a prohibited area",
+  "no hay camino dentro de la zona segura": "no path within the safe area",
+  "NASA": "NASA",
+  "NASA (parcial)": "NASA (partial)",
+  "medido": "measured",
+  "propuesta": "proposal",
+  "cálculo": "computed",
+  "no": "no",
+  "SALIDA NO APROBADA": "EVA NO-GO",
+  "SALIDA APROBADA CON AVISOS": "EVA GO WITH CAUTIONS",
+  "SALIDA APROBADA": "EVA GO",
+  "Cumple todos los controles. Pasá el cursor por cada uno para ver su fuente.": "All checks passed. Hover over a check to view its source.",
+  "Pendiente máxima": "Maximum slope",
+  "Rugosidad máxima": "Maximum roughness",
+  "JPL Mars Trek": "JPL Mars Trek",
+  "Cargando el mapa de Marte…": "Loading Mars map…",
+  "Cargando la zona…": "Loading area…",
+  "Todo Marte · zonas candidatas": "Global Mars · candidate sites",
+  "Mapas de caminata (1 m)": "Walking maps (1 m)",
+  "Zonas candidatas · región para rover (200 m)": "Candidate sites · rover region (200 m)",
+  "No hay zonas generadas. Corré el pipeline primero.": "No prepared areas. Run the pipeline first.",
+  "Zona inválida: revisá las dimensiones, elevación y máscara de datos.": "Invalid area: check dimensions, elevation and data mask.",
+  "Paso de la grilla": "Grid spacing",
+  "Presión del traje": "Suit pressure",
+  "Presión de la base": "Base pressure",
+  "Temperatura del aire en K": "Air temperature in K",
+  "Desnivel calculado": "Computed elevation change",
+  "Incertidumbre calculada": "Computed uncertainty",
+  "Altura de la base": "Base elevation",
+  "Desnivel": "Elevation change",
+  "Altura estimada": "Estimated elevation",
+  "Incertidumbre del desnivel": "Elevation change uncertainty",
+  "Fila previa": "Prior row",
+  "Columna previa": "Prior column",
+  "Radio previo": "Prior radius",
+  "Distancia recorrida": "Distance traveled",
+  "Rumbo": "Bearing",
+  "Inicio inválido: elegí una celda con datos dentro de la zona.": "Invalid start: select a cell with data inside the area.",
+  "Lecturas inválidas: usá un arreglo.": "Invalid readings: provide an array.",
+  "impacto directo": "direct impact",
+  "de refilón": "glancing impact",
+  "impacto menor": "minor impact",
+  "menor": "minor",
+  "rojo": "red",
+  "verde": "green",
+  "ámbar": "amber",
+  "noche": "night",
+  "Parte de REMS": "REMS report",
+  "Noche: solo emergencias": "Night: emergencies only",
+  "Primera hora de luz: frío y sol bajo": "First daylight hour: cold, low Sun",
+  "Ventana buena": "Favorable window",
+  "Pico de remolinos de polvo": "Peak dust devil activity",
+  "Volver antes de que oscurezca": "Return before dark",
+  "no negativo": "nonnegative",
+  "positivo": "positive",
+  "La ruta debe tener distancias y tiempos acumulados de igual longitud, con al menos un punto.": "Route must have equal-length cumulative distance and time arrays, with at least one point.",
+  "La ruta debe empezar en distancia y tiempo cero.": "Route must start at zero distance and time.",
+  "Las distancias y los tiempos deben ser finitos y estrictamente crecientes.": "Distances and times must be finite and strictly increasing.",
+  "La ida y vuelta supera el rango numérico disponible.": "Round trip exceeds the numeric range.",
+  "La separación de depósitos es demasiado pequeña para esta ruta.": "Depot spacing is too small for this route.",
+  "Elegí uno o dos rovers.": "Select one or two rovers.",
+  "Las paradas deben ser una lista.": "Stops must be a list.",
+  "velocidad de referencia": "reference speed",
+  "horas de manejo por sol": "driving hours per sol",
+  "horas de actividad por sol": "active hours per sol",
+  "trabajo por parada": "work per stop",
+  "autonomía": "range",
+  "reserva de energía": "energy reserve",
+  "La reserva de energía debe ser menor que uno.": "Energy reserve fraction must be below one.",
+  "intervalo de depósitos": "depot interval",
+  "alejamiento máximo": "maximum separation",
+  "duración máxima en soles": "maximum duration in sols",
+  "La configuración supera el rango numérico disponible.": "Configuration exceeds the numeric range.",
+  "un rover": "one rover",
+  "dos rovers": "two rovers",
+  "Plan modelado: regreso por la misma ruta con los mismos tiempos; la velocidad de configuración es solo una referencia.": "Modeled plan: return along the same route with the same travel times; configured speed is a reference only.",
+  "Ciencia solo en la ida; comparte la ventana de actividad con el manejo. El descanso ocurre entre jornadas, dentro del rover presurizado.": "Science on outbound legs only, sharing active hours with driving. Rest between shifts inside the pressurized rover.",
+  "Depósitos y refugios requeridos, todavía no existentes: hay que instalarlos antes de salir. Cada rover conserva su propia reserva; dos rovers no duplican la autonomía.": "Required depots and shelters do not yet exist: deploy them before departure. Each rover retains its own reserve; two rovers do not double the range.",
+  "Energía proporcional a la distancia, con recarga completa en cada visita a un depósito. No incluye soporte vital ni consumo durante ciencia y descanso.": "Energy scales with distance; full recharge at each depot visit. Life support and consumption during science and rest are excluded.",
+  "Alejamiento medido por el camino al último refugio; referencias lunares trasladadas, sin fallas apiladas. Los parámetros propuestos están a calibrar.": "Separation follows the path to the last shelter; adapted lunar references, without stacked failures. Proposed parameters require calibration.",
+  "La distancia para contar pasos debe ser finita y no negativa.": "Step-count distance must be finite and nonnegative.",
+  "largo del paso": "step length",
+  "La cantidad de pasos supera el rango de enteros seguros.": "Step count exceeds the safe integer range.",
+  "Cerrar": "Close",
+  "Medición: tocá el punto final (Esc para cancelar).": "Measurement: tap the endpoint (Esc to cancel).",
+  "Escape": "Escape",
+  "Medición cancelada.": "Measurement canceled.",
+  "Medición": "Measurement",
+  "sin datos en parte de la línea": "missing data along part of the line",
+  "· toda la línea es caminable": "· entire line is walkable",
+  "Perfil de altura de la línea medida": "Measured line elevation profile",
+  "Distancia": "Distance",
+  "Desde": "From",
+  "Hasta": "To",
+  "Línea recta, no es una ruta: para caminarla usá «Ruta» o el itinerario.": "Straight line only. Use “Route” or an itinerary to plan a traverse.",
+  "Ir a coordenadas": "Go to coordinates",
+  "Coordenadas": "Coordinates",
+  "Ir": "Go",
+  "Acepta «4,82234 S 137,38657 E», «-4.82234, 137.38657» o «4°49'20\" S 137°23'12\" E». Longitud este.": "Accepts “4,82234 S 137,38657 E”, “-4.82234, 137.38657” or “4°49'20\" S 137°23'12\" E”. East longitude.",
+  "No entendí esas coordenadas.": "Coordinates could not be parsed.",
+  "Calculando la línea de vista de la radio sobre el relieve…": "Computing radio line of sight over terrain…",
+  "Antena": "Antenna",
+  "Calculá una ruta o un itinerario para ver dónde se pierde el enlace.": "Compute a route or itinerary to locate communication gaps.",
+  "Toda la ruta tiene línea de vista con la antena.": "Entire route has line of sight to the antenna.",
+  "Cobertura de radio": "Radio coverage",
+  "Agregar baliza al plan": "Add beacon to plan",
+  "Cobertura": "Coverage",
+  "Supuestos": "Assumptions",
+  "Solo geometría (línea de vista sobre el relieve de HiRISE); no modela la potencia ni el ruido de la radio.": "Geometry only (line of sight over HiRISE terrain); radio power and noise are not modeled.",
+  "baliza": "beacon",
+  "Luz y sombras": "Light and shadows",
+  "y es de noche": "and it is night",
+  "Hoy en la zona: amanece a las": "Today in this area: sunrise at",
+  "y anochece a las": "and sunset at",
+  "Hora del sol": "Time of sol",
+  "Sombras del relieve de HiRISE (bloques de 8 m) con la posición del Sol de Mars24, validada contra 700 amaneceres y atardeceres medidos por Curiosity (error medio 0,6 min).": "HiRISE terrain shadows (8 m blocks), using Mars24 Sun position, validated against 700 Curiosity sunrise and sunset observations (mean error 0,6 min).",
+  "Coordenadas inválidas: latitud entre −90 y 90°, longitud entre −180 y 360°.": "Invalid coordinates: latitude −90 to 90°, longitude −180 to 360°.",
+  "El rumbo debe ser finito y la distancia debe ser no negativa, en metros.": "Bearing must be finite; distance must be nonnegative, in meters.",
+  "El polígono debe ser una lista de coordenadas.": "Polygon must be a coordinate list.",
+  "Un borde entre antípodas no define un arco único.": "An antipodal edge does not define a unique arc.",
+  "La zona necesita ancho, paso positivo y capas de elevación y pendiente.": "Area requires width, positive spacing, elevation and slope layers.",
+  "Las dimensiones y las capas de la zona no coinciden.": "Area dimensions and layers do not match.",
+  "Los extremos del perfil deben estar dentro de la grilla.": "Profile endpoints must lie inside the grid.",
+  "El paso de muestreo debe ser positivo, en metros.": "Sampling interval must be positive, in meters.",
+  "El paso de muestreo es demasiado pequeño.": "Sampling interval is too small.",
+  "descartada: no hay cielo liso arriba de ninguna línea": "rejected: no smooth sky above any line",
+  "Búsqueda gruesa en toda la zona": "Coarse search across entire area",
+  "alrededor de los 8 mejores: ±150 m cada 20 m, azimut cada 1°": "around the top 8: ±150 m every 20 m, azimuth every 1°",
+  "Búsqueda media alrededor de los mejores": "Intermediate search around best matches",
+  "±48 m cada 8 m, azimut cada 0,5°, 1100 distancias por rayo, ajuste de rumbo ±1°": "±48 m every 8 m, azimuth every 0,5°, 1100 distances per ray, bearing adjustment ±1°",
+  "Búsqueda fina": "Fine search",
+  "Fecha o coordenadas solares inválidas": "Invalid date or solar coordinates",
+  "La grilla de la zona es inválida": "Invalid area grid",
+  "La reducción debe ser un entero positivo": "Reduction must be a positive integer",
+  "La posición del Sol es inválida": "Invalid Sun position",
+  "Faltan alturas o celdas de la zona": "Missing area elevations or cells",
+  "La máscara de sombras no corresponde a la zona": "Shadow mask does not match the area",
+  "Celda de ruta inválida": "Invalid route cell",
+  "La ruta debe tener celdas contiguas": "Route cells must be contiguous",
+  "Punto del plan": "Plan waypoint",
+  "el inicio del tramo está en terreno prohibido o fuera de la zona segura": "leg start is on prohibited terrain or outside the safe area",
+  "el punto final está en terreno prohibido o fuera de la zona segura": "endpoint is on prohibited terrain or outside the safe area",
+  "no existe un camino seguro entre esos dos puntos": "no safe path between these waypoints",
+  "La vuelta se calcula por el camino seguro más corto hasta la base.": "Return follows the shortest safe path to base.",
+  "Quitar el punto": "Remove waypoint",
+  "Ajustar tramo": "Reroute leg",
+  "tocá para abrir su región": "tap to open region",
+  "región todavía no generada": "region not yet prepared",
+  "· con mapa de caminata": "· walking map available",
+  "(ajustado)": "(rerouted)",
+  "✔ tramo apto": "✔ leg pass",
+  "astronautas": "astronauts",
+  "a calibrar": "requires calibration",
+  "El plan debe tener versión 1, marcas e itinerarios.": "Plan must have version 1, markers and itineraries.",
+  "La longitud debe ser un número entre −180 y 360 grados este.": "Longitude must be a number from −180 to 360 degrees east.",
+  "La latitud debe ser un número entre −90 y 90 grados.": "Latitude must be a number from −90 to 90 degrees.",
+  "Los datos deben contener valores JSON finitos, sin referencias circulares.": "Data must contain finite JSON values without circular references.",
+  "La marca necesita un nombre no vacío.": "Marker requires a nonempty name.",
+  "Los datos de la marca deben ser un objeto.": "Marker data must be an object.",
+  "Se agotaron los identificadores del plan.": "Plan identifiers exhausted.",
+  "datos": "data",
+  "Elegí cambios de tipo, nombre, lon, lat o datos; el id no se puede editar.": "Edit type, name, lon, lat or data; ID cannot be edited.",
+  "Los tipos deben ser una lista.": "Types must be a list.",
+  "La cantidad de marcas debe ser un entero no negativo.": "Marker count must be a nonnegative integer.",
+  "El itinerario debe ser un objeto.": "Itinerary must be an object.",
+  "El itinerario necesita un nombre no vacío.": "Itinerary requires a nonempty name.",
+  "El vehículo debe ser pie o rover.": "Vehicle must be pie (walking) or rover.",
+  "El itinerario necesita al menos dos paradas.": "Itinerary requires at least two stops.",
+  "refugio": "shelter",
+  "FeatureCollection": "FeatureCollection",
+  "Feature": "Feature",
+  "Point": "Point",
+  "Se esperaba una colección GeoJSON FeatureCollection con features.": "Expected a GeoJSON FeatureCollection containing features.",
+  "Las propiedades o la versión de la colección no son compatibles.": "Unsupported collection properties or version.",
+  "Los contadores del plan no son válidos.": "Invalid plan counters.",
+  "La marca debe ser un Feature con geometría Point.": "Marker must be a Feature with Point geometry.",
+  "La marca necesita un id de texto.": "Marker requires a string ID.",
+  "Los itinerarios de la colección deben ser una lista.": "Collection itineraries must be a list.",
+  "El itinerario necesita un id de texto.": "Itinerary requires a string ID.",
+  "empezar": "start",
+  "terminar": "end",
+  "Tripulación": "Crew",
+  "Energía": "Energy",
+  "Capacidad": "Capacity",
+  "Oxígeno de reserva": "Reserve oxygen",
+  "Agua": "Water",
+  "Batería": "Battery",
+  "Repuestos": "Spares",
+  "Objetivo": "Objective",
+  "Muestras previstas": "Planned samples",
+  "Trabajo en la parada": "Stop work",
+  "Descripción": "Description",
+  "Radio de exclusión": "Exclusion radius",
+  "Alcance de radio": "Radio range",
+  "Estacionado": "Parked",
+  "Itinerario": "Itinerary",
+  "peligro": "hazard",
+  "Cuenta como refugio: agranda la zona segura.": "Counts as a shelter: extends the safe area.",
+  "Con radio, la ruta lo esquiva.": "With a radius, routes avoid it.",
+  "sin informar": "unspecified",
+  "Ya está en el itinerario": "Already in itinerary",
+  "Agregar al itinerario": "Add to itinerary",
+  "Usar como base de la ruta": "Use as route base",
+  "Nombre de la marca": "Marker name",
+  "Tipo de marca": "Marker type",
+  "; cuenta como refugio": "; counts as a shelter",
+  "y se sacó del itinerario": "and removed from itinerary",
+  "Sin marcas todavía. Clic derecho en el mapa para poner un hábitat, refugios, depósitos, paradas científicas, peligros o balizas.": "No markers yet. Right-click the map to add a habitat, shelters, depots, science stops, hazards or beacons.",
+  "El itinerario empieza y termina en un hábitat o refugio: agregá uno primero (clic derecho → H o R).": "Itinerary starts and ends at a habitat or shelter: add one first (right-click → H or R).",
+  "Clic derecho en el mapa → «Parada del itinerario aquí»: la primera pone (o usa) el hábitat; las siguientes, paradas científicas. También podés usar «Agregar al itinerario» en cualquier marca.": "Right-click the map → «Set itinerary stop here». The first stop sets or uses the habitat. Subsequent stops are science stops. You can also use «Add to itinerary» on any marker.",
+  "Refugio de llegada": "Arrival shelter",
+  "Minutos de trabajo": "Work minutes",
+  "Antes": "Earlier",
+  "Después": "Later",
+  "Sacar del itinerario": "Remove from itinerary",
+  "Calculando el itinerario: ruta segura entre cada par de paradas…": "Computing itinerary: safe route between each pair of stops…",
+  "No hay ruta segura entre las paradas: revisá que estén dentro de la zona segura de algún refugio.": "No safe route between stops: check that they are inside a shelter's safe area.",
+  "Itinerario sin ruta segura.": "No safe itinerary route.",
+  "Simular la salida": "Simulate EVA",
+  "Itinerario aprobado. Podés simular la salida.": "Itinerary approved. EVA simulation available.",
+  "Itinerario NO aprobado: mirá qué controles no cumple.": "Itinerary NO-GO: review failed checks.",
+  "Marcá la base (B) y el destino (D) de la expedición en el mapa.": "Set the expedition base (B) and destination (D) on the map.",
+  "Buscando la ruta de la expedición (solo terreno apto para el rover)…": "Searching expedition route (rover-traversable terrain only)…",
+  "No hay camino apto para el rover entre la base y el destino.": "No rover-traversable path between base and destination.",
+  "Expedición sin camino.": "No expedition path.",
+  "Sin depósitos ni refugios extra: alcanza con la reserva del rover.": "No extra depots or shelters required: rover reserve is sufficient.",
+  "Agregar depósitos y refugios al plan": "Add depots and shelters to plan",
+  "Sol": "Sol",
+  "Manejo": "Driving",
+  "Ciencia": "Science",
+  "Noche": "Night",
+  "Supuestos del cálculo": "Calculation assumptions",
+  "Red Frontier PDE": "Red Frontier PDE",
+  "y el itinerario": "and itinerary",
+  "La grilla de radio no es válida.": "Invalid radio grid.",
+  "La antena tiene que estar en una celda con altura válida.": "Antenna requires a cell with valid elevation.",
+  "El radio de Marte tiene que ser positivo.": "Mars radius must be positive.",
+  "Indicá una lista de antenas.": "Provide an antenna list.",
+  "Tipo de antena desconocido.": "Unknown antenna type.",
+  "La cobertura no coincide con la grilla.": "Coverage does not match grid.",
+  "La ruta no es válida.": "Invalid route.",
+  "Faltan tiempos acumulados de la ruta.": "Missing cumulative route times.",
+  "La ruta sale de la grilla.": "Route leaves grid.",
+  "Los tiempos tienen que ser finitos y acumulados.": "Times must be finite and cumulative.",
+  "La ruta tiene celdas que no son contiguas.": "Route contains noncontiguous cells.",
+  "Faltan pendiente y rugosidad para instalar la baliza.": "Slope and roughness required to place beacon.",
+  "medido contra Curiosity en esta zona": "measured against Curiosity in this area",
+  "por defecto (zona sin validación propia)": "default (area without local validation)",
+  "Regreso a pie si falla el rover": "Walkback if rover fails",
+  "Peor punto de la ruta.": "Worst point along route.",
+  "Duración total (ida, trabajo y vuelta)": "Total duration (outbound, work, return)",
+  "Regreso de emergencia con el oxígeno secundario": "Emergency return on secondary oxygen",
+  "Rescate de un compañero incapacitado": "Incapacitated buddy rescue",
+  "Consumibles con colchón de regreso": "Consumables with return margin",
+  "Salida en pareja": "Buddy EVA",
+  "Regla de NASA: nunca un astronauta solo. Los márgenes se calculan para la pareja.": "NASA rule: never one astronaut alone. Margins are computed for the pair.",
+  "Pendiente máxima del mapa en la ruta": "Maximum mapped slope along route",
+  "Suelo blando probable en la ruta": "Likely soft ground along route",
+  "Térmico de noche (THEMIS) + textura (HiRISE). Revisar en el lugar antes de pisar.": "Nighttime thermal (THEMIS) + texture (HiRISE). Inspect on site before stepping.",
+  "sin datos del modelo de terreno": "no terrain model data",
+  "fuera del alcance de regreso de emergencia": "beyond emergency return range",
+  "fuera del alcance de rescate del compañero": "beyond buddy rescue range",
+  "Tramos trazados dentro de lo permitido": "Drawn legs within allowed terrain",
+  "Cada celda de cada tramo se compara con el terreno prohibido y la zona segura": "Each cell of each leg is checked against prohibited terrain and the safe area",
+  "Tramos del itinerario con ruta segura": "Itinerary legs with safe routes",
+  "Cada tramo entre paradas se busca dentro del terreno apto y de la zona segura de los refugios": "Each leg is routed through traversable terrain within shelter safe areas",
+  "Leyendo el horizonte de las fotos": "Reading image horizons",
+  "Mejor candidato provisorio": "Current best candidate",
+  "· medido — calculado en el mejor (gruesa, media, fina)": "· measured — predicted at best match (coarse, intermediate, fine)",
+  "Preparando el relieve": "Preparing terrain",
+  "Buscando a ciegas en toda la zona el punto cuyo horizonte coincide con el de las fotos…": "Searching blind across entire area for the matching image horizon…",
+  "Estimación a ciegas": "Blind estimate",
+  "resultado único": "unique result",
+  "ojo: hay otro lugar parecido": "caution: another similar location",
+  "Estimación": "Estimate",
+  "Incertidumbre": "Uncertainty",
+  "Coincidencia": "Match",
+  "Mejor lugar lejano": "Best distant match",
+  "Búsqueda": "Search",
+  "Posición real de Curiosity": "Actual Curiosity position",
+  "NASA/JPL, corregida": "NASA/JPL, corrected",
+  "(dentro de la incertidumbre)": "(within uncertainty)",
+  "(fuera de la incertidumbre declarada)": "(outside stated uncertainty)",
+  "Posición real": "Actual position",
+  "Error": "Error",
+  "· medido en las fotos — calculado en la estimación": "· measured in images — predicted at estimated position",
+  "archivo": "file",
+  "buscando": "searching",
+  "sin datos": "no data",
+  "buscando metadatos en NASA…": "retrieving metadata from NASA…",
+  "✖ sin metadatos": "✖ no metadata",
+  "Leyendo las fotos": "Reading images",
+  "Extrayendo el horizonte de tus fotos y buscando a ciegas en toda la zona…": "Extracting image horizons and searching blind across entire area…",
+  "· sin cielo: no usada": "· no sky: unused",
+  "NASA no publica la posición de esa parada.": "NASA does not publish this stop's position.",
+  "Sin internet no se puede pedir la posición real a NASA: compará con el archivo de la verdad que vino con las fotos.": "Retrieving actual position from NASA requires internet: compare with the ground-truth file provided with the images.",
+  "SE PUEDE SALIR": "EVA GO",
+  "SALIR CON PRECAUCIÓN": "EVA GO WITH CAUTION",
+  "NO SALIR · REFUGIO": "EVA NO-GO · SHELTER",
+  "bajo": "low",
+  "moderado": "moderate",
+  "alto": "high",
+  "muy alto": "very high",
+  "extremo": "extreme",
+  "despejado": "clear",
+  "nublado": "cloudy",
+  "con polvo": "dusty",
+  "Pidiendo a NASA…": "Requesting NASA data…",
+  "WSAEnlilSimulations": "WSAEnlilSimulations",
+  "SEP": "SEP",
+  "T": "T",
+  "No se pudo actualizar (¿sin internet?). Se siguen usando los datos guardados.": "Update failed (offline?). Using saved data.",
+  "Sin tormentas solares previstas ni temporada de polvo.": "No forecast solar storms or dust storm season.",
+  "Hoy en la zona": "Today in this area",
+  "Último parte": "Latest report",
+  "Aire": "Air",
+  "Suelo": "Ground",
+  "Presión": "Pressure",
+  "Cielo / UV": "Sky / UV",
+  "Luz": "Daylight",
+  "Radiación": "Radiation",
+  "Sin llegadas de eyecciones a Marte en el período": "No CME arrivals at Mars in this period",
+  "Sin eventos de partículas solares (SEP)": "No solar energetic particle (SEP) events",
+  "Clima espacial (DONKI, NASA)": "Space weather (DONKI, NASA)",
+  "Ahora": "Now",
+  "Condiciones del día (Ventana EVA)": "Today's conditions (EVA window)",
+  "Sin alertas": "No alerts",
+  "Los archivos de la zona no coinciden con meta.json": "Area files do not match meta.json",
+  "a calibrar: desviación estándar de p − pBase con mediciones simultáneas. Ya incluye ambos sensores de presión; no se multiplica por raíz de dos. No representa una precisión verificada de REMS ni de un traje.": "Requires calibration: standard deviation of p − pBase from simultaneous readings. Includes both pressure sensors; do not multiply by the square root of two. Not a verified REMS or suit accuracy.",
+  "a calibrar: desviación estándar de la temperatura media de la columna de aire, en K, independiente del ruido diferencial de presión; no es temperatura del suelo ni precisión verificada de REMS.": "Requires calibration: standard deviation of mean air-column temperature in K, independent of differential pressure noise; neither ground temperature nor verified REMS accuracy.",
+  "a calibrar: desviación estándar del rumbo por lectura. El filtro usa la aproximación angular lineal, sin modelar un sesgo persistente del sensor.": "Requires calibration: bearing standard deviation per reading. Filter uses a linear angular approximation without persistent sensor bias.",
+  "a calibrar: radio de truncamiento de la transición gaussiana en desviaciones estándar; compromiso numérico entre soporte y costo del filtro en grilla.": "Requires calibration: Gaussian transition truncation radius in standard deviations; numerical tradeoff between support and grid filter cost.",
+  "Térmico de noche (THEMIS, 100 m)": "Nighttime thermal (THEMIS, 100 m)",
+  "Mars Odyssey · THEMIS · mosaico controlado de noche v2 (JPL Mars Trek)": "Mars Odyssey · THEMIS · controlled nighttime mosaic v2 (JPL Mars Trek)",
+  "Brillo relativo, no inercia térmica calibrada. De noche la roca y el suelo firme guardan calor (claro); el polvo y la arena fina se enfrían rápido (oscuro). Las costuras entre imágenes pueden dar contrastes falsos.": "Relative brightness, not calibrated thermal inertia. At night, rock and firm ground retain heat (bright); dust and fine sand cool rapidly (dark). Image seams may create false contrasts.",
+  "CRISM MTRDR (MRO), productos resumen de Viviano-Beck et al. (2014), JGR Planets 119, 1403–1431. Archivo: PDS Geosciences Node (ODE).": "CRISM MTRDR (MRO), summary products from Viviano-Beck et al. (2014), JGR Planets 119, 1403–1431. Archive: PDS Geosciences Node (ODE).",
+  "Agua en minerales (CRISM HYD)": "Water-bearing minerals (CRISM HYD)",
+  "magenta: sulfatos polihidratados (bandas de 1,9 y 2,4 µm)": "magenta: polyhydrated sulfates (1,9 and 2,4 µm bands)",
+  "amarillo/verde: minerales monohidratados (2,1 µm)": "yellow/green: monohydrated minerals (2,1 µm)",
+  "azul: otros minerales con agua ligada (1,9 µm)": "blue: other water-bearing minerals (1,9 µm)",
+  "Arcillas y minerales con OH (CRISM PHY)": "Clays and OH-bearing minerals (CRISM PHY)",
+  "rojo: filosilicatos de Fe/Mg (2,3 µm); magenta si además tienen agua": "red: Fe/Mg phyllosilicates (2,3 µm); magenta if also hydrated",
+  "verde: Al-OH o sílice hidratada (2,2 µm); cian si además tienen agua": "green: Al-OH or hydrated silica (2,2 µm); cyan if also hydrated",
+  "A calibrar: el 20 % más oscuro de noche dentro de la zona (menor inercia térmica relativa)": "Requires calibration: darkest 20 % at night within the area (lower relative thermal inertia)",
+  "A calibrar: superficie lisa a escala de 2 m, típica de arena o polvo y no de roca": "Requires calibration: smooth surface at 2 m scale, typical of sand or dust rather than rock",
+  "Modelado: combina inercia térmica relativa (THEMIS) y textura (HiRISE). Marca dónde conviene mirar con más cuidado; no reemplaza la inspección en el lugar. Spirit quedó atrapado en suelo blando en 2009.": "Modeled: combines relative thermal inertia (THEMIS) and texture (HiRISE). Flags areas for closer inspection; does not replace on-site inspection. Spirit became trapped in soft ground in 2009.",
+  "Parte meteorológico de Curiosity (REMS, Centro de Astrobiología, CAB-INTA/CSIC)": "Curiosity weather report (REMS, Centro de Astrobiología, CAB-INTA/CSIC)",
+  "El CAB publica este parte para divulgación; para ciencia se usan los datos de REMS en el PDS. Llega con semanas de atraso.": "CAB publishes this report for public outreach; scientific work uses REMS data in the PDS. Reports arrive weeks late.",
+  "DONKI, base de datos de clima espacial de NASA (CCMC/GSFC): eyecciones de masa coronal, simulaciones WSA-ENLIL con llegada a Marte y partículas solares energéticas (SEP)": "DONKI, NASA space weather database (CCMC/GSFC): coronal mass ejections, WSA-ENLIL simulations with Mars arrivals and solar energetic particles (SEP)",
+  "Dosis equivalente medida por RAD (Curiosity) en la superficie de Gale (Hassler et al. 2014, Science)": "Equivalent dose measured by RAD (Curiosity) on the Gale surface (Hassler et al. 2014, Science)",
+  "Propuesta del equipo: margen antes de la llegada prevista a Marte de una eyección (WSA-ENLIL tiene incertidumbre de horas)": "Team proposal: margin before forecast CME arrival at Mars (WSA-ENLIL uncertainty spans hours)",
+  "Propuesta del equipo: tiempo de refugio después de la llegada prevista": "Team proposal: shelter time after forecast arrival",
+  "Propuesta del equipo: ventana de alerta después de un evento de partículas solares energéticas (SEP)": "Team proposal: alert window after a solar energetic particle (SEP) event",
+  "Temporada de tormentas de polvo: primavera y verano del sur (Ls 180°–360°), Kass et al. 2016": "Dust storm season: southern spring and summer (Ls 180°–360°), Kass et al. 2016",
+  "Kass et al. 2016 (aprox.)": "Kass et al. 2016 (approx.)",
+  "Propuesta del equipo: no salir la primera hora de luz (frío y sol bajo)": "Team proposal: no departure during first daylight hour (cold, low Sun)",
+  "Propuesta del equipo: volver antes de que oscurezca, con margen": "Team proposal: return before dark with margin",
+  "Pico de remolinos de polvo entre las 12 y las 13 hora solar local (MEDA, Jezero; Toledo et al. 2023)": "Peak dust devil activity from 12 to 13 local solar time (MEDA, Jezero; Toledo et al. 2023)",
+  "Propuesta del equipo: margen de una hora después del pico": "Team proposal: one-hour margin after peak",
+  "a calibrar: velocidad media de referencia del equipo; los tiempos de la ruta tienen prioridad": "Requires calibration: team reference mean speed; route times take priority",
+  "a calibrar: máximo de manejo por sol propuesto por el equipo": "Requires calibration: team-proposed maximum driving per sol",
+  "xEVA ConOps EVA-EXP-0042 / estudios de arquitectura de NASA: alcance del orden de 100 km; referencia de concepto, no autonomía marciana validada": "xEVA ConOps EVA-EXP-0042 / NASA architecture studies: range on the order of 100 km; concept reference, not validated Mars range",
+  "a calibrar: reserva de energía del equipo; consumo modelado proporcional a la distancia": "Requires calibration: team energy reserve; modeled consumption proportional to distance",
+  "a calibrar: separación máxima propuesta entre depósitos; se reduce si la reserva exige más puntos": "Requires calibration: proposed maximum depot spacing; reduced if reserve requires more depots",
+  "xEVA ConOps EVA-EXP-0042 / estudios de arquitectura de NASA: extremo conservador de 12–16 km con un rover presurizado; doctrina lunar trasladada": "xEVA ConOps EVA-EXP-0042 / NASA architecture studies: conservative end of 12–16 km with one pressurized rover; adapted lunar doctrine",
+  "xEVA ConOps EVA-EXP-0042 / estudios de arquitectura de NASA: aproximadamente 100 km con dos rovers, sin fallas apiladas; doctrina lunar trasladada": "xEVA ConOps EVA-EXP-0042 / NASA architecture studies: approximately 100 km with two rovers, without stacked failures; adapted lunar doctrine",
+  "a calibrar: límite operativo del equipo inspirado en estudios NASA de salidas de unas dos semanas; días terrestres y soles no son equivalentes": "Requires calibration: team operating limit inspired by NASA studies of roughly two-week excursions; Earth days and sols are not equivalent",
+  "a calibrar: ventana total para manejo y ciencia por sol; el resto del sol no se presupuesta": "Requires calibration: total driving and science window per sol; remaining sol time is not budgeted",
+  "a calibrar: descanso entre jornadas dentro del rover presurizado; no incluye consumo hotelero": "Requires calibration: rest between shifts inside pressurized rover; hotel loads excluded",
+  "a calibrar: trabajo científico por defecto, realizado solo en la ida": "Requires calibration: default science work, outbound only",
+  "a calibrar: el largo del paso con traje en 0,38 g no está medido": "Requires calibration: suited step length at 0,38 g has not been measured",
+  "ARQUITECTURA.md y AGENTS.md: esfera IAU 2000 de Marte, latitud planetocéntrica y longitud este.": "ARQUITECTURA.md and AGENTS.md: IAU 2000 Mars sphere, planetocentric latitude, east longitude.",
+  "Hábitat": "Habitat",
+  "Base principal de la expedición.": "Expedition main base.",
+  "a calibrar: clasificación y presentación del equipo.": "Requires calibration: team classification and presentation.",
+  "a calibrar: informar la tripulación del plan.": "Requires calibration: enter planned crew.",
+  "a calibrar: informar la energía disponible.": "Requires calibration: enter available energy.",
+  "Refugio": "Shelter",
+  "Refugio previsto para la tripulación.": "Planned crew shelter.",
+  "a calibrar: informar la capacidad del refugio.": "Requires calibration: enter shelter capacity.",
+  "a calibrar: informar la reserva y para cuántas personas alcanza.": "Requires calibration: enter reserve and supported crew size.",
+  "Depósito": "Depot",
+  "Recursos previstos para reabastecimiento.": "Planned resupply resources.",
+  "a calibrar: informar el inventario de agua.": "Requires calibration: enter water inventory.",
+  "a calibrar: informar la energía almacenada.": "Requires calibration: enter stored energy.",
+  "a calibrar: detallar el inventario de repuestos.": "Requires calibration: detail spare parts inventory.",
+  "Parada científica": "Science stop",
+  "Objetivo y trabajo científico previstos.": "Planned science objective and work.",
+  "a calibrar: describir el objetivo científico.": "Requires calibration: describe science objective.",
+  "a calibrar: detallar las muestras previstas.": "Requires calibration: detail planned samples.",
+  "a calibrar: estimar el tiempo de trabajo.": "Requires calibration: estimate work time.",
+  "Peligro": "Hazard",
+  "Peligro anotado; no constituye una detección del terreno.": "Annotated hazard; not a terrain detection.",
+  "a calibrar: describir el peligro y su procedencia.": "Requires calibration: describe hazard and its source.",
+  "a calibrar: definir y justificar el radio de exclusión.": "Requires calibration: define and justify exclusion radius.",
+  "Baliza": "Beacon",
+  "Referencia de radio prevista, sin cobertura garantizada.": "Planned radio reference; coverage not guaranteed.",
+  "a calibrar: medir el alcance según equipo y relieve.": "Requires calibration: measure range for equipment and terrain.",
+  "Rover estacionado": "Parked rover",
+  "Posición y estado del rover anotados en el plan.": "Rover position and state recorded in plan.",
+  "a calibrar: informar si está estacionado.": "Requires calibration: enter parked status.",
+  "a calibrar: informar la carga disponible.": "Requires calibration: enter available charge.",
+  "MOLA (MGS) + HRSC (Mars Express), relieve sombreado en color, 200 m/px": "MOLA (MGS) + HRSC (Mars Express), color shaded relief, 200 m/px",
+  "Exploration Zones (NASA EMC): taller de NASA sobre sitios de aterrizaje para misiones humanas, 27-30 oct 2015": "Exploration Zones (NASA EMC): NASA workshop on human mission landing sites, 27-30 Oct 2015",
+  "Definición de Exploration Zone: regiones de interés a unos 100 km de un sitio de aterrizaje central (NASA, taller de 2015)": "Exploration Zone definition: regions of interest within about 100 km of a central landing site (NASA, 2015 workshop)",
+  "Altura de antena de la base propuesta por el equipo; a calibrar.": "Team-proposed base antenna height; requires calibration.",
+  "Radio a la altura aproximada del casco; a calibrar con el traje.": "Radio at approximate helmet height; requires suit calibration.",
+  "Alcance geométrico máximo propuesto; a calibrar con frecuencia, potencia y presupuesto de enlace.": "Proposed maximum geometric range; requires calibration for frequency, power and link budget.",
+  "Mástil repetidor propuesto por el equipo; a calibrar.": "Team-proposed repeater mast; requires calibration.",
+  "Máximo operativo de minutos seguidos sin enlace propuesto por el equipo; a calibrar.": "Team-proposed operating limit for consecutive minutes without communication; requires calibration.",
+  "Distancia máxima de instalación respecto de la ruta; a calibrar.": "Maximum installation distance from route; requires calibration.",
+  "Límite de pendiente para instalar una baliza; a calibrar con el traje y la misión.": "Beacon installation slope limit; requires calibration for suit and mission.",
+  "Límite de rugosidad para instalar una baliza; a calibrar con el traje y la misión.": "Beacon installation roughness limit; requires calibration for suit and mission.",
+  "Convención esférica del proyecto: AGENTS.md y ARQUITECTURA.md, radio ecuatorial IAU 2000 de Marte.": "Project spherical convention: AGENTS.md and ARQUITECTURA.md, IAU 2000 Mars equatorial radius.",
+  "Diámetro de una Exploration Zone: regiones de interés a unos 100 km del sitio de aterrizaje (NASA, taller de 2015)": "Exploration Zone diameter: regions of interest within about 100 km of landing site (NASA, 2015 workshop)",
+  "Relieve global MOLA + HRSC, 200 m (USGS Astrogeology)": "Global MOLA + HRSC topography, 200 m (USGS Astrogeology)",
+  "Mars Global Surveyor y Mars Express": "Mars Global Surveyor and Mars Express",
+  "THEMIS infrarrojo diurno, 100 m (JPL Mars Trek)": "THEMIS daytime infrared, 100 m (JPL Mars Trek)",
+  "Mars Odyssey": "Mars Odyssey",
+  "Artemis: el traje debe operar en pendientes de hasta 20° (xEVA ConOps EVA-EXP-0042; EVA Ops 101 para Artemis III)": "Artemis: suit must operate on slopes up to 20° (xEVA ConOps EVA-EXP-0042; EVA Ops 101 for Artemis III)",
+  "Usado solo si la zona no tiene validación propia. Medición del equipo: el mapa subestima ~6° en el 95 % de 508 paradas de Curiosity": "Used only without local validation. Team measurement: map underestimates by ~6° at 95 % of 508 Curiosity stops",
+  "1 h de oxígeno secundario: desde cualquier punto se debe poder volver al refugio con él (Artemis; base del límite de 2 km)": "1 h secondary oxygen: return to shelter must be possible from any point (Artemis; basis of 2 km limit)",
+  "Ingreso de emergencia al refugio en 10 min (umbral) / 5 min (meta), xEVA ConOps": "Emergency shelter ingress in 10 min (threshold) / 5 min (goal), xEVA ConOps",
+  "Un tripulante debe poder llevar a su compañero incapacitado a un refugio en 60 min o menos (xEVA ConOps / EHP-10028)": "One crewmember must be able to bring an incapacitated buddy to shelter within 60 min (xEVA ConOps / EHP-10028)",
+  "Propuesta del equipo: arrastrar a un compañero a la mitad de la velocidad de marcha (no hay datos medidos en gravedad marciana)": "Team proposal: drag a buddy at half walking speed (no measurements in Mars gravity)",
+  "Propuesta del equipo: pendiente de mapa máxima para arrastrar a un compañero (NASA pide 20° en la Luna, donde el peso es 2,2 veces menor)": "Team proposal: maximum mapped slope for buddy drag (NASA requires 20° on the Moon, where weight is 2,2 times lower)",
+  "8 h de consumibles primarios + 1 h de contingencia que no se planifica (Artemis)": "8 h primary consumables + 1 h unplanned contingency (Artemis)",
+  "Colchón del 20 % sobre el tiempo de regreso a pie (límite de walkback de Apollo 15)": "20 % margin on walkback time (Apollo 15 walkback limit)",
+  "Propuesta del equipo: tiempo de trabajo científico en el destino, editable por la tripulación": "Team proposal: science work time at destination, editable by crew",
+  "Propuesta del equipo: todo tramo sobre suelo blando probable se avisa para inspeccionarlo en el lugar. No bloquea la salida a pie porque el dato es indirecto (THEMIS a 100 m).": "Team proposal: flag any likely soft-ground leg for on-site inspection. Walking EVA is not blocked because data are indirect (THEMIS at 100 m).",
+  "Propuesta del equipo: el visor pide terminar la salida cuando el oxígeno primario que queda, menos el regreso con colchón y el ingreso al refugio, baja de 30 min.": "Team proposal: HUD requests EVA termination when primary oxygen minus return with margin and shelter ingress falls below 30 min.",
+  "Rover no presurizado: el punto más lejano a menos de 5 h de caminata del refugio (xEVA ConOps; se elige la cifra menor de la inconsistencia 5 h / 8 h)": "Unpressurized rover: farthest point less than 5 h walk from shelter (xEVA ConOps; lower figure selected from conflicting 5 h / 8 h limits)",
+  "8 h de consumibles primarios por salida (Artemis)": "8 h primary consumables per EVA (Artemis)",
+  "Propuesta del equipo": "Team proposal",
+  "Relieve de 200 m: el regreso a pie es una estimación preliminar; ningún tramo a pie queda aprobado a esta escala.": "200 m terrain: walkback is a preliminary estimate; no walking leg is approved at this scale.",
+  "Propuesta del equipo: un rover no debe entrar a suelo blando sin inspección (Spirit quedó atrapado en 2009). Aviso, porque el dato es indirecto.": "Team proposal: rover must not enter soft ground without inspection (Spirit became trapped in 2009). Caution only because data are indirect.",
+  "Propuesta del equipo: mismo criterio que a pie, con la duración de consumibles del rover.": "Team proposal: same criterion as walking, using rover consumable duration.",
+  "a calibrar: propuesta del equipo para un rover presurizado, medida sobre relieve de 200 m": "Requires calibration: team proposal for a pressurized rover, measured on 200 m terrain",
+  "a calibrar: propuesta del equipo; rugosidad del relieve a escala de 1 km, no rocas sueltas": "Requires calibration: team proposal; terrain roughness at 1 km scale, not individual rocks",
+  "a calibrar: propuesta del equipo": "Requires calibration: team proposal",
+  "sin traje: el rover lleva a la tripulación": "No suit: rover carries crew",
+  "a calibrar: propuesta del equipo. Debajo de esto la app avisa que la base está en un sector aislado": "Requires calibration: team proposal. Below this value, app warns that base is in an isolated sector",
+  "Más segura": "Safest",
+  "Se aleja de pendientes altas, suelo áspero, bordes de zonas prohibidas y suelo blando probable.": "Avoids steep slopes, rough ground, prohibited-area boundaries and likely soft ground.",
+  "Se reemplaza en la app por 20° (capacidad del traje, Artemis) menos el margen medido contra Curiosity de cada zona; este valor es el respaldo si falta la configuración de riesgo": "Replaced in app by 20° (Artemis suit capability) minus each area's margin measured against Curiosity; fallback if risk configuration is missing",
+  "Tobler 1993 (Tierra); a calibrar con caminatas de Apollo (Peña-Asensio et al. 2024)": "Tobler 1993 (Earth); requires calibration with Apollo traverses (Peña-Asensio et al. 2024)",
+  "Calibrado para ~2 km/h en terreno plano, la velocidad que asume la planificación de Artemis III (EVA Ops 101)": "Calibrated for ~2 km/h on level ground, as assumed by Artemis III planning (EVA Ops 101)",
+  "a calibrar: propuesta del equipo. Debajo de esto la app avisa que la base está en un parche aislado": "Requires calibration: team proposal. Below this value, app warns that base is on an isolated patch",
+  "Gale · Monte Sharp (boxwork)": "Gale · Mount Sharp (boxwork)",
+  "Zona de salida a pie alrededor de la última posición publicada de Curiosity, en la región de boxwork del Monte Sharp.": "Walking EVA area around Curiosity's latest published position, in Mount Sharp's boxwork region.",
+  "Mars Reconnaissance Orbiter": "Mars Reconnaissance Orbiter",
+  "Recorrido de Curiosity (NASA/JPL MMGIS)": "Curiosity traverse (NASA/JPL MMGIS)",
+  "Mars Science Laboratory": "Mars Science Laboratory",
+  "Paradas de Curiosity (NASA/JPL MMGIS)": "Curiosity stops (NASA/JPL MMGIS)",
+  "CRISM MTRDR, productos resumen": "CRISM MTRDR, summary products",
+  "Plan de salida": "EVA plan",
+  "Automática": "Automatic",
+  "Manual": "Manual",
+  "Expedición": "Expedition",
+  "Calcular itinerario": "Compute itinerary",
+  "Vaciar": "Clear",
+  "Rovers presurizados": "Pressurized rovers",
+  "1 (alejamiento ≤ 12 km de un refugio)": "1 (≤ 12 km from shelter)",
+  "2 (se rescatan entre sí: ≤ 100 km)": "2 (mutual rescue: ≤ 100 km)",
+  "Planificar expedición": "Plan expedition",
+  "Marcas del plan": "Plan markers",
+  "· clic derecho en el mapa": "· right-click map",
+  "Guardar plan (GeoJSON)": "Save plan (GeoJSON)",
+  "Cargar plan": "Load plan",
+  "Actualizando el terreno prohibido con los peligros marcados…": "Updating prohibited terrain with marked hazards…",
+  "sin datos del terreno": "no terrain data",
+  "Base de la ruta aquí": "Set route base here",
+  "Destino aquí": "Set destination here",
+  "Parada del itinerario aquí": "Set itinerary stop here",
+  "Agregar al plan": "Add to plan",
+  "Medir distancia y perfil desde aquí": "Measure distance and profile from here",
+  "Cobertura de radio desde aquí": "Radio coverage from here",
+  "Línea de vista sobre el relieve, con la curvatura de Marte": "Terrain line of sight including Mars curvature",
+  "Luz y sombras del día": "Today's light and shadows",
+  "¿Dónde estoy? · por barómetro": "Where am I? · Barometer",
+  "Ir a coordenadas…": "Go to coordinates…",
+  "Copiar coordenadas": "Copy coordinates",
+  "Clic derecho en el mapa → «Parada del itinerario aquí»: la primera es el hábitat y las siguientes, paradas científicas.": "Right-click the map → «Set itinerary stop here». The first stop is the habitat. Subsequent stops are science stops.",
+  "Marcá la base y el destino lejano: se planifican los soles de manejo, las noches, los depósitos y los refugios.": "Set base and distant destination to plan driving sols, overnight stops, depots and shelters.",
+  "SI": "GO",
+  "Ruta automática": "Automatic route",
+  "Plan de salida · rover": "EVA plan · rover",
+  "Plan de salida · a pie": "EVA plan · walking",
+  "Primero marcá la base (o poné un hábitat): ahí está el barómetro de referencia.": "Set base or habitat first: it holds the reference barometer.",
+  "¿Dónde estoy? · barómetro": "Where am I? · Barometer",
+  "El barómetro de la base y el del traje miden al mismo tiempo. La diferencia de presión da el desnivel; el relieve de HiRISE dice qué lugares cercanos están a esa altura. Último punto conocido: donde hiciste clic.": "Base and suit barometers measure simultaneously. Differential pressure gives elevation change; HiRISE terrain identifies nearby locations at that elevation. Last known point: your map click.",
+  "Presión en la base (Pa)": "Base pressure (Pa)",
+  "Presión en el traje (Pa)": "Suit pressure (Pa)",
+  "Temperatura del aire (°C)": "Air temperature (°C)",
+  "Radio de búsqueda (m)": "Search radius (m)",
+  "Prueba a ciegas": "Blind test",
+  "Ubicar con estas presiones": "Locate using these pressures",
+  "Revisá los números.": "Check the numbers.",
+  "Prueba a ciegas: el motor elige un punto oculto y lo busca solo con la presión…": "Blind test: engine selects a hidden point and searches using pressure alone…",
+  "Buscando dónde está ese desnivel…": "Searching for matching elevation change…",
+  "Punto oculto": "Hidden point",
+  "Zona probable": "Likely area",
+  "El barómetro solo da una «curva de nivel»: en laderas la acota bien; en llano, mal. Combinalo con el horizonte o con lo caminado.": "Barometer gives only an elevation contour: slopes constrain position well; flat terrain does not. Combine with horizon matching or dead reckoning.",
+  "Barómetro: zona probable marcada en naranja.": "Barometer: likely area marked in orange.",
+  "No hay terreno caminable dentro de ese radio para la prueba": "No walkable terrain within test radius",
+  "Esa ruta no trae los datos para simular.": "Route lacks simulation data.",
+  "A": "A",
+  "Consumibles": "Consumables",
+  "Oxígeno primario": "Primary oxygen",
+  "Caminata si falla el rover": "Walkback if rover fails",
+  "Pasos": "Steps",
+  "Rover averiado": "Rover failure",
+  "Fuga en el traje": "Suit leak",
+  "Compañero incapacitado": "Buddy incapacitated",
+  "Terminar la simulación": "End simulation",
+  "Inyectar una falla": "Inject failure",
+  "Pausa": "Pause",
+  "CONTINUAR": "CONTINUE",
+  "Tiempo afuera": "Time outside",
+  "Regreso al refugio": "Return to shelter",
+  "Volver antes de": "Return before",
+  "Recorrido": "Traverse",
+  "Inyectar falla:": "Inject failure:",
+  "Tormenta solar": "Solar storm",
+  "Pérdida de radio": "Radio loss",
+  "Volver ahora": "Return now",
+  "Reiniciar": "Restart",
+  "Fuga en el traje: se pasa al oxígeno secundario (60 min). ABORTAR y volver al refugio más cercano ya.": "Suit leak: switching to secondary oxygen (60 min). ABORT and return to nearest shelter now.",
+  "Compañero incapacitado: hay que llevarlo al refugio más cercano (arrastre a media velocidad, pendiente ≤ 10°).": "Buddy incapacitated: move to nearest shelter (drag at half speed, slope ≤ 10°).",
+  "Alerta de partículas solares (DONKI): ABORTAR y entrar al refugio más cercano.": "Solar particle alert (DONKI): ABORT and enter nearest shelter.",
+  "Pérdida de comunicación con la base: se TERMINA la salida y se vuelve por el camino más corto.": "Communication with base lost: TERMINATE EVA and return by shortest path.",
+  "Rover averiado: hay que volver a pie a la base.": "Rover failure: walk back to base.",
+  "Regreso ordenado: la tripulación vuelve al refugio más cercano.": "Return ordered: crew returning to nearest shelter.",
+  "NO HAY REGRESO desde este punto dentro de los límites: fuera de la zona segura.": "NO RETURN within limits from this point: outside safe area.",
+  "oxígeno secundario": "secondary oxygen",
+  "límite de rescate": "rescue limit",
+  "caminata máxima": "maximum walkback",
+  "ALCANZA": "SUFFICIENT",
+  "NO ALCANZA": "INSUFFICIENT",
+  "NO ALCANZÓ: el regreso superó el límite. Esta ruta no debió aprobarse.": "INSUFFICIENT: return exceeded limit. This route should not have been approved.",
+  "Dentro de todos los márgenes.": "Within all margins.",
+  "A SALVO": "SAFE",
+  "FALLA": "FAILURE",
+  "ABORTAR": "ABORT",
+  "TERMINAR": "TERMINATE",
+  "Fuera de la zona segura: sin regreso de emergencia a tiempo.": "Outside safe area: emergency return time exceeded.",
+  "Ya no alcanza el oxígeno primario para volver con el colchón del 20 %: volver ya.": "Insufficient primary oxygen for return with 20 % margin: return now.",
+  "De vuelta por el mismo camino.": "Returning along same path.",
+  "sin regreso": "no return",
+  "¡ya!": "now!",
+  "regreso de emergencia": "emergency return",
+  "gruesa": "coarse",
+  "media": "intermediate",
+  "fina": "fine",
+  "humana": "human",
+  "tramo": "leg",
+  "sin margen": "no margin",
+  "salida": "departure",
+  "llegada": "arrival",
+  "Marte, esfera IAU 2000 (R = 3 396 190 m), latitud planetocéntrica, longitud este": "Mars, IAU 2000 sphere (R = 3 396 190 m), planetocentric latitude, east longitude",
+  "NASA Glenn, Mars Atmosphere Equation — Metric: R = 0,1921 kJ/(kg·K), convertido a J/(kg·K). Modelo de mezcla marciana dominada por CO₂; no es CO₂ puro. https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/mars-atmosphere-equation-metric/": "NASA Glenn, Mars Atmosphere Equation — Metric: R = 0,1921 kJ/(kg·K), converted to J/(kg·K). Mars mixture model dominated by CO₂; not pure CO₂. https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/mars-atmosphere-equation-metric/",
+  "Propuesta del equipo: impacto directo de una eyección (WSA-ENLIL) = refugio; de refilón o menor = salidas cortas cerca del refugio": "Team proposal: direct CME impact (WSA-ENLIL) = shelter; glancing or minor impact = short EVAs near shelter",
+  "bajando": "descending",
+  "subiendo": "ascending",
+  "fijo": "fixed",
+  "detenido": "stopped",
+  "fuera de la zona del 95 %": "outside 95 % area",
+  "dentro de la zona del 95 %": "inside 95 % area",
+  "1 depósito": "1 depot",
+  "hace falta 1 refugio operativo": "1 operational shelter required",
+  "depósito": "depot",
+  "depósitos": "depots",
+  "refugios": "shelters",
+  "Tobler 1993; a calibrar": "Tobler 1993; requires calibration",
+  "regreso a pie si falla el rover": "walkback if rover fails",
+  "duración total (ida, trabajo y vuelta)": "total duration (outbound, work, return)",
+  "regreso de emergencia con el oxígeno secundario": "emergency return on secondary oxygen",
+  "rescate de un compañero incapacitado": "incapacitated buddy rescue",
+  "consumibles con colchón de regreso": "consumables with return margin",
+  "salida en pareja": "buddy EVA",
+  "pendiente máxima del mapa en la ruta": "maximum mapped slope along route",
+  "suelo blando probable en la ruta": "likely soft ground along route",
+  "tramos trazados dentro de lo permitido": "drawn legs within allowed terrain",
+  "tramos del itinerario con ruta segura": "itinerary legs with safe routes",
+  "condiciones del día (ventana eva)": "today's conditions (EVA window)",
+  "personas": "people",
+  "muestras": "samples",
+  "minutos": "minutes",
+  "Idioma / Language": "Language",
+  "Idioma": "Language",
+  "Español": "Spanish",
+  "English": "English",
+  "Salir desde": "Depart from",
+  "Llegar a": "Arrive at",
+  "Zoom in": "Zoom in",
+  "Zoom out": "Zoom out",
+  "Se mueve arrastrando la base del plan": "Drag the plan base to move it",
+  "— otra: clic derecho en el mapa —": "— other: right-click the map —",
+  "— un punto del mapa —": "— map point —",
+  "— clic derecho en el mapa para crear la base —": "— right-click the map to create the base —",
+  "Hacé clic derecho donde está (o va a estar) la base → «Base de la ruta aquí»: se agrega al plan como hábitat.": "Right-click the current or planned base location → «Set route base here». This adds a habitat to the plan.",
+  "RUTA DIRECTA": "DIRECT ROUTE",
+  "CONVIENE PASAR POR BASES": "USE INTERMEDIATE BASES",
+  "SIN SALIDA APROBADA": "NO APPROVED EVA",
+  "Simular": "Simulate",
+  "Creció": "Expanded by",
+  "Bajó": "Shrank by",
+  "Ese refugio no la agranda: no es el tiempo lo que la encierra.": "This shelter adds no safe area: time is not the limiting factor.",
+  "Un refugio cerca de ese borde la agranda.": "A shelter near this boundary expands the safe area.",
+  "Un refugio adentro no la agranda: probá uno del otro lado de esa pendiente.": "A shelter inside adds no safe area: try the far side of that slope.",
+  "refugio más": "additional shelter",
+  "refugios más": "additional shelters",
+  "desde la base": "from base",
+  "Sin traducción al inglés:": "Missing English translation:",
+  "La ruta directa se aprueba con margen: pasar por otra base solo agrega tiempo.": "Direct route is GO with margin: another base only adds time.",
+  "Ninguna base del plan mejora la ruta directa.": "No plan base improves the direct route.",
+  "(no hay camino seguro)": "(no safe path)",
+  "La ruta directa es la mejor.": "Direct route is best.",
+  "Ni directo ni pasando por las bases del plan hay una salida aprobada: agregá un refugio o un depósito en el camino.": "No GO route, direct or via plan bases: add a shelter or depot along the route.",
+  "Propuesta del equipo: tiempo dentro de un refugio o depósito para recargar oxígeno, agua y batería del traje entre dos salidas.": "Team proposal: shelter or depot time to replenish suit oxygen, water and battery between EVAs.",
+  "Propuesta del equipo: tiempo de recarga en una base o depósito entre dos salidas en rover.": "Team proposal: resupply time at a base or depot between rover EVAs.",
+  "azul: agua ligada (1,9 µm)": "blue: bound water (1.9 µm)",
+  "hábitat": "habitat",
+  "parada científica": "science stop",
+  "rover estacionado": "parked rover",
+  "Camino más seguro": "Safest path",
+  "Camino más rápido": "Fastest path",
+  "consumibles": "consumables",
+  "C": "C",
+  "F": "F",
+  "Pa": "Pa",
+  "Métrico (m, km)": "Metric (m, km)",
+  "Imperial (ft, mi)": "Imperial (ft, mi)",
+  "Grados (°)": "Degrees (°)",
+  "Porcentaje (%)": "Percent (%)",
+  "Celsius (°C)": "Celsius (°C)",
+  "Fahrenheit (°F)": "Fahrenheit (°F)",
+  "Pascales (Pa)": "Pascals (Pa)",
+  "Milibares (mbar)": "Millibars (mbar)",
+  "Unidades y opciones": "Units and options",
+  "⚙ Unidades": "⚙ Units",
+  "Unidades": "Units",
+  "Distancia y altura": "Distance and elevation",
+  "Temperatura": "Temperature",
+  "El cálculo es siempre en el sistema internacional; esto cambia solo cómo se muestra.": "Calculations use SI units; this changes display units only.",
+  "Unidades actualizadas.": "Units updated.",
+  "Tiempo afuera (h:min:s)": "Time outside (h:min:s)",
+  "en pausa": "paused",
+  "Cargar misión de ejemplo: boxwork de Monte Sharp": "Load example mission: Mount Sharp boxwork"
+ },
+ "patrones": [
+  [
+   "^(\\d+) tramos / ≤ (\\d+) tramos$",
+   "$1 legs / ≤ $2 legs"
+  ],
+  [
+   "^Marcas excluidas: (.+)$",
+   "Excluded markers: $1"
+  ],
+  [
+   "^Punto: (.+)°, (.+)° E\\. (.+)$",
+   "Point: $1°, $2° E. $3"
+  ],
+  [
+   "^\\(día (.+)\\)$",
+   "(day $1)"
+  ],
+  [
+   "^Pernocte en (.+); recarga antes de salir\\.$",
+   "Overnight stay at $1; recharge before departure."
+  ],
+  [
+   "^Supervivencia estimada de la EVA: (.+) \\(modelo, a calibrar\\)\\.$",
+   "Estimated EVA survival: $1 (model, requires calibration)."
+  ],
+  [
+   "^· día (.+)$",
+   "· day $1"
+  ],
+  [
+   "^Stock insuficiente para recargar: (.+)\\.$",
+   "Insufficient stock for recharge: $1."
+  ],
+  [
+   "^Stock insuficiente para recargar y conservar (.+) h de refugio para la tripulación\\.$",
+   "Insufficient stock to recharge and retain $1 h of shelter support for the crew."
+  ],
+  [
+   "^Día (.+)\\. Incluye marcha, trabajo, regreso final, ingreso y recargas; margen de jornada y luz de config/rutas\\.json\\. Modelo, a calibrar; no certifica sombras locales\\.$",
+   "Day $1. Includes travel, work, final return, ingress and recharges; workday and daylight margins from config/rutas.json. Model, requires calibration; does not verify local shadows."
+  ],
+  [
+   "^(.+) \\(día (.+)\\)$",
+   "$1 (day $2)"
+  ],
+  [
+   "^Ruta aprobada en (.+) (.+) por: (.+)\\.$",
+   "Route approved over $1 $2 via: $3."
+  ],
+  [
+   "^Revisá (.+)\\.$",
+   "Check $1."
+  ],
+  [
+   "^(.+), ((?:Hábitat|Refugio|Depósito|Parada científica|Peligro|Baliza|Rover estacionado) [+−-]?[0-9]+(?:[.,][0-9]+)*(?: \\(km [+−-]?[0-9]+(?:[.,][0-9]+)*\\))?)$",
+   "$1, $2"
+  ],
+  [
+   "^Un tripulante debe poder llevar a su compañero incapacitado a un refugio en ([+−-]?[\\d.,]+) min o menos \\(xEVA ConOps / EHP-10028\\)$",
+   "A crew member must be able to carry an incapacitated buddy to shelter within $1 min (xEVA ConOps / EHP-10028)"
+  ],
+  [
+   "^Colchón del ([+−-]?[\\d.,]+) % sobre el tiempo de regreso a pie \\(límite de walkback de Apollo 15\\)$",
+   "$1 % reserve on walkback time (Apollo 15 walkback limit)"
+  ],
+  [
+   "^Propuesta del equipo: salir y volver con sol, ([+−-]?[\\d.,]+) min de margen \\(de noche el suelo baja a ([+−-]?[\\d.,]+) °C y no se ve el terreno\\)\\. Amanecer y atardecer: Mars24, validado con ([+−-]?[\\d.,]+) soles de Curiosity\\.$",
+   "Team proposal: depart and return in daylight with $1 min margin (at night ground reaches $2 °C and terrain is not visible). Sunrise and sunset: Mars24, validated against $3 Curiosity sols."
+  ],
+  [
+   "^Propuesta del equipo, a calibrar: ante un aviso de partículas solares \\(SEP\\) la tripulación debe estar dentro de un refugio en ([+−-]?[\\d.,]+) min; las partículas más energéticas llegan a Marte en decenas de minutos a horas después de la erupción\\.$",
+   "Team proposal requiring calibration: after a solar particle event (SEP) alert, crew must reach shelter within $1 min; high-energy particles may reach Mars tens of minutes to hours after eruption."
+  ],
+  [
+   "^Propuesta del equipo, a calibrar: ([+−-]?[\\d.,]+) m es la incertidumbre al ([+−-]?[\\d.,]+) % medida por nuestra localización a ciegas con fotos de Curiosity\\. Los controles de regreso, rescate y consumibles usan el peor valor del campo dentro de ese radio alrededor de cada celda de la ruta\\. En las regiones de ([+−-]?[\\d.,]+) m el radio es menor que una celda: no cambia el resultado y se avisa\\.$",
+   "Team proposal requiring calibration: $1 m is the $2 % uncertainty measured by blind localization using Curiosity photos. Return, rescue and consumables checks use the worst field value within that radius around each route cell. In $3 m regions the radius is smaller than one cell, so the result is unchanged and flagged."
+  ],
+  [
+   "^Propuesta del equipo, a calibrar: ([+−-]?[\\d.,]+) m es la incertidumbre al ([+−-]?[\\d.,]+) % medida por nuestra localización a ciegas con fotos de Curiosity\\. Los controles de regreso, rescate y consumibles usan el peor valor del campo dentro de ese radio alrededor de cada celda de la ruta\\.$",
+   "Team proposal requiring calibration: $1 m is the $2 % uncertainty measured by blind localization using Curiosity photos. Return, rescue and consumables checks use the worst field value within that radius around each route cell."
+  ],
+  [
+   "^📌 Fijada en ([+−-]?[\\d.,]+)° ([NS]), ([+−-]?[\\d.,]+)° ([EW])$",
+   "📌 Fixed at $1° $2, $3° $4"
+  ],
+  [
+   "^✓ Guardado (en .+) · (.+)$",
+   "✓ Saved $1 · $2"
+  ],
+  [
+   "^✔ Sirve de refugio: (Consumibles para .+? a calibrar\\.) (Evaluación modelada de consumibles y plazas; no acredita protección ambiental ni atención médica\\.)$",
+   "✔ Suitable shelter: $1 $2"
+  ],
+  [
+   "^(Propuesta del equipo: salir y volver con sol, .+? soles de Curiosity\\.) (Hora de salida en Opciones \\(hora solar local\\)\\.)$",
+   "$1 $2"
+  ],
+  [
+   "^NASA NTRS 19930074290, Research Opportunities in Nutrition and Metabolism in Space \\(1986\\), p\\. 18 y tabla 4: promedio EVA lunar Apollo, citando Waligora y Horrigan \\(1975\\)\\. No valida Marte\\. (.+)$",
+   "NASA NTRS 19930074290, Research Opportunities in Nutrition and Metabolism in Space (1986), p. 18 and table 4: Apollo lunar EVA average, citing Waligora and Horrigan (1975). Not validated for Mars. $1"
+  ],
+  [
+   "^⚠ (.+) el stock necesario y el motor la(.+) deja de lado: (.+)\\.$",
+   "⚠ $1 required stock; simulation engine excludes: $3."
+  ],
+  [
+   "^(Un tripulante debe poder llevar a su compañero incapacitado a un refugio en [\\d.,]+ min o menos \\(xEVA ConOps / EHP-10028\\)) (Arrastre a .+)$",
+   "$1 $2"
+  ],
+  [
+   "^(Colchón del [\\d.,]+ % sobre el tiempo de regreso a pie \\(límite de walkback de Apollo 15\\)) (Tiempo transcurrido .+)$",
+   "$1 $2"
+  ],
+  [
+   "^(Configurado en Opciones: .+?\\. Referencia: .+?) (Incluye .+)$",
+   "$1 $2"
+  ],
+  [
+   "^([+−-]?[\\d.,]+) m · ([+−-]?[\\d.,]+) min \\(ida\\)$",
+   "$1 m · $2 min (outbound)"
+  ],
+  [
+   "^([+−-]?[\\d.,]+) m · ([+−-]?[\\d.,]+) min \\(ida y vuelta\\)$",
+   "$1 m · $2 min (round trip)"
+  ],
+  [
+   "^([+−-]?[\\d.,]+) m en línea recta · ≈ ([+−-]?[\\d.,]+) pasos$",
+   "$1 m straight-line distance · ≈ $2 steps"
+  ],
+  [
+   "^([+−-]?[\\d.,]+) m · ([+−-]?[\\d.,]+) min \\((.+)\\)$",
+   "$1 m · $2 min ($3)"
+  ],
+  [
+   "^([+−-]?[\\d.,]+) \\(×([+−-]?[\\d.,]+) de consumo\\)$",
+   "$1 (×$2 consumption)"
+  ],
+  [
+   "^Configurado en Opciones: ([+−-]?[\\d.,]+) h de primario al ([+−-]?[\\d.,]+) %, ritmo (.+) \\(×([+−-]?[\\d.,]+)\\)\\. Referencia: (.+)$",
+   "Set in Options: $1 h primary at $2 %, $3 pace (×$4). Reference: $5"
+  ],
+  [
+   "^Configurado en Opciones: ([+−-]?[\\d.,]+) min de oxígeno secundario(.*?)\\. Referencia: (.+)$",
+   "Set in Options: $1 min secondary oxygen$2. Reference: $3"
+  ],
+  [
+   "^Salida: ([+−-]?[\\d.,]+) h de oxígeno primario útiles, ([+−-]?[\\d.,]+) min de secundario, ([+−-]?[\\d.,]+) tripulantes\\.$",
+   "EVA: $1 usable primary oxygen h, $2 min secondary, $3 crew."
+  ],
+  [
+   "^Punto débil \\((.+)\\): entre (.+) y (.+) de la ruta el regreso no llega a tiempo\\. Un refugio más cerca lo resuelve\\.$",
+   "Weak point ($1): return misses the deadline between $2 and $3 along route. A closer shelter resolves it."
+  ],
+  [
+   "^(.+) debe ser un número finito (.+)\\.$",
+   "$1 must be a finite number $2."
+  ],
+  [
+   "^(.+) debe tener un valor por punto de la ruta\\.$",
+   "$1 must have one value per route point."
+  ],
+  [
+   "^ruta\\.(.+)$",
+   "route.$1"
+  ],
+  [
+   "^Sin camino de (.+) informado en el tramo\\.$",
+   "No $1 path reported for this leg."
+  ],
+  [
+   "^El regreso por (.+), con colchón e ingreso, supera el límite de (.+) o el oxígeno disponible\\.$",
+   "Return via $1, including reserve and ingress, exceeds $2 limit or available oxygen."
+  ],
+  [
+   "^(.+): usá un número finito (.+)\\.$",
+   "$1: use a finite number $2."
+  ],
+  [
+   "^(.+): falta un objeto\\.$",
+   "$1: object missing."
+  ],
+  [
+   "^Inventario (.+)$",
+   "Inventory $1"
+  ],
+  [
+   "^Ruta (.+): usá un arreglo o un arreglo tipado\\.$",
+   "Route $1: use an array or typed array."
+  ],
+  [
+   "^Consumo (.+)$",
+   "Consumption $1"
+  ],
+  [
+   "^Autonomía (.+)$",
+   "Endurance $1"
+  ],
+  [
+   "^Necesidad: recurso desconocido (.+)\\.$",
+   "Need: unknown resource $1."
+  ],
+  [
+   "^Necesidad total (.+)$",
+   "Total need $1"
+  ],
+  [
+   "^Necesidad (.+)$",
+   "Need $1"
+  ],
+  [
+   "^Capacidad insuficiente: ([+−-]?[\\d.,]+) plazas para ([+−-]?[\\d.,]+) personas\\.$",
+   "Insufficient capacity: $1 berths for $2 people."
+  ],
+  [
+   "^Recursos sin informar: (.+); no cuentan para la autonomía\\.$",
+   "Resources not reported: $1; not credited toward endurance."
+  ],
+  [
+   "^Autonomía de ([+−-]?[\\d.,]+) h, menor a ([+−-]?[\\d.,]+) h; limita (.+)\\.$",
+   "Endurance $1 h, below $2 h; limited by $3."
+  ],
+  [
+   "^Consumibles para ([+−-]?[\\d.,]+) h y capacidad suficiente; mínimo propuesto ([+−-]?[\\d.,]+) h, a calibrar\\.$",
+   "Consumables for $1 h and sufficient capacity; proposed minimum $2 h, requires calibration."
+  ],
+  [
+   "^(.+): se esperaba un número finito mayor o igual a (.+)\\.$",
+   "$1: expected a finite number at least $2."
+  ],
+  [
+   "^(.+): arreglo vacío o longitud incompatible\\.$",
+   "$1: empty array or incompatible length."
+  ],
+  [
+   "^(.+): índice de celda inválido\\.$",
+   "$1: invalid cell index."
+  ],
+  [
+   "^(.+): debe empezar en cero y no decrecer\\.$",
+   "$1: must start at zero and not decrease."
+  ],
+  [
+   "^Limita: (.+)\\.$",
+   "Limited by: $1."
+  ],
+  [
+   "^No alcanza el tiempo o el oxígeno para ingresar al refugio\\.(.*)$",
+   "Insufficient time or oxygen for shelter ingress.$1"
+  ],
+  [
+   "^(.+) Esperando el camino al refugio; los plazos siguen corriendo\\.$",
+   "$1 Waiting for shelter path; deadlines are still running."
+  ],
+  [
+   "^Sin margen para volver e ingresar al refugio\\.(.*)$",
+   "No margin for return and shelter ingress.$1"
+  ],
+  [
+   "^Margen de regreso bajo: terminá la salida y emprendé la vuelta\\.(.*)$",
+   "Low return margin: terminate EVA and begin return.$1"
+  ],
+  [
+   "^(.+) El camino y el ingreso superan el límite más restrictivo\\.(.*)$",
+   "$1 Path and ingress exceed the most restrictive limit.$2"
+  ],
+  [
+   "^Se agotó un recurso del traje antes de llegar al refugio: (.+)\\.$",
+   "A suit resource ran out before reaching shelter: $1."
+  ],
+  [
+   "^✔ Alcanza para recargar los trajes de ([+−-]?[\\d.,]+)$",
+   "✔ Enough to replenish suits for $1"
+  ],
+  [
+   "^✖ No alcanza para recargar ([+−-]?[\\d.,]+) trajes: (.+)$",
+   "✖ Insufficient stock to replenish $1 suits: $2"
+  ],
+  [
+   "^(.+) quedó fijada en su nuevo lugar\\.$",
+   "$1 fixed at its new position."
+  ],
+  [
+   "^(.+): stock típico cargado \\(propuesta a calibrar\\)\\. Ajustalo con lo que de verdad hay\\.$",
+   "$1: typical stock loaded (proposal requiring calibration). Adjust to actual inventory."
+  ],
+  [
+   "^Arrastrá (.+) a su nuevo lugar; al soltarla queda fijada de nuevo\\.$",
+   "Drag $1 to its new position; release to fix it."
+  ],
+  [
+   "^1 marca no tiene$",
+   "1 marker lacks"
+  ],
+  [
+   "^([+−-]?[\\d.,]+) marcas no tienen$",
+   "$1 markers lack"
+  ],
+  [
+   "^⚠ (.+) el stock necesario y el motor la(s?) deja de lado: (.+)\\.$",
+   "⚠ $1 required stock; simulation engine excludes them: $3."
+  ],
+  [
+   "^Con ([+−-]?[\\d.,]+) m de incertidumbre de posición: se toma el peor valor del campo en ese radio alrededor de cada celda y, como mínimo, el tiempo de caminar esa distancia a la velocidad media de la ruta \\(([+−-]?[\\d.,]+) s; arrastrando a un compañero, ([+−-]?[\\d.,]+) s\\)\\. Propuesta, a calibrar\\.$",
+   "With $1 m position uncertainty, use the worst field value around each cell and at least the walk time at mean route speed ($2 s; buddy drag $3 s). Proposal requiring calibration."
+  ],
+  [
+   "^La incertidumbre de posición \\(([+−-]?[\\d.,]+) m\\) es menor que una celda de ([+−-]?[\\d.,]+) m: no cambia el valor\\.$",
+   "Position uncertainty ($1 m) is smaller than a $2 m cell: value unchanged."
+  ],
+  [
+   "^En el peor momento \\(incluido el fin de los ([+−-]?[\\d.,]+) min de trabajo en el destino\\): tiempo transcurrido \\+ ([+−-]?[\\d.,]+) × caminata de regreso \\+ ([+−-]?[\\d.,]+) min de ingreso al refugio\\. Colchón e ingreso son los de la salida a pie\\.$",
+   "At worst point (including end of $1 min at destination): elapsed time + $2 × walkback + $3 min shelter ingress. Walking EVA reserve and ingress apply."
+  ],
+  [
+   "^Incluye ([+−-]?[\\d.,]+) min en el destino, (.+) y ([+−-]?[\\d.,]+) min de ingreso al refugio\\.$",
+   "Includes $1 min at destination, $2 and $3 min shelter ingress."
+  ],
+  [
+   "^Arrastre a ([+−-]?[\\d.,]+) % de la velocidad y pendiente de mapa ≤ ([+−-]?[\\d.,]+)° \\(propuesta del equipo\\), más ([+−-]?[\\d.,]+) min de ingreso\\.$",
+   "Buddy drag at $1 % speed and map slope ≤ $2° (team proposal), plus $3 min ingress."
+  ],
+  [
+   "^Tiempo transcurrido \\+ ([+−-]?[\\d.,]+) × regreso \\+ ([+−-]?[\\d.,]+) min de ingreso, en el peor momento de la ida, del fin de los ([+−-]?[\\d.,]+) min de trabajo en el destino(.*); la hora de contingencia no se usa\\.$",
+   "Elapsed time + $1 × return + $2 min ingress, at worst outbound point and end of $3 min destination work$4; contingency hour is not planned."
+  ],
+  [
+   "^([+−-]?[\\d.,]+) celdas de la ruta sin dato válido \\(no se admite ninguna\\)\\. Peor entorno: celdas sin dato a ([+−-]?[\\d.,]+) m a la redonda de una celda de la ruta\\.$",
+   "$1 route cells lack valid data (none allowed). Worst surrounding area: missing-data cells within $2 m of a route cell."
+  ],
+  [
+   "^No se pudo calcular el consumo por tramo \\((.+)\\): oxígeno a tasa nominal, sin CO₂, batería ni agua\\.$",
+   "Could not compute leg consumption ($1): nominal oxygen rate; CO₂, battery and water unavailable."
+  ],
+  [
+   "^No se pudo simular esta ruta: (.+)$",
+   "Could not simulate this route: $1"
+  ],
+  [
+   "^Simulación de la salida \\((.+)\\)\\. Ojo: la ruta completa pide más (.+) del que lleva el traje\\.$",
+   "EVA simulation ($1). Warning: full route requires more $2 than suit carries."
+  ],
+  [
+   "^Trabajo en el destino\\. (.+)$",
+   "Work at destination. $1"
+  ],
+  [
+   "^Simulación detenida: (.+)$",
+   "Simulation stopped: $1"
+  ],
+  [
+   "^No se pudo calcular el regreso: (.+)$",
+   "Could not compute return: $1"
+  ],
+  [
+   "^(Búsqueda gruesa en toda la zona|Búsqueda media alrededor de los mejores|Búsqueda fina|Leyendo el horizonte de las fotos) · (\\d+) %$",
+   "$1 · $2 %"
+  ],
+  [
+   "^(.+) (y se sacó del itinerario)$",
+   "$1 $2"
+  ],
+  [
+   "^(.+) · altura (.+) · pendiente (.+) · rugosidad (.+) cm(.*)$",
+   "$1 · elevation $2 · slope $3 · roughness $4 cm$5"
+  ],
+  [
+   "^Sube (.+)$",
+   "Ascent $1"
+  ],
+  [
+   "^Baja (.+)$",
+   "Descent $1"
+  ],
+  [
+   "^Pendiente máx\\. (.+)$",
+   "Max. slope $1"
+  ],
+  [
+   "^(.+) · sube (.+), baja (.+)$",
+   "$1 · ascent $2, descent $3"
+  ],
+  [
+   "^(.+) % de la línea supera (.+)$",
+   "$1 % of line exceeds $2"
+  ],
+  [
+   "^máx\\. (.+)$",
+   "max. $1"
+  ],
+  [
+   "^(.+) SOLES · (.+) IDA Y VUELTA$",
+   "$1 SOLS · $2 ROUND TRIP"
+  ],
+  [
+   "^(.+) de ida$",
+   "$1 outbound"
+  ],
+  [
+   "^(Hábitat|Refugio|Depósito|Parada científica|Peligro|Baliza|Rover estacionado) ([\\d.,]+)$",
+   "$1 $2"
+  ],
+  [
+   "^([\\d.,]+) (hábitat|refugio|depósito|parada científica|peligro|baliza|rover estacionado)$",
+   "$1 $2"
+  ],
+  [
+   "^((?:Hábitat|Refugio|Depósito|Parada científica|Peligro|Baliza|Rover estacionado) [\\d.,]+(?: \\(km [\\d.,]+\\))?), (.+)$",
+   "$1, $2"
+  ],
+  [
+   "^(Hábitat|Refugio|Depósito|Parada científica|Peligro|Baliza|Rover estacionado): (.+)$",
+   "$1: $2"
+  ],
+  [
+   "^(ámbar|verde|rojo) / (ámbar|verde|rojo)$",
+   "$1 / $2"
+  ],
+  [
+   "^([\\d.,]+ astronautas?) / ([≤≥<>] ?[\\d.,]+ astronautas?)$",
+   "$1 / $2"
+  ],
+  [
+   "^([≤≥<>] ?)?([\\d.,]+) astronautas?$",
+   "$1$2 astronauts"
+  ],
+  [
+   "^· (de refilón|menor|impacto menor|impacto directo) · (.+)$",
+   "· $1 · $2"
+  ],
+  [
+   "^· (≈ [\\d.,]+ pasos)$",
+   "· $1"
+  ],
+  [
+   "^Variación del relieve máx\\. ([\\d.,]+) m \\(en ([\\d.,]+) km\\)$",
+   "Max. terrain relief $1 m (over $2 km)"
+  ],
+  [
+   "^· a ([\\d.,]+) m del punto más probable ✕ \\(ruido simulado ([+−-]?[\\d.,]+) Pa\\)$",
+   "· $1 m from most likely point ✕ (simulated noise $2 Pa)"
+  ],
+  [
+   "^: (MOLA .+)$",
+   ": $1"
+  ],
+  [
+   "^(Exploration Zones .+)\\. Radio: (.+)$",
+   "$1. Radius: $2"
+  ],
+  [
+   "^HiRISE ortoimagen (\\S+) \\(USGS Analysis Ready Data\\)$",
+   "HiRISE orthoimage $1 (USGS Analysis Ready Data)"
+  ],
+  [
+   "^· (Mars Odyssey .+)$",
+   "· $1"
+  ],
+  [
+   "^\\(([\\d.,]+) bases o depósitos considerados\\)$",
+   "($1 bases or depots considered)"
+  ],
+  [
+   "^Total (.+)$",
+   "Total $1"
+  ],
+  [
+   "^Tramo ([\\d.,]+): (.+) → (.+)$",
+   "Leg $1: $2 → $3"
+  ],
+  [
+   "^(.+?) (.+) con los refugios del plan\\.$",
+   "$1 $2 with plan shelters."
+  ],
+  [
+   "^de la base y ([\\d.,]+) (.+)$",
+   "from base and $1 $2"
+  ],
+  [
+   "^regreso de emergencia en ([\\d.,]+) min y rescate del compañero posibles hasta el refugio más cercano$",
+   "emergency return within $1 min and buddy rescue feasible to nearest shelter"
+  ],
+  [
+   "^([\\d.,]+) % pendiente de más de ([\\d.,]+)° \\(no se podría arrastrar a un compañero\\)$",
+   "$1 % slope above $2° (buddy drag not feasible)"
+  ],
+  [
+   "^([\\d.,]+) % tiempo de regreso$",
+   "$1 % return time"
+  ],
+  [
+   "^([\\d.,]+) % terreno prohibido$",
+   "$1 % prohibited terrain"
+  ],
+  [
+   "^([\\d.,]+ % (?:terreno prohibido|tiempo de regreso|pendiente de más de [\\d.,]+° \\(no se podría arrastrar a un compañero\\))), (.+)$",
+   "$1, $2"
+  ],
+  [
+   "^Borde: (.+)\\. (Un refugio .+\\.)$",
+   "Boundary: $1. $2"
+  ],
+  [
+   "^Borde: (.+)\\.$",
+   "Boundary: $1."
+  ],
+  [
+   "^((?:Creció|Bajó) .+? con los refugios del plan\\.|Ese refugio no la agranda: no es el tiempo lo que la encierra\\.) (Borde: .+)$",
+   "$1 $2"
+  ],
+  [
+   "^Zona segura (.+?): (.+?) \\((.+?)\\)\\.(.*)$",
+   "Safe area $1: $2 ($3).$4"
+  ],
+  [
+   "^Conviene pasar por (.+): la directa se aprueba con poco margen \\(([+−-]?[\\d.,]+) min\\)\\.$",
+   "Use $1: direct route is GO with low margin ($2 min)."
+  ],
+  [
+   "^La ruta directa no se aprueba(.*): pasando por (.+) y recargando, sí\\.$",
+   "Direct route is NO-GO$1: GO via $2 with resupply."
+  ],
+  [
+   "^\\(((?:regreso a pie si falla el rover|duración total \\(ida, trabajo y vuelta\\)|regreso de emergencia con el oxígeno secundario|rescate de un compañero incapacitado|consumibles con colchón de regreso|salida en pareja|pendiente máxima del mapa en la ruta|suelo blando probable en la ruta|tramos trazados dentro de lo permitido|tramos del itinerario con ruta segura|condiciones del día \\(ventana eva\\))(?:, .+)?)\\)$",
+   "($1)"
+  ],
+  [
+   "^Camino más rápido \\(el más seguro tarda ([\\d.,]+) min y no llega a tiempo\\)$",
+   "Fastest path (safest takes $1 min and misses the limit)"
+  ],
+  [
+   "^(.+\\.) ((?:Camino más seguro|Camino más rápido(?: \\(el más seguro tarda [\\d.,]+ min y no llega a tiempo\\))?) al refugio: .+\\.)$",
+   "$1 $2"
+  ],
+  [
+   "^(.+) al refugio: (.+) min \\+ (.+) min de ingreso; (.+): (.+) min → (.+)\\.$",
+   "$1 to shelter: $2 min + $3 min ingress; $4: $5 min → $6."
+  ],
+  [
+   "^(.+)° \\(límite\\)$",
+   "$1° (limit)"
+  ],
+  [
+   "^(.+) cm \\(límite\\)$",
+   "$1 cm (limit)"
+  ],
+  [
+   "^Zonas prohibidas para (.+)$",
+   "Prohibited areas for $1"
+  ],
+  [
+   "^oscuro de noche \\(≤ (.+)\\) y liso \\(≤ (.+) cm\\): (.+) % de la zona$",
+   "dark at night (≤ $1) and smooth (≤ $2 cm): $3 % of area"
+  ],
+  [
+   "^(.+) observaciones de CRISM \\((.+)\\)\\. Cada franja tiene su propio estiramiento de color: compará dentro de una misma franja\\.$",
+   "$1 CRISM observations ($2). Each strip has its own color stretch: compare within the same strip."
+  ],
+  [
+   "^(.+) · tocá para abrir el mapa de caminata$",
+   "$1 · tap to open walking map"
+  ],
+  [
+   "^Curiosity · sol (.+)$",
+   "Curiosity · sol $1"
+  ],
+  [
+   "^Preparando la capa «(.+)»…$",
+   "Preparing layer “$1”…"
+  ],
+  [
+   "^(.+) · altura (.+) m · pendiente (.+)° · rugosidad (.+) cm(.*)$",
+   "$1 · elevation $2 m · slope $3° · roughness $4 cm$5"
+  ],
+  [
+   "^(.+) · sin datos del modelo de terreno$",
+   "$1 · no terrain model data"
+  ],
+  [
+   "^Ese punto está en una zona prohibida para (.+): elegí otro destino\\.$",
+   "This point is prohibited for $1: select another destination."
+  ],
+  [
+   "^Desde esa base no se llega a nada en (.+) km a la redonda de ese destino\\.$",
+   "No point within $1 km of that destination is reachable from this base."
+  ],
+  [
+   "^Ese destino queda fuera de la zona segura desde la base: lo corrí (.+) m al punto alcanzable más cercano\\.$",
+   "Destination outside the safe area: moved $1 m to the nearest reachable point."
+  ],
+  [
+   "^Ese punto está en una zona prohibida para (.+): elegí otro para la base\\.$",
+   "This point is prohibited for $1: select another base location."
+  ],
+  [
+   "^Calculando hasta dónde puede llegar (.+) desde la base…$",
+   "Computing reachable area for $1 from base…"
+  ],
+  [
+   "^Sin ruta: (.+)\\.$",
+   "No route: $1."
+  ],
+  [
+   "^(.+) de marcha$",
+   "$1 travel time"
+  ],
+  [
+   "^Sube (.+) m$",
+   "Ascent $1 m"
+  ],
+  [
+   "^Baja (.+) m$",
+   "Descent $1 m"
+  ],
+  [
+   "^Pendiente máx\\. (.+)°$",
+   "Max. slope $1°"
+  ],
+  [
+   "^Rugosidad máx\\. (.+) cm$",
+   "Max. roughness $1 cm"
+  ],
+  [
+   "^No cumple: (.+)\\.$",
+   "Failed checks: $1."
+  ],
+  [
+   "^Revisar antes de salir: (.+)\\.$",
+   "Review before EVA: $1."
+  ],
+  [
+   "^(.+): (.+) × (.+) km, celdas de (.+) m$",
+   "$1: $2 × $3 km, $4 m cells"
+  ],
+  [
+   "^(.+): la región todavía no se generó\\. Corré el pipeline de regiones\\.$",
+   "$1: region not yet prepared. Run the regional pipeline."
+  ],
+  [
+   "^Yendo a (.+)…$",
+   "Navigating to $1…"
+  ],
+  [
+   "^Marte: (.+) zonas candidatas para misiones humanas\\. Tocá una para ver de qué se trata; las verdes tienen mapa detallado\\.$",
+   "Mars: $1 candidate human mission sites. Tap a site for details; green sites have detailed maps."
+  ],
+  [
+   "^Calculando las zonas prohibidas para (.+)…$",
+   "Computing prohibited areas for $1…"
+  ],
+  [
+   "^(.+) · (.+) % prohibido para (.+)$",
+   "$1 · $2 % prohibited for $3"
+  ],
+  [
+   "^Esa base queda en un parche aislado de (.+), rodeado de terreno prohibido: conviene elegir otra\\.$",
+   "Base is on an isolated $1 patch surrounded by prohibited terrain: select another location."
+  ],
+  [
+   "^regreso a pie en (.+) h o menos si falla el rover$",
+   "walkback within $1 h if the rover fails"
+  ],
+  [
+   "^regreso de emergencia en (.+) min y rescate del compañero posibles$",
+   "emergency return within $1 min and buddy rescue possible"
+  ],
+  [
+   "^Zona segura desde la base: (.+) \\((.+)\\)\\.$",
+   "Safe area from base: $1 ($2)."
+  ],
+  [
+   "^Error: (.+)$",
+   "Error: $1"
+  ],
+  [
+   "^No se pudo iniciar: (.+)$",
+   "Startup failed: $1"
+  ],
+  [
+   "^(.+): ingresá un número válido\\.$",
+   "$1: enter a valid number."
+  ],
+  [
+   "^Configuración (.+): tiene que ser mayor que cero\\.$",
+   "Configuration $1: must be greater than zero."
+  ],
+  [
+   "^Configuración (.+)$",
+   "Configuration $1"
+  ],
+  [
+   "^Eyección solar con llegada a Marte (.+) \\((.+), WSA-ENLIL\\)$",
+   "CME arrival at Mars $1 ($2, WSA-ENLIL)"
+  ],
+  [
+   "^en (.+) h$",
+   "in $1 h"
+  ],
+  [
+   "^hace (.+) h$",
+   "$1 h ago"
+  ],
+  [
+   "^Evento de partículas solares \\(SEP\\) hace (.+) h$",
+   "Solar energetic particle (SEP) event $1 h ago"
+  ],
+  [
+   "^, ventana de tormentas regionales tipo (.+)$",
+   ", regional storm window type $1"
+  ],
+  [
+   "^Temporada de tormentas de polvo \\(Ls (.+)°\\)(.*)$",
+   "Dust storm season (Ls $1°)$2"
+  ],
+  [
+   "^Opacidad del cielo \"(.+)\" en el último parte de Curiosity \\(sol (.+)\\)$",
+   "Sky opacity “$1” in latest Curiosity report (sol $2)"
+  ],
+  [
+   "^Revisá (.+): debe tener un valor (.+) y finito\\.$",
+   "Check $1: value must be $2 and finite."
+  ],
+  [
+   "^La parada (.+) debe estar dentro de la ruta\\.$",
+   "Stop $1 must lie along the route."
+  ],
+  [
+   "^Revisá los minutos de la parada (.+): deben ser finitos y no negativos\\.$",
+   "Check stop $1 duration: minutes must be finite and nonnegative."
+  ],
+  [
+   "^La reserva de energía exige (.+) depósitos: prepará recargas completas para cada rover en la ida y en la vuelta\\.$",
+   "Energy reserve requires $1 depots: arrange full recharges for each rover outbound and inbound."
+  ],
+  [
+   "^La ruta supera el alejamiento de (.+) km con (.+): hacen falta (.+) refugios operativos\\.$",
+   "Route exceeds $1 km separation with $2: $3 operational shelters required."
+  ],
+  [
+   "^La parada (.+) necesita varias jornadas de ciencia; su trabajo se reparte entre soles\\.$",
+   "Stop $1 requires multiple science shifts; work is split across sols."
+  ],
+  [
+   "^La expedición requiere (.+) soles y supera el límite propuesto de (.+) soles, a calibrar\\.$",
+   "Expedition requires $1 sols, exceeding the proposed $2-sol limit (requires calibration)."
+  ],
+  [
+   "^(.+) % de la línea supera (.+)°$",
+   "$1 % of line exceeds $2°"
+  ],
+  [
+   "^(.+) en línea recta(.*)$",
+   "$1 straight-line distance$2"
+  ],
+  [
+   "^máx\\. (.+)°(.*)$",
+   "max. $1°$2"
+  ],
+  [
+   "^(.+) queda fuera de esta zona\\.$",
+   "$1 is outside this area."
+  ],
+  [
+   "^Listo: (.+)\\.$",
+   "Ready: $1."
+  ],
+  [
+   "^Copiado: (.+)$",
+   "Copied: $1"
+  ],
+  [
+   "^Coordenadas: (.+)$",
+   "Coordinates: $1"
+  ],
+  [
+   "^La ruta queda sin enlace en (.+) tramos; el más largo dura (.+) min \\(regla propuesta: ≤ (.+) min\\)\\.$",
+   "Route loses communication on $1 legs; longest gap $2 min (proposed limit: ≤ $3 min)."
+  ],
+  [
+   "^Baliza sugerida: cubriría (.+) m de ruta sin enlace\\.$",
+   "Suggested beacon: would cover $1 m of route without communication."
+  ],
+  [
+   "^(.+) % de la zona con línea de vista$",
+   "$1 % of area with line of sight"
+  ],
+  [
+   "^antena a (.+) m, radio del traje a (.+) m, alcance (.+) km, curvatura de Marte \\(propuestas, a calibrar\\)$",
+   "antenna $1 m, suit radio $2 m, range $3 km, Mars curvature (proposals, require calibration)"
+  ],
+  [
+   "^Radio: (.+) % de la zona con línea de vista desde ese punto\\.$",
+   "Radio: $1 % of area with line of sight from this point."
+  ],
+  [
+   "^\\(hora solar media local\\)\\. Ahora son las (.+?)( y es de noche)?\\.$",
+   "(LMST). Current time $1$2."
+  ],
+  [
+   "^(.+) · Sol a (.+)° de altura, azimut (.+)° \\((.+)\\)\\.$",
+   "$1 · Sun elevation $2°, azimuth $3° ($4)."
+  ],
+  [
+   "^Ruta elegida: (.+) % en sombra \\((.+) m\\)\\.$",
+   "Selected route: $1 % in shadow ($2 m)."
+  ],
+  [
+   "^(.+) de (.+) columnas con cielo arriba de la línea$",
+   "$1 of $2 columns with sky above the line"
+  ],
+  [
+   "^descartada: apunta al suelo \\(borde superior a (.+)°\\)$",
+   "rejected: points at ground (top edge at $1°)"
+  ],
+  [
+   "^toda la zona cada (.+) m, azimut cada 2°, (.+) distancias por rayo hasta 70 km$",
+   "entire area every $1 m, azimuth every 2°, $2 distances per ray to 70 km"
+  ],
+  [
+   "^Buscando el camino seguro del tramo (.+)…$",
+   "Searching for safe path for leg $1…"
+  ],
+  [
+   "^No se pudo ajustar el tramo (.+): (.+)\\. Mové el punto\\.$",
+   "Could not reroute leg $1: $2. Move the waypoint."
+  ],
+  [
+   "^Tramo (.+) ajustado al camino seguro\\.$",
+   "Leg $1 rerouted along safe path."
+  ],
+  [
+   "^Tramo (.+): apto(.*)$",
+   "Leg $1: pass$2"
+  ],
+  [
+   "^Tramo (.+): (.+)\\. Tocá para ajustarlo al camino seguro\\.$",
+   "Leg $1: $2. Tap to reroute safely."
+  ],
+  [
+   "^(.+) km de ida$",
+   "$1 km outbound"
+  ],
+  [
+   "^Paradas intermedias: (.+) min$",
+   "Intermediate stops: $1 min"
+  ],
+  [
+   "^(.+) · región$",
+   "$1 · region"
+  ],
+  [
+   "^Región de (.+) × (.+) km alrededor de la zona candidata «(.+)» \\(taller de NASA de (.+)\\)\\. Relieve de (.+) m: sirve para rutas en rover y contexto, no para caminar\\.$",
+   "$1 × $2 km region around candidate site “$3” (NASA $4 workshop). $5 m terrain: rover planning and context only; unsuitable for walking."
+  ],
+  [
+   "^Tipo de marca desconocido: (.+)\\.$",
+   "Unknown marker type: $1."
+  ],
+  [
+   "^No existe la marca (.+)\\.$",
+   "Marker $1 does not exist."
+  ],
+  [
+   "^Parada (.+): indicá el id de una marca\\.$",
+   "Stop $1: provide a marker ID."
+  ],
+  [
+   "^Parada (.+): los minutos deben ser un número no negativo\\.$",
+   "Stop $1: minutes must be a nonnegative number."
+  ],
+  [
+   "^Parada (.+): no existe la marca (.+)\\.$",
+   "Stop $1: marker $2 does not exist."
+  ],
+  [
+   "^Parada (.+): dos paradas iguales seguidas\\.$",
+   "Stop $1: duplicate consecutive stops."
+  ],
+  [
+   "^El itinerario debe (.+) en un hábitat o refugio\\.$",
+   "Itinerary must $1 at a habitat or shelter."
+  ],
+  [
+   "^El id (.+) está repetido\\.$",
+   "Duplicate ID $1."
+  ],
+  [
+   "^Marca (.+): (.+)$",
+   "Marker $1: $2"
+  ],
+  [
+   "^Itinerario (.+): (.+)$",
+   "Itinerary $1: $2"
+  ],
+  [
+   "^(.+) agregado al plan\\. Clic sobre la marca para editarla(.*)\\.$",
+   "$1 added to plan. Click marker to edit$2."
+  ],
+  [
+   "^Se borró (.+)\\.$",
+   "Deleted $1."
+  ],
+  [
+   "^Ver las (.+) marcas$",
+   "View $1 markers"
+  ],
+  [
+   "^(.+) está en el itinerario \\((.+) paradas\\)\\.$",
+   "$1 is in the itinerary ($2 stops)."
+  ],
+  [
+   "^El itinerario sale de (.+)\\. Clic derecho en el mapa para agregar paradas\\.$",
+   "Itinerary departs from $1. Right-click the map to add stops."
+  ],
+  [
+   "^paso de (.+) m \\(a calibrar\\)$",
+   "$1 m step length (requires calibration)"
+  ],
+  [
+   "^Sin ruta segura entre la parada (.+) y la (.+)\\.$",
+   "No safe route between stops $1 and $2."
+  ],
+  [
+   "^(.+) min de trabajo$",
+   "$1 min work"
+  ],
+  [
+   "^Noche del sol (.+)$",
+   "Night of sol $1"
+  ],
+  [
+   "^(.+) SOLES · (.+) KM IDA Y VUELTA$",
+   "$1 SOLS · $2 KM ROUND TRIP"
+  ],
+  [
+   "^(.+) h de manejo$",
+   "$1 h driving"
+  ],
+  [
+   "^(.+) h de ciencia$",
+   "$1 h science"
+  ],
+  [
+   "^(.+) h de descanso$",
+   "$1 h rest"
+  ],
+  [
+   "^(.+) depósitos$",
+   "$1 depots"
+  ],
+  [
+   "^Depósito (.+) \\(km (.+)\\)$",
+   "Depot $1 (km $2)"
+  ],
+  [
+   "^Refugio (.+) \\(km (.+)\\)$",
+   "Shelter $1 (km $2)"
+  ],
+  [
+   "^Se agregaron (.+) depósitos y (.+) refugios al plan\\. Guardalo para compartirlo\\.$",
+   "Added $1 depots and $2 shelters to plan. Save it to share."
+  ],
+  [
+   "^Expedición: (.+) soles, (.+) depósitos y (.+) refugios necesarios\\.$",
+   "Expedition: $1 sols, $2 depots and $3 shelters required."
+  ],
+  [
+   "^Plan guardado: (.+) marcas(.*)\\.$",
+   "Plan saved: $1 markers$2."
+  ],
+  [
+   "^Plan cargado: (.+) marcas(.*)\\.$",
+   "Plan loaded: $1 markers$2."
+  ],
+  [
+   "^Ojo: el plan es de la zona (.+); las marcas fuera de esta zona no se ven\\.$",
+   "Caution: plan belongs to area $1; markers outside this area are hidden."
+  ],
+  [
+   "^No se pudo leer el plan: (.+)$",
+   "Could not read plan: $1"
+  ],
+  [
+   "^Parámetro de radio inválido: (.+)\\.$",
+   "Invalid radio parameter: $1."
+  ],
+  [
+   "^(.*?)(\\S+)° de capacidad del traje \\(Artemis\\) − (\\S+)° de margen medido contra Curiosity en esta zona(.*)$",
+   "$1$2° suit capability (Artemis) − $3° margin measured against Curiosity in this area$4"
+  ],
+  [
+   "^(.*?)(\\S+)° de capacidad del traje \\(Artemis\\) − (\\S+)° de margen por defecto \\(zona sin validación propia\\)(.*)$",
+   "$1$2° suit capability (Artemis) − $3° default margin (no own validation for this area)$4"
+  ],
+  [
+   "^(.+)° de capacidad del traje \\(Artemis\\) − (.+)° de margen(.*)$",
+   "$1° suit capability (Artemis) − $2° margin$3"
+  ],
+  [
+   "^Incluye (.+) min en el destino\\.$",
+   "Includes $1 min at destination."
+  ],
+  [
+   "^Peor punto de la ruta, por el mejor camino de vuelta, más (.+) min de ingreso al refugio\\.$",
+   "Worst route point, along best return path, plus $1 min shelter ingress."
+  ],
+  [
+   "^Arrastre a (.+) % de la velocidad y pendiente de mapa ≤ (.+)° \\(propuesta del equipo\\)\\.$",
+   "Drag at $1 % speed with mapped slope ≤ $2° (team proposal)."
+  ],
+  [
+   "^Ida \\+ (.+) × regreso \\+ ingreso, en el peor punto; la hora de contingencia no se usa\\.$",
+   "Outbound + $1 × return + ingress at worst point; contingency hour is not used."
+  ],
+  [
+   "^pendiente mayor a (.+)°$",
+   "slope above $1°"
+  ],
+  [
+   "^suelo más áspero que (.+) cm$",
+   "terrain rougher than $1 cm"
+  ],
+  [
+   "^Procesando (.+) fotos: se busca en cada una la línea cielo/terreno…$",
+   "Processing $1 images: detecting sky/terrain boundary in each…"
+  ],
+  [
+   "^Horizonte medido: (.+) de (.+) intervalos de 0,25° con dato \\((.+) % de los 360°\\)\\.$",
+   "Measured horizon: $1 of $2 intervals of 0,25° with data ($3 % of 360°)."
+  ],
+  [
+   "^Parámetros: zona (.+) \\((.+) km²\\); relieve cercano (.+); relieve lejano (.+),$",
+   "Parameters: area $1 ($2 km²); near terrain $3; distant terrain $4,"
+  ],
+  [
+   "^Etapa (.+): (.+)\\.$",
+   "Stage $1: $2."
+  ],
+  [
+   "^→ Mejor de la etapa (.+): (.+), diferencia media (.+)°(.*)$",
+   "→ Stage $1 best: $2, mean difference $3°$4"
+  ],
+  [
+   "^, ajuste de rumbo (.+)°$",
+   ", bearing adjustment $1°"
+  ],
+  [
+   "^Fin: (.+) candidatos evaluados en (.+) s\\.$",
+   "Done: $1 candidates evaluated in $2 s."
+  ],
+  [
+   "^Foto (.+) (.+)…: (.+)\\.$",
+   "Image $1 $2…: $3."
+  ],
+  [
+   "^Sitio (.+), tramo (.+) · soles (.+)–(.+) · (.+) fotos$",
+   "Site $1, drive $2 · sols $3–$4 · $5 images"
+  ],
+  [
+   "^Foto Navcam de Curiosity, azimut (.+)°, sol (.+)$",
+   "Curiosity Navcam image, azimuth $1°, sol $2"
+  ],
+  [
+   "^Navcam de Curiosity · sol (.+) · (.+) · azimut (.+)° · (.+)$",
+   "Curiosity Navcam · sol $1 · $2 · azimuth $3° · $4"
+  ],
+  [
+   "^Ubicación a ciegas · parada guardada (.+)\\. El horizonte de estas fotos lo midió antes el pipeline \\(mismo algoritmo\\); la posición real no se usa\\.$",
+   "Blind localization · saved stop $1. Image horizons were premeasured by the pipeline (same algorithm); actual position is not used."
+  ],
+  [
+   "^RESULTADO: (.+) ± (.+) m \\(95 %\\); diferencia media (.+)°; mejor lugar a más de 500 m: (.+)\\.$",
+   "RESULT: $1 ± $2 m (95 %); mean difference $3°; best match beyond 500 m: $4."
+  ],
+  [
+   "^(.+)° de diferencia media$",
+   "$1° mean difference"
+  ],
+  [
+   "^(.+)° contra (.+)°: (.+)$",
+   "$1° versus $2°: $3"
+  ],
+  [
+   "^(.+) candidatos en (.+) km²$",
+   "$1 candidates in $2 km²"
+  ],
+  [
+   "^Ubicación estimada a ciegas: ± (.+) m\\. Tocá «Revelar posición real» para medir el error\\.$",
+   "Blind position estimate: ± $1 m. Tap “Reveal actual position” to measure error."
+  ],
+  [
+   "^En (.+) paradas: error mediano (.+) m, máximo (.+) m\\. Los errores apuntan casi siempre al mismo lado \\(~20 m al suroeste\\): probablemente es el corrimiento entre el marco de Curiosity y el modelo de terreno, no el método\\. Sin ese corrimiento común, el error típico es de ~5 m\\.$",
+   "Across $1 stops: median error $2 m, maximum $3 m. Errors mostly point in the same direction (~20 m southwest), likely a Curiosity/terrain frame offset rather than method error. Without this shared offset, typical error is ~5 m."
+  ],
+  [
+   "^REVELADO: posición real (.+)° S, (.+)° E \\((.+)\\); error (.+) m\\.$",
+   "REVEALED: actual position $1° S, $2° E ($3); error $4 m."
+  ],
+  [
+   "^Error de la ubicación a ciegas: (.+) m\\.$",
+   "Blind localization error: $1 m."
+  ],
+  [
+   "^No se pudo leer (.+) como JSON\\.$",
+   "Could not read $1 as JSON."
+  ],
+  [
+   "^· ojo: son de (.+) paradas distintas$",
+   "· caution: from $1 different stops"
+  ],
+  [
+   "^(.+) de (.+) fotos con metadatos(.*)\\.$",
+   "$1 of $2 images with metadata$3."
+  ],
+  [
+   "^✔ metadatos \\((.+)\\)$",
+   "✔ metadata ($1)"
+  ],
+  [
+   "^sitio (.+), tramo (.+)$",
+   "site $1, drive $2"
+  ],
+  [
+   "^(.+) columnas usadas$",
+   "$1 columns used"
+  ],
+  [
+   "^Ubicación a ciegas con (.+) fotos subidas \\(metadatos: (.+)\\)\\. La posición real no se usa\\.$",
+   "Blind localization with $1 uploaded images (metadata: $2). Actual position is not used."
+  ],
+  [
+   "^(.+) · (.+)\\. Rojo: línea usada · gris: descartada \\(sin cielo liso arriba o poco contraste\\)\\.$",
+   "$1 · $2. Red: accepted line · gray: rejected (no smooth sky above or low contrast)."
+  ],
+  [
+   "^NASA/JPL MMGIS, sitio (.+), tramo (.+), corregida al marco del DTM$",
+   "NASA/JPL MMGIS, site $1, drive $2, corrected to DTM frame"
+  ],
+  [
+   "^Datos guardados el (.+)\\.$",
+   "Data saved on $1."
+  ],
+  [
+   "^No hay datos de clima guardados \\((.+)\\)\\. Corré el pipeline de clima\\.$",
+   "No saved weather data ($1). Run the weather pipeline."
+  ],
+  [
+   "^Actualizado desde NASA el (.+)\\.$",
+   "Updated from NASA on $1."
+  ],
+  [
+   "^sol ~(.+) de Curiosity · Ls (.+)° · (.+) hora solar$",
+   "Curiosity sol ~$1 · Ls $2° · $3 LMST"
+  ],
+  [
+   "^sol (.+) \\((.+)\\) · llega con (.+) soles de atraso$",
+   "sol $1 ($2) · report delayed by $3 sols"
+  ],
+  [
+   "^(.+) a (.+) °C$",
+   "$1 to $2 °C"
+  ],
+  [
+   "^amanecer (.+) · atardecer (.+)$",
+   "sunrise $1 · sunset $2"
+  ],
+  [
+   "^(.+) mSv/día de fondo \\(RAD\\) → (.+) mSv por hora afuera$",
+   "$1 mSv/day background (RAD) → $2 mSv per hour outside"
+  ],
+  [
+   "^en (.+) días$",
+   "in $1 days"
+  ],
+  [
+   "^hace (.+) días$",
+   "$1 days ago"
+  ],
+  [
+   "^(.+) eventos de partículas solares \\(SEP\\)$",
+   "$1 solar energetic particle (SEP) events"
+  ],
+  [
+   "^(.+) en los últimos (.+) días\\.$",
+   "$1 in the last $2 days."
+  ],
+  [
+   "^soles (.+)–(.+) · aire \\(línea\\) y suelo \\(tenue\\)$",
+   "sols $1–$2 · air (line), ground (faint)"
+  ],
+  [
+   "^No se pudo leer (.+) \\((.+)\\)$",
+   "Could not read $1 ($2)"
+  ],
+  [
+   "^y (.+) refugios del plan$",
+   "and $1 plan shelters"
+  ],
+  [
+   "^Calculando hasta dónde puede llegar (.+) desde la base(.*)…$",
+   "Computing reachable area for $1 from base$2…"
+  ],
+  [
+   "^altura (.+) m · pendiente (.+)°(.*)$",
+   "elevation $1 m · slope $2°$3"
+  ],
+  [
+   "^Suelo blando: (.+) m$",
+   "Soft ground: $1 m"
+  ],
+  [
+   "^Terreno prohibido actualizado: (.+) % \\(incluye los peligros marcados\\)\\.$",
+   "Prohibited terrain updated: $1 % (includes marked hazards)."
+  ],
+  [
+   "^Presión y temperatura iniciales: último parte de Curiosity \\(REMS(.*)\\)\\. Ruido diferencial (.+) Pa \\(propuesta, a calibrar\\): ≈ (.+) m de altura por Pa\\.$",
+   "Initial pressure and temperature: latest Curiosity report (REMS$1). Differential noise $2 Pa (proposal, requires calibration): ≈ $3 m elevation per Pa."
+  ],
+  [
+   "^Ningún lugar dentro del radio está a esa altura \\((.+) m ± (.+) m\\)\\. Revisá las presiones o agrandá el radio\\.$",
+   "No location within radius matches elevation ($1 m ± $2 m). Check pressures or increase radius."
+  ],
+  [
+   "^a (.+) m de la estimación ✕ \\(ruido simulado (.+) Pa\\)$",
+   "$1 m from estimate ✕ (simulated noise $2 Pa)"
+  ],
+  [
+   "^(.+) m ± (.+) m respecto de la base \\((.+) Pa en el traje\\)$",
+   "$1 m ± $2 m relative to base ($3 Pa in suit)"
+  ],
+  [
+   "^(.+) ha concentran el 95 % \\(mancha naranja\\)$",
+   "$1 ha contain 95 % probability (orange area)"
+  ],
+  [
+   "^Barómetro a ciegas: la estimación quedó a (.+) m del punto oculto\\.$",
+   "Blind barometer: estimate is $1 m from hidden point."
+  ],
+  [
+   "^Simulación de la salida \\((.+)\\)\\. Probá inyectar una falla para ver la decisión de aborto\\.$",
+   "EVA simulation ($1). Inject a failure to test abort decision."
+  ],
+  [
+   "^Camino al refugio: (.+) min \\+ (.+) min de ingreso; (.+): (.+) min → (.+)\\.$",
+   "Path to shelter: $1 min + $2 min ingress; $3: $4 min → $5."
+  ],
+  [
+   "^Sobraron (.+) min de oxígeno secundario\\.$",
+   "$1 min secondary oxygen remaining."
+  ],
+  [
+   "^Margen: (.+) min\\.$",
+   "Margin: $1 min."
+  ],
+  [
+   "^A SALVO en el refugio\\. (.+)$",
+   "SAFE in shelter. $1"
+  ],
+  [
+   "^SALIDA COMPLETA: de vuelta en el refugio con (.+) min de consumibles primarios\\.$",
+   "EVA COMPLETE: back in shelter with $1 min primary consumables."
+  ],
+  [
+   "^Quedan (.+) min de margen sobre el regreso con colchón: hay que emprender la vuelta\\.$",
+   "$1 min margin above buffered return remains: start return."
+  ],
+  [
+   "^Trabajo en el destino \\((.+) min\\)\\.$",
+   "Work at destination ($1 min)."
+  ],
+  [
+   "^(.+) min \\+ (.+) de ingreso$",
+   "$1 min + $2 ingress"
+  ],
+  [
+   "^dentro de (.+)$",
+   "within $1"
+  ],
+  [
+   "^(.+) h de (.+) h$",
+   "$1 h of $2 h"
+  ],
+  [
+   "^(.+) queda fuera de la zona segura sombreada: el itinerario no se va a aprobar\\. Movela, o poné un refugio cerca \\(clic derecho → R\\)\\.$",
+   "$1 lies outside the shaded safe area: itinerary will be NO-GO. Move it or add a nearby shelter (right-click → R)."
+  ],
+  [
+   "^(\\[[\\d., ]+ s\\] )(.+)$",
+   "$1$2"
+  ],
+  [
+   "^sesgo vertical corregido (.+) m; cámara a (.+) m del suelo; curvatura con R = (.+) km\\.$",
+   "corrected vertical bias $1 m; camera $2 m above ground; curvature with R = $3 km."
+  ],
+  [
+   "^(.+) candidatos puntuados; mejor provisorio (.+) \\((.+)°\\)$",
+   "$1 candidates scored; current best $2 ($3°)"
+  ],
+  [
+   "^(.+): (.+) candidatos puntuados; mejor provisorio (.+) \\((.+)°\\)$",
+   "$1: $2 candidates scored; current best $3 ($4°)"
+  ],
+  [
+   "^; azimut (.+)°–(.+)°, horizonte mediano (.+)°$",
+   "; azimuth $1°–$2°, median horizon $3°"
+  ],
+  [
+   "^\\((.+) lugares\\)$",
+   "($1 locations)"
+  ],
+  [
+   "^\\((.+) candidatos(.*)\\)\\.$",
+   "($1 candidates$2)."
+  ],
+  [
+   "^Relieve de Marte \\((.+)\\)$",
+   "Mars topography ($1)"
+  ],
+  [
+   "^Zonas candidatas para humanos \\((.+)\\)$",
+   "Candidate human mission sites ($1)"
+  ],
+  [
+   "^Radio de exploración de (.+) km$",
+   "Exploration radius $1 km"
+  ],
+  [
+   "^(.+) m · sube (.+) m, baja (.+) m$",
+   "$1 m · ascent $2 m, descent $3 m"
+  ],
+  [
+   "^(.+) en total$",
+   "$1 total"
+  ],
+  [
+   "^≈ (.+) pasos$",
+   "≈ $1 steps"
+  ],
+  [
+   "^(.+) refugios$",
+   "$1 shelters"
+  ],
+  [
+   "^(.+) requerido a (.+) km$",
+   "$1 required at $2 km"
+  ],
+  [
+   "^(.+) min a km (.+)$",
+   "$1 min at km $2"
+  ],
+  [
+   "^· (.+) problemas: (.+)$",
+   "· $1 issues: $2"
+  ],
+  [
+   "^secundario (.+)$",
+   "secondary $1"
+  ],
+  [
+   "^margen (.+)$",
+   "margin $1"
+  ],
+  [
+   "^De vuelta por el mismo camino\\. (.+)$",
+   "Returning along same path. $1"
+  ],
+  [
+   "^Trabajo en el destino \\((.+) min\\)\\. (.+)$",
+   "Work at destination ($1 min). $2"
+  ],
+  [
+   "^(.+) (Peor punto de la ruta\\.(?: .+)?)$",
+   "$1 $2"
+  ],
+  [
+   "^(.+) (Incluye .+ min en el destino\\.)$",
+   "$1 $2"
+  ],
+  [
+   "^(.+) (Peor punto de la ruta, por el mejor camino de vuelta, más .+ min de ingreso al refugio\\.)$",
+   "$1 $2"
+  ],
+  [
+   "^(.+) (Arrastre a .+ % de la velocidad y pendiente de mapa ≤ .+° \\(propuesta del equipo\\)\\.)$",
+   "$1 $2"
+  ],
+  [
+   "^(.+) (Ida \\+ .+ × regreso \\+ ingreso, en el peor punto; la hora de contingencia no se usa\\.)$",
+   "$1 $2"
+  ],
+  [
+   "^(.+) (Térmico de noche \\(THEMIS\\) \\+ textura \\(HiRISE\\)\\. Revisar en el lugar antes de pisar\\.)$",
+   "$1 $2"
+  ],
+  [
+   "^(.+) (Cada celda de cada tramo se compara con el terreno prohibido y la zona segura)$",
+   "$1 $2"
+  ],
+  [
+   "^(.+) (Cada tramo entre paradas se busca dentro del terreno apto y de la zona segura de los refugios)$",
+   "$1 $2"
+  ],
+  [
+   "^(.+) (Relieve de 200 m: el regreso a pie es una estimación preliminar; ningún tramo a pie queda aprobado a esta escala\\.)$",
+   "$1 $2"
+  ],
+  [
+   "^(.+)(; azimut .+°–.+°, horizonte mediano .+°)$",
+   "$1$2"
+  ],
+  [
+   "^(.+) (\\(.+ lugares\\))$",
+   "$1 $2"
+  ],
+  [
+   "^Parámetros: zona (.+) \\((.+) km²\\); relieve cercano (.+); relieve lejano (.+), (sesgo vertical corregido .+)$",
+   "Parameters: area $1 ($2 km²); near terrain $3; distant terrain $4, $5"
+  ],
+  [
+   "^(.+) · a (.+) m del punto más probable ✕ \\(ruido simulado (.+) Pa\\)$",
+   "$1 · $2 m from most likely point ✕ (simulated noise $3 Pa)"
+  ],
+  [
+   "^La reserva de energía exige (.+): prepará recargas completas para cada rover en la ida y en la vuelta\\.$",
+   "Energy reserve requires $1: arrange full recharges for each rover outbound and inbound."
+  ],
+  [
+   "^hacen falta (.+) refugios operativos$",
+   "$1 operational shelters required"
+  ],
+  [
+   "^La ruta supera el alejamiento de (.+) km con (.+): (.+)\\.$",
+   "Route exceeds $1 km separation with $2: $3."
+  ],
+  [
+   "^Expedición: (.+) soles; hay que instalar (.+) y (.+)\\.$",
+   "Expedition: $1 sols; deploy $2 and $3."
+  ],
+  [
+   "^(.+) (depósito|depósitos|refugio|refugios)$",
+   "$1 $2"
+  ],
+  [
+   "^(regreso a pie si falla el rover|duración total \\(ida, trabajo y vuelta\\)|regreso de emergencia con el oxígeno secundario|rescate de un compañero incapacitado|consumibles con colchón de regreso|salida en pareja|pendiente máxima del mapa en la ruta|suelo blando probable en la ruta|tramos trazados dentro de lo permitido|tramos del itinerario con ruta segura|condiciones del día \\(ventana eva\\)), (.+)$",
+   "$1, $2"
+  ],
+  [
+   "^(Pendiente máxima|Rugosidad máxima): (.+) \\((.+)\\)$",
+   "$1: $2 ($3)"
+  ],
+  [
+   "^(.+) · UV (.+)$",
+   "$1 · UV $2"
+  ],
+  [
+   "^(.+) · ([\\d.,]+)$",
+   "$1 · $2"
+  ],
+  [
+   "^(Datos guardados el .+\\.|Actualizado desde NASA el .+\\.|No se pudo actualizar \\(¿sin internet\\?\\)\\. Se siguen usando los datos guardados\\.) (El CAB publica .+)$",
+   "$1 $2"
+  ],
+  [
+   "^(Eyección solar con llegada a Marte .+|Evento de partículas solares .+|Temporada de tormentas de polvo .+|Opacidad del cielo .+) · (.+)$",
+   "$1 · $2"
+  ],
+  [
+   "^1 s real = (.+) de salida$",
+   "1 real s = $1 of EVA time"
+  ],
+  [
+   "^Misión de ejemplo: (.+)$",
+   "Example mission: $1"
+  ],
+  [
+   "^No se pudo cargar la misión de ejemplo: (.+)$",
+   "Could not load the example mission: $1"
+  ]
+ ]
+}

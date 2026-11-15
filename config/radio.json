@@ -1,0 +1,11 @@
+{
+  "altura_base_m": { "valor": 3, "base": "propuesta", "fuente": "Altura de antena de la base propuesta por el equipo; a calibrar." },
+  "altura_radio_m": { "valor": 1.8, "base": "propuesta", "fuente": "Radio a la altura aproximada del casco; a calibrar con el traje." },
+  "alcance_max_m": { "valor": 5000, "base": "propuesta", "fuente": "Alcance geométrico máximo propuesto; a calibrar con frecuencia, potencia y presupuesto de enlace." },
+  "altura_baliza_m": { "valor": 6, "base": "propuesta", "fuente": "Mástil repetidor propuesto por el equipo; a calibrar." },
+  "max_min_sin_cobertura": { "valor": 2, "base": "propuesta", "fuente": "Máximo operativo de minutos seguidos sin enlace propuesto por el equipo; a calibrar." },
+  "radio_busqueda_baliza_m": { "valor": 10, "base": "propuesta", "fuente": "Distancia máxima de instalación respecto de la ruta; a calibrar." },
+  "pendiente_max_grados": { "valor": 20, "base": "propuesta", "fuente": "Límite de pendiente para instalar una baliza; a calibrar con el traje y la misión." },
+  "rugosidad_max_m": { "valor": 0.25, "base": "propuesta", "fuente": "Límite de rugosidad para instalar una baliza; a calibrar con el traje y la misión." },
+  "radio_m": { "valor": 3396190, "base": "verificado", "fuente": "Convención esférica del proyecto: AGENTS.md y ARQUITECTURA.md, radio ecuatorial IAU 2000 de Marte." }
+}

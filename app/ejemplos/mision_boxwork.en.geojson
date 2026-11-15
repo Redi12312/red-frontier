@@ -1,0 +1,81 @@
+{
+ "type": "FeatureCollection",
+ "properties": {
+  "version": 1,
+  "contadores": {
+   "marca": 2,
+   "itinerario": 1
+  },
+  "itinerarios": [
+   {
+    "id": "itinerario-1",
+    "nombre": "Example mission: boxwork",
+    "vehiculo": "pie",
+    "paradas": [
+     {
+      "marca": "marca-1",
+      "minutos": 0
+     },
+     {
+      "marca": "marca-2",
+      "minutos": 60
+     },
+     {
+      "marca": "marca-1",
+      "minutos": 0
+     }
+    ]
+   }
+  ],
+  "zona": "gale_boxwork",
+  "app": "Red Frontier PDE",
+  "ejemplo": true,
+  "fuente": "Posiciones: paradas de Curiosity (NASA/JPL MMGIS). Inventario: config/consumibles.json (propuesta, a calibrar). 60 min de trabajo: propuesta."
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     137.39772140122616,
+     -4.78409375935546
+    ]
+   },
+   "properties": {
+    "id": "marca-1",
+    "tipo": "habitat",
+    "nombre": "Habitat (at a Curiosity stop, sol 4414)",
+    "datos": {
+     "oxigeno_kg": 60,
+     "agua_l": 250,
+     "comida_kcal": 200000,
+     "energia_kwh": 500,
+     "filtros_co2_h": 1500,
+     "botiquin": true,
+     "capacidad_personas": 6
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     137.39077571216225,
+     -4.79413495935546
+    ]
+   },
+   "properties": {
+    "id": "marca-2",
+    "tipo": "ciencia",
+    "nombre": "Mount Sharp boxwork (Curiosity stop, sol 4496)",
+    "datos": {
+     "objetivo": "Photograph the boxwork ridges up close and choose sampling points: they are minerals that groundwater deposited in fractures billions of years ago, a clue to where and for how long water persisted (potentially habitable environments).",
+     "muestras_previstas": "Context and close-up photos of 2 ridges; 2 rock samples from ridges and 1 from the hollow between them for comparison.",
+     "minutos_trabajo": 60
+    }
+   }
+  }
+ ]
+}

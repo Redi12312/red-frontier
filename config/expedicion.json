@@ -1,0 +1,21 @@
+{
+  "_nota": "Planificación modelada: ida y regreso por la misma ruta, con igual tiempo de manejo. Depósitos y refugios son infraestructura requerida, no instalaciones existentes. Las referencias lunares no son requisitos marcianos.",
+  "rover_presurizado": {
+    "velocidad_kmh": { "valor": 10, "base": "propuesta", "fuente": "a calibrar: velocidad media de referencia del equipo; los tiempos de la ruta tienen prioridad" },
+    "horas_manejo_por_sol": { "valor": 6, "base": "propuesta", "fuente": "a calibrar: máximo de manejo por sol propuesto por el equipo" },
+    "autonomia_km": { "valor": 100, "base": "verificado_parcial", "fuente": "xEVA ConOps EVA-EXP-0042 / estudios de arquitectura de NASA: alcance del orden de 100 km; referencia de concepto, no autonomía marciana validada" },
+    "reserva_fraccion": { "valor": 0.2, "base": "propuesta", "fuente": "a calibrar: reserva de energía del equipo; consumo modelado proporcional a la distancia" },
+    "intervalo_depositos_km": { "valor": 60, "base": "propuesta", "fuente": "a calibrar: separación máxima propuesta entre depósitos; se reduce si la reserva exige más puntos" },
+    "alejamiento_max_km": {
+      "uno": { "valor": 12, "base": "verificado_parcial", "fuente": "xEVA ConOps EVA-EXP-0042 / estudios de arquitectura de NASA: extremo conservador de 12–16 km con un rover presurizado; doctrina lunar trasladada" },
+      "dos": { "valor": 100, "base": "verificado_parcial", "fuente": "xEVA ConOps EVA-EXP-0042 / estudios de arquitectura de NASA: aproximadamente 100 km con dos rovers, sin fallas apiladas; doctrina lunar trasladada" }
+    },
+    "duracion_max_soles": { "valor": 14, "base": "propuesta", "fuente": "a calibrar: límite operativo del equipo inspirado en estudios NASA de salidas de unas dos semanas; días terrestres y soles no son equivalentes" }
+  },
+  "horas_actividad_por_sol": { "valor": 8, "base": "propuesta", "fuente": "a calibrar: ventana total para manejo y ciencia por sol; el resto del sol no se presupuesta" },
+  "descanso_nocturno_h": { "valor": 8, "base": "propuesta", "fuente": "a calibrar: descanso entre jornadas dentro del rover presurizado; no incluye consumo hotelero" },
+  "trabajo_por_parada_min": { "valor": 30, "base": "propuesta", "fuente": "a calibrar: trabajo científico por defecto, realizado solo en la ida" },
+  "a_pie": {
+    "largo_paso_m": { "valor": 0.7, "base": "propuesta", "fuente": "a calibrar: el largo del paso con traje en 0,38 g no está medido" }
+  }
+}

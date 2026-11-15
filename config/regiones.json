@@ -1,0 +1,24 @@
+{
+  "_nota": "Mapa de región para cada zona candidata (nivel rover). Se genera a partir de datos/marte/candidatas.geojson.",
+  "lado_km": {
+    "valor": 200,
+    "fuente": "Diámetro de una Exploration Zone: regiones de interés a unos 100 km del sitio de aterrizaje (NASA, taller de 2015)"
+  },
+  "paso_m": 200,
+  "rugosidad_ventana_m": 1000,
+  "hilos": 2,
+  "relieve": {
+    "url": "https://planetarymaps.usgs.gov/mosaic/Mars/HRSC_MOLA_Blend/Mars_HRSC_MOLA_BlendDEM_Global_200mp_v2.tif",
+    "nombre": "Relieve global MOLA + HRSC, 200 m (USGS Astrogeology)",
+    "mision": "Mars Global Surveyor y Mars Express"
+  },
+  "imagen": {
+    "servicio": "https://trek.nasa.gov/tiles/Mars/EQ/{capa}/1.0.0/default/default028mm/{nivel}/{fila}/{col}.png",
+    "capa": "THEMIS_DayIR_ControlledMosaics_100m_v2_oct2018",
+    "nivel": 8,
+    "tamano_tesela_px": 256,
+    "nombre": "THEMIS infrarrojo diurno, 100 m (JPL Mars Trek)",
+    "mision": "Mars Odyssey",
+    "lat_max": 65
+  }
+}

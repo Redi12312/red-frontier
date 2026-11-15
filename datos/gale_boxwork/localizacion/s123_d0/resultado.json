@@ -1,0 +1,35 @@
+{
+  "parada": {
+    "sitio": 123,
+    "tramo": 0,
+    "soles": [
+      4939,
+      4940,
+      4942
+    ]
+  },
+  "fotos_usadas": 24,
+  "cobertura_horizonte": 0.964,
+  "busqueda": {
+    "area_km2": 50.0,
+    "candidatos": 7111,
+    "relieve_cercano": "gale_boxwork",
+    "relieve_lejano": "region_20_gale_crater",
+    "sesgo_vertical_corregido_m": 4.9
+  },
+  "estimacion": {
+    "lon_este": 137.3836563375888,
+    "lat": -4.819973641637486,
+    "puntaje_grados": 0.806,
+    "giro_rumbo_grados": 0.5,
+    "incertidumbre_95_m": 33.9
+  },
+  "verdad": {
+    "lon_este": 137.383195,
+    "lat": -4.8191769,
+    "fuente": "NASA/JPL MMGIS, corregida al marco del DTM",
+    "puntaje_en_la_verdad_grados": 1.064
+  },
+  "error_m": 22.6,
+  "nota": "La posición real no se usó en la búsqueda: solo fotos, metadatos de cámara/orientación y relieve orbital."
+}

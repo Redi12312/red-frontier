@@ -1,0 +1,22 @@
+{
+  "_nota": "Parámetros del rover presurizado para rutas en el nivel región (celdas de 200 m). Todos son propuestas del equipo, a calibrar.",
+  "pendiente_max_grados": {
+    "valor": 20,
+    "fuente": "a calibrar: propuesta del equipo para un rover presurizado, medida sobre relieve de 200 m"
+  },
+  "rugosidad_max_cm": {
+    "valor": 1500,
+    "fuente": "a calibrar: propuesta del equipo; rugosidad del relieve a escala de 1 km, no rocas sueltas"
+  },
+  "velocidad": {
+    "_modelo": "v = v_max * exp(-k * |tan(pendiente) + d|)",
+    "v_max_kmh": { "valor": 10, "fuente": "a calibrar: propuesta del equipo" },
+    "k": { "valor": 2.0, "fuente": "a calibrar: propuesta del equipo" },
+    "d": { "valor": 0.0, "fuente": "a calibrar: propuesta del equipo" },
+    "factor_traje": { "valor": 1.0, "fuente": "sin traje: el rover lleva a la tripulación" }
+  },
+  "region_minima_m2": {
+    "valor": 25000000,
+    "fuente": "a calibrar: propuesta del equipo. Debajo de esto la app avisa que la base está en un sector aislado"
+  }
+}

@@ -1,0 +1,81 @@
+{
+ "type": "FeatureCollection",
+ "properties": {
+  "version": 1,
+  "contadores": {
+   "marca": 2,
+   "itinerario": 1
+  },
+  "itinerarios": [
+   {
+    "id": "itinerario-1",
+    "nombre": "Misión de ejemplo: boxwork",
+    "vehiculo": "pie",
+    "paradas": [
+     {
+      "marca": "marca-1",
+      "minutos": 0
+     },
+     {
+      "marca": "marca-2",
+      "minutos": 60
+     },
+     {
+      "marca": "marca-1",
+      "minutos": 0
+     }
+    ]
+   }
+  ],
+  "zona": "gale_boxwork",
+  "app": "Red Frontier PDE",
+  "ejemplo": true,
+  "fuente": "Posiciones: paradas de Curiosity (NASA/JPL MMGIS). Inventario: config/consumibles.json (propuesta, a calibrar). 60 min de trabajo: propuesta."
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     137.39772140122616,
+     -4.78409375935546
+    ]
+   },
+   "properties": {
+    "id": "marca-1",
+    "tipo": "habitat",
+    "nombre": "Hábitat (en una parada de Curiosity, sol 4414)",
+    "datos": {
+     "oxigeno_kg": 60,
+     "agua_l": 250,
+     "comida_kcal": 200000,
+     "energia_kwh": 500,
+     "filtros_co2_h": 1500,
+     "botiquin": true,
+     "capacidad_personas": 6
+    }
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     137.39077571216225,
+     -4.79413495935546
+    ]
+   },
+   "properties": {
+    "id": "marca-2",
+    "tipo": "ciencia",
+    "nombre": "Boxwork de Monte Sharp (parada de Curiosity, sol 4496)",
+    "datos": {
+     "objetivo": "Fotografiar de cerca las crestas del boxwork y elegir puntos de muestreo: son minerales que el agua subterránea depositó en grietas hace miles de millones de años, una pista de dónde y cuánto tiempo hubo agua (ambientes potencialmente habitables).",
+     "muestras_previstas": "Fotos de contexto y de detalle de 2 crestas; 2 muestras de roca de cresta y 1 del hueco entre crestas para comparar.",
+     "minutos_trabajo": 60
+    }
+   }
+  }
+ ]
+}

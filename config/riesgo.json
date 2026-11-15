@@ -1,0 +1,133 @@
+{
+  "_nota": "Reglas de seguridad para decidir si una salida se hace (sí / no) y por qué. NASA todavía no publicó límites para Marte ('forward work' en el ConOps xEVA): los valores son doctrina lunar de Artemis trasladada, mediciones propias o propuestas del equipo, y así se muestran en la app. Detalle y fuentes: reports/Gestión de riesgo en salidas marcianas.md",
+  "pie": {
+    "pendiente_capacidad_traje_grados": {
+      "valor": 20,
+      "base": "verificado",
+      "fuente": "Artemis: el traje debe operar en pendientes de hasta 20° (xEVA ConOps EVA-EXP-0042; EVA Ops 101 para Artemis III)"
+    },
+    "margen_pendiente_por_defecto_grados": {
+      "valor": 6,
+      "base": "medicion_propia",
+      "fuente": "Usado solo si la zona no tiene validación propia. Medición del equipo: el mapa subestima ~6° en el 95 % de 508 paradas de Curiosity"
+    },
+    "regreso_emergencia_max_min": {
+      "valor": 60,
+      "base": "verificado",
+      "fuente": "1 h de oxígeno secundario: desde cualquier punto se debe poder volver al refugio con él (Artemis; base del límite de 2 km)"
+    },
+    "ingreso_refugio_min": {
+      "valor": 10,
+      "base": "verificado",
+      "fuente": "Ingreso de emergencia al refugio en 10 min (umbral) / 5 min (meta), xEVA ConOps"
+    },
+    "rescate_max_min": {
+      "valor": 60,
+      "base": "verificado",
+      "fuente": "Un tripulante debe poder llevar a su compañero incapacitado a un refugio en 60 min o menos (xEVA ConOps / EHP-10028)"
+    },
+    "rescate_factor_velocidad": {
+      "valor": 0.5,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: arrastrar a un compañero a la mitad de la velocidad de marcha (no hay datos medidos en gravedad marciana)"
+    },
+    "rescate_pendiente_max_grados": {
+      "valor": 10,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: pendiente de mapa máxima para arrastrar a un compañero (NASA pide 20° en la Luna, donde el peso es 2,2 veces menor)"
+    },
+    "consumibles_primarios_h": {
+      "valor": 8,
+      "base": "verificado",
+      "fuente": "8 h de consumibles primarios + 1 h de contingencia que no se planifica (Artemis)"
+    },
+    "colchon_regreso": {
+      "valor": 1.2,
+      "base": "verificado_parcial",
+      "fuente": "Colchón del 20 % sobre el tiempo de regreso a pie (límite de walkback de Apollo 15)"
+    },
+    "tiempo_en_destino_min": {
+      "valor": 60,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: tiempo de trabajo científico en el destino, editable por la tripulación"
+    },
+    "suelo_blando_max_m": {
+      "valor": 0,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: todo tramo sobre suelo blando probable se avisa para inspeccionarlo en el lugar. No bloquea la salida a pie porque el dato es indirecto (THEMIS a 100 m)."
+    },
+    "margen_terminar_min": {
+      "valor": 30,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: el visor pide terminar la salida cuando el oxígeno primario que queda, menos el regreso con colchón y el ingreso al refugio, baja de 30 min."
+    },
+    "recarga_refugio_min": {
+      "valor": 60,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: tiempo dentro de un refugio o depósito para recargar oxígeno, agua y batería del traje entre dos salidas."
+    },
+    "tormenta_refugio_min": {
+      "valor": 30,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo, a calibrar: ante un aviso de partículas solares (SEP) la tripulación debe estar dentro de un refugio en 30 min; las partículas más energéticas llegan a Marte en decenas de minutos a horas después de la erupción."
+    },
+    "incertidumbre_posicion_m": {
+      "valor": 25,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo, a calibrar: 25 m es la incertidumbre al 95 % medida por nuestra localización a ciegas con fotos de Curiosity. Los controles de regreso, rescate y consumibles usan el peor valor del campo dentro de ese radio alrededor de cada celda de la ruta."
+    },
+    "sin_dato_max_pct": {
+      "valor": 10,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo, a calibrar: porcentaje máximo de celdas sin dato válido del modelo de terreno dentro del radio de incertidumbre de posición alrededor de la ruta. Sobre la ruta misma no se admite ninguna."
+    }
+  },
+  "rover": {
+    "regreso_a_pie_max_h": {
+      "valor": 5,
+      "base": "verificado",
+      "fuente": "Rover no presurizado: el punto más lejano a menos de 5 h de caminata del refugio (xEVA ConOps; se elige la cifra menor de la inconsistencia 5 h / 8 h)"
+    },
+    "consumibles_primarios_h": {
+      "valor": 8,
+      "base": "verificado",
+      "fuente": "8 h de consumibles primarios por salida (Artemis)"
+    },
+    "tiempo_en_destino_min": {
+      "valor": 60,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo"
+    },
+    "aviso_resolucion": "Relieve de 200 m: el regreso a pie es una estimación preliminar; ningún tramo a pie queda aprobado a esta escala.",
+    "suelo_blando_max_m": {
+      "valor": 0,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: un rover no debe entrar a suelo blando sin inspección (Spirit quedó atrapado en 2009). Aviso, porque el dato es indirecto."
+    },
+    "margen_terminar_min": {
+      "valor": 30,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: mismo criterio que a pie, con la duración de consumibles del rover."
+    },
+    "recarga_refugio_min": {
+      "valor": 60,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: tiempo de recarga en una base o depósito entre dos salidas en rover."
+    },
+    "tormenta_refugio_min": {
+      "valor": 30,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo, a calibrar: ante un aviso de partículas solares (SEP) la tripulación debe estar dentro de un refugio en 30 min; las partículas más energéticas llegan a Marte en decenas de minutos a horas después de la erupción."
+    },
+    "incertidumbre_posicion_m": {
+      "valor": 25,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo, a calibrar: 25 m es la incertidumbre al 95 % medida por nuestra localización a ciegas con fotos de Curiosity. Los controles de regreso, rescate y consumibles usan el peor valor del campo dentro de ese radio alrededor de cada celda de la ruta. En las regiones de 200 m el radio es menor que una celda: no cambia el resultado y se avisa."
+    },
+    "sin_dato_max_pct": {
+      "valor": 10,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo, a calibrar: porcentaje máximo de celdas sin dato válido del modelo de terreno dentro del radio de incertidumbre de posición alrededor de la ruta. Sobre la ruta misma no se admite ninguna."
+    }
+  }
+}

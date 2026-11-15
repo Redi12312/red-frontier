@@ -1,0 +1,37 @@
+{
+  "gas_marciano_j_kg_k": {
+    "valor": 192.1,
+    "base": "verificado_parcial",
+    "fuente": "NASA Glenn, Mars Atmosphere Equation — Metric: R = 0,1921 kJ/(kg·K), convertido a J/(kg·K). Modelo de mezcla marciana dominada por CO₂; no es CO₂ puro. https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/mars-atmosphere-equation-metric/"
+  },
+  "gravedad_m_s2": {
+    "valor": 3.71,
+    "base": "verificado",
+    "fuente": "ESA, Meet Mars: 3,711 m/s², redondeado a 3,71 m/s² para este modelo. https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/Exploration/ExoMars/Meet_Mars"
+  },
+  "sigma_presion_diferencial_pa": {
+    "valor": 1,
+    "base": "propuesta",
+    "fuente": "a calibrar: desviación estándar de p − pBase con mediciones simultáneas. Ya incluye ambos sensores de presión; no se multiplica por raíz de dos. No representa una precisión verificada de REMS ni de un traje."
+  },
+  "sigma_temperatura_k": {
+    "valor": 2,
+    "base": "propuesta",
+    "fuente": "a calibrar: desviación estándar de la temperatura media de la columna de aire, en K, independiente del ruido diferencial de presión; no es temperatura del suelo ni precisión verificada de REMS."
+  },
+  "sigma_pasos_fraccion": {
+    "valor": 0.05,
+    "base": "propuesta",
+    "fuente": "a calibrar: desviación estándar de la distancia por lectura, como fracción de distancia_m. Modelo de errores independientes entre lecturas, sin calibración de marcha con traje en Marte."
+  },
+  "sigma_rumbo_grados": {
+    "valor": 10,
+    "base": "propuesta",
+    "fuente": "a calibrar: desviación estándar del rumbo por lectura. El filtro usa la aproximación angular lineal, sin modelar un sesgo persistente del sensor."
+  },
+  "corte_sigma": {
+    "valor": 3.5,
+    "base": "propuesta",
+    "fuente": "a calibrar: radio de truncamiento de la transición gaussiana en desviaciones estándar; compromiso numérico entre soporte y costo del filtro en grilla."
+  }
+}

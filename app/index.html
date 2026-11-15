@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="es-UY">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Red Frontier · Consola de salida</title>
+  <link rel="icon" href="img/insignia-32.png" type="image/png">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="css/visor.css">
+  <link rel="stylesheet" href="css/guia.css">
+  <script>
+    // Oculta la consola hasta elegir idioma en la primera visita.
+    try {
+      const parametros = new URLSearchParams(location.search);
+      if ((!localStorage.getItem("rf-idioma") && !parametros.has("lang")) || parametros.get("guia") === "inicio")
+        document.documentElement.classList.add("guia-bienvenida-pendiente");
+    } catch {
+      if (!new URLSearchParams(location.search).has("lang")) document.documentElement.classList.add("guia-bienvenida-pendiente");
+    }
+  </script>
+</head>
+<body>
+  <header class="barra">
+    <div class="marca-app">
+      <img src="img/insignia-96.png" alt="Insignia del equipo Red Frontier PDE" width="46" height="46">
+      <div>
+        <h1><span class="rojo">RED</span> FRONTIER <small>PDE</small></h1>
+        <span class="subtitulo">Consola de planificación de salidas · Marte</span>
+      </div>
+    </div>
+    <label class="selector">Zona
+      <select id="zona"></select>
+    </label>
+    <label class="selector idioma">Idioma
+      <select id="idioma" aria-label="Idioma / Language"><option value="es">Español</option><option value="en">English</option></select>
+    </label>
+    <div class="opciones-caja">
+      <button type="button" id="opciones" class="chico" aria-expanded="false" aria-controls="panel-opciones" title="Oxígeno, tripulación y unidades">⚙ Opciones</button>
+      <div id="panel-opciones" class="panel-opciones" hidden></div>
+    </div>
+    <button type="button" id="guia-abrir" class="chico" data-no-traducir aria-controls="guia-panel" aria-expanded="false"></button>
+    <div class="relojes" aria-label="Hora de Marte">
+      <span>MSD <b id="msd">—</b></span>
+      <span>MTC <b id="mtc">—</b></span>
+    </div>
+  </header>
+
+  <main class="cuerpo">
+    <aside class="panel" aria-label="Controles">
+      <details class="caja" open>
+        <summary><h2>Capas</h2><button type="button" class="guia-info" data-guia-tema="hirise" data-no-traducir aria-label="Información / Information" aria-controls="guia-panel">ⓘ</button></summary>
+        <div id="capas" class="capas"></div>
+      </details>
+
+      <details class="caja" id="seccion-clima" open>
+        <summary><h2>Ventana EVA · clima</h2><button type="button" class="guia-info" data-guia-tema="ventana" data-no-traducir aria-label="Información / Information" aria-controls="guia-panel">ⓘ</button></summary>
+        <div id="clima-semaforo"></div>
+        <div id="clima-franjas" class="franjas" aria-label="Franjas del sol para salir"></div>
+        <dl id="clima-datos" class="dato-ubicacion"></dl>
+        <canvas id="clima-serie" class="perfil" height="90" aria-label="Temperaturas de los últimos soles"></canvas>
+        <div id="clima-espacial"></div>
+        <div class="acciones"><button type="button" id="clima-actualizar" class="chico">Actualizar desde NASA</button></div>
+        <p class="ayuda" id="clima-origen"></p>
+      </details>
+
+      <details class="caja" id="seccion-ruta" open>
+        <summary><h2>Plan de salida</h2><button type="button" class="guia-info" data-guia-tema="auto" data-no-traducir aria-label="Información / Information" aria-controls="guia-panel">ⓘ</button></summary>
+        <div class="pestanas" role="tablist" aria-label="Forma de planificar">
+          <button type="button" role="tab" data-plan="auto" class="activo" aria-selected="true">Automática</button>
+          <button type="button" role="tab" data-plan="manual" aria-selected="false">Manual</button>
+          <button type="button" role="tab" data-plan="itinerario" aria-selected="false">Itinerario</button>
+          <button type="button" role="tab" data-plan="expedicion" aria-selected="false" hidden>Expedición</button>
+        </div>
+        <div class="salida-llegada">
+          <label class="fila-sel" data-solo="auto manual itinerario expedicion">Salir desde <select id="salir-desde"></select></label>
+          <label class="fila-sel" data-solo="auto expedicion">Llegar a <select id="llegar-a"></select></label>
+        </div>
+        <p id="info-zona" class="ayuda info-zona" aria-live="polite"></p>
+        <div class="modos" role="group" aria-label="Qué marca el próximo toque">
+          <button type="button" data-marca="base" data-solo="auto manual expedicion" class="activo">Marcar base</button>
+          <button type="button" data-marca="destino" data-solo="auto expedicion">Marcar destino</button>
+          <button type="button" data-marca="punto" data-solo="manual" hidden>Agregar puntos</button>
+        </div>
+        <p class="ayuda" id="ayuda-ruta">Clic derecho en el mapa → «Base de la ruta aquí».</p>
+        <div id="plan-auto">
+          <div class="acciones">
+            <button type="button" id="calcular" class="primario" disabled>Calcular ruta segura</button>
+            <button type="button" id="borrar">Borrar</button>
+          </div>
+          <div id="rutas" class="rutas"></div>
+        </div>
+        <div id="plan-manual" hidden>
+          <ol id="puntos" class="puntos"></ol>
+          <div class="acciones">
+            <button type="button" id="deshacer" disabled>Deshacer punto</button>
+            <button type="button" id="borrar-manual">Borrar todo</button>
+          </div>
+          <div id="manual-plan"></div>
+        </div>
+        <div id="plan-itinerario" hidden>
+          <div id="itinerario" class="itinerario"></div>
+          <div class="acciones">
+            <button type="button" id="itinerario-calcular" class="primario" disabled>Calcular itinerario</button>
+            <button type="button" id="itinerario-vaciar" disabled>Vaciar</button>
+          </div>
+          <div id="itinerario-resultado"></div>
+        </div>
+        <div id="plan-expedicion" hidden>
+          <label class="fila-sel">Rovers presurizados
+            <select id="exp-rovers"><option value="1">1 (alejamiento ≤ 12 km de un refugio)</option><option value="2" selected>2 (se rescatan entre sí: ≤ 100 km)</option></select>
+          </label>
+          <div class="acciones"><button type="button" id="exp-calcular" class="primario">Planificar expedición</button></div>
+          <div id="exp-resultado"></div>
+        </div>
+        <div class="plan-global">
+          <div class="guia-titulo-fila"><h3 class="subtitulo-caja">Marcas del plan <small>· clic derecho en el mapa</small></h3><button type="button" class="guia-info" data-guia-tema="marcas" data-no-traducir aria-label="Información / Information" aria-controls="guia-panel">ⓘ</button></div>
+          <button type="button" id="plan-ejemplo" class="primario chico" hidden>Cargar misión de ejemplo: boxwork de Monte Sharp</button>
+          <div id="plan-marcas" class="plan-marcas"></div>
+          <p id="plan-guardado" class="ayuda plan-guardado" aria-live="polite"></p>
+          <div class="acciones">
+            <button type="button" id="plan-guardar" class="chico">Guardar plan (GeoJSON)</button>
+            <button type="button" id="plan-cargar" class="chico">Cargar plan</button>
+            <input type="file" id="plan-archivo" accept=".geojson,.json,application/geo+json" hidden>
+          </div>
+        </div>
+        <canvas id="perfil" class="perfil" width="300" height="110" hidden aria-label="Perfil de altura de la ruta elegida"></canvas>
+      </details>
+
+      <details class="caja" id="seccion-ubicacion" hidden>
+        <summary><h2>Geoubicación sin GPS</h2><button type="button" class="guia-info" data-guia-tema="horizonte" data-no-traducir aria-label="Información / Information" aria-controls="guia-panel">ⓘ</button></summary>
+        <p class="ayuda">Estimá tu posición como astronauta o en rover ante una falla de navegación, al perderte con polvo o antes del regreso de emergencia. Con visibilidad, el horizonte compara la silueta de las montañas de tus fotos con la calculada sobre HiRISE + MOLA-HRSC. Con polvo, sumá medidas de otros instrumentos.</p>
+        <p id="geo-validacion" class="ayuda"></p>
+        <div id="geo-horizonte">
+        <label class="fila-sel">Parada
+          <select id="parada"></select>
+        </label>
+        <div id="fotos-parada" class="tira-fotos" aria-label="Fotos de la parada"></div>
+        <div class="acciones">
+          <button type="button" id="ubicar" class="primario">Ubicar a ciegas</button>
+          <button type="button" id="revelar" disabled>Revelar posición real</button>
+        </div>
+        <fieldset class="subir">
+          <legend>Probar con tus propias fotos</legend>
+          <p class="ayuda">Subí fotos Navcam de Curiosity tomadas dentro de esta zona (las originales de NASA, sin
+            recortar). Opcional: el archivo de metadatos (.json). Si no lo subís, la app se lo pide a NASA por el nombre
+            de cada foto (necesita internet).</p>
+          <input type="file" id="subir-fotos" multiple accept=".jpg,.jpeg,.png,.json">
+          <ul id="fotos-subidas" class="fotos-subidas"></ul>
+          <button type="button" id="ubicar-subidas" class="primario" disabled>Ubicar con estas fotos</button>
+        </fieldset>
+        </div>
+        <div id="ubicacion-progreso" class="barra-avance" hidden><i></i><span></span></div>
+        <div id="ubicacion-resultado"></div>
+        <canvas id="perfil-horizonte" class="perfil" width="300" height="120" hidden aria-label="Horizonte medido y calculado"></canvas>
+        <section id="geo-medidas" aria-labelledby="geo-titulo">
+          <div class="guia-titulo-fila"><h3 id="geo-titulo" class="subtitulo-caja">Sumar medidas</h3><button type="button" class="guia-info" data-guia-tema="horizonte" data-no-traducir aria-label="Información / Information" aria-controls="guia-panel">ⓘ</button></div>
+          <p class="ayuda">Todas las medidas son opcionales. Cargá lecturas propias y sus errores de 1 sigma. Las precisiones típicas son propuestas a calibrar. Usá observaciones independientes y una misma posición y hora de referencia para combinarlas.</p>
+          <div id="geo-formulario"></div>
+          <p id="geo-estado" class="ayuda" role="status"></p>
+          <div id="geo-resultado" aria-live="polite"></div>
+          <button type="button" id="geo-usar" disabled>Usar como posición actual</button>
+        </section>
+        <div id="seccion-calculo" hidden>
+          <h3 class="subtitulo-caja">Cálculo en vivo · registro</h3>
+          <pre id="registro" class="registro" aria-live="polite"></pre>
+          <button type="button" id="bajar-registro" class="chico" disabled>Descargar registro (.txt)</button>
+        </div>
+      </details>
+
+      <details class="caja">
+        <summary><h2>Fuentes</h2><button type="button" class="guia-info" data-guia-tema="fuentes" data-no-traducir aria-label="Información / Information" aria-controls="guia-panel">ⓘ</button></summary>
+        <ul id="fuentes" class="fuentes"></ul>
+      </details>
+    </aside>
+
+    <div class="mapa-caja">
+      <div id="mapa" class="mapa"></div>
+      <div id="tarjeta-mapa" class="tarjeta-mapa" hidden></div>
+      <div id="hud" class="hud" hidden aria-live="polite"></div>
+    </div>
+  </main>
+
+  <footer class="estado-barra">
+    <span class="lampara" aria-hidden="true"></span>
+    <p id="estado" class="estado" role="status">Cargando…</p>
+    <span id="lectura" class="lectura" aria-live="off">Pasá el cursor por el mapa</span>
+    <div class="progreso" aria-hidden="true"><i></i></div>
+  </footer>
+
+  <div id="guia-raiz" data-no-traducir>
+    <dialog id="guia-bienvenida" aria-labelledby="guia-bienvenida-titulo" aria-describedby="guia-bienvenida-texto">
+      <p class="guia-ceja" aria-hidden="true"></p>
+      <h2 id="guia-bienvenida-titulo"><span lang="es-UY">Español</span> <span lang="en">English</span></h2>
+      <p id="guia-bienvenida-texto"></p>
+      <div id="guia-bienvenida-acciones" class="guia-acciones">
+        <button type="button" data-guia-idioma="es" lang="es-UY">Español</button>
+        <button type="button" data-guia-idioma="en" lang="en">English</button>
+      </div>
+    </dialog>
+    <aside id="guia-panel" aria-labelledby="guia-titulo" hidden>
+      <div class="guia-cabecera">
+        <h2 id="guia-titulo" tabindex="-1"></h2>
+        <button type="button" id="guia-cerrar"></button>
+      </div>
+      <div id="guia-navegacion"></div>
+      <div id="guia-contenido"></div>
+      <p id="guia-estado" role="status" aria-live="polite"></p>
+    </aside>
+    
+  </div>
+
+  <script src="js/guardado-inicio.js"></script>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

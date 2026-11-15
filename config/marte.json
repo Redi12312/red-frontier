@@ -1,0 +1,22 @@
+{
+  "_nota": "Vista de todo Marte: fondo y zonas candidatas para misiones humanas. Todo sale de JPL Mars Trek, recurso oficial del reto.",
+  "fondo": {
+    "nombre": "MOLA (MGS) + HRSC (Mars Express), relieve sombreado en color, 200 m/px",
+    "servicio": "https://trek.nasa.gov/tiles/Mars/EQ/{capa}/1.0.0/default/default028mm/{nivel}/{fila}/{col}.jpg",
+    "capa": "Mars_MOLA_blend200ppx_HRSC_ClrShade_clon0dd_200mpp_lzw",
+    "nivel": 4,
+    "columnas": 32,
+    "filas": 16,
+    "tamano_tesela_px": 256,
+    "misiones": "Mars Global Surveyor, Mars Express",
+    "pagina": "https://trek.nasa.gov/mars/"
+  },
+  "candidatas": {
+    "nombre": "Exploration Zones (NASA EMC): taller de NASA sobre sitios de aterrizaje para misiones humanas, 27-30 oct 2015",
+    "url": "https://trek.nasa.gov/mars/trekarcgis/rest/services/EZMars/MapServer/0/query?where=1%3D1&outFields=*&returnGeometry=true&f=geojson",
+    "radio_zona_km": {
+      "valor": 100,
+      "fuente": "Definición de Exploration Zone: regiones de interés a unos 100 km de un sitio de aterrizaje central (NASA, taller de 2015)"
+    }
+  }
+}

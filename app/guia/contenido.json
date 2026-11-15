@@ -1,0 +1,1711 @@
+{
+  "version": 2,
+  "interfaz": {
+    "es": {
+      "abrir": "Guía",
+      "marca": "RED FRONTIER · PDE",
+      "elegirIdioma": "Elegí tu idioma para explorar Marte. Choose your language to explore Mars.",
+      "titulo": "Guía para explorar",
+      "indice": "Todos los temas",
+      "historia": "Una salida a Monte Sharp",
+      "desactivar": "Desactivar ayuda",
+      "cerrar": "Cerrar",
+      "introduccion": "Elegí una ficha o explorá una salida completa. Con esta guía abierta, pasá por un control para resaltarlo y tocá para leer su explicación. Cada ficha ofrece una acción real y enlaces al glosario.",
+      "indicadores": "Los íconos de información están en los títulos. Con la guía abierta, tocá un control resaltado para ver su ficha. «Probalo» ejecuta la acción. Esc cierra la guía.",
+      "historiaIntro": "Siete escenas de una misma salida. Elegí cualquiera, en cualquier orden y a tu ritmo. Abrir otro modo o zona puede limpiar rutas dibujadas; tus marcas guardadas siguen en su zona.",
+      "libre": "No hay pasos obligatorios. Volvé al índice o cerrá la guía cuando quieras.",
+      "que": "Qué es",
+      "porQue": "Por qué está",
+      "como": "Cómo se programó",
+      "probar": "Probalo",
+      "relacionados": "También en esta parte de la consola",
+      "ayuda": "Ayuda",
+      "cargando": "La consola todavía está cargando. Esperá a que aparezcan las zonas y volvé a tocar Probalo.",
+      "necesitaZona": "Primero abrí una zona: elegí «Gale» en el índice y tocá «Abrí Gale a pie».",
+      "necesitaBase": "Primero marcá una base con clic derecho en una celda válida del mapa. Después volvé a probar.",
+      "necesitaPie": "Esta función necesita una zona a pie. Abrí Gale a pie desde el índice.",
+      "necesitaRover": "Esta función necesita una región de rover. Abrila desde «Control · avería del rover» y volvé a este tema.",
+      "noDisponible": "El control todavía no está disponible. Para el visor calculá una ruta automática; para inyectar fallas iniciá esa simulación. Las capas y herramientas dependen de la zona abierta.",
+      "hecho": "Acción enviada a la consola. Revisá su resultado y los avisos de la barra de estado.",
+      "errorAccion": "La acción no pudo completarse. Revisá la barra de estado y la disponibilidad de los datos locales; podés volver a probar.",
+      "bienvenida": "Explorá Red Frontier",
+      "bienvenidaTexto": "Un mapa para entender dónde puede ir una tripulación y cómo puede volver. La guía explica las funciones y sus límites; vos elegís qué probar.",
+      "recorrido": "Hacer el recorrido guiado",
+      "explorar": "Explorar por mi cuenta",
+      "glosario": "Glosario",
+      "volverFicha": "Volver a la ficha",
+      "utilidad": "Utilidad para la tripulación",
+      "origen": "De dónde sale"
+    },
+    "en": {
+      "abrir": "Guide",
+      "marca": "RED FRONTIER · PDE",
+      "elegirIdioma": "Choose your language to explore Mars. Elegí tu idioma para explorar Marte.",
+      "titulo": "Explore the guide",
+      "indice": "All topics",
+      "historia": "A sortie on Mount Sharp",
+      "desactivar": "Turn help off",
+      "cerrar": "Close",
+      "introduccion": "Choose a card or explore a complete sortie. While this guide is open, hover over a control to highlight it and click to read its explanation. Each card offers a real action and glossary links.",
+      "indicadores": "Information icons sit in section titles. With the guide open, click a highlighted control to read its card. “Try it” runs the action. Esc closes the guide.",
+      "historiaIntro": "Seven scenes from one sortie. Choose any scene, in any order and at your own pace. Opening another mode or zone may clear displayed routes; saved markers remain in their zone.",
+      "libre": "There are no required steps. Return to the index or close the guide whenever you want.",
+      "que": "What it is",
+      "porQue": "Why it exists",
+      "como": "How it was built",
+      "probar": "Try it",
+      "relacionados": "Also in this part of the console",
+      "ayuda": "Help",
+      "cargando": "The console is still loading. Wait until zones appear, then try again.",
+      "necesitaZona": "Open a zone first: choose “Gale” in the index and select “Open walking map of Gale”.",
+      "necesitaBase": "First mark a base by right-clicking a valid map cell, then try again.",
+      "necesitaPie": "This function needs a walking zone. Open walking Gale from the index.",
+      "necesitaRover": "This function needs a rover region. Open one from “Check · rover breakdown”, then return to this topic.",
+      "noDisponible": "This control is not available yet. For the HUD, calculate an automatic route; to inject failures, start that simulation. Layers and tools depend on the open zone.",
+      "hecho": "Action sent to the console. Inspect its result and the status-bar messages.",
+      "errorAccion": "The action could not finish. Check the status bar and local data availability; you can try again.",
+      "bienvenida": "Explore Red Frontier",
+      "bienvenidaTexto": "A map to understand where a crew can go and how they can return. The guide explains functions and limits; you choose what to try.",
+      "recorrido": "Take the guided tour",
+      "explorar": "Explore on my own",
+      "glosario": "Glossary",
+      "volverFicha": "Back to the card",
+      "utilidad": "Use for the crew",
+      "origen": "Where it comes from"
+    }
+  },
+  "temas": [
+    {
+      "id": "marte",
+      "selector": "#zona",
+      "accion": {
+        "gancho": "marte"
+      },
+      "es": {
+        "titulo": "Marte y las 48 zonas candidatas",
+        "que": "El mapa global permite elegir una región para explorar en rover.",
+        "porQue": "Antes de elegir un recorrido hace falta saber qué terreno está cubierto. Por ejemplo, una caminata detallada en Gale necesita otro mapa que una travesía regional en rover. Las 48 candidatas provienen del taller de sitios de aterrizaje humano de NASA de 2015, documentado en config/marte.json. Son lugares de estudio y la logística humana se agrega como parte del plan.",
+        "probar": "Abrí todo Marte",
+        "utilidad": "Elegí la región y verificá su cobertura antes de proponer bases y objetivos.",
+        "origen": "NASA Exploration Zones, taller de 2015, y mosaicos Mars Trek. config/marte.json documenta las fuentes y datos/indice.json enlaza las regiones disponibles."
+      },
+      "en": {
+        "titulo": "Mars and 48 candidate regions",
+        "que": "The global map lets you choose a region for rover exploration.",
+        "porQue": "A crew needs to know the mapped coverage before choosing a traverse. For example, a detailed walk at Gale needs a different map from a regional rover drive. The 48 candidates come from NASA’s 2015 human landing-site workshop, documented in config/marte.json. They are study locations, with human logistics added as part of the plan.",
+        "probar": "Open all Mars",
+        "utilidad": "Choose a region and check its coverage before proposing bases and targets.",
+        "origen": "NASA Exploration Zones from the 2015 workshop and Mars Trek mosaics. config/marte.json documents sources and datos/indice.json links available regions."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "gale",
+      "selector": "#mapa",
+      "accion": {
+        "gancho": "zona",
+        "argumento": "gale_boxwork"
+      },
+      "es": {
+        "titulo": "Gale · una salida a Monte Sharp",
+        "que": "El mapa de caminata cubre el boxwork de Monte Sharp con relieve HiRISE.",
+        "porQue": "Una ladera pequeña puede perderse al mirar una región entera. Si la tripulación necesita rodear un afloramiento, importa el detalle cercano. meta.json de Gale documenta una grilla de 2 m sobre unos 5 × 10 km, preparada desde un DTM HiRISE de NASA/USGS. Cada capa conserva las limitaciones de su producto de origen.",
+        "probar": "Abrí Gale a pie",
+        "utilidad": "Revisá el terreno de la caminata y dónde termina la cobertura disponible.",
+        "origen": "DTM HiRISE DTEEC_019698_1750_019988_1750_U01 de NASA/USGS. datos/gale_boxwork/meta.json registra la grilla procesada de 2 m y las capas con su procedencia."
+      },
+      "en": {
+        "titulo": "Gale · a sortie on Mount Sharp",
+        "que": "The walking map covers Mount Sharp boxwork using HiRISE terrain.",
+        "porQue": "Small slopes can disappear on a regional map. A crew detouring around an outcrop needs local detail. Gale’s meta.json documents a 2 m grid over roughly 5 × 10 km, prepared from a NASA/USGS HiRISE DTM. Each layer retains the limitations of its source product.",
+        "probar": "Open walking map of Gale",
+        "utilidad": "Inspect walking terrain and the edge of available coverage.",
+        "origen": "NASA/USGS HiRISE DTM DTEEC_019698_1750_019988_1750_U01. datos/gale_boxwork/meta.json records the processed 2 m grid and layer provenance."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "hirise",
+      "selector": "#capas",
+      "accion": {
+        "gancho": "capa",
+        "argumento": "[data-capa=\"orto\"]",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Imagen HiRISE",
+        "que": "La ortoimagen muestra la superficie fotografiada desde órbita.",
+        "porQue": "Una textura puede sugerir rocas o afloramientos que conviene inspeccionar. Por ejemplo, antes de elegir una parada de ciencia podés mirar su entorno y después consultar pendiente y rugosidad. La imagen ESP_019698_1750 de MRO se identifica en meta.json de Gale. La grilla de relieve de 2 m que la acompaña tiene una resolución distinta de la fotografía.",
+        "probar": "Encendé HiRISE",
+        "utilidad": "Elegí lugares para inspeccionar y contrastalos con las capas calculadas de terreno.",
+        "origen": "Ortoimagen real ESP_019698_1750 de HiRISE, MRO, NASA/USGS, registrada en meta.json de Gale. Las texturas requieren inspección complementaria para evaluar resistencia del suelo."
+      },
+      "en": {
+        "titulo": "HiRISE image",
+        "que": "The orthoimage shows the surface photographed from orbit.",
+        "porQue": "Texture can suggest rocks or outcrops worth inspecting. For example, before selecting a science stop, inspect its surroundings and then check slope and roughness. Gale’s meta.json identifies MRO image ESP_019698_1750. The accompanying 2 m terrain grid has a different resolution from the photograph.",
+        "probar": "Show HiRISE",
+        "utilidad": "Select inspection sites and compare them with calculated terrain layers.",
+        "origen": "Real HiRISE orthoimage ESP_019698_1750, MRO, NASA/USGS, recorded in Gale’s meta.json. Textures require complementary inspection to assess soil strength."
+      },
+      "control": "[data-capa=\"orto\"]",
+      "algoritmo": false
+    },
+    {
+      "id": "pendiente",
+      "selector": "#capas",
+      "accion": {
+        "gancho": "capa",
+        "argumento": "[data-capa=\"pendiente\"]",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Pendiente y margen medido",
+        "que": "La capa muestra cuánto se inclina el suelo y qué límite usa el modelo para caminar.",
+        "porQue": "El relieve procesado puede suavizar una cuesta que en el lugar resulta más inclinada. Si un rescate atraviesa esa ladera, el tiempo previsto puede resultar demasiado optimista. En 508 paradas de Curiosity, la subestimación de pendiente tuvo percentil 95 de 5,84°, según validacion_curiosity.json. Al descontarlo de la referencia Artemis de 20°, el código redondea el límite a 14,2°.",
+        "como": "Se reserva un margen por lo que el mapa puede ocultar. El pipeline deriva la pendiente del DTM y la comparación con la inclinación del rover estima ese margen. limitePendientePie descuenta el percentil medido y redondea a una décima. La referencia de 20° es verificado para Artemis en config/riesgo.json, la comparación con Curiosity es medicion_propia y trasladarla a una caminata marciana requiere validación. El cálculo está en riesgo.js.",
+        "probar": "Encendé pendiente",
+        "utilidad": "Revisá si hace falta rodear una ladera antes de aceptar un recorrido."
+      },
+      "en": {
+        "titulo": "Slope and measured margin",
+        "que": "The layer shows how steep the ground is and the limit used by the walking model.",
+        "porQue": "Processed terrain can smooth a slope that is steeper on the ground. A rescue across that slope may then take longer than expected. Across 508 Curiosity stops, slope underestimation had a 95th percentile of 5.84°, according to validacion_curiosity.json. Subtracting it from the 20° Artemis reference gives the code’s rounded 14.2° limit.",
+        "como": "A margin accounts for terrain detail the map can hide. The pipeline derives slope from the DTM, and comparison with rover tilt estimates that margin. limitePendientePie subtracts the measured percentile and rounds to one decimal place. config/riesgo.json labels the 20° Artemis reference verificado, while the Curiosity comparison is medicion_propia. Its use for a Martian walk needs validation. The calculation is in riesgo.js.",
+        "probar": "Show slope",
+        "utilidad": "Check whether a slope needs a detour before accepting a route."
+      },
+      "control": "[data-capa=\"pendiente\"]",
+      "algoritmo": true
+    },
+    {
+      "id": "rugosidad",
+      "selector": "#capas",
+      "accion": {
+        "gancho": "capa",
+        "argumento": "[data-capa=\"rugosidad\"]",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Rugosidad del suelo",
+        "que": "La rugosidad resume irregularidades del relieve local.",
+        "porQue": "Un suelo con desniveles pequeños puede ser lento aunque parezca plano a gran escala. Por ejemplo, arrastrar a un compañero sobre terreno irregular exige una inspección más cuidadosa. config/traje.json propone un umbral de 50 cm, a calibrar. La rugosidad se deriva del DTM y los obstáculos menores que su resolución pueden quedar sin representar.",
+        "probar": "Encendé rugosidad",
+        "utilidad": "Buscá alternativas menos irregulares para caminar y para un posible rescate.",
+        "origen": "Capa modelada a partir del DTM HiRISE de NASA/USGS. config/traje.json propone 50 cm como límite a calibrar y config/rutas.json documenta pesos propuestos. El formato heredado de traje.json identifica la fuente sin campo base."
+      },
+      "en": {
+        "titulo": "Ground roughness",
+        "que": "Roughness summarizes local terrain irregularity.",
+        "porQue": "Small terrain irregularities can slow travel even on a broadly flat surface. For example, dragging a partner across uneven ground requires closer inspection. config/traje.json proposes a 50 cm threshold, to be calibrated. Roughness is derived from the DTM, and obstacles smaller than its resolution can remain unresolved.",
+        "probar": "Show roughness",
+        "utilidad": "Look for smoother alternatives for walking and a possible rescue.",
+        "origen": "Modeled layer derived from NASA/USGS HiRISE DTM. config/traje.json proposes a 50 cm limit to calibrate, and config/rutas.json documents proposed weights. The legacy traje.json format identifies sources without a base field."
+      },
+      "control": "[data-capa=\"rugosidad\"]",
+      "algoritmo": false
+    },
+    {
+      "id": "prohibido",
+      "selector": "#capas",
+      "accion": {
+        "gancho": "capa",
+        "argumento": "[data-capa=\"prohibido\"]",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Zonas prohibidas",
+        "que": "El rojo marca terreno que el vehículo elegido no puede atravesar según el modelo.",
+        "porQue": "Una línea corta puede cruzar un obstáculo que el vehículo elegido no puede superar. Por ejemplo, pasar en diagonal entre dos celdas bloqueadas recortaría una esquina peligrosa. En Gale la referencia de pendiente a pie es 14,2°, calculada con config/riesgo.json y la validación de Curiosity. También importan rugosidad, datos válidos y los radios de peligro del plan.",
+        "como": "El terreno se trata como una red de casillas conectadas. Se bloquean las casillas que exceden límites o carecen de datos y se impiden diagonales que corten esquinas bloqueadas. El DTM de NASA/USGS aporta alturas y sus derivadas. prepararGrilla y la búsqueda están en ruteo.js, la revisión manual en riesgo.js y los límites en config/traje.json, rover.json y riesgo.json. Las capacidades lunares son referencias verificadas para su contexto y los límites propios requieren calibración.",
+        "probar": "Mostrá terreno prohibido",
+        "utilidad": "Descartá corredores bloqueados antes de comparar esfuerzo y duración."
+      },
+      "en": {
+        "titulo": "Forbidden terrain",
+        "que": "Red marks ground the selected vehicle cannot cross under the model.",
+        "porQue": "A short line can cross an obstacle the selected vehicle cannot traverse. For example, moving diagonally between blocked cells would cut a dangerous corner. Gale’s walking slope reference is 14.2°, calculated from config/riesgo.json and the Curiosity validation. Roughness, valid data and planned hazard radii also matter.",
+        "como": "Terrain is treated as connected grid cells. Cells exceeding limits or missing data are blocked, and diagonal moves cannot cut blocked corners. The NASA/USGS DTM supplies heights and derived terrain measures. prepararGrilla and search are in ruteo.js, manual checks in riesgo.js, and limits in config/traje.json, rover.json and riesgo.json. Lunar capabilities are verified references for their original context, while team assumptions require calibration.",
+        "probar": "Show forbidden terrain",
+        "utilidad": "Discard blocked corridors before comparing effort and duration."
+      },
+      "control": "[data-capa=\"prohibido\"]",
+      "algoritmo": true
+    },
+    {
+      "id": "blando",
+      "selector": "#capas",
+      "accion": {
+        "gancho": "capa",
+        "argumento": "[data-capa=\"blando\"]",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Suelo blando probable",
+        "que": "Esta capa modelada señala dónde conviene inspeccionar antes de pisar.",
+        "porQue": "Arena y polvo pueden frenar ruedas o dificultar un rescate. Por ejemplo, una zona oscura en la imagen nocturna merece inspección antes de cruzarla. config/capas_extra.json propone combinar el 20 % más oscuro de THEMIS con rugosidad de hasta 0,10 m. Es una señal indirecta a calibrar que agrega costo y avisos al recorrido.",
+        "probar": "Encendé suelo blando",
+        "utilidad": "Señalá tramos para inspección local y compará desvíos.",
+        "origen": "Indicio modelado al combinar THEMIS Night IR real y rugosidad derivada de HiRISE. config/capas_extra.json documenta el criterio propuesto a calibrar. config/riesgo.json avisa cuando se atraviesa suelo blando probable."
+      },
+      "en": {
+        "titulo": "Probable soft soil",
+        "que": "This modeled layer flags where to inspect before entry.",
+        "porQue": "Sand and dust can slow wheels or hinder rescue. For example, a dark patch in the nighttime image warrants inspection before crossing. config/capas_extra.json proposes combining the darkest 20% of THEMIS with roughness up to 0.10 m. This indirect indicator needs calibration and adds route cost and warnings.",
+        "probar": "Show probable soft soil",
+        "utilidad": "Flag stretches for local inspection and compare detours.",
+        "origen": "Modeled indicator combining real THEMIS Night IR with HiRISE-derived roughness. config/capas_extra.json documents the proposed criterion to calibrate. config/riesgo.json warns when probable soft terrain is crossed."
+      },
+      "control": "[data-capa=\"blando\"]",
+      "algoritmo": false
+    },
+    {
+      "id": "termico",
+      "selector": "#capas",
+      "accion": {
+        "gancho": "capa",
+        "argumento": "[data-capa=\"termico\"]",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Térmico nocturno · THEMIS",
+        "que": "El brillo infrarrojo nocturno compara cómo conserva calor el suelo.",
+        "porQue": "Los materiales pierden calor a distinta velocidad durante la noche. Por ejemplo, un sector más oscuro puede motivar una inspección por material fino. La fuente THEMIS Night IR tiene resolución de 100 m según config/capas_extra.json. Las costuras del mosaico y el brillo relativo limitan la comparación entre lugares.",
+        "probar": "Encendé THEMIS de noche",
+        "utilidad": "Elegí dónde revisar propiedades del suelo junto con las demás capas.",
+        "origen": "THEMIS Night IR de Mars Odyssey, vía Mars Trek, documentado en config/capas_extra.json. La capa muestra brillo infrarrojo relativo y conserva el detalle original de 100 m. Temperatura e inercia térmica calibradas necesitan otro producto."
+      },
+      "en": {
+        "titulo": "Night thermal layer · THEMIS",
+        "que": "Night infrared brightness compares how the ground retains heat.",
+        "porQue": "Materials lose heat at different rates overnight. For example, a darker patch can motivate inspection for fine material. The THEMIS Night IR source has 100 m resolution according to config/capas_extra.json. Mosaic seams and relative brightness limit comparisons between locations.",
+        "probar": "Show nighttime THEMIS",
+        "utilidad": "Choose where to inspect ground properties alongside the other layers.",
+        "origen": "Mars Odyssey THEMIS Night IR via Mars Trek, documented in config/capas_extra.json. The layer displays relative infrared brightness and retains the original 100 m detail. Calibrated temperature and thermal inertia require another product."
+      },
+      "control": "[data-capa=\"termico\"]",
+      "algoritmo": false
+    },
+    {
+      "id": "crism-hyd",
+      "selector": "#capas",
+      "accion": {
+        "gancho": "capa",
+        "argumento": "[data-capa=\"crism_hyd\"]",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Agua en minerales · CRISM HYD",
+        "que": "Los colores resumen señales espectrales compatibles con minerales hidratados.",
+        "porQue": "Buscar minerales hidratados ayuda a elegir objetivos científicos. Por ejemplo, una franja con señal fuerte puede justificar una parada para tomar muestras. El producto HYD combina parámetros espectrales de CRISM documentados por Viviano-Beck et al. (2014) en config/capas_extra.json. El estiramiento de color cambia entre franjas y la disponibilidad de agua para la tripulación exige otros estudios.",
+        "probar": "Encendé CRISM HYD",
+        "utilidad": "Priorizá sitios de muestreo y verificá que entrar y volver sea viable.",
+        "origen": "CRISM MTRDR HYD de MRO, NASA PDS/ODE. config/capas_extra.json cita Viviano-Beck et al. (2014) y describe las franjas reales, cada una con su propio estiramiento de color."
+      },
+      "en": {
+        "titulo": "Mineral-bound water · CRISM HYD",
+        "que": "Colors summarize spectral signatures consistent with hydrated minerals.",
+        "porQue": "Hydrated-mineral signatures help select science targets. For example, a strong signal in a strip may justify a sampling stop. The HYD product combines CRISM spectral parameters documented by Viviano-Beck et al. (2014) in config/capas_extra.json. Color stretches vary between strips, and crew water availability requires further studies.",
+        "probar": "Show CRISM HYD",
+        "utilidad": "Prioritize sampling sites and check entry and return feasibility.",
+        "origen": "MRO CRISM MTRDR HYD, NASA PDS/ODE. config/capas_extra.json cites Viviano-Beck et al. (2014) and describes the real strips, each with its own color stretch."
+      },
+      "control": "[data-capa=\"crism_hyd\"]",
+      "algoritmo": false
+    },
+    {
+      "id": "crism-phy",
+      "selector": "#capas",
+      "accion": {
+        "gancho": "capa",
+        "argumento": "[data-capa=\"crism_phy\"]",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Arcillas y OH · CRISM PHY",
+        "que": "Los colores resaltan posibles arcillas y otros minerales con grupos OH, vinculados a procesos geológicos con agua.",
+        "porQue": "Las arcillas ayudan a estudiar la historia del agua en Marte. Por ejemplo, una firma espectral puede orientar una caminata de muestreo. PHY combina D2300, D2200 y BD1900R2, según la referencia de 2014 de CRISM en config/capas_extra.json. La identificación del material se confirma con observaciones complementarias y su resistencia se evalúa aparte.",
+        "probar": "Encendé CRISM PHY",
+        "utilidad": "Elegí preguntas científicas y posibles paradas dentro del presupuesto de salida.",
+        "origen": "CRISM MTRDR PHY de MRO, NASA PDS/ODE, documentado en config/capas_extra.json y Viviano-Beck et al. (2014). La composición resalta parámetros asociados a filosilicatos y minerales con OH."
+      },
+      "en": {
+        "titulo": "Clays and OH · CRISM PHY",
+        "que": "Colors highlight possible clays and other OH-bearing minerals linked to geological processes involving water.",
+        "porQue": "Clays help investigate the history of water on Mars. For example, a spectral signature can guide a sampling walk. PHY combines D2300, D2200 and BD1900R2, according to the 2014 CRISM reference in config/capas_extra.json. Material identification needs complementary observations, and strength is assessed separately.",
+        "probar": "Show CRISM PHY",
+        "utilidad": "Choose science questions and candidate stops within the sortie budget.",
+        "origen": "MRO CRISM MTRDR PHY, NASA PDS/ODE, documented in config/capas_extra.json and Viviano-Beck et al. (2014). The composite highlights parameters associated with phyllosilicates and OH-bearing minerals."
+      },
+      "control": "[data-capa=\"crism_phy\"]",
+      "algoritmo": false
+    },
+    {
+      "id": "curiosity",
+      "selector": "#capas",
+      "accion": {
+        "gancho": "capa",
+        "argumento": "[data-capa=\"curiosity\"]",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Curiosity · recorrido y fotos",
+        "que": "El recorrido real del rover aporta contexto y observaciones de superficie.",
+        "porQue": "Las observaciones de superficie permiten contrastar lo que se interpreta desde órbita. Por ejemplo, una ladera recorrida por Curiosity ayuda a revisar el relieve procesado. La comparación propia usa 508 paradas y un corrimiento de 44 m al este y 32 m al sur, según validacion_curiosity.json. La movilidad del rover y la de una persona con traje requieren evaluaciones propias.",
+        "probar": "Mostrá Curiosity",
+        "utilidad": "Contrastá el mapa con fotos y observaciones antes de elegir objetivos.",
+        "origen": "Recorrido y fotos reales de MSL desde NASA/JPL MMGIS. meta.json registra el ajuste propio de unos 54 m y validacion_curiosity.json conserva la comparación con las paradas."
+      },
+      "en": {
+        "titulo": "Curiosity · traverse and photos",
+        "que": "The real rover traverse adds context and surface observations.",
+        "porQue": "Surface observations help check orbital interpretations. For example, a slope traversed by Curiosity can help review processed terrain. The project comparison uses 508 stops and a 44 m east, 32 m south shift, according to validacion_curiosity.json. Rover mobility and suited walking each require their own assessment.",
+        "probar": "Show Curiosity",
+        "utilidad": "Compare the map with photos and observations before selecting targets.",
+        "origen": "Real MSL traverse and photos from NASA/JPL MMGIS. meta.json records the project’s roughly 54 m alignment adjustment, and validacion_curiosity.json stores the stop comparison."
+      },
+      "control": "[data-capa=\"curiosity\"]",
+      "algoritmo": false
+    },
+    {
+      "id": "segura",
+      "selector": "#info-zona",
+      "accion": {
+        "gancho": "capa",
+        "argumento": "[data-capa=\"alcanzable\"]",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Zona segura y refugios",
+        "que": "El área coloreada reúne lugares desde donde se cumplen los tiempos modelados de regreso y rescate hasta un refugio.",
+        "porQue": "Estar cerca en línea recta no asegura poder volver a tiempo. Si el traje pierde el suministro principal lejos de la base, una cuesta o un desvío puede agotar la reserva. config/riesgo.json usa 60 min de regreso con O₂ secundario, incluidos 10 min de ingreso, como referencia Artemis. Además exige rescate en 60 min con una velocidad de arrastre propuesta a la mitad de la marcha. Un refugio apto puede ampliar el área según su ubicación y el terreno.",
+        "como": "Imaginá un reloj de regreso en cada casilla del terreno. Dijkstra propaga los tiempos desde varios refugios y conserva el mejor tiempo hasta cada casilla. Se calculan campos separados de regreso y de rescate sobre el relieve NASA/USGS, y la máscara admite las celdas que cumplen ambos presupuestos. riesgo.js usa ruteo.js y config/riesgo.json. Los 60 y 10 min son referencias verificadas de Artemis para su contexto, el arrastre a velocidad 0,5 y en pendientes de hasta 10° son propuestas a calibrar. plan.js filtra refugios adicionales por stock declarado, aunque el campo general supone apoyo en la base inicial. Al calcular rutas automáticas a pie, la tarjeta directa y la cadena rechazan una base de salida conocida sin capacidad o stock suficiente. La cadena recalcula apoyos con el stock restante de su rama.",
+        "probar": "Mostrá el sombreado seguro",
+        "utilidad": "Elegí hasta dónde alejarte y dónde un refugio adicional permitiría ampliar la salida.",
+        "diagrama": "Esquema ilustrativo. Un refugio adicional puede ampliar la zona de regreso y rescate."
+      },
+      "en": {
+        "titulo": "Safe zone and refuges",
+        "que": "The colored area contains places meeting modeled return and rescue times to a refuge.",
+        "porQue": "Being close in a straight line does not ensure a timely return. If the suit loses its primary supply away from base, a slope or detour can exhaust the reserve. config/riesgo.json uses an Artemis reference of 60 min on secondary O₂, including 10 min for ingress. It also requires rescue within 60 min, with a proposed dragging speed of half the walking speed. A suitable refuge can expand the area depending on its location and terrain.",
+        "como": "Imagine a return clock on every terrain cell. Dijkstra spreads travel times from multiple refuges and keeps the best time to each cell. Separate return and rescue fields use NASA/USGS terrain, and the mask accepts cells meeting both budgets. riesgo.js uses ruteo.js and config/riesgo.json. The 60 and 10 min values are verified Artemis references for their original context, while dragging at speed factor 0.5 on slopes up to 10° is proposed and needs calibration. plan.js filters additional refuges by declared stock, while the general field assumes support at departure. When calculating automatic walking routes, both the direct-route card and the chain reject a known departure base lacking capacity or stock. The chain recalculates support from its branch’s remaining stock.",
+        "probar": "Show safety shading",
+        "utilidad": "Choose how far to travel and where another refuge could extend a sortie.",
+        "diagrama": "Illustration. An additional refuge can extend the return and rescue area."
+      },
+      "algoritmo": true,
+      "diagrama": "segura"
+    },
+    {
+      "id": "menu",
+      "selector": "#mapa",
+      "accion": {
+        "gancho": "menu",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Menú del mapa · clic derecho",
+        "que": "Reúne base, destino, marcas y herramientas para una celda.",
+        "porQue": "Una base elegida por accidente cambia todos los tiempos de regreso. Por ejemplo, mover el mapa y marcar el origen deben ser acciones distinguibles. El menú reúne los 7 tipos de marca definidos en config/marcas.json junto con herramientas. En trazado manual y medición, los clics siguen la herramienta que elegiste.",
+        "probar": "Abrí el menú en el centro",
+        "utilidad": "Elegí explícitamente el punto de apoyo, destino o herramienta que necesitás.",
+        "origen": "Acciones locales del plan y herramientas disponibles para la zona abierta. config/marcas.json describe los tipos de marca. El botón de prueba abre el menú en el centro visible del mapa y después elegís la acción."
+      },
+      "en": {
+        "titulo": "Map menu · right click",
+        "que": "It groups base, destination, markers and tools for a cell.",
+        "porQue": "An accidentally selected base changes every return time. For example, panning the map and placing an origin need distinct actions. The menu groups the 7 marker types defined in config/marcas.json with field tools. In manual tracing and measurement, clicks follow the selected tool.",
+        "probar": "Open menu at map center",
+        "utilidad": "Explicitly choose the support point, destination or tool you need.",
+        "origen": "Local plan actions and tools available for the open zone. config/marcas.json describes marker types. The try button opens the menu at the visible map center, where you choose an action."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "auto",
+      "selector": "[data-plan=\"auto\"]",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "[data-plan=\"auto\"]",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Ruta automática",
+        "que": "El motor busca un camino que prioriza seguridad en la zona permitida.",
+        "porQue": "La recta puede ahorrar distancia y exigir más esfuerzo. Por ejemplo, rodear un borde abrupto puede facilitar el regreso de emergencia. config/rutas.json define un perfil llamado segura con pesos propuestos para terreno y cercanía a refugios. El resultado depende de esos pesos y se revisa con la tarjeta de decisión.",
+        "como": "La búsqueda avanza por las casillas que prometen llegar con menor costo. A* combina lo ya recorrido con una estimación de lo que falta, impide atravesar prohibiciones y pondera pendiente, rugosidad, bordes, suelo blando y tiempos de regreso y rescate hasta refugios. La velocidad a pie usa una función tipo Tobler adaptada y el terreno viene del DTM de NASA/USGS. buscarRuta está en ruteo.js y corre desde ruteo-worker.js. config/traje.json y config/rutas.json contienen adaptaciones y pesos propuestos a calibrar. Cambiar de modo limpia las rutas dibujadas.",
+        "probar": "Elegí ruta automática",
+        "utilidad": "Compará un recorrido calculado con el terreno y sus controles de salida.",
+        "diagrama": "Esquema ilustrativo. A* extiende la búsqueda por casillas y construye un camino alrededor de obstáculos."
+      },
+      "en": {
+        "titulo": "Automatic route",
+        "que": "The engine seeks a safety-oriented path within the permitted zone.",
+        "porQue": "A straight line can save distance while requiring more effort. For example, detouring around a steep edge may ease emergency return. config/rutas.json defines one profile named segura with proposed terrain and refuge-proximity weights. The result depends on those weights and is reviewed through the decision card.",
+        "como": "Search advances through cells that promise a lower-cost arrival. A* combines cost already spent with an estimate of what remains, avoids exclusions and weights slope, roughness, edges, probable soft ground and return and rescue times to refuges. Walking speed uses an adapted Tobler-type function, with terrain from the NASA/USGS DTM. buscarRuta is in ruteo.js and runs through ruteo-worker.js. config/traje.json and config/rutas.json contain adaptations and proposed weights to calibrate. Switching modes clears displayed routes.",
+        "probar": "Select automatic planning",
+        "utilidad": "Compare a computed route with terrain and departure checks.",
+        "diagrama": "Illustration. A* expands a cell search and builds a path around obstacles."
+      },
+      "algoritmo": true,
+      "diagrama": "ruta"
+    },
+    {
+      "id": "manual",
+      "selector": "[data-plan=\"manual\"]",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "[data-plan=\"manual\"]",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Trazado manual",
+        "que": "Dibujá el recorrido y verificá cada tramo.",
+        "porQue": "Una línea dibujada a mano también puede atravesar un obstáculo. Por ejemplo, una diagonal entre celdas bloqueadas puede parecer transitable al alejar el zoom. Se aplica el mismo límite de 14,2° en Gale que en la ruta automática, calculado desde riesgo.json y la validación propia. La revisión recorre los segmentos antes de mostrar su decisión.",
+        "como": "Cada segmento se convierte en las casillas que cruza, como apoyar una regla sobre una cuadrícula. Se verifican pendiente, rugosidad, máscara válida, esquinas y pertenencia a la zona segura. Los tiempos del recorrido permiten evaluar consumibles y regreso. El relieve es NASA/USGS, manual.js envía al Worker y riesgo.js usa celdasRecta y verificarTramos. Se conservan las referencias y propuestas de config/riesgo.json y traje.json. Podés deshacer y ajustar el trazado.",
+        "probar": "Elegí trazado manual",
+        "utilidad": "Probá un recorrido propio, revisá sus objeciones y ajustalo."
+      },
+      "en": {
+        "titulo": "Manual tracing",
+        "que": "Draw a route and check each segment.",
+        "porQue": "A hand-drawn line can cross an obstacle too. For example, a diagonal between blocked cells may look passable when zoomed out. It uses the same 14.2° Gale limit as automatic routing, derived from riesgo.json and the project validation. Checks inspect the segments before displaying the decision.",
+        "como": "Each segment becomes the cells it crosses, like laying a ruler over a grid. Checks inspect slope, roughness, valid data, corners and safe-zone membership. Route times allow consumables and return checks. Terrain is NASA/USGS, manual.js sends work to the Worker, and riesgo.js uses celdasRecta and verificarTramos. References and proposals come from config/riesgo.json and traje.json. You can undo and adjust the trace.",
+        "probar": "Select manual tracing",
+        "utilidad": "Try your own route, review its objections and adjust it."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "itinerario",
+      "selector": "[data-plan=\"itinerario\"]",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "[data-plan=\"itinerario\"]",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Itinerario de varias paradas",
+        "que": "Un plan encadena marcas y tiempos de trabajo con regreso al refugio.",
+        "porQue": "Llegar a una muestra no completa la salida, todavía hay que trabajar y volver. Por ejemplo, dos paradas de ciencia agregan el tiempo que cargues en cada una. config/riesgo.json documenta 8 h de referencia primaria de Artemis y Opciones ajusta el presupuesto temporal. Ordenar mal las paradas puede gastar margen que haría falta para regresar.",
+        "como": "Se suman los trayectos y las pausas sobre un mismo reloj. A* calcula cada par de paradas y la cronología agrega ciencia antes de evaluar duración, regreso y margen. El terreno es el de la zona NASA/USGS. marcas.js valida la secuencia, plan.js permite ordenarla y ruteo-worker.js entrega el recorrido a riesgo.js. Los límites de config/riesgo.json combinan referencias lunares y propuestas a calibrar, y los minutos ingresados representan el plan de la tripulación.",
+        "probar": "Abrí el itinerario",
+        "utilidad": "Elegí el orden y los minutos de trabajo de las paradas que entran en la salida."
+      },
+      "en": {
+        "titulo": "Multi-stop itinerary",
+        "que": "A plan chains markers and work times with return to shelter.",
+        "porQue": "Reaching a sample does not finish the sortie, because work and return still remain. For example, two science stops add whatever work time you enter for each. config/riesgo.json documents an 8 h primary Artemis reference, and Options adjusts the time budget. Poor stop ordering can consume margin needed for return.",
+        "como": "Travel and stops are added to one clock. A* computes each pair of stops, then the timeline adds science before checking duration, return and margin. Terrain comes from the NASA/USGS zone. marcas.js validates the sequence, plan.js lets you reorder it, and ruteo-worker.js supplies the route to riesgo.js. Limits in config/riesgo.json combine lunar references with proposals to calibrate, and entered minutes represent the crew’s plan.",
+        "probar": "Open itinerary planning",
+        "utilidad": "Choose the order and work minutes of stops that fit the sortie."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "bases",
+      "selector": "#salir-desde",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#salir-desde",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Rutas por bases y recargas",
+        "que": "Dividí una caminata larga en tramos aprobados entre apoyos, con recargas y pernoctes cuando haga falta.",
+        "porQue": "Una caminata larga puede exceder una jornada aunque cada tramo corto sea viable. Por ejemplo, llegar a un hábitat permite recargar y seguir otro sol si quedan plazas y recursos. config/rutas.json usa 8 h de jornada como referencia parcial, y propone márgenes de jornada y luz de 30 min, a calibrar. El planificador descuenta recursos simulados por rama para comprobar visitas sucesivas. El inventario guardado sigue representando lo que declaraste para el plan.",
+        "como": "Imaginá distintas maneras de repartir el camino en escalas y días. El nuevo planificador a pie conserva etiquetas con ubicación, jornada, stock restante y nodos visitados. A* calcula aristas dirigidas sobre el DTM NASA/USGS y evaluarSalida debe aprobar cada tramo con regreso y rescate. Se comparan cadenas por riesgo modelado y después tiempo, se verifican luz y jornada acumuladas y se simulan débitos por recarga y pernocte, conservando reserva de refugio. Un destino sin base incluye regreso al origen del último tramo. planificarBases está en riesgo.js y recibe el pedido desde ruteo-worker.js. config/rutas.json registra jornada y márgenes, y consumibles.json aporta necesidades e inventarios. Los márgenes, stock y tasas de falla son propuestas a calibrar. El presupuesto de búsqueda puede agotarse y entonces se informa búsqueda incompleta. La probabilidad agrega las EVA y deja fuera la estadía. El modo rover conserva la comparación anterior de bases.",
+        "probar": "Elegí la base de salida",
+        "utilidad": "Compará la ruta directa con una cadena de apoyos y verificá su logística acumulada."
+      },
+      "en": {
+        "titulo": "Routes through bases and recharges",
+        "que": "Split a long walk into approved legs between support points, with recharges and overnight stops as needed.",
+        "porQue": "A long walk can exceed a day even when its short legs are feasible. For example, reaching a habitat allows recharge and departure on another sol if capacity and resources remain. config/rutas.json uses an 8 h day as a partial reference and proposes 30 min day and daylight margins to calibrate. The planner deducts simulated resources within each branch to check successive visits. Saved inventory still represents the supplies you declared for the plan.",
+        "como": "Imagine several ways to divide a walk into stops and days. The new walking planner keeps labels with location, day, remaining stock and visited nodes. A* computes directed edges over NASA/USGS DTM data, and evaluarSalida must approve each leg for return and rescue. Chains are compared by modeled risk and then time, accumulated daylight and day limits are checked, and recharge and overnight deductions are simulated while preserving refuge reserve. A destination without a base includes return to the last leg’s origin. planificarBases is in riesgo.js and receives requests through ruteo-worker.js. config/rutas.json records the day and margins, and consumibles.json supplies needs and inventories. Margins, stock and failure rates are proposals to calibrate. The search budget can run out, producing an incomplete-search result. Probability aggregates EVAs while leaving refuge stays outside its scope. Rover mode retains the earlier base comparison.",
+        "probar": "Choose departure base",
+        "utilidad": "Compare a direct route with support chains and check cumulative logistics."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "decision",
+      "selector": "#rutas",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#rutas",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Tarjeta SALIR / NO SALIR",
+        "que": "Muestra qué controles aprueban, avisan o rechazan la salida.",
+        "porQue": "Un recorrido calculado puede exceder el tiempo disponible o pasar por terreno inadmisible. Por ejemplo, volver caminando puede ser posible y rescatar a un compañero puede exceder el límite. config/riesgo.json fija referencias de 60 min de regreso y rescate y 8 h de suministro primario, ajustables en parte desde Opciones. La tarjeta hace visible qué regla permite salir, bloquea o emite un aviso.",
+        "como": "La tarjeta funciona como una lista de comprobación calculada sobre el recorrido completo. evaluarSalida toma los peores tiempos de regreso y rescate, agrega trabajo e ingreso y revisa pareja, terreno y entorno de incertidumbre. app.js suma luz con Mars24 y ventana.js suma el semáforo de REMS y DONKI. Cada control conserva valor, umbral y fuente. riesgo.js y config/riesgo.json combinan verificado para referencias lunares, medicion_propia y propuesta a calibrar. Radio y sombras locales se inspeccionan con herramientas separadas, y los recursos metabólicos del visor tienen otro presupuesto. En las nuevas cadenas a pie, planificarBases agrega jornada y luz acumuladas por día, con detalle de controles por tramo.",
+        "probar": "Enfocá resultados de rutas",
+        "utilidad": "Decidí si el plan cumple las reglas activas y qué tendrías que cambiar."
+      },
+      "en": {
+        "titulo": "GO / NO-GO card",
+        "que": "It shows which checks pass, warn or reject the sortie.",
+        "porQue": "A computed route may exceed available time or cross unacceptable terrain. For example, walking back may be possible while rescuing a partner exceeds the limit. config/riesgo.json sets references of 60 min for return and rescue and 8 h primary supply, partly adjustable in Options. The card shows which rule passes, blocks departure or issues a warning.",
+        "como": "The card is a checklist calculated over the full route. evaluarSalida takes worst return and rescue times, adds work and ingress, and checks crew pairing, terrain and the uncertainty neighborhood. app.js adds daylight using Mars24, and ventana.js adds the REMS and DONKI status. Each control retains its value, threshold and source. riesgo.js and config/riesgo.json combine verificado lunar references, medicion_propia and propuesta to calibrate. Radio and local shadows are inspected with separate tools, and metabolic HUD resources have a separate budget. In new walking chains, planificarBases adds accumulated day and daylight checks with per-leg control details.",
+        "probar": "Focus route results",
+        "utilidad": "Decide whether the plan meets active rules and what needs changing."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "control-regreso",
+      "selector": "#rutas",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#rutas",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Control · regreso de emergencia",
+        "que": "Revisa el peor tiempo de vuelta con el oxígeno secundario.",
+        "porQue": "Una pérdida de suministro principal deja el tiempo de la reserva para llegar y entrar al refugio. Por ejemplo, un obstáculo inesperado puede hacer que una base cercana tarde demasiado en alcanzarse. La referencia en config/riesgo.json es 60 min, incluidos 10 min de ingreso, tomada de Artemis. Opciones puede modificar el presupuesto temporal de O₂ secundario.",
+        "como": "Se consulta cuánto tarda volver desde cada punto y se conserva el peor caso. El campo Dijkstra usa el terreno NASA/USGS, y riesgo.js agrega el margen de posición y el tiempo de ingreso. config/riesgo.json documenta regreso_emergencia_max_min e ingreso_refugio_min como verificado para la referencia lunar. La incertidumbre local es propuesta a calibrar y la autonomía humana en Marte requiere validación.",
+        "probar": "Revisá el control de regreso",
+        "utilidad": "Revisá el punto desde el que ya no alcanzaría la reserva de emergencia."
+      },
+      "en": {
+        "titulo": "Check · emergency return",
+        "que": "It checks the worst return time against secondary oxygen.",
+        "porQue": "Losing primary supply leaves reserve time to reach and enter a refuge. For example, an unexpected obstacle can make a nearby base take too long to reach. The Artemis reference in config/riesgo.json is 60 min including 10 min for ingress. Options can change the secondary O₂ time budget.",
+        "como": "Return time is queried at each route point and the worst case is retained. The Dijkstra field uses NASA/USGS terrain, and riesgo.js adds position margin and ingress time. config/riesgo.json labels regreso_emergencia_max_min and ingreso_refugio_min verificado for their lunar reference. Local uncertainty is proposed and needs calibration, while human endurance on Mars needs validation.",
+        "probar": "Review emergency return",
+        "utilidad": "Inspect the point beyond which the emergency reserve would be insufficient."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "control-rescate",
+      "selector": "#rutas",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#rutas",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Control · rescate del compañero",
+        "que": "Estima si otra persona puede llevar al incapacitado al refugio.",
+        "porQue": "Un compañero incapacitado puede necesitar que lo arrastren hasta un refugio. Por ejemplo, una ladera que se camina sin carga puede impedir ese traslado. config/riesgo.json toma 60 min de rescate de xEVA/EHP-10028. La mitad de velocidad y el máximo de 10° de pendiente son propuestas del equipo a calibrar.",
+        "como": "Se vuelve a calcular el mapa de tiempos con movilidad más limitada. Un campo Dijkstra separado reduce la velocidad y bloquea pendientes superiores al límite de rescate sobre el DTM NASA/USGS. riesgo.js evalúa su peor tiempo e ingreso. config/riesgo.json distingue el plazo de referencia verificado de las propuestas de arrastre. La viabilidad física del traslado sigue pendiente de calibración marciana.",
+        "probar": "Revisá el rescate",
+        "utilidad": "Elegí un corredor que también admita el rescate bajo los supuestos declarados."
+      },
+      "en": {
+        "titulo": "Check · partner rescue",
+        "que": "It estimates whether a crew member can bring an incapacitated partner to shelter.",
+        "porQue": "An incapacitated partner may need dragging to a refuge. For example, a slope walkable without that load can prevent the transfer. config/riesgo.json takes a 60 min rescue reference from xEVA/EHP-10028. Half speed and a maximum 10° slope are team proposals to calibrate.",
+        "como": "The time map is recalculated with more limited mobility. A separate Dijkstra field reduces speed and blocks slopes exceeding the rescue limit on the NASA/USGS DTM. riesgo.js evaluates its worst time plus ingress. config/riesgo.json separates the verified deadline reference from dragging proposals. Physical transfer feasibility still needs Martian calibration.",
+        "probar": "Review rescue",
+        "utilidad": "Choose a corridor that also supports rescue under the declared assumptions."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "control-consumibles",
+      "selector": "#rutas",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#rutas",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Control · consumibles con colchón",
+        "que": "Suma lo gastado y lo que todavía necesitás para volver.",
+        "porQue": "El tiempo que queda debe alcanzar para volver incluso en el punto más comprometido. Por ejemplo, detenerse a trabajar consume parte del presupuesto aunque no se avance. config/riesgo.json usa regreso multiplicado por 1,2, una referencia parcial de Apollo 15, más ingreso. La referencia primaria es 8 h de Artemis y se ajusta por carga y ritmo.",
+        "como": "En cada instante se compara lo gastado más lo necesario para regresar con el presupuesto temporal. El Worker construye la cronología y riesgo.js revisa transcurrido + colchón × regreso + ingreso. El DTM NASA/USGS determina los tiempos de camino. config/riesgo.json marca el factor 1,2 como verificado_parcial y la referencia de 8 h como verificado para Artemis. El visor calcula además un modelo metabólico propio de cinco indicadores, cuyas capacidades propuestas requieren calibración.",
+        "probar": "Revisá el presupuesto",
+        "utilidad": "Decidí cuánto trabajo cabe sin consumir el margen previsto para volver."
+      },
+      "en": {
+        "titulo": "Check · consumables with margin",
+        "que": "It adds elapsed expenditure and what is still needed to get home.",
+        "porQue": "Remaining time must cover return even at the most demanding point. For example, working at a stop uses budget without making progress. config/riesgo.json multiplies return by 1.2, a partial Apollo 15 reference, and adds ingress. Primary endurance starts from an 8 h Artemis reference and is adjusted by charge and work rate.",
+        "como": "At each instant, spent time plus the time needed to return is compared with the budget. The Worker builds the timeline, and riesgo.js checks elapsed + margin factor × return + ingress. The NASA/USGS DTM determines travel times. config/riesgo.json labels factor 1.2 verificado_parcial and the 8 h reference verificado for Artemis. The HUD additionally computes its metabolic model with five indicators and proposed capacities requiring calibration.",
+        "probar": "Review the budget",
+        "utilidad": "Decide how much work fits while preserving the planned return margin."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "control-duracion",
+      "selector": "#rutas",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#rutas",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Control · duración total",
+        "que": "Incluye ida, trabajo, vuelta e ingreso al refugio.",
+        "porQue": "El trabajo en destino y la entrada al refugio también consumen tiempo. Por ejemplo, llegar al objetivo justo al límite deja pendiente el regreso. config/riesgo.json propone 60 min de trabajo por defecto y usa 8 h primarias como referencia Artemis. Los itinerarios toman los minutos que cargues en sus paradas.",
+        "como": "Se suma el reloj de marcha con las pausas de trabajo y el regreso requerido. riesgo.js recibe la cronología del Worker calculada sobre terreno NASA/USGS y evalúa duración e ingreso. config/riesgo.json identifica la referencia primaria como verificado en su contexto lunar y el trabajo por defecto como propuesta a calibrar. Las cifras que ingresás representan tu planificación.",
+        "probar": "Revisá duración total",
+        "utilidad": "Ajustá objetivo y tiempo de ciencia para que entre la salida completa."
+      },
+      "en": {
+        "titulo": "Check · total duration",
+        "que": "It includes outbound travel, work, return and shelter ingress.",
+        "porQue": "Work at the destination and refuge ingress also take time. For example, arriving at the target at the limit leaves the return unfinished. config/riesgo.json proposes 60 min default work and uses an 8 h primary Artemis reference. Itineraries use the minutes entered for each stop.",
+        "como": "The travel clock is combined with work stops and required return. riesgo.js receives the Worker timeline calculated on NASA/USGS terrain and evaluates duration and ingress. config/riesgo.json identifies primary endurance as verificado in its lunar context and default work as propuesta to calibrate. Entered values represent your plan.",
+        "probar": "Review total duration",
+        "utilidad": "Adjust the target and science time so the full sortie fits."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "control-pareja",
+      "selector": "#rutas",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#opciones"
+      },
+      "es": {
+        "titulo": "Control · pareja y plan de rescate",
+        "que": "Salidas a pie y en rover requieren al menos dos tripulantes.",
+        "porQue": "Una persona incapacitada necesita ayuda de otra. Por ejemplo, una ruta con tiempo de regreso aceptable sigue dejando un problema si sale una sola persona. riesgo.js exige al menos 2 integrantes, con fuente en la doctrina NASA de salidas en pareja. Para rover revisa además que exista un campo finito de regreso o rescate.",
+        "como": "Se comprueba cantidad de personas y existencia de un camino de apoyo. riesgo.js lee la tripulación aplicada desde Opciones y recorre los campos calculados sobre el terreno NASA/USGS. config/riesgo.json y sus referencias documentan la regla de pareja. La representación del traslado de una persona incapacitada en rover sigue simplificada y requiere validación.",
+        "probar": "Abrí tripulación en Opciones",
+        "utilidad": "Revisá la tripulación y el apoyo de rescate antes de calcular la salida."
+      },
+      "en": {
+        "titulo": "Check · pairing and rescue plan",
+        "que": "Walking and rover sorties require at least two crew members.",
+        "porQue": "An incapacitated person needs someone else’s help. For example, acceptable return time still leaves a problem if only one person departs. riesgo.js requires at least 2 crew members, referencing NASA paired-sortie doctrine. For rover travel it also checks for a finite return or rescue field.",
+        "como": "The check verifies crew count and the existence of a support path. riesgo.js reads the crew size applied from Options and examines fields computed over NASA/USGS terrain. config/riesgo.json and its references document the paired-crew rule. Transfer of an incapacitated person by rover remains simplified and needs validation.",
+        "probar": "Open crew Options",
+        "utilidad": "Review crew size and rescue support before planning departure."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "control-datos",
+      "selector": "#rutas",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#rutas",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Control · incertidumbre y datos",
+        "que": "Se revisa la ruta y un entorno de cada celda.",
+        "porQue": "El punto dibujado y el relieve pueden tener errores. Por ejemplo, junto a un hueco del DTM conviene revisar más que la celda central. config/riesgo.json propone un radio fijo de 25 m y hasta 10 % sin datos alrededor, a calibrar. La ruta misma debe tener datos válidos, y los 25 m siguen siendo un supuesto del control.",
+        "como": "Se mira un entorno alrededor de cada punto del recorrido y se toma el peor regreso finito, con margen de desplazamiento. riesgo.js también cuenta datos inválidos del DTM NASA/USGS. Los 25 m y 10 % de config/riesgo.json son propuesta a calibrar. En la grilla regional de 200 m el radio no altera el campo. La geoubicación permite marcar y comparar la estimación actual, mientras la tarjeta y el motor conservan su presupuesto fijo.",
+        "probar": "Revisá datos e incertidumbre",
+        "utilidad": "Detectá cuándo los huecos o el error de posición exigen otra ruta o mejores observaciones."
+      },
+      "en": {
+        "titulo": "Check · uncertainty and data",
+        "que": "It checks the route and a neighborhood around each cell.",
+        "porQue": "The displayed position and terrain can both contain errors. For example, near a DTM gap the central cell alone is insufficient. config/riesgo.json proposes a fixed 25 m radius and up to 10% missing data around it, to calibrate. The route itself must have valid data, and the 25 m remain a check assumption.",
+        "como": "A neighborhood around each route point is examined, taking the worst finite return time with travel margin. riesgo.js also counts invalid NASA/USGS DTM data. The 25 m and 10% in config/riesgo.json are propuesta to calibrate. In the 200 m regional grid, the radius does not change the field. Geolocation lets you mark and compare the current estimate, while the card and engine retain their fixed budget.",
+        "probar": "Review data and uncertainty",
+        "utilidad": "Detect when gaps or position error require another route or better observations."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "control-rover",
+      "selector": "#rutas",
+      "accion": {
+        "gancho": "zona",
+        "argumento": "region_19_gale_crater"
+      },
+      "es": {
+        "titulo": "Control · avería del rover",
+        "que": "La ruta regional estima la caminata de vuelta si falla el vehículo.",
+        "porQue": "Una avería obliga a considerar cómo se vuelve sin el vehículo. Por ejemplo, una travesía rápida puede dejar a la tripulación a muchas horas de caminata. config/riesgo.json toma un máximo conservador de 5 h de walkback de xEVA para rover abierto. El relieve regional de 200 m deja la evaluación a pie como preliminar.",
+        "como": "Se calcula un campo alternativo de regreso a pie y se contrasta con el plazo y los consumibles restantes. riesgo.js evalúa regreso_a_pie y regreso_a_pie_consumibles con tiempos del DTM MOLA–HRSC de NASA/USGS. config/riesgo.json marca la referencia de 5 h como verificado para doctrina lunar. La resolución regional y el traslado a Marte requieren una comprobación local. La expedición presurizada usa otro modelo logístico.",
+        "probar": "Abrí Gale regional en rover",
+        "utilidad": "Limitá el alejamiento del rover abierto según el regreso y los consumibles restantes."
+      },
+      "en": {
+        "titulo": "Check · rover breakdown",
+        "que": "The regional route estimates walking return after vehicle failure.",
+        "porQue": "A breakdown requires considering return without the vehicle. For example, a quick drive can leave the crew many walking hours away. config/riesgo.json takes a conservative 5 h xEVA walkback reference for an open rover. The 200 m regional terrain makes the walking assessment preliminary.",
+        "como": "An alternative walking return field is compared with the deadline and remaining consumables. riesgo.js evaluates regreso_a_pie and regreso_a_pie_consumibles using NASA/USGS MOLA–HRSC DTM times. config/riesgo.json labels the 5 h lunar-doctrine reference verificado. Regional resolution and application to Mars require local assessment. Pressurized expeditions use a separate logistics model.",
+        "probar": "Open Gale rover region",
+        "utilidad": "Limit open-rover distance according to walkback and remaining consumables."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "control-luz",
+      "selector": "#rutas",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#opciones"
+      },
+      "es": {
+        "titulo": "Control · toda la salida con luz",
+        "que": "Revisa salida y llegada respecto al amanecer y atardecer.",
+        "porQue": "Terminar después del atardecer dificulta detectar obstáculos. Por ejemplo, una parada de ciencia larga puede dejar el último tramo a oscuras. app.js aplica 30 min de margen, una propuesta a calibrar. La verificación del horario global debe complementarse mirando las sombras locales.",
+        "como": "Se compara el reloj completo de salida con amanecer y atardecer. conLuz en app.js usa la geometría Mars24 de luz.js y la posición de la zona NASA/USGS. El margen MARGEN_LUZ_H es una propuesta de 0,5 h que hoy está en app.js. config/clima.json contiene otros márgenes de Ventana EVA. La nueva cadena a pie verifica jornada y luz acumuladas con márgenes de config/rutas.json. La comparación heredada del modo rover conserva sus límites de acumulación.",
+        "probar": "Revisá la hora en Opciones",
+        "utilidad": "Elegí una hora de salida que permita completar marcha, trabajo y regreso con margen diurno."
+      },
+      "en": {
+        "titulo": "Check · daylight throughout",
+        "que": "It checks departure and arrival against sunrise and sunset.",
+        "porQue": "Finishing after sunset makes obstacles harder to detect. For example, a long science stop can leave the last leg in darkness. app.js applies a 30 min margin, a proposal to calibrate. The global time check needs local-shadow inspection as well.",
+        "como": "The full sortie clock is compared with sunrise and sunset. conLuz in app.js uses Mars24 geometry from luz.js and the NASA/USGS zone position. MARGEN_LUZ_H is a proposed 0.5 h margin currently in app.js. config/clima.json holds other EVA Window margins. The new walking chain checks accumulated day and daylight with config/rutas.json margins. The legacy rover comparison retains its accumulation limits.",
+        "probar": "Review departure time",
+        "utilidad": "Choose a departure time allowing travel, work and return within daylight margins."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "confiabilidad",
+      "selector": "#rutas",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#rutas",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Probabilidades de la ruta",
+        "que": "Estima completar sin incidentes, volver tras una falla y supervivencia del escenario.",
+        "porQue": "Un porcentaje puede ayudar a comparar planes y también esconder supuestos débiles. Por ejemplo, pasar más tiempo lejos del refugio aumenta la exposición a una primera falla. config/confiabilidad.json marca todas las tasas de falla como propuestas a calibrar. Una supervivencia calculada alta conserva esas incertidumbres.",
+        "como": "El modelo reparte una posible primera falla a lo largo del reloj de la salida. Usa Poisson para la probabilidad sin incidentes, exp(−ΣλT), e integra dónde el regreso o rescate excedería el plazo si ocurre esa falla. Los tiempos provienen del terreno NASA/USGS. evaluarConfiabilidad está en confiabilidad.js y las tasas en config/confiabilidad.json, todas propuesta a calibrar. El cálculo considera la primera falla y deja fuera fallas encadenadas y exposición durante el regreso. La nueva cadena a pie calcula probabilidades por tramo y un agregado de las EVA, con la estadía en refugios fuera del modelo.",
+        "probar": "Revisá las probabilidades",
+        "utilidad": "Compará rutas bajo los mismos supuestos e identificá tramos donde convendría agregar apoyo."
+      },
+      "en": {
+        "titulo": "Route probabilities",
+        "que": "It estimates incident-free completion, return after failure and scenario survival.",
+        "porQue": "A percentage can help compare plans while hiding weak assumptions. For example, spending longer far from a refuge increases exposure to a first failure. config/confiabilidad.json labels every failure rate as a proposal to calibrate. A high calculated survival value retains those uncertainties.",
+        "como": "The model distributes a possible first failure along the sortie clock. It uses Poisson for incident-free probability, exp(−ΣλT), and integrates where return or rescue would exceed the deadline if that failure occurs. Times come from NASA/USGS terrain. evaluarConfiabilidad is in confiabilidad.js and rates are in config/confiabilidad.json, all propuesta to calibrate. The calculation considers the first failure and leaves chained failures and return exposure outside its scope. The new walking chain calculates per-leg probabilities and an EVA aggregate, leaving refuge stays outside the model.",
+        "probar": "Review probabilities",
+        "utilidad": "Compare routes under the same assumptions and identify stretches that need support."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "opciones",
+      "selector": "#opciones",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#opciones"
+      },
+      "es": {
+        "titulo": "Opciones · carga y tripulación",
+        "que": "Elegí primario, secundario, carga, ritmo, personas y hora.",
+        "porQue": "La carga disponible y el ritmo cambian el margen de una salida. Por ejemplo, reducir la reserva secundaria puede achicar el terreno alcanzable. El punto de partida es 8 h primarias y 60 min secundarios de config/riesgo.json, referencias Artemis. Ritmo, carga y tripulación que elegís describen el ensayo que vas a calcular.",
+        "probar": "Abrí Opciones",
+        "utilidad": "Ensayá qué objetivo cabe con el presupuesto temporal y la tripulación que elegiste.",
+        "origen": "Los presupuestos temporales parten de config/riesgo.json y app.js aplica carga, ritmo y tripulación. Los factores de ritmo son propuestas a calibrar. CO₂, agua, batería y masas de recarga conservan las capacidades de config/consumibles.json."
+      },
+      "en": {
+        "titulo": "Options · charge and crew",
+        "que": "Set primary and secondary oxygen, charge, work rate, people and time.",
+        "porQue": "Available charge and work rate change sortie margin. For example, reducing the secondary reserve can shrink reachable terrain. The starting point is 8 h primary and 60 min secondary from config/riesgo.json, based on Artemis references. Your selected work rate, charge and crew describe the scenario being calculated.",
+        "probar": "Open Options",
+        "utilidad": "Explore which target fits your chosen time budget and crew.",
+        "origen": "Time budgets start from config/riesgo.json, and app.js applies charge, work rate and crew size. Work-rate factors are proposals to calibrate. CO₂, water, battery and recharge masses retain config/consumibles.json capacities."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "unidades",
+      "selector": "#opciones",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#opciones"
+      },
+      "es": {
+        "titulo": "Unidades y rótulos",
+        "que": "Elegí métrico o imperial, grados o porcentaje, temperatura y presión.",
+        "porQue": "Una cifra puede interpretarse mal si cambia la unidad sin advertirlo. Por ejemplo, metros y pies describen la misma distancia con valores distintos. El radio de Marte usado para las distancias es 3.396.190 m, convención del proyecto documentada en AGENTS.md. Hay vistas que todavía conservan unidades fijas y conviene leer cada rótulo.",
+        "probar": "Abrí unidades",
+        "utilidad": "Leé distancias y tiempos con las unidades elegidas y revisá los rótulos de cada vista.",
+        "origen": "Preferencias locales de presentación conservadas por guardado.js y conversiones de unidades.js. Las vistas manuales todavía incluyen cifras en km y grados fijos, y los rótulos del itinerario muestran distancia."
+      },
+      "en": {
+        "titulo": "Units and leg labels",
+        "que": "Choose metric or imperial, degrees or percent, temperature and pressure.",
+        "porQue": "A number can be misread when its unit changes unnoticed. For example, meters and feet describe the same distance with different values. The Mars radius used for distances is 3,396,190 m, the project convention documented in AGENTS.md. Some views still retain fixed units, so read each label.",
+        "probar": "Open unit settings",
+        "utilidad": "Read distances and times in your selected units and check each view’s labels.",
+        "origen": "Local display preferences retained by guardado.js with conversions from unidades.js. Manual views still include fixed km and degree values, and itinerary labels show distance."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "marcas",
+      "selector": "#plan-marcas",
+      "accion": {
+        "gancho": "menu",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Plan · hábitats y otras marcas",
+        "que": "Reúne hábitat, refugio, depósito, ciencia, peligro, baliza y rover estacionado.",
+        "porQue": "Un plan necesita distinguir dónde vivir, recargar, trabajar y evitar peligros. Por ejemplo, una parada científica consume tiempo y un depósito necesita recursos. config/marcas.json define 7 tipos de marca con campos propios. Los hábitats y refugios que dibujás son infraestructura planificada con inventario declarado.",
+        "probar": "Abrí marcas del menú",
+        "utilidad": "Hacé explícitos los apoyos y objetivos y revisá sus recursos antes de usarlos.",
+        "origen": "Instalaciones y objetivos que ingresa la tripulación. config/marcas.json define tipos y campos, y config/consumibles.json propone inventarios a calibrar. Podés editar nombre y recursos, mover y borrar desde el plan."
+      },
+      "en": {
+        "titulo": "Plan · habitats and markers",
+        "que": "It groups habitat, refuge, depot, science, hazard, beacon and parked-rover markers.",
+        "porQue": "A plan needs to distinguish living, recharging, working and avoiding hazards. For example, a science stop takes time and a depot requires resources. config/marcas.json defines 7 marker types with their own fields. The habitats and refuges you draw are planned infrastructure with declared inventory.",
+        "probar": "Open marker menu",
+        "utilidad": "Make support and targets explicit and review resources before relying on them.",
+        "origen": "Crew-entered installations and targets. config/marcas.json defines types and fields, and config/consumibles.json proposes inventories to calibrate. The plan supports editing names and resources, moving and deleting markers."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "stock",
+      "selector": "#plan-marcas",
+      "accion": {
+        "gancho": "menu",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Stock y autonomía de refugios",
+        "que": "Revisa oxígeno, agua, comida, energía, filtros, botiquín y capacidad.",
+        "porQue": "Un refugio marcado puede carecer de agua o energía para toda la tripulación. Por ejemplo, una primera recarga puede consumir lo que haría falta en una visita posterior. config/consumibles.json propone sostener al grupo durante 24 h hasta rescate, a calibrar, y referencia BVAD para necesidades. El planificador por bases a pie simula débitos y conserva el inventario declarado del plan. El campo general supone apoyo en origen, pero las rutas automáticas a pie comprueban el stock de una base de salida conocida tanto en la directa como en la cadena.",
+        "como": "Se calcula cuánto dura cada recurso y se conserva el que se acaba primero. consumibles.js compara autonomía, capacidad y recarga nominal de todos los trajes. plan.js evalúa apoyos y el planificador por bases a pie copia el stock para cada rama y descuenta recargas y pernoctes durante el cálculo. La cadena exige reserva en una base inicial conocida, mientras un inicio manual conserva el supuesto de apoyo con trajes cargados. config/consumibles.json distingue necesidades BVAD verificado_parcial e inventarios y espera de 24 h propuesta a calibrar. Los valores vacíos no acreditan recursos. Siguen pendientes blindaje radiológico, la equivalencia con las capacidades elegidas en Opciones y el registro de consumo físico real.",
+        "probar": "Abrí el menú para inspeccionar stock",
+        "utilidad": "Identificá el recurso limitante y qué abastecimiento tendrías que preposicionar."
+      },
+      "en": {
+        "titulo": "Stock and refuge endurance",
+        "que": "It checks oxygen, water, food, power, filters, first-aid kit and capacity.",
+        "porQue": "A marked refuge can lack water or power for the whole crew. For example, one recharge can consume supplies needed on a later visit. config/consumibles.json proposes supporting the group for 24 h until rescue, to calibrate, and references BVAD for needs. The walking base planner simulates deductions while retaining the plan’s declared inventory. The general field assumes support at the origin, but automatic walking routes check a known departure base’s stock in both the direct route and the chain.",
+        "como": "Each resource’s duration is calculated, keeping the one that runs out first. consumibles.js checks endurance, capacity and nominal recharge for all suits. plan.js assesses support, and the walking base planner copies stock per branch and deducts recharges and overnight stays during calculation. Chains require reserve at a known departure base, while manual origins retain an assumed support point with loaded suits. config/consumibles.json separates BVAD needs labeled verificado_parcial from inventories and the 24 h wait labeled propuesta to calibrate. Empty values do not establish resources. Radiation shielding, equivalence with Options capacities and recording actual physical consumption remain pending.",
+        "probar": "Open menu to inspect stock",
+        "utilidad": "Identify the limiting resource and what supplies need pre-positioning."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "peligros",
+      "selector": "#plan-marcas",
+      "accion": {
+        "gancho": "menu",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Peligros, balizas y rover estacionado",
+        "que": "Marcá exclusiones, apoyo de radio y vehículos dejados en el terreno.",
+        "porQue": "Un relieve orbital puede omitir un obstáculo encontrado en el lugar. Por ejemplo, un radio alrededor de un peligro obliga a rodearlo. config/marcas.json define los 7 tipos que incluyen peligro, baliza y rover estacionado. Una baliza representa una referencia planeada y sus distancias de geoubicación se ingresan como lecturas.",
+        "probar": "Abrí el menú de marcas",
+        "utilidad": "Anotá obstáculos y puntos de apoyo para revisar rutas y referencias de ubicación.",
+        "origen": "Observaciones y apoyos ingresados en el plan. config/marcas.json define radios de exclusión y referencias, y config/radio.json propone alturas y alcance a calibrar. Una marca de rover requiere verificar su disponibilidad de rescate."
+      },
+      "en": {
+        "titulo": "Hazards, beacons and parked rover",
+        "que": "Mark exclusions, radio support and vehicles left on the ground.",
+        "porQue": "Orbital terrain can miss an obstacle found on site. For example, a radius around a hazard forces a detour. config/marcas.json defines the 7 types including hazard, beacon and parked rover. A beacon represents a planned reference, and its geolocation distances are entered as measurements.",
+        "probar": "Open marker menu",
+        "utilidad": "Record obstacles and support points to review routes and location references.",
+        "origen": "Observations and support points entered in the plan. config/marcas.json defines exclusion radii and references, and config/radio.json proposes heights and range to calibrate. A rover marker requires checking rescue availability."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "expedicion",
+      "selector": "[data-plan=\"expedicion\"]",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "[data-plan=\"expedicion\"]",
+        "necesita": "rover"
+      },
+      "es": {
+        "titulo": "Expedición en rover · varios soles",
+        "que": "Divide viajes largos en manejo, ciencia y noches.",
+        "porQue": "Una travesía de varios soles necesita descanso y abastecimiento a lo largo del camino. Por ejemplo, un destino accesible con energía de ida puede dejar pendiente la energía del regreso. config/expedicion.json propone hasta 6 h de manejo por sol y 20 % de reserva, a calibrar. Usa referencias conceptuales lunares de 12 km de alejamiento con un rover y 100 km con dos, verificadas parcialmente. El soporte vital durante las noches queda fuera de ese presupuesto.",
+        "como": "El recorrido se corta en jornadas cuando se agota el tiempo permitido de manejo o actividad. Se reparten ciencia y pernoctes y se colocan depósitos para conservar energía de ida y regreso al último depósito. Los refugios se separan según el alejamiento permitido a lo largo del camino. La ruta usa el DTM NASA/USGS y planificarExpedicion está en expedicion.js. config/expedicion.json distingue referencias lunares verificado_parcial y tiempos, energía y reservas propuesta a calibrar. Se supone regreso por el mismo camino y tiempo, recarga completa y consumo proporcional a distancia. Soporte vital nocturno y fallas simultáneas requieren otro análisis.",
+        "probar": "Elegí expedición multisol",
+        "utilidad": "Estimá jornadas y apoyos que habría que instalar antes de una travesía presurizada."
+      },
+      "en": {
+        "titulo": "Multi-sol rover expedition",
+        "que": "It divides long trips into driving, science and overnight stops.",
+        "porQue": "A multi-sol traverse needs rest and supplies along the route. For example, energy sufficient for arrival can leave return energy unresolved. config/expedicion.json proposes up to 6 h driving per sol and a 20% reserve, to calibrate. It uses partially verified lunar-concept references of 12 km separation with one rover and 100 km with two. Nighttime life support remains outside that budget.",
+        "como": "The route is split into days when driving or activity time reaches its allowance. Science and overnight stops are distributed, and depots preserve energy to travel onward and return to the last depot. Refuges are spaced by allowed separation along the path. The route uses NASA/USGS DTM data, and planificarExpedicion is in expedicion.js. config/expedicion.json separates lunar references labeled verificado_parcial from proposed times, energy and reserves to calibrate. It assumes the same return path and time, full recharges and consumption proportional to distance. Nighttime life support and simultaneous failures require further analysis.",
+        "probar": "Select multi-sol expedition",
+        "utilidad": "Estimate days and support infrastructure needed before a pressurized traverse."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "pasos",
+      "selector": "#perfil",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#rutas",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Pasos, distancia y perfil",
+        "que": "La ruta muestra largo, pasos estimados y cambios de altura.",
+        "porQue": "La distancia horizontal puede ocultar una subida importante. Por ejemplo, dos recorridos del mismo largo pueden exigir esfuerzos diferentes. config/expedicion.json propone un paso de 0,7 m, a calibrar, para estimar pasos desde metros. El perfil ayuda a leer el relieve y el conteo visible depende del modo de ruta.",
+        "probar": "Enfocá rutas y perfil",
+        "utilidad": "Compará desnivel y longitud antes de elegir el recorrido y su trabajo científico.",
+        "origen": "Distancia de la ruta y alturas del DTM NASA/USGS. config/expedicion.json marca el largo de paso como propuesta a calibrar. El conteo es una estimación calculada y el perfil conserva la resolución del terreno."
+      },
+      "en": {
+        "titulo": "Steps, distance and profile",
+        "que": "Routes show length, estimated steps and elevation change.",
+        "porQue": "Horizontal distance can hide a substantial climb. For example, two equal-length routes can demand different effort. config/expedicion.json proposes a 0.7 m stride, to calibrate, for estimating steps from meters. The profile helps read terrain, and visible step counts depend on route mode.",
+        "probar": "Focus routes and profile",
+        "utilidad": "Compare elevation change and length before choosing a route and science workload.",
+        "origen": "Route distance and NASA/USGS DTM heights. config/expedicion.json labels stride length as a proposal to calibrate. Step count is a calculated estimate, and the profile retains terrain resolution."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "ventana",
+      "selector": "#seccion-clima",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#seccion-clima"
+      },
+      "es": {
+        "titulo": "Ventana EVA · condiciones del día",
+        "que": "Un semáforo reúne hora de Marte, clima y clima espacial.",
+        "porQue": "El terreno puede ser transitable y las condiciones del día desaconsejar la salida. Por ejemplo, una alerta de partículas solares exige revisar cuánto falta para refugiarse. config/clima.json usa una referencia RAD de 0,64 mSv/día y umbrales operativos propuestos a calibrar. REMS y DONKI se leen del archivo local o de la actualización que solicites, por eso importa su fecha.",
+        "como": "Se combinan avisos del ambiente en un semáforo. clima.js calcula la hora de Marte con Mars24 y resume REMS y llegadas modeladas a Marte en DONKI. ventana.js aplica config/clima.json y agrega el resultado a la tarjeta. La referencia RAD de Hassler et al. (2014) está marcada verificado y las ventanas de alerta y márgenes operativos son propuestas a calibrar. La temporada de polvo usa longitud solar Ls, con MDAD pendiente, y la antigüedad del parte se informa sin bloquear por sí sola.",
+        "probar": "Desplegá Ventana EVA",
+        "utilidad": "Revisá condiciones, avisos y antigüedad del parte antes de aceptar una hora de salida."
+      },
+      "en": {
+        "titulo": "EVA Window · daily conditions",
+        "que": "A traffic light combines Mars time, weather and space weather.",
+        "porQue": "Terrain may be traversable while daily conditions advise against departure. For example, a solar-particle alert requires reviewing time to shelter. config/clima.json uses a RAD reference of 0.64 mSv/day and proposed operational thresholds to calibrate. REMS and DONKI come from cached files or your requested update, so their dates matter.",
+        "como": "Environmental warnings are combined into a status light. clima.js computes Mars time with Mars24 and summarizes REMS and modeled Mars arrivals in DONKI. ventana.js applies config/clima.json and adds the result to the card. The RAD reference from Hassler et al. (2014) is labeled verificado, and alert windows and operational margins are proposals to calibrate. Dust season uses solar longitude Ls, with MDAD pending, and report age is displayed without blocking departure by itself.",
+        "probar": "Expand EVA Window",
+        "utilidad": "Review conditions, warnings and report age before accepting a departure time."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "rems",
+      "selector": "#clima-datos",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#seccion-clima"
+      },
+      "es": {
+        "titulo": "REMS · parte de Curiosity",
+        "que": "Muestra temperatura, presión y campos del parte meteorológico archivado.",
+        "porQue": "El trabajo y la comparación de presiones dependen de las condiciones ambientales. Por ejemplo, usar un parte antiguo como si fuera de hoy puede dar una impresión equivocada. El archivo climático contiene 700 soles según datos/clima/clima.json y muestra la fecha del parte disponible. Son observaciones de Curiosity en Gale y su aplicación a otras regiones necesita contexto.",
+        "probar": "Mostrá el parte",
+        "utilidad": "Consultá el parte y su fecha antes de interpretar el semáforo o cargar presiones.",
+        "origen": "Parte divulgativo de REMS, instrumento CAB/INTA-CSIC en Curiosity. datos/clima/clima.json conserva observaciones y fecha de descarga, y config/clima.json identifica el origen. El análisis científico requiere consultar los productos originales de PDS."
+      },
+      "en": {
+        "titulo": "REMS · Curiosity report",
+        "que": "It shows temperature, pressure and fields from the archived weather report.",
+        "porQue": "Work and pressure comparisons depend on environmental conditions. For example, treating an old report as today’s can mislead. The climate archive contains 700 sols according to datos/clima/clima.json and displays the available report’s date. These are Curiosity observations at Gale, and applying them elsewhere requires context.",
+        "probar": "Show weather report",
+        "utilidad": "Check the report and its date before interpreting status or entering pressures.",
+        "origen": "Public REMS report from the CAB/INTA-CSIC instrument on Curiosity. datos/clima/clima.json retains observations and download date, and config/clima.json identifies the source. Scientific analysis requires original PDS products."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "donki",
+      "selector": "#clima-espacial",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#seccion-clima"
+      },
+      "es": {
+        "titulo": "DONKI · alertas solares",
+        "que": "Muestra eventos SEP y llegadas a Marte previstas por simulaciones de eyecciones.",
+        "porQue": "Los eventos solares pueden exigir alcanzar un refugio con rapidez. Por ejemplo, una llegada modelada a Marte merece revisar la ventana y el plan de regreso. config/clima.json cita 0,64 mSv/día de RAD como referencia de radiación habitual, según Hassler et al. (2014). Los avisos DONKI y el fondo de RAD describen aspectos distintos de la exposición y no acreditan blindaje de las marcas del plan.",
+        "probar": "Mostrá clima espacial",
+        "utilidad": "Revisá alertas y tiempo hasta refugio antes de salir o continuar el ensayo.",
+        "origen": "NASA CCMC DONKI, llegadas de CME modeladas con WSA-ENLIL y eventos SEP archivados. config/clima.json registra la referencia RAD y propone ventanas de alerta a calibrar. Los datos conservan fecha de descarga y podés solicitar actualización."
+      },
+      "en": {
+        "titulo": "DONKI · solar alerts",
+        "que": "It shows SEP events and predicted Mars arrivals from ejection simulations.",
+        "porQue": "Solar events can require reaching shelter quickly. For example, a modeled arrival at Mars warrants reviewing the window and return plan. config/clima.json cites a 0.64 mSv/day RAD background reference from Hassler et al. (2014). DONKI alerts and the RAD background describe different exposure aspects and do not establish shielding for planned markers.",
+        "probar": "Show space weather",
+        "utilidad": "Review alerts and time to shelter before departure or continuing rehearsal.",
+        "origen": "NASA CCMC DONKI, modeled CME arrivals using WSA-ENLIL and archived SEP events. config/clima.json records the RAD reference and proposes alert windows to calibrate. Data retain their download date and support requested updates."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "visor",
+      "selector": "#hud",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "[data-simular]",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Visor · cinco recursos",
+        "que": "El HUD simula CONTINUAR, TERMINAR o ABORTAR y muestra el margen para volver.",
+        "porQue": "Durante una salida el gasto puede reducir el margen que parecía suficiente al empezar. Por ejemplo, trabajar en una subida aumenta el consumo modelado. config/riesgo.json propone terminar cuando el margen baja a 30 min, a calibrar. El visor sigue 5 indicadores del modelo de soporte vital documentado en config/consumibles.json.",
+        "como": "El visor recorre la ruta sobre un reloj y descuenta recursos. El motor compara reserva restante con regreso, colchón e ingreso para actualizar el punto de no retorno. En la ruta planificada, consumibles.js estima costo metabólico según trayectoria sobre el DTM NASA/USGS. simulacion.js conecta motor-simulacion.js con oxígeno primario y secundario, CO₂, batería y agua. config/consumibles.json combina referencias Apollo verificado_parcial y capacidades propuestas a calibrar. En el desvío de emergencia se mantienen las tasas del punto de desvío, y en rover se usa tasa nominal. Primero calculá una ruta y abrí su simulación.",
+        "probar": "Iniciá el visor de una ruta calculada",
+        "utilidad": "Ensayá cuándo seguir, terminar o abortar y cómo cambia el tiempo disponible para regresar.",
+        "diagrama": "Esquema ilustrativo. La reserva baja mientras el reloj avanza, y debe alcanzar para regresar e ingresar."
+      },
+      "en": {
+        "titulo": "HUD · five resources",
+        "que": "The HUD simulates CONTINUE, TERMINATE or ABORT and shows return margin.",
+        "porQue": "During a sortie, consumption can reduce a margin that seemed sufficient at departure. For example, work on a slope raises modeled consumption. config/riesgo.json proposes terminating below a 30 min margin, to calibrate. The HUD tracks 5 indicators from the life-support model documented in config/consumibles.json.",
+        "como": "The HUD advances along the route on a clock and deducts resources. The engine compares remaining reserve with return, margin and ingress to update the point of no return. On the planned route, consumibles.js estimates metabolic cost along the NASA/USGS DTM trajectory. simulacion.js connects motor-simulacion.js to primary and secondary oxygen, CO₂, battery and water. config/consumibles.json combines Apollo references labeled verificado_parcial with proposed capacities to calibrate. Emergency detours retain rates from the diversion point, and rover travel uses nominal rates. Calculate a route first, then open its simulation.",
+        "probar": "Start HUD for a calculated route",
+        "utilidad": "Rehearse when to continue, terminate or abort and how return time changes.",
+        "diagrama": "Illustration. Reserve falls as time passes and must cover return and ingress."
+      },
+      "algoritmo": true,
+      "diagrama": "oxigeno"
+    },
+    {
+      "id": "fallas",
+      "selector": "#hud",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "[data-falla=\"tormenta\"]",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Fallas encadenadas · tormenta y fuga",
+        "que": "Inyectá incidentes durante la ida o el regreso de la simulación.",
+        "porQue": "Un incidente puede ocurrir mientras se intenta resolver otro. Por ejemplo, una tormenta seguida de una fuga obliga a cumplir ambos plazos. config/riesgo.json propone alcanzar refugio en 30 min ante partículas solares, a calibrar. La reserva secundaria puede imponer un plazo todavía menor según la carga elegida.",
+        "como": "Cada falla agrega una restricción y manda el plazo más corto. El motor pide camino de regreso o rescate y espera la respuesta del Worker. A pie se intenta una ruta de costo seguro y se usa el descenso rápido si no llega en plazo, sobre terreno NASA/USGS. En rover se usa el campo rápido. motor-simulacion.js y simulacion.js conectan esas acciones con ruteo-worker.js. config/riesgo.json identifica tormenta y margen de terminar como propuestas a calibrar. La elección entre refugios compara tiempos de candidatos y deja pendiente un óptimo global de supervivencia.",
+        "probar": "Inyectá tormenta en el visor activo",
+        "utilidad": "Probá incidentes encadenados y observá qué límite obliga a regresar antes."
+      },
+      "en": {
+        "titulo": "Chained failures · storm and leak",
+        "que": "Inject incidents during simulated outbound travel or return.",
+        "porQue": "An incident can occur while another is being handled. For example, a storm followed by a leak requires meeting both deadlines. config/riesgo.json proposes reaching shelter within 30 min for solar particles, to calibrate. The secondary reserve may impose a tighter deadline depending on selected charge.",
+        "como": "Each failure adds a constraint, and the shortest deadline governs. The engine requests a return or rescue path and waits for the Worker. Walking first attempts a safe-cost route and uses the fast descent if it misses the deadline, on NASA/USGS terrain. Rover return uses the fast field. motor-simulacion.js and simulacion.js connect these actions to ruteo-worker.js. config/riesgo.json identifies storm and termination margins as proposals to calibrate. Refuge selection compares candidate times, leaving global survival optimization for future work.",
+        "probar": "Inject storm in the active HUD",
+        "utilidad": "Try chained incidents and observe which limit forces an earlier return."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "horizonte",
+      "selector": "#seccion-ubicacion",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#geo-medidas",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Geoubicación sin GPS",
+        "que": "Estimá tu posición sin GPS comparando montañas de tus fotos con el mapa y combinando lecturas de instrumentos. Podés probar a ciegas con fotos reales de Curiosity y revelar después la respuesta.",
+        "porQue": "Perder la posición complica elegir el regreso antes de agotar la reserva. Las montañas vistas desde un punto forman una silueta que cambia al moverse, parecida a una huella digital del lugar. Un horizonte plano, el polvo que tapa lo lejano o una cámara mal orientada pueden producir una coincidencia ambigua. En la prueba a ciegas de Curiosity hubo error mediano de 20,1 m en 12 paradas y 9 quedaron dentro del intervalo declarado, según localizacion/resumen.json. El 95 % que muestra la fusión expresa credibilidad del modelo y requiere calibración empírica.",
+        "como": "Primero se busca desde dónde el relieve produciría la silueta de tus fotos. Después cada instrumento aporta una preferencia por lugares compatibles con su lectura y su error. La secuencia del diagrama describe extracción, cámara, búsqueda, comparación y fusión. La óptica usa fotos Navcam reales y DTM HiRISE cercano con MOLA–HRSC para lo lejano. horizonte-fotos.js extrae y orienta la línea, localizador.js hace la búsqueda y geoubicacion.js suma log-verosimilitudes gaussianas independientes en localizador-worker.js. La fusión prioriza bloques de mayor densidad y retiene colas gruesas hasta el presupuesto de config/geoubicacion.json, propuesto a calibrar. Muestra resolución máxima, áreas individuales y aportes. La muestra de Curiosity es medicion_propia y los errores instrumentales propuestos requieren validación. Abrí Sumar medidas, elegí referencias del plan o marcá el último punto conocido y los hitos con clic derecho. Ingresá errores de 1 sigma y medidas independientes de una misma posición y hora. Usar como posición actual guarda una marca temporal y compara su error con los 25 m propuestos de riesgo.json. La tarjeta y el visor siguen usando su presupuesto previo. Editar lecturas, plan o zona invalida la marca.",
+        "probar": "Abrí geoubicación y sumá medidas",
+        "utilidad": "Estimá dónde estás, revisá ambigüedades y compará el error con el margen que usa la decisión de regreso.",
+        "diagrama": "Del cielo de la foto a una región posible en el mapa. Esquema ilustrativo, sin mediciones nuevas.",
+        "pasos": [
+          {
+            "titulo": "Encontrar dónde termina el cielo",
+            "texto": "Cada foto se pasa a grises y se suaviza. Se busca una línea continua con contraste entre cielo liso y terreno con textura mediante programación dinámica. Las columnas sin cielo suficiente se descartan y se combinan las fotos válidas."
+          },
+          {
+            "titulo": "Convertir píxeles en direcciones",
+            "texto": "El modelo CAHVOR describe la cámara y corrige distorsión radial por iteración. La orientación del rover rota cada rayo al marco del sitio para obtener azimut y elevación. Las elevaciones se reúnen por mediana en intervalos de azimut. Hacen falta originales y metadatos correctos."
+          },
+          {
+            "titulo": "Mirar el relieve desde cada candidato",
+            "texto": "Se trazan rayos por azimut, usando HiRISE cerca y MOLA–HRSC donde falta relieve cercano. Se toma el máximo ángulo del terreno e incluye curvatura de Marte y altura de cámara. localizador.js explora toda la zona cada 100 m, refina a 20 m alrededor de los 8 mejores y a 8 m alrededor del mejor de esa etapa, con rayos hasta 70 km."
+          },
+          {
+            "titulo": "Comparar las dos siluetas",
+            "texto": "Se promedia la diferencia angular absoluta entre horizonte observado y calculado, topando cada diferencia a 3° para limitar valores extremos. En la etapa fina se ensayan giros de rumbo entre −1° y 1°. El menor puntaje indica mejor coincidencia según ese criterio de localizador.js."
+          },
+          {
+            "titulo": "Elegir posición y revisar ambigüedad",
+            "texto": "Gana el candidato fino con menor puntaje. Entre los candidatos finos con puntaje hasta mejor × 1,1 + 0,02 se toma el percentil 95 de distancia y se aplica un mínimo de 8 m, según localizador.js. Es una estimación local heurística. El segundo candidato lejano y el mapa grueso ayudan a detectar otras coincidencias. La prueba propia de 12 paradas obtuvo mediana 20,1 m y 9 dentro del intervalo declarado."
+          },
+          {
+            "titulo": "Combinar instrumentos y revisar el área",
+            "texto": "El barómetro favorece alturas compatibles, pasos y odometría favorecen distancia y rumbo desde un punto conocido, y radio o UWB favorecen anillos alrededor de balizas. La resección usa rumbos a hitos con láser opcional. El Sol compara ángulos con hora UTC y aporta poco en 10 km con los errores propuestos. Doppler y estrellas reciben posiciones ya resueltas que ingresás a mano. La fusión multiplica verosimilitudes sumando sus logaritmos. Aproxima el horizonte por una previa circular local, con lo que deja fuera sus máximos lejanos. Con errores independientes las lecturas compatibles suelen acotar el área, pero las discrepantes pueden ampliarla. El área reúne al menos el 95 % de masa del modelo en bloques adaptativos, informa su resolución y sigue a calibrar empíricamente. Evitá repetir medidas del mismo instrumento o cargar una posición que ya incluya esas lecturas. Cada bloque consulta altura y validez en una muestra, con variaciones internas que pueden quedar sin resolver. Con horizonte solo se conserva la posición y el radio ópticos originales."
+          }
+        ]
+      },
+      "en": {
+        "titulo": "GPS-free geolocation",
+        "que": "Estimate position without GPS by comparing mountains in your photos with the map and combining instrument readings. Try a blind test with real Curiosity photos, then reveal the answer.",
+        "porQue": "Losing position makes it harder to choose a return before exhausting the reserve. Mountains seen from a point form a skyline that changes as you move, like a fingerprint of the location. A flat horizon, dust hiding distant terrain or a misoriented camera can produce an ambiguous match. The blind Curiosity test had 20.1 m median error across 12 stops, with 9 inside the reported interval, according to localizacion/resumen.json. The fusion’s 95% expresses model credibility and requires empirical calibration.",
+        "como": "First the search asks which terrain position would produce the skyline in your photos. Each extra instrument then favors places compatible with its reading and error. The diagram follows extraction, camera geometry, search, comparison and fusion. Optical matching uses real Navcam photos, nearby HiRISE DTM and distant MOLA–HRSC terrain. horizonte-fotos.js extracts and orients the line, localizador.js searches, and geoubicacion.js adds independent Gaussian log-likelihoods in localizador-worker.js. Fusion prioritizes high-density blocks and retains coarse tails up to the proposed budget in config/geoubicacion.json, to calibrate. It reports maximum resolution, individual areas and contributions. The Curiosity sample is medicion_propia, and proposed instrument errors need validation. Open Add measurements, choose plan references or mark the last known point and landmarks by right click. Enter 1-sigma errors and independent observations from the same position and time. Use as current position saves a temporary marker and compares its error with riesgo.json’s proposed 25 m. The card and HUD keep their previous budget. Editing readings, the plan or the zone invalidates the marker.",
+        "probar": "Open geolocation and add measurements",
+        "utilidad": "Estimate your position, review ambiguities and compare error with the margin used by the return decision.",
+        "diagrama": "From a photo skyline to a possible map region. Illustration with no new measurements.",
+        "pasos": [
+          {
+            "titulo": "Find where the sky ends",
+            "texto": "Each photo is converted to grayscale and smoothed. Dynamic programming finds a continuous contrast boundary between smooth sky and textured ground. Columns lacking sufficient sky are rejected, and usable photos are combined."
+          },
+          {
+            "titulo": "Turn pixels into directions",
+            "texto": "The CAHVOR camera model describes the camera and iteratively corrects radial distortion. Rover attitude rotates each ray into the site frame to obtain azimuth and elevation. Elevations are merged by median within azimuth bins. Originals and correct metadata are required."
+          },
+          {
+            "titulo": "View terrain from each candidate",
+            "texto": "Rays are traced by azimuth using nearby HiRISE and MOLA–HRSC where near terrain is missing. The maximum terrain angle includes Mars curvature and camera height. localizador.js searches the whole zone every 100 m, refines at 20 m around the best 8 candidates and at 8 m around that stage’s best, with rays extending to 70 km."
+          },
+          {
+            "titulo": "Compare both skylines",
+            "texto": "The absolute angular difference between observed and calculated horizons is averaged, capping each difference at 3° to limit outliers. The fine stage tests heading shifts between −1° and 1°. A smaller score means a better match under localizador.js’s criterion."
+          },
+          {
+            "titulo": "Choose a position and review ambiguity",
+            "texto": "The fine candidate with the lowest score wins. Among fine candidates scoring up to best × 1.1 + 0.02, the 95th percentile of distance is taken with an 8 m minimum, according to localizador.js. This is a local heuristic estimate. The second distant candidate and coarse map help reveal other matches. The project’s 12-stop test achieved 20.1 m median error with 9 inside the reported interval."
+          },
+          {
+            "titulo": "Combine instruments and review the area",
+            "texto": "Barometry favors compatible heights, steps and odometry favor distance and bearing from a known point, and radio or UWB favor rings around beacons. Resection uses landmark bearings with optional laser range. The Sun compares angles at a UTC time and contributes little over 10 km with proposed errors. Doppler and stars receive manually entered, externally solved positions. Fusion multiplies likelihoods by adding logarithms. It approximates the horizon as a local circular prior, leaving its distant modes out. Compatible independent readings usually constrain the area, while conflicting ones can expand it. The region contains at least 95% of model mass in adaptive blocks, reports its resolution and still needs empirical calibration. Avoid repeating readings from one instrument or entering a position already based on those readings. Each block samples height and validity at one point, leaving possible internal variations unresolved. Horizon alone preserves the original optical position and radius."
+          }
+        ]
+      },
+      "algoritmo": true,
+      "diagrama": "horizonte"
+    },
+    {
+      "id": "fotos",
+      "selector": "#subir-fotos",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#subir-fotos",
+        "necesita": "pie"
+      },
+      "es": {
+        "titulo": "Tus fotos y registro de localización",
+        "que": "Probá Navcam originales, seguí el progreso y descargá el registro.",
+        "porQue": "La comparación necesita conocer qué dirección representa cada píxel. Por ejemplo, recortar una foto sin adaptar la cámara cambia los ángulos y puede desplazar el resultado. La demostración local usa 12 paradas del índice de localización de Gale. Para fotos nuevas hacen falta originales Navcam y sus metadatos de cámara y orientación.",
+        "probar": "Elegí fotos y metadatos",
+        "utilidad": "Prepará fotos compatibles y usá el registro para revisar qué observaciones aportaron al resultado.",
+        "origen": "Originales Navcam de Curiosity con modelo de cámara CAHVOR y orientación del rover de NASA. Con fotos, metadatos JSON y terreno locales la búsqueda puede ejecutarse sin internet. Si falta el JSON, ubicacion.js intenta pedirlo a NASA por nombre y también puede consultar la posición real al revelar fotos nuevas."
+      },
+      "en": {
+        "titulo": "Your photos and location log",
+        "que": "Try original Navcam images, follow progress and download the log.",
+        "porQue": "Matching needs to know the direction represented by each pixel. For example, cropping a photo without adapting the camera changes angles and can shift the result. The local demonstration uses 12 stops from Gale’s localization index. New photos need Navcam originals and camera and orientation metadata.",
+        "probar": "Choose photos and metadata",
+        "utilidad": "Prepare compatible photos and use the log to review which observations contributed.",
+        "origen": "Original Curiosity Navcam images with NASA CAHVOR camera model and rover attitude. With local photos, JSON metadata and terrain, search can run offline. If JSON is absent, ubicacion.js attempts to retrieve it from NASA by filename and may also query ground truth when revealing new photos."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "barometro",
+      "selector": "#mapa",
+      "accion": {
+        "gancho": "herramienta",
+        "argumento": "barometro",
+        "necesita": "base"
+      },
+      "es": {
+        "titulo": "Geoubicación · barómetro",
+        "que": "Presiones simultáneas dan desnivel y acotan posición sobre el relieve. En Geoubicación sin GPS podés combinar estas presiones con otras lecturas.",
+        "porQue": "La presión exterior cambia con la altura y sigue siendo útil cuando el polvo oculta el horizonte. Por ejemplo, una ladera puede acotar la posición a una franja de altura, mientras un llano deja muchos lugares posibles. config/barometro.json propone ruido diferencial de 1 Pa y de temperatura de 2 K, a calibrar. Ambas presiones deben medirse afuera y simultáneamente, con referencia de altura conocida.",
+        "como": "Se compara la altura que sugieren las presiones con las alturas del mapa. La ecuación hipsométrica Δz = (R·T/g)·ln(pBase/p) da desnivel y propagación de error, y una verosimilitud favorece celdas con altura compatible del DTM NASA/USGS. barometro.js reutiliza R = 192,1 J/(kg·K), verificado_parcial desde NASA Glenn, y g = 3,71 m/s², verificado desde ESA, en config/barometro.json. Los errores son propuestas a calibrar. barometro-ui.js permite ensayo con presión simulada desde una base y la geoubicación permite fusionar lecturas puntuales.",
+        "probar": "Abrí el barómetro",
+        "utilidad": "Sumá una restricción de altura y combiná otras lecturas si la franja sigue siendo extensa."
+      },
+      "en": {
+        "titulo": "Geolocation · barometer",
+        "que": "Simultaneous pressures give elevation difference and constrain position on terrain. In GPS-free geolocation you can combine these pressures with other readings.",
+        "porQue": "External pressure changes with height and remains useful when dust hides the skyline. For example, a slope can constrain position to an elevation band, while flat terrain leaves many possible places. config/barometro.json proposes 1 Pa differential-pressure noise and 2 K temperature noise, to calibrate. Both pressures must be measured outside and simultaneously, with a known-height reference.",
+        "como": "Heights suggested by pressures are compared with map elevations. The hypsometric equation Δz = (R·T/g)·ln(pBase/p) gives elevation difference and propagated error, and a likelihood favors compatible NASA/USGS DTM cells. barometro.js uses R = 192.1 J/(kg·K), verificado_parcial from NASA Glenn, and g = 3.71 m/s², verificado from ESA, in config/barometro.json. Errors are proposals to calibrate. barometro-ui.js supports a simulated-pressure test from a base, and Geolocation fuses individual readings.",
+        "probar": "Open barometer",
+        "utilidad": "Add an elevation constraint and combine other readings if the band remains broad."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "radio",
+      "selector": "#mapa",
+      "accion": {
+        "gancho": "herramienta",
+        "argumento": "radioDesde",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Radio · línea de vista y balizas",
+        "que": "Calcula cobertura geométrica de antena y revisa una ruta elegida.",
+        "porQue": "Un cerro puede cortar la comunicación aunque la base esté cerca. Por ejemplo, una depresión puede dejar un tramo sin línea de vista. config/radio.json propone un alcance máximo de 5.000 m y alturas de antena, a calibrar. La cobertura geométrica ayuda a inspeccionar huecos y estudiar balizas antes de salir.",
+        "como": "Se traza una línea desde la antena y se verifica si el terreno la intercepta, incluyendo curvatura de Marte. radio.js muestrea el DTM NASA/USGS, reúne cobertura de antenas y detecta tramos sin enlace, y herramientas-mapa.js muestra el resultado y sugerencias de baliza. config/radio.json contiene alturas, alcance y tolerancia propuestos a calibrar. Este análisis geométrico requiere además presupuesto de radiofrecuencia y validación de enlaces entre balizas. La tarjeta de salida todavía no incorpora esta cobertura.",
+        "probar": "Calculá radio desde base o centro",
+        "utilidad": "Revisá dónde podría perderse contacto y dónde estudiar un repetidor."
+      },
+      "en": {
+        "titulo": "Radio · line of sight and beacons",
+        "que": "It calculates geometric antenna coverage and checks a selected route.",
+        "porQue": "A hill can break communication even near base. For example, a hollow can leave a stretch without line of sight. config/radio.json proposes a 5,000 m maximum range and antenna heights, to calibrate. Geometric coverage helps inspect gaps and consider beacons before departure.",
+        "como": "A line is traced from the antenna to check whether terrain intercepts it, including Mars curvature. radio.js samples NASA/USGS DTM data, combines antenna coverage and identifies unlinked stretches, while herramientas-mapa.js displays results and beacon suggestions. config/radio.json holds proposed heights, range and outage tolerance to calibrate. This geometric analysis also requires an RF budget and validation of links between beacons. The departure card still does not incorporate this coverage.",
+        "probar": "Calculate radio from base or center",
+        "utilidad": "Review where contact could be lost and where to consider a relay."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "luz",
+      "selector": "#mapa",
+      "accion": {
+        "gancho": "herramienta",
+        "argumento": "luzYSombras",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Sol, luz y sombras",
+        "que": "Explorá posición del Sol y sombras del terreno a distintas horas.",
+        "porQue": "Una ladera puede quedar en sombra mientras el resto de la zona recibe luz. Por ejemplo, una parada al pie de un cerro puede dificultar ver obstáculos. La comprobación propia de luz.test.js compara 700 soles de Curiosity, 1.400 eventos de amanecer y atardecer, con error medio conjunto de unos 0,6 min. Esa comparación evalúa el reloj solar y la herramienta de sombras conserva la resolución reducida del relieve.",
+        "como": "Primero se calcula dónde está el Sol y después si un cerro tapa sus rayos. La geometría de Mars24 da azimut y elevación, y el trazado sobre DTM HiRISE o MOLA–HRSC reducido busca bloqueos del relieve. luz.js conserva el relieve reducido en caché y herramientas-mapa.js expone un deslizador diurno en pasos de 15 min. Mars24 es una referencia de NASA GISS y la comparación con Curiosity es medicion_propia. Las sombras son un modelo geométrico que deja fuera temperatura del traje e iluminación difusa completa.",
+        "probar": "Abrí luz y sombras",
+        "utilidad": "Elegí horas diurnas y revisá qué sectores del recorrido pueden quedar en sombra."
+      },
+      "en": {
+        "titulo": "Sunlight and terrain shadows",
+        "que": "Explore Sun position and terrain shadows at different hours.",
+        "porQue": "A slope can be shaded while the rest of a zone receives sunlight. For example, a stop below a hill may make obstacles harder to see. The project check in luz.test.js compares 700 Curiosity sols, 1,400 sunrise and sunset events, with a combined mean error of about 0.6 min. That comparison evaluates solar timing, while the shadow tool retains reduced terrain resolution.",
+        "como": "First the Sun’s position is calculated, then terrain is checked for blocked rays. Mars24 geometry gives azimuth and elevation, and tracing across reduced HiRISE or MOLA–HRSC DTM data detects terrain blockage. luz.js caches reduced terrain, and herramientas-mapa.js exposes a daylight slider in 15 min steps. Mars24 is a NASA GISS reference, and comparison with Curiosity is medicion_propia. Shadows are a geometric model that leaves out suit temperature and full diffuse lighting.",
+        "probar": "Open light and shadows",
+        "utilidad": "Choose daylight times and inspect which route sectors may be shaded."
+      },
+      "algoritmo": true
+    },
+    {
+      "id": "medir",
+      "selector": "#mapa",
+      "accion": {
+        "gancho": "herramienta",
+        "argumento": "medirDesde",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Medir distancia, rumbo y perfil",
+        "que": "Elegí un origen y un segundo punto para medir sobre el mapa.",
+        "porQue": "La distancia entre puntos ayuda a comparar alternativas antes de pedir una ruta. Por ejemplo, un perfil puede revelar una subida que la imagen oculta. herramientas.js usa la esfera marciana de radio 3.396.190 m definida por el proyecto. La medición necesita cobertura de relieve para mostrar altura y no evalúa todos los límites de salida.",
+        "probar": "Empezá una medición",
+        "utilidad": "Compará distancia, rumbo y desnivel, y después verificá la alternativa con el planificador.",
+        "origen": "Coordenadas de la zona y muestras de su DTM NASA/USGS. herramientas.js obtiene distancia esférica y rumbo, y el Worker entrega alturas para el perfil. El botón inicia desde base o centro y después tocás el segundo punto."
+      },
+      "en": {
+        "titulo": "Measure distance, bearing and profile",
+        "que": "Choose an origin and second point to measure on the map.",
+        "porQue": "Point-to-point distance helps compare alternatives before requesting a route. For example, a profile can reveal a climb hidden in the image. herramientas.js uses the project’s Mars sphere radius of 3,396,190 m. Elevation measurement needs terrain coverage and does not evaluate all sortie limits.",
+        "probar": "Start a measurement",
+        "utilidad": "Compare distance, bearing and elevation change, then check the alternative with the planner.",
+        "origen": "Zone coordinates and NASA/USGS DTM samples. herramientas.js provides spherical distance and bearing, and the Worker supplies profile heights. The button starts from base or center, then you select the second point."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "coordenadas",
+      "selector": "#mapa",
+      "accion": {
+        "gancho": "herramienta",
+        "argumento": "irACoordenadas",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Ir a coordenadas y copiarlas",
+        "que": "Buscá un punto por latitud y longitud o copiá una celda.",
+        "porQue": "Un signo o referencia de longitud equivocados puede llevar al lugar incorrecto. Por ejemplo, una longitud oeste debe convertirse de forma consistente a longitud este. El proyecto usa radio 3.396.190 m, latitud planetocéntrica y longitud este según AGENTS.md. La grilla.transform de meta.json permite ubicar esas coordenadas dentro del mapa disponible.",
+        "probar": "Abrí búsqueda por coordenadas",
+        "utilidad": "Encontrá y compartí un punto con una convención de coordenadas explícita.",
+        "origen": "Coordenadas que ingresás como decimales, cardinales o grados, minutos y segundos. La proyección equirectangular y la transformación de la zona están en meta.json. La herramienta centra el mapa y permite copiar puntos desde el menú contextual."
+      },
+      "en": {
+        "titulo": "Go to and copy coordinates",
+        "que": "Find a point by latitude and longitude or copy a cell.",
+        "porQue": "A wrong sign or longitude convention can lead to the wrong place. For example, a west longitude needs consistent conversion to east longitude. The project uses a 3,396,190 m radius, planetocentric latitude and east longitude according to AGENTS.md. grilla.transform in meta.json places those coordinates within available map coverage.",
+        "probar": "Open coordinate search",
+        "utilidad": "Find and share a point with an explicit coordinate convention.",
+        "origen": "Coordinates entered as decimals, cardinals or degrees, minutes and seconds. Zone equirectangular projection and grid transform are in meta.json. The tool centers the map and supports copying points from the context menu."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "guardar",
+      "selector": "#plan-guardar",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#plan-guardar",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "GeoJSON y guardado automático",
+        "que": "Exportá marcas e itinerarios para retomarlos o compartirlos.",
+        "porQue": "El almacenamiento del navegador puede borrarse y el plan puede necesitar otra computadora. Por ejemplo, exportar antes de importar otro plan conserva una copia recuperable. marcas.js genera una FeatureCollection GeoJSON y plan.js la descarga. El archivo contiene marcas e itinerarios, mientras los mapas y ajustes de sesión requieren su propia copia.",
+        "probar": "Descargá el plan GeoJSON",
+        "utilidad": "Llevá una copia del plan y verificá que el archivo descargado esté disponible.",
+        "origen": "Marcas e itinerarios del plan local en GeoJSON. guardado.js también conserva sesión, plan y opciones en el navegador y, al usar servidor.py, intenta guardarlos en guardado/estado.json. Recuperar desde ese archivo depende de que la escritura haya llegado a completarse."
+      },
+      "en": {
+        "titulo": "GeoJSON and automatic saving",
+        "que": "Export markers and itineraries to resume or share them.",
+        "porQue": "Browser storage can be cleared, and a plan may need moving to another computer. For example, exporting before importing another plan preserves a recoverable copy. marcas.js generates a GeoJSON FeatureCollection, and plan.js downloads it. The file contains markers and itineraries, while maps and session settings need their own copies.",
+        "probar": "Download plan GeoJSON",
+        "utilidad": "Keep a plan copy and verify that the downloaded file is available.",
+        "origen": "Local plan markers and itineraries in GeoJSON. guardado.js also retains session, plan and settings in the browser and, with servidor.py, attempts to save them in guardado/estado.json. Recovery from that file depends on the write having completed."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "cargar",
+      "selector": "#plan-cargar",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#plan-cargar",
+        "necesita": "zona"
+      },
+      "es": {
+        "titulo": "Cargar un plan",
+        "que": "Importá GeoJSON compatible para la zona.",
+        "porQue": "Un archivo compartido permite retomar logística, pero puede contener puntos o recursos inválidos. Por ejemplo, importar el plan de otra zona requiere revisar coordenadas y avisos. Los 7 tipos admitidos están definidos en config/marcas.json. Al elegir un GeoJSON válido, plan.js reemplaza el plan actual y conviene exportarlo antes si querés conservarlo.",
+        "probar": "Elegí un archivo de plan",
+        "utilidad": "Retomá un plan compatible y revisá marcas, stock y zona antes de calcular.",
+        "origen": "Un GeoJSON compatible que elegís desde tu equipo. marcas.js valida entidades y plan.js informa problemas de zona y reemplaza el plan al importar. Los inventarios del archivo siguen siendo declarados y requieren revisión."
+      },
+      "en": {
+        "titulo": "Load a plan",
+        "que": "Import compatible GeoJSON for the zone.",
+        "porQue": "A shared file can restore logistics but may contain invalid points or resources. For example, importing another zone’s plan requires reviewing coordinates and warnings. The 7 accepted types are defined in config/marcas.json. Selecting a valid GeoJSON makes plan.js replace the current plan, so export it first if you want to retain it.",
+        "probar": "Choose a plan file",
+        "utilidad": "Resume a compatible plan and review markers, stock and zone before computing.",
+        "origen": "A compatible GeoJSON selected from your device. marcas.js validates entities, and plan.js reports zone issues and replaces the plan on import. File inventories remain declared and require review."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "idioma",
+      "selector": "#idioma",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#idioma"
+      },
+      "es": {
+        "titulo": "Español / English",
+        "que": "Cambiá el idioma de consola y guía.",
+        "porQue": "Un control mal interpretado puede cambiar el presupuesto o destino. Por ejemplo, un jurado que lee inglés necesita las mismas instrucciones de la guía que quien elige español. contenido.json guarda las fichas en los 2 idiomas y la app usa es-UY o en-US para presentar números. La primera visita permite elegir el idioma y la preferencia se conserva.",
+        "probar": "Enfocá el selector de idioma",
+        "utilidad": "Elegí el idioma en el que puedas revisar controles, límites y avisos con claridad.",
+        "origen": "Textos de interfaz y fichas bilingües locales. idioma.js prioriza el parámetro lang de la URL, después la preferencia guardada y el navegador. Cambiar idioma guarda la elección y recarga la app."
+      },
+      "en": {
+        "titulo": "Español / English",
+        "que": "Change console and guide language.",
+        "porQue": "A misunderstood control can change a budget or target. For example, an English-speaking reviewer needs the same guide instructions as a Spanish-speaking user. contenido.json stores cards in 2 languages, and the app formats numbers as es-UY or en-US. The first visit offers a language choice and saves the preference.",
+        "probar": "Focus language selector",
+        "utilidad": "Choose the language in which you can clearly review controls, limits and warnings.",
+        "origen": "Local interface texts and bilingual cards. idioma.js prioritizes the URL lang parameter, then the saved preference and browser. Changing language saves the choice and reloads the app."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "offline",
+      "selector": "#estado",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#fuentes"
+      },
+      "es": {
+        "titulo": "Funcionamiento sin conexión",
+        "que": "Los cálculos críticos usan la app y archivos locales.",
+        "porQue": "Un pedido de cálculo remoto puede fallar durante una salida sin enlace. Por ejemplo, antes de desconectarte necesitás llevar la zona y los metadatos de las fotos. La copia local servida por servidor.py usa el puerto 8770 definido en ese archivo. El sitio público necesita sus archivos disponibles y carece de instalación offline garantizada por Service Worker.",
+        "probar": "Enfocá fuentes locales",
+        "utilidad": "Prepará app, zona, clima archivado y metadatos antes de trabajar sin conexión.",
+        "origen": "App, librerías, grillas y metadatos guardados en el equipo. Los Workers ejecutan rutas y localización localmente. Las actualizaciones de clima y los metadatos NASA ausentes requieren conexión. Revisá fechas y archivos antes de desconectarte."
+      },
+      "en": {
+        "titulo": "Offline operation",
+        "que": "Critical calculations use the app and local files.",
+        "porQue": "A remote calculation request can fail during an unlinked sortie. For example, before disconnecting, keep the zone and photo metadata locally. The local copy served by servidor.py uses port 8770 defined in that file. The public site needs its files available and lacks Service Worker-backed guaranteed offline installation.",
+        "probar": "Focus local sources",
+        "utilidad": "Prepare the app, zone, cached weather and metadata before working offline.",
+        "origen": "App, libraries, grids and metadata stored on the device. Workers execute routing and localization locally. Weather updates and missing NASA metadata require connectivity. Check dates and files before disconnecting."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "limites",
+      "selector": "#fuentes",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#fuentes"
+      },
+      "es": {
+        "titulo": "Límites y honestidad",
+        "que": "Separá datos reales, modelos e inventarios simulados.",
+        "porQue": "Una cifra precisa puede generar más confianza de la que admiten los datos. Por ejemplo, un refugio dibujado no acredita blindaje ni recursos físicos. En las 12 paradas de prueba de localizacion/resumen.json hubo 9 resultados dentro de su intervalo declarado. Esa muestra deja pendiente calibrar la incertidumbre y los supuestos humanos antes de una operación real.",
+        "probar": "Revisá fuentes y limitaciones",
+        "utilidad": "Identificá qué evidencia respalda cada decisión y qué tendrías que verificar en el lugar.",
+        "origen": "Observaciones reales de NASA/USGS y Curiosity, cálculos modelados de rutas, sombras y ubicación, e inventarios y fallas simulados. config/*.json registra muchas fuentes y estados, con formatos heredados pendientes de uniformar. auditoria/funcionalidades.md documenta blindaje pendiente, radio fuera de la decisión y geoubicación temporal todavía separada del visor. El planificador por bases a pie agrega débitos simulados por rama a las cadenas a pie, con el stock declarado guardado por separado."
+      },
+      "en": {
+        "titulo": "Limits and honesty",
+        "que": "Separate real data, models and simulated inventories.",
+        "porQue": "A precise number can inspire more confidence than the data support. For example, drawing a refuge does not establish physical supplies or shielding. In the 12 test stops in localizacion/resumen.json, 9 results fell inside their reported intervals. That sample leaves uncertainty and human assumptions to calibrate before a real operation.",
+        "probar": "Review sources and limitations",
+        "utilidad": "Identify the evidence behind each decision and what needs on-site verification.",
+        "origen": "Real NASA/USGS and Curiosity observations, modeled routing, shadows and location, and simulated inventories and failures. config/*.json records many sources and statuses, with legacy formats still to unify. auditoria/funcionalidades.md documents pending shielding, radio outside the decision and temporary geolocation still separate from the HUD. The walking base planner adds simulated per-branch deductions, with declared saved inventory kept separately."
+      },
+      "algoritmo": false
+    },
+    {
+      "id": "fuentes",
+      "selector": "#fuentes",
+      "accion": {
+        "gancho": "interfaz",
+        "argumento": "#fuentes"
+      },
+      "es": {
+        "titulo": "Fuentes y trazabilidad",
+        "que": "La lista identifica productos de la vista abierta.",
+        "porQue": "Un color en el mapa puede venir de una observación o de una regla propuesta. Por ejemplo, la imagen nocturna de THEMIS se origina a 100 m aunque se muestre sobre una grilla más fina. meta.json y CREDITOS.md documentan productos y atribuciones. Leer origen y resolución permite evaluar el alcance de cada capa.",
+        "probar": "Desplegá fuentes",
+        "utilidad": "Consultá procedencia y límites de los datos antes de apoyar una decisión en ellos.",
+        "origen": "Productos y resoluciones de meta.json para la vista abierta y atribuciones en CREDITOS.md. Los estados de parámetros son verificado, verificado_parcial, medicion_propia y propuesta. Los formatos heredados se revisan mediante su fuente y las propuestas quedan a calibrar."
+      },
+      "en": {
+        "titulo": "Sources and traceability",
+        "que": "The list identifies products in the current view.",
+        "porQue": "A map color may come from an observation or a proposed rule. For example, the THEMIS nighttime image originates at 100 m even when displayed on a finer grid. meta.json and CREDITOS.md document products and attribution. Reading origin and resolution helps assess each layer’s scope.",
+        "probar": "Expand sources",
+        "utilidad": "Check data provenance and limits before relying on a layer for a decision.",
+        "origen": "Products and resolutions from meta.json for the current view, with attribution in CREDITOS.md. Parameter statuses are verificado, verificado_parcial, medicion_propia and propuesta. Legacy formats are reviewed through their source, and proposals remain to calibrate."
+      },
+      "algoritmo": false
+    }
+  ],
+  "escenas": [
+    {
+      "tema": "gale",
+      "es": {
+        "titulo": "1 · Elegí el terreno",
+        "texto": "La tripulación prepara una salida al boxwork de Monte Sharp. Abrí su mapa de caminata para ver qué datos cubren el lugar."
+      },
+      "en": {
+        "titulo": "1 · Choose the terrain",
+        "texto": "The crew prepares a sortie to Mount Sharp boxwork. Open its walking map to inspect the available coverage."
+      }
+    },
+    {
+      "tema": "pendiente",
+      "es": {
+        "titulo": "2 · Mirá debajo de la imagen",
+        "texto": "Una foto no mide el esfuerzo. Encendé pendiente y descubrí cómo se descontó el margen observado con Curiosity."
+      },
+      "en": {
+        "titulo": "2 · Look beneath the image",
+        "texto": "A photo does not measure effort. Show slope and discover the margin measured against Curiosity."
+      }
+    },
+    {
+      "tema": "menu",
+      "es": {
+        "titulo": "3 · Decidí dónde empezar",
+        "texto": "Abrí el menú y elegí una base sobre suelo apto. Desde ese apoyo se calcula la posibilidad de regresar; después podés sumar refugios con stock."
+      },
+      "en": {
+        "titulo": "3 · Decide where to start",
+        "texto": "Open the menu and choose a base on suitable ground. Return feasibility is calculated from that support; you can then add stocked refuges."
+      }
+    },
+    {
+      "tema": "auto",
+      "es": {
+        "titulo": "4 · Proponé una salida",
+        "texto": "Elegí base y destino con clic derecho y calculá. La ficha de decisión te muestra qué regla permite salir o lo impide; también podés usar trazado manual o itinerario."
+      },
+      "en": {
+        "titulo": "4 · Propose a sortie",
+        "texto": "Choose base and destination by right click and calculate. The decision card shows what allows or blocks departure; manual tracing and itineraries are alternatives."
+      }
+    },
+    {
+      "tema": "ventana",
+      "es": {
+        "titulo": "5 · Revisá el día",
+        "texto": "El terreno no cambia con una alerta solar, pero la decisión sí. Mirá clima, fechas de los datos y márgenes de luz antes de ensayar."
+      },
+      "en": {
+        "titulo": "5 · Check the day",
+        "texto": "Terrain does not change with a solar alert, but the decision does. Inspect weather, data dates and daylight margins before rehearsal."
+      }
+    },
+    {
+      "tema": "fallas",
+      "es": {
+        "titulo": "6 · Ensayá lo inesperado",
+        "texto": "Iniciá el visor desde una ruta calculada. Inyectá una tormenta, mirá el regreso y probá después una fuga: el plazo más restrictivo manda."
+      },
+      "en": {
+        "titulo": "6 · Rehearse the unexpected",
+        "texto": "Start the HUD from a calculated route. Inject a storm, inspect the return, then try a leak: the tightest deadline governs."
+      }
+    },
+    {
+      "tema": "horizonte",
+      "es": {
+        "titulo": "7 · Recuperá la posición",
+        "texto": "Estimá tu posición con horizonte, presión y otras lecturas independientes. Abrí Geoubicación sin GPS, revisá la región de credibilidad del modelo y su resolución. En Curiosity, revelá la posición real después de estimarla y compará el error."
+      },
+      "en": {
+        "titulo": "7 · Recover position",
+        "texto": "Estimate position with skyline matching, pressure and other independent readings. Open GPS-free geolocation and inspect model credibility region and resolution. For Curiosity, reveal the true position after estimating it and compare the error."
+      }
+    }
+  ],
+  "glosario": [
+    {
+      "id": "eva",
+      "es": {
+        "termino": "EVA",
+        "definicion": "Salida de una persona fuera de un hábitat o vehículo presurizado. En la app se planifica su recorrido, trabajo y regreso."
+      },
+      "en": {
+        "termino": "EVA",
+        "definicion": "A person’s sortie outside a pressurized habitat or vehicle. The app plans travel, work and return."
+      },
+      "alias": {
+        "es": [],
+        "en": []
+      }
+    },
+    {
+      "id": "dtm",
+      "es": {
+        "termino": "DTM",
+        "definicion": "Modelo digital del terreno. Es una grilla de alturas desde la que se calculan pendientes, perfiles y horizontes."
+      },
+      "en": {
+        "termino": "DTM",
+        "definicion": "Digital Terrain Model. A height grid used to calculate slopes, profiles and skylines."
+      },
+      "alias": {
+        "es": [],
+        "en": []
+      }
+    },
+    {
+      "id": "hirise",
+      "es": {
+        "termino": "HiRISE",
+        "definicion": "Cámara de alta resolución de Mars Reconnaissance Orbiter. Sus imágenes estéreo permiten construir el relieve detallado de Gale."
+      },
+      "en": {
+        "termino": "HiRISE",
+        "definicion": "High-resolution camera aboard Mars Reconnaissance Orbiter. Stereo images support Gale’s detailed terrain model."
+      },
+      "alias": {
+        "es": [],
+        "en": []
+      }
+    },
+    {
+      "id": "o2-secundario",
+      "es": {
+        "termino": "O₂ secundario",
+        "definicion": "Reserva de oxígeno para una emergencia. La referencia temporal por defecto viene de Artemis y su uso en Marte requiere validar el traje y las condiciones."
+      },
+      "en": {
+        "termino": "secondary O₂",
+        "definicion": "Emergency oxygen reserve. The default time reference comes from Artemis, and use on Mars requires suit and environmental validation."
+      },
+      "alias": {
+        "es": [
+          "oxígeno secundario",
+          "O2 secundario"
+        ],
+        "en": [
+          "secondary oxygen",
+          "secondary O2"
+        ]
+      }
+    },
+    {
+      "id": "walkback",
+      "es": {
+        "termino": "walkback",
+        "definicion": "Regreso a pie cuando el rover deja de estar disponible. Su duración limita cuánto puede alejarse un rover abierto."
+      },
+      "en": {
+        "termino": "walkback",
+        "definicion": "Walking return when the rover becomes unavailable. Its duration limits open-rover travel distance."
+      },
+      "alias": {
+        "es": [],
+        "en": []
+      }
+    },
+    {
+      "id": "mars24",
+      "es": {
+        "termino": "Mars24",
+        "definicion": "Referencia de NASA GISS para calcular tiempo y geometría solar de Marte. La app usa sus algoritmos para hora local, Sol, amanecer y atardecer."
+      },
+      "en": {
+        "termino": "Mars24",
+        "definicion": "NASA GISS reference for Mars time and solar geometry. The app uses its algorithms for local time, Sun position, sunrise and sunset."
+      },
+      "alias": {
+        "es": [],
+        "en": []
+      }
+    },
+    {
+      "id": "rems",
+      "es": {
+        "termino": "REMS",
+        "definicion": "Estación ambiental a bordo de Curiosity, de CAB/INTA-CSIC. La app conserva partes con observaciones y su fecha disponible."
+      },
+      "en": {
+        "termino": "REMS",
+        "definicion": "Curiosity environmental monitoring station from CAB/INTA-CSIC. The app retains reports with observations and their available date."
+      },
+      "alias": {
+        "es": [],
+        "en": []
+      }
+    },
+    {
+      "id": "donki",
+      "es": {
+        "termino": "DONKI",
+        "definicion": "Base de clima espacial de NASA CCMC. Reúne eventos solares y simulaciones de propagación que la app consulta o guarda localmente."
+      },
+      "en": {
+        "termino": "DONKI",
+        "definicion": "NASA CCMC space-weather database. It collects solar events and propagation simulations that the app retrieves or caches locally."
+      },
+      "alias": {
+        "es": [],
+        "en": []
+      }
+    },
+    {
+      "id": "sol",
+      "es": {
+        "termino": "sol",
+        "definicion": "Día solar marciano, de unas 24 h y 39 min terrestres. En la expedición sirve para separar jornadas de manejo, ciencia y descanso."
+      },
+      "en": {
+        "termino": "sol",
+        "definicion": "A Martian solar day, approximately 24 Earth hours and 39 minutes. Expeditions use sols to divide driving, science and rest days."
+      },
+      "alias": {
+        "es": [
+          "soles"
+        ],
+        "en": [
+          "sols"
+        ]
+      }
+    }
+  ]
+}

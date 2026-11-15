@@ -1,0 +1,887 @@
+{
+  "zonas": [
+    {
+      "id": "gale_boxwork",
+      "nombre": "Gale · Monte Sharp (boxwork)",
+      "descripcion": "Zona de salida a pie alrededor de la última posición publicada de Curiosity, en la región de boxwork del Monte Sharp.",
+      "nivel": "salida",
+      "vehiculo": "pie",
+      "candidata": null,
+      "centro": {
+        "lon_este": 137.3720080094466,
+        "lat": -4.829286215519166
+      },
+      "limites": {
+        "lon_oeste": 137.32968123541673,
+        "lon_este": 137.41433478347648,
+        "lat_sur": -4.913639239809742,
+        "lat_norte": -4.74493319122859
+      }
+    },
+    {
+      "id": "region_00_acheron_fossae",
+      "nombre": "Acheron Fossae · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Acheron Fossae» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Acheron Fossae",
+      "centro": {
+        "lon_este": -168.0,
+        "lat": 39.0
+      },
+      "limites": {
+        "lon_oeste": -170.17084121835836,
+        "lon_este": -165.82915878164167,
+        "lat_sur": 37.31293951418848,
+        "lat_norte": 40.68706048581152
+      }
+    },
+    {
+      "id": "region_01_amazonis_planitia",
+      "nombre": "Amazonis Planitia · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Amazonis Planitia» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Amazonis Planitia",
+      "centro": {
+        "lon_este": -171.2,
+        "lat": 46.16
+      },
+      "limites": {
+        "lon_oeste": -173.6356717873992,
+        "lon_este": -168.76432821260076,
+        "lat_sur": 44.472939514188475,
+        "lat_norte": 47.84706048581152
+      }
+    },
+    {
+      "id": "region_02_apollinaris_sulci",
+      "nombre": "Apollinaris Sulci · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Apollinaris Sulci» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Apollinaris Sulci",
+      "centro": {
+        "lon_este": 177.0211,
+        "lat": -12.622999999999998
+      },
+      "limites": {
+        "lon_oeste": 175.29225172126192,
+        "lon_este": 178.74994827873806,
+        "lat_sur": -14.31006048581152,
+        "lat_norte": -10.935939514188476
+      }
+    },
+    {
+      "id": "region_03_apollinaris_sulci",
+      "nombre": "Apollinaris Sulci · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Apollinaris Sulci» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Apollinaris Sulci",
+      "centro": {
+        "lon_este": 175.0,
+        "lat": -13.0
+      },
+      "limites": {
+        "lon_oeste": 173.26856289331573,
+        "lon_este": 176.7314371066843,
+        "lat_sur": -14.687060485811523,
+        "lat_norte": -11.312939514188479
+      }
+    },
+    {
+      "id": "region_04_aram_chaos",
+      "nombre": "Aram Chaos · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Aram Chaos» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Aram Chaos",
+      "centro": {
+        "lon_este": -19.73,
+        "lat": 2.44
+      },
+      "limites": {
+        "lon_oeste": -21.418591444036426,
+        "lon_este": -18.041408555963574,
+        "lat_sur": 0.7529395141884783,
+        "lat_norte": 4.127060485811522
+      }
+    },
+    {
+      "id": "region_05_ausonia_cavus",
+      "nombre": "Ausonia Cavus · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Ausonia Cavus» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Ausonia Cavus",
+      "centro": {
+        "lon_este": 96.5,
+        "lat": -32.0
+      },
+      "limites": {
+        "lon_oeste": 94.51065470996548,
+        "lon_este": 98.4893452900345,
+        "lat_sur": -33.68706048581152,
+        "lat_norte": -30.31293951418848
+      }
+    },
+    {
+      "id": "region_06_cerberus",
+      "nombre": "Cerberus · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Cerberus» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Cerberus",
+      "centro": {
+        "lon_este": 161.89999999999998,
+        "lat": 9.7
+      },
+      "limites": {
+        "lon_oeste": 160.1884705809436,
+        "lon_este": 163.61152941905638,
+        "lat_sur": 8.012939514188476,
+        "lat_norte": 11.38706048581152
+      }
+    },
+    {
+      "id": "region_07_chryse_vallis_marineris",
+      "nombre": "Chryse (Vallis Marineris) · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Chryse (Vallis Marineris)» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Chryse (Vallis Marineris)",
+      "centro": {
+        "lon_este": -40.0,
+        "lat": 20.0
+      },
+      "limites": {
+        "lon_oeste": -41.795332269823035,
+        "lon_este": -38.204667730176965,
+        "lat_sur": 18.31293951418848,
+        "lat_norte": 21.68706048581152
+      }
+    },
+    {
+      "id": "region_08_chryse_viking",
+      "nombre": "Chryse - Viking · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Chryse - Viking» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Chryse - Viking",
+      "centro": {
+        "lon_este": -48.5,
+        "lat": 22.5
+      },
+      "limites": {
+        "lon_oeste": -50.32606111126389,
+        "lon_este": -46.67393888873612,
+        "lat_sur": 20.81293951418848,
+        "lat_norte": 24.18706048581152
+      }
+    },
+    {
+      "id": "region_09_columbus_crater",
+      "nombre": "Columbus Crater · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Columbus Crater» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Columbus Crater",
+      "centro": {
+        "lon_este": -166.0,
+        "lat": -29.0
+      },
+      "limites": {
+        "lon_oeste": -167.92890746920094,
+        "lon_este": -164.07109253079904,
+        "lat_sur": -30.68706048581152,
+        "lat_norte": -27.31293951418848
+      }
+    },
+    {
+      "id": "region_10_copernicus_crater",
+      "nombre": "Copernicus Crater · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Copernicus Crater» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Copernicus Crater",
+      "centro": {
+        "lon_este": -169.0,
+        "lat": -49.0
+      },
+      "limites": {
+        "lon_oeste": -171.57150715295762,
+        "lon_este": -166.4284928470424,
+        "lat_sur": -50.68706048581152,
+        "lat_norte": -47.31293951418848
+      }
+    },
+    {
+      "id": "region_11_coprates_chasma",
+      "nombre": "Coprates Chasma · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Coprates Chasma» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Coprates Chasma",
+      "centro": {
+        "lon_este": -66.6,
+        "lat": -11.759999999999998
+      },
+      "limites": {
+        "lon_oeste": -68.32323125568378,
+        "lon_este": -64.8767687443162,
+        "lat_sur": -13.447060485811521,
+        "lat_norte": -10.072939514188477
+      }
+    },
+    {
+      "id": "region_12_deuteronilus_mensae",
+      "nombre": "Deuteronilus Mensae · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Deuteronilus Mensae» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Deuteronilus Mensae",
+      "centro": {
+        "lon_este": 23.198999999999998,
+        "lat": 39.11
+      },
+      "limites": {
+        "lon_oeste": 21.02477456558112,
+        "lon_este": 25.37322543441888,
+        "lat_sur": 37.42293951418848,
+        "lat_norte": 40.79706048581152
+      }
+    },
+    {
+      "id": "region_13_deuteronilus_mensae",
+      "nombre": "Deuteronilus Mensae · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Deuteronilus Mensae» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Deuteronilus Mensae",
+      "centro": {
+        "lon_este": 22.0,
+        "lat": 41.0
+      },
+      "limites": {
+        "lon_oeste": 19.764622935734376,
+        "lon_este": 24.235377064265624,
+        "lat_sur": 39.31293951418848,
+        "lat_norte": 42.68706048581152
+      }
+    },
+    {
+      "id": "region_14_eastern_hellas",
+      "nombre": "Eastern Hellas · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Eastern Hellas» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Eastern Hellas",
+      "centro": {
+        "lon_este": 104.0,
+        "lat": -40.0
+      },
+      "limites": {
+        "lon_oeste": 101.79769894427719,
+        "lon_este": 106.20230105572281,
+        "lat_sur": -41.68706048581152,
+        "lat_norte": -38.31293951418848
+      }
+    },
+    {
+      "id": "region_15_eastern_valles_marineris",
+      "nombre": "Eastern Valles Marineris · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Eastern Valles Marineris» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Eastern Valles Marineris",
+      "centro": {
+        "lon_este": -35.2,
+        "lat": -3.95
+      },
+      "limites": {
+        "lon_oeste": -36.891077565459135,
+        "lon_este": -33.50892243454088,
+        "lat_sur": -5.637060485811522,
+        "lat_norte": -2.2629395141884783
+      }
+    },
+    {
+      "id": "region_16_equatorial_vallis_marineris",
+      "nombre": "Equatorial Vallis Marineris · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Equatorial Vallis Marineris» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Equatorial Vallis Marineris",
+      "centro": {
+        "lon_este": -49.21000000000001,
+        "lat": -18.83
+      },
+      "limites": {
+        "lon_oeste": -50.992456878446944,
+        "lon_este": -47.427543121553065,
+        "lat_sur": -20.517060485811523,
+        "lat_norte": -17.142939514188477
+      }
+    },
+    {
+      "id": "region_17_erberus_montes",
+      "nombre": "Erberus Montes · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Erberus Montes» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Erberus Montes",
+      "centro": {
+        "lon_este": -139.5,
+        "lat": 40.0
+      },
+      "limites": {
+        "lon_oeste": -141.7023010557228,
+        "lon_este": -137.2976989442772,
+        "lat_sur": 38.31293951418848,
+        "lat_norte": 41.68706048581152
+      }
+    },
+    {
+      "id": "region_18_firsoff_crater",
+      "nombre": "Firsoff Crater · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Firsoff Crater» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Firsoff Crater",
+      "centro": {
+        "lon_este": -7.999999999999999,
+        "lat": 0.0
+      },
+      "limites": {
+        "lon_oeste": -9.687060485811521,
+        "lon_este": -6.312939514188477,
+        "lat_sur": -1.687060485811522,
+        "lat_norte": 1.687060485811522
+      }
+    },
+    {
+      "id": "region_19_gale_crater",
+      "nombre": "Gale Crater · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Gale Crater» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Gale Crater",
+      "centro": {
+        "lon_este": 137.5,
+        "lat": -4.5
+      },
+      "limites": {
+        "lon_oeste": 135.8077227883138,
+        "lon_este": 139.1922772116862,
+        "lat_sur": -6.1870604858115215,
+        "lat_norte": -2.8129395141884777
+      }
+    },
+    {
+      "id": "region_20_gale_crater",
+      "nombre": "Gale Crater · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Gale Crater» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Gale Crater",
+      "centro": {
+        "lon_este": 137.087,
+        "lat": -4.74
+      },
+      "limites": {
+        "lon_oeste": 135.39414986528848,
+        "lon_este": 138.77985013471152,
+        "lat_sur": -6.427060485811522,
+        "lat_norte": -3.0529395141884783
+      }
+    },
+    {
+      "id": "region_21_gale_crater",
+      "nombre": "Gale Crater · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Gale Crater» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Gale Crater",
+      "centro": {
+        "lon_este": 137.12,
+        "lat": -4.640000000000001
+      },
+      "limites": {
+        "lon_oeste": 135.42739223961217,
+        "lon_este": 138.81260776038783,
+        "lat_sur": -6.327060485811522,
+        "lat_norte": -2.952939514188478
+      }
+    },
+    {
+      "id": "region_22_gusev_crater",
+      "nombre": "Gusev Crater · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Gusev Crater» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Gusev Crater",
+      "centro": {
+        "lon_este": 175.462,
+        "lat": -14.574000000000002
+      },
+      "limites": {
+        "lon_oeste": 173.71885100433357,
+        "lon_este": 177.20514899566638,
+        "lat_sur": -16.261060485811523,
+        "lat_norte": -12.886939514188478
+      }
+    },
+    {
+      "id": "region_23_hadriacus_palus",
+      "nombre": "Hadriacus Palus · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Hadriacus Palus» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Hadriacus Palus",
+      "centro": {
+        "lon_este": 77.47,
+        "lat": -26.84
+      },
+      "limites": {
+        "lon_oeste": 75.5792506547624,
+        "lon_este": 79.36074934523761,
+        "lat_sur": -28.52706048581152,
+        "lat_norte": -25.15293951418848
+      }
+    },
+    {
+      "id": "region_24_hale_crater",
+      "nombre": "Hale Crater · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Hale Crater» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Hale Crater",
+      "centro": {
+        "lon_este": -36.5342,
+        "lat": -35.5479
+      },
+      "limites": {
+        "lon_oeste": -38.6076989931714,
+        "lon_este": -34.46070100682861,
+        "lat_sur": -37.23496048581152,
+        "lat_norte": -33.86083951418848
+      }
+    },
+    {
+      "id": "region_25_hebrus_valles",
+      "nombre": "Hebrus Valles · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Hebrus Valles» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Hebrus Valles",
+      "centro": {
+        "lon_este": 126.63299999999998,
+        "lat": 20.083
+      },
+      "limites": {
+        "lon_oeste": 124.83671874612457,
+        "lon_este": 128.4292812538754,
+        "lat_sur": 18.395939514188477,
+        "lat_norte": 21.77006048581152
+      }
+    },
+    {
+      "id": "region_26_hellas_basin",
+      "nombre": "Hellas Basin · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Hellas Basin» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Hellas Basin",
+      "centro": {
+        "lon_este": 94.0,
+        "lat": -35.5
+      },
+      "limites": {
+        "lon_oeste": 91.92773820450242,
+        "lon_este": 96.0722617954976,
+        "lat_sur": -37.18706048581152,
+        "lat_norte": -33.81293951418848
+      }
+    },
+    {
+      "id": "region_27_hellas_rim",
+      "nombre": "Hellas Rim · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Hellas Rim» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Hellas Rim",
+      "centro": {
+        "lon_este": 102.0,
+        "lat": -39.0
+      },
+      "limites": {
+        "lon_oeste": 99.82915878164164,
+        "lon_este": 104.17084121835835,
+        "lat_sur": -40.68706048581152,
+        "lat_norte": -37.31293951418848
+      }
+    },
+    {
+      "id": "region_28_hills_zephyria_planum",
+      "nombre": "Hills Zephyria Planum · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Hills Zephyria Planum» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Hills Zephyria Planum",
+      "centro": {
+        "lon_este": 157.135,
+        "lat": -1.37
+      },
+      "limites": {
+        "lon_oeste": 155.44745712229798,
+        "lon_este": 158.82254287770198,
+        "lat_sur": -3.057060485811522,
+        "lat_norte": 0.31706048581152174
+      }
+    },
+    {
+      "id": "region_29_huygens_crater",
+      "nombre": "Huygens Crater · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Huygens Crater» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Huygens Crater",
+      "centro": {
+        "lon_este": 55.5,
+        "lat": -13.5
+      },
+      "limites": {
+        "lon_oeste": 53.76500136375922,
+        "lon_este": 57.234998636240775,
+        "lat_sur": -15.187060485811521,
+        "lat_norte": -11.812939514188479
+      }
+    },
+    {
+      "id": "region_30_hypanis",
+      "nombre": "Hypanis · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Hypanis» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Hypanis",
+      "centro": {
+        "lon_este": -45.3,
+        "lat": 11.7
+      },
+      "limites": {
+        "lon_oeste": -47.022856603738944,
+        "lon_este": -43.57714339626105,
+        "lat_sur": 10.012939514188478,
+        "lat_norte": 13.38706048581152
+      }
+    },
+    {
+      "id": "region_31_ismenius_cavus",
+      "nombre": "Ismenius Cavus · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Ismenius Cavus» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Ismenius Cavus",
+      "centro": {
+        "lon_este": 17.0,
+        "lat": 33.5
+      },
+      "limites": {
+        "lon_oeste": 14.976868725709512,
+        "lon_este": 19.02313127429049,
+        "lat_sur": 31.81293951418848,
+        "lat_norte": 35.18706048581152
+      }
+    },
+    {
+      "id": "region_32_jezero_crater",
+      "nombre": "Jezero Crater · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Jezero Crater» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Jezero Crater",
+      "centro": {
+        "lon_este": 77.0,
+        "lat": 17.5
+      },
+      "limites": {
+        "lon_oeste": 75.23106794475241,
+        "lon_este": 78.76893205524759,
+        "lat_sur": 15.812939514188479,
+        "lat_norte": 19.18706048581152
+      }
+    },
+    {
+      "id": "region_33_kasei_valles",
+      "nombre": "Kasei Valles · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Kasei Valles» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Kasei Valles",
+      "centro": {
+        "lon_este": -72.0,
+        "lat": 25.0
+      },
+      "limites": {
+        "lon_oeste": -73.86146528799856,
+        "lon_este": -70.13853471200143,
+        "lat_sur": 23.31293951418848,
+        "lat_norte": 26.68706048581152
+      }
+    },
+    {
+      "id": "region_34_mawrth_vallis",
+      "nombre": "Mawrth Vallis · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Mawrth Vallis» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Mawrth Vallis",
+      "centro": {
+        "lon_este": -19.682999999999996,
+        "lat": 24.802
+      },
+      "limites": {
+        "lon_oeste": -21.54148155297194,
+        "lon_este": -17.82451844702805,
+        "lat_sur": 23.114939514188475,
+        "lat_norte": 26.48906048581152
+      }
+    },
+    {
+      "id": "region_35_mclaughlin_crater",
+      "nombre": "McLaughlin Crater · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «McLaughlin Crater» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "McLaughlin Crater",
+      "centro": {
+        "lon_este": -22.400000000000002,
+        "lat": 21.9
+      },
+      "limites": {
+        "lon_oeste": -24.2182739451301,
+        "lon_este": -20.581726054869904,
+        "lat_sur": 20.212939514188477,
+        "lat_norte": 23.58706048581152
+      }
+    },
+    {
+      "id": "region_36_melas_chasma",
+      "nombre": "Melas Chasma · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Melas Chasma» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Melas Chasma",
+      "centro": {
+        "lon_este": -70.0,
+        "lat": -12.0
+      },
+      "limites": {
+        "lon_oeste": -71.72475042063783,
+        "lon_este": -68.27524957936215,
+        "lat_sur": -13.687060485811521,
+        "lat_norte": -10.312939514188479
+      }
+    },
+    {
+      "id": "region_37_meridiani_planum",
+      "nombre": "Meridiani Planum · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Meridiani Planum» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Meridiani Planum",
+      "centro": {
+        "lon_este": -4.5,
+        "lat": 0.5
+      },
+      "limites": {
+        "lon_oeste": -6.187124726351462,
+        "lon_este": -2.812875273648538,
+        "lat_sur": -1.187060485811522,
+        "lat_norte": 2.187060485811522
+      }
+    },
+    {
+      "id": "region_38_meridiani_planum",
+      "nombre": "Meridiani Planum · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Meridiani Planum» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Meridiani Planum",
+      "centro": {
+        "lon_este": -5.540000000000001,
+        "lat": -3.08
+      },
+      "limites": {
+        "lon_oeste": -7.2295009927051845,
+        "lon_este": -3.850499007294817,
+        "lat_sur": -4.7670604858115215,
+        "lat_norte": -1.3929395141884782
+      }
+    },
+    {
+      "id": "region_39_newton_crater",
+      "nombre": "Newton Crater · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Newton Crater» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Newton Crater",
+      "centro": {
+        "lon_este": -159.5,
+        "lat": -40.5
+      },
+      "limites": {
+        "lon_oeste": -161.71863131292017,
+        "lon_este": -157.28136868707983,
+        "lat_sur": -42.18706048581152,
+        "lat_norte": -38.81293951418848
+      }
+    },
+    {
+      "id": "region_40_nili_fossae",
+      "nombre": "Nili Fossae · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Nili Fossae» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Nili Fossae",
+      "centro": {
+        "lon_este": 76.948,
+        "lat": 21.506
+      },
+      "limites": {
+        "lon_oeste": 75.13469579381507,
+        "lon_este": 78.76130420618492,
+        "lat_sur": 19.81893951418848,
+        "lat_norte": 23.19306048581152
+      }
+    },
+    {
+      "id": "region_41_noachis_terra",
+      "nombre": "Noachis Terra · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Noachis Terra» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Noachis Terra",
+      "centro": {
+        "lon_este": -9.352000000000002,
+        "lat": -37.33
+      },
+      "limites": {
+        "lon_oeste": -11.473672127671932,
+        "lon_este": -7.230327872328072,
+        "lat_sur": -39.01706048581153,
+        "lat_norte": -35.64293951418848
+      }
+    },
+    {
+      "id": "region_42_noctis_landing",
+      "nombre": "Noctis Landing · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Noctis Landing» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Noctis Landing",
+      "centro": {
+        "lon_este": -92.602,
+        "lat": -6.45
+      },
+      "limites": {
+        "lon_oeste": -94.29980715385196,
+        "lon_este": -90.90419284614805,
+        "lat_sur": -8.137060485811523,
+        "lat_norte": -4.762939514188478
+      }
+    },
+    {
+      "id": "region_43_phlegra_dorsa",
+      "nombre": "Phlegra Dorsa · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Phlegra Dorsa» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Phlegra Dorsa",
+      "centro": {
+        "lon_este": 172.0,
+        "lat": 39.0
+      },
+      "limites": {
+        "lon_oeste": 169.82915878164167,
+        "lon_este": 174.17084121835836,
+        "lat_sur": 37.31293951418848,
+        "lat_norte": 40.68706048581152
+      }
+    },
+    {
+      "id": "region_44_protonilus_mensae",
+      "nombre": "Protonilus Mensae · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Protonilus Mensae» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Protonilus Mensae",
+      "centro": {
+        "lon_este": 48.062,
+        "lat": 42.187
+      },
+      "limites": {
+        "lon_oeste": 45.78513303176967,
+        "lon_este": 50.33886696823032,
+        "lat_sur": 40.499939514188476,
+        "lat_norte": 43.87406048581152
+      }
+    },
+    {
+      "id": "region_45_sinus_meridiani",
+      "nombre": "Sinus Meridiani · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Sinus Meridiani» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Sinus Meridiani",
+      "centro": {
+        "lon_este": -6.4,
+        "lat": -2.3
+      },
+      "limites": {
+        "lon_oeste": -8.088420685764845,
+        "lon_este": -4.7115793142351565,
+        "lat_sur": -3.9870604858115217,
+        "lat_norte": -0.612939514188478
+      }
+    },
+    {
+      "id": "region_46_southern_nectaris_fossae",
+      "nombre": "Southern Nectaris Fossae · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Southern Nectaris Fossae» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Southern Nectaris Fossae",
+      "centro": {
+        "lon_este": -59.71,
+        "lat": -28.879999999999995
+      },
+      "limites": {
+        "lon_oeste": -61.63667493833615,
+        "lon_este": -57.78332506166385,
+        "lat_sur": -30.56706048581152,
+        "lat_norte": -27.192939514188474
+      }
+    },
+    {
+      "id": "region_47_tempe_terra",
+      "nombre": "Tempe Terra · región",
+      "descripcion": "Región de 200 × 200 km alrededor de la zona candidata «Tempe Terra» (taller de NASA de 2015). Relieve de 200 m: sirve para rutas en rover y contexto, no para caminar.",
+      "nivel": "region",
+      "vehiculo": "rover",
+      "candidata": "Tempe Terra",
+      "centro": {
+        "lon_este": -88.92099999999999,
+        "lat": 41.628
+      },
+      "limites": {
+        "lon_oeste": -91.17801698154176,
+        "lon_este": -86.66398301845823,
+        "lat_sur": 39.94093951418848,
+        "lat_norte": 43.31506048581153
+      }
+    }
+  ],
+  "marte": true
+}

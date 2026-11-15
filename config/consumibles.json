@@ -1,0 +1,71 @@
+{
+  "_nota": "Modelo de planificación, sin mediciones de un traje marciano. Los inventarios son simulados. No acredita presurización, protección térmica, blindaje ni compatibilidad de recarga. Un dato null o ausente no aporta recursos acreditados.",
+  "traje": {
+    "oxigeno_primario_kg": { "valor": 0.56, "unidad": "kg", "base": "propuesta", "fuente": "a calibrar: inventario simulado; no es una especificación de Apollo ni xEMU" },
+    "oxigeno_secundario_kg": { "valor": 0.07, "unidad": "kg", "base": "propuesta", "fuente": "a calibrar: reserva simulada independiente del primario" },
+    "primario_nominal_h": { "valor": 8, "unidad": "h", "base": "propuesta", "fuente": "a calibrar: duración objetivo del modelo; no garantiza autonomía de todos los consumibles" },
+    "secundario_nominal_h": { "valor": 1, "unidad": "h", "base": "propuesta", "fuente": "a calibrar: duración objetivo; no modela purga, fugas ni un circuito de emergencia real" },
+    "agua_enfriamiento_kg": { "valor": 4, "unidad": "kg", "base": "propuesta", "fuente": "a calibrar: agua expendible simulada, no el agua que recircula en la prenda" },
+    "agua_potable_kg": { "valor": 1.6, "unidad": "kg", "base": "propuesta", "fuente": "a calibrar: reserva de bebida simulada" },
+    "bateria_wh": { "valor": 600, "unidad": "Wh", "base": "propuesta", "fuente": "a calibrar: energía utilizable simulada del traje" },
+    "absorcion_co2_kg": { "valor": 0.7, "unidad": "kg de CO2", "base": "propuesta", "fuente": "a calibrar: capacidad simulada de captura, no masa del sorbente" }
+  },
+  "metabolismo": {
+    "_modelo": "W = (masa/masa_ref) * [reposo + (nominal - reposo)*(g/g_ref)*(v/v_ref)^2] + masa*g*v*max(pendiente,0)/eficiencia. Pendiente = desnivel/distancia horizontal (sin unidad). Masa incluye persona, traje y carga. Adaptación heurística a Marte, a calibrar; no es Pandolf/Santee validado. No se acredita ahorro en bajada. La referencia Apollo es un promedio de tareas en la Luna, no una medición de marcha en Marte.",
+    "apollo_promedio_kcal_h": { "valor": 234, "unidad": "kcal/h", "base": "verificado_parcial", "fuente": "NASA NTRS 19930074290, Research Opportunities in Nutrition and Metabolism in Space (1986), p. 18 y tabla 4: promedio EVA lunar Apollo, citando Waligora y Horrigan (1975). No valida Marte. https://ntrs.nasa.gov/api/citations/19930074290/downloads/19930074290.pdf#page=30" },
+    "reposo_w": { "valor": 120, "unidad": "W", "base": "propuesta", "fuente": "a calibrar: metabolismo detenido con traje" },
+    "velocidad_referencia_ms": { "valor": 0.55, "unidad": "m/s", "base": "propuesta", "fuente": "a calibrar: velocidad elegida para anclar el modelo al promedio de Apollo" },
+    "masa_referencia_kg": { "valor": 160, "unidad": "kg", "base": "propuesta", "fuente": "a calibrar: masa total de persona, traje y carga" },
+    "gravedad_referencia_ms2": { "valor": 3.71, "unidad": "m/s2", "base": "propuesta", "fuente": "a calibrar: gravedad nominal adoptada para esta adaptación heurística a Marte" },
+    "eficiencia_subida": { "valor": 0.25, "unidad": "fracción", "base": "propuesta", "fuente": "a calibrar: eficiencia mecánica efectiva de la subida con traje" },
+    "kcal_por_litro_o2": { "valor": 4.8, "unidad": "kcal/L O2 estándar", "base": "propuesta", "fuente": "a calibrar: equivalente energético aproximado, dependiente de la dieta; no se atribuye a una tabla NASA verificada" },
+    "o2_kg_por_litro": { "valor": 0.001429, "unidad": "kg/L O2 estándar", "base": "propuesta", "fuente": "a calibrar: densidad aproximada adoptada a 0 °C y 1 atm; no usar litros a presión del traje" },
+    "co2_kg_por_kg_o2": { "valor": 1.2122905027932962, "unidad": "kg CO2/kg O2", "base": "verificado_parcial", "fuente": "Cociente derivado de 1,085/0,895 de NASA BVAD Rev2 (2022), tabla 3-31, p. 58; su aplicación constante durante EVA es una aproximación a calibrar. https://ntrs.nasa.gov/api/citations/20210024855/downloads/BVAD_2.15.22-final.pdf#page=72" },
+    "agua_enfriamiento_nominal_kg_h": { "valor": 0.5, "unidad": "kg/h", "base": "propuesta", "fuente": "a calibrar: pérdida expendible proporcional al metabolismo, sin modelo térmico del ambiente" },
+    "agua_potable_nominal_kg_h": { "valor": 0.2, "unidad": "kg/h", "base": "propuesta", "fuente": "a calibrar: bebida proporcional al metabolismo, sin recuperar agua metabólica" },
+    "potencia_electrica_base_w": { "valor": 60, "unidad": "W eléctricos", "base": "propuesta", "fuente": "a calibrar: ventilación, control y comunicaciones simulados" },
+    "potencia_electrica_fraccion": { "valor": 0.05, "unidad": "W eléctrico/W metabólico", "base": "propuesta", "fuente": "a calibrar: carga eléctrica adicional proporcional al metabolismo; no confundir energía metabólica con batería" }
+  },
+  "conversiones": {
+    "julios_por_kcal": { "valor": 4184, "unidad": "J/kcal", "base": "verificado", "fuente": "Definición de kilocaloría termoquímica: 1 cal = 4,184 J (conversión de unidades)" },
+    "agua_kg_por_litro": { "valor": 1, "unidad": "kg/L", "base": "propuesta", "fuente": "a calibrar: aproximación para convertir inventario de agua líquida a masa" }
+  },
+  "refugio": {
+    "_nota": "Necesidades por persona y día terrestre de 24 h, sin reciclaje ni generación. filtros_co2_h son horas-persona equivalentes a la producción diaria de CO2 del BVAD, no horas de reloj para toda la tripulación. La energía eléctrica no es la energía alimentaria del BVAD.",
+    "oxigeno_kg_dia": { "valor": 0.895, "unidad": "kg/persona/día", "base": "verificado_parcial", "fuente": "NASA/TP-2015-218570/REV2, BVAD (febrero 2022), tabla 3-31, p. 58: referencia nominal de 82 kg con ejercicio; no un mínimo de supervivencia. https://ntrs.nasa.gov/api/citations/20210024855/downloads/BVAD_2.15.22-final.pdf#page=72" },
+    "agua_potable_kg_dia": { "valor": 3.217, "unidad": "kg/persona/día", "base": "verificado_parcial", "fuente": "NASA BVAD Rev2 (2022), tabla 3-31, p. 58: agua potable nominal; no incluye higiene ni agua contenida en alimento antes de rehidratar. https://ntrs.nasa.gov/api/citations/20210024855/downloads/BVAD_2.15.22-final.pdf#page=72" },
+    "comida_mj_dia": { "valor": 12.778, "unidad": "MJ/persona/día", "base": "verificado_parcial", "fuente": "NASA BVAD Rev2 (2022), tabla 3-31, p. 58: energía alimentaria nominal; no electricidad. https://ntrs.nasa.gov/api/citations/20210024855/downloads/BVAD_2.15.22-final.pdf#page=72" },
+    "co2_kg_dia": { "valor": 1.085, "unidad": "kg CO2/persona/día", "base": "verificado_parcial", "fuente": "NASA BVAD Rev2 (2022), tabla 3-31, p. 58: carga nominal que debe retirar el soporte vital. https://ntrs.nasa.gov/api/citations/20210024855/downloads/BVAD_2.15.22-final.pdf#page=72" },
+    "energia_kwh_dia": { "valor": 6, "unidad": "kWh/persona/día", "base": "propuesta", "fuente": "a calibrar: presupuesto eléctrico de soporte vital y acondicionamiento; sin consumo fijo del edificio ni generación" }
+  },
+  "refugio_minimo_h": { "valor": 24, "unidad": "h", "base": "propuesta", "fuente": "a calibrar: espera de rescate supuesta por el equipo; no es un plazo garantizado en Marte" },
+  "inventarios": {
+    "habitat": {
+      "oxigeno_kg": { "valor": 60, "unidad": "kg", "base": "propuesta", "fuente": "a calibrar: inventario simulado utilizable" },
+      "agua_l": { "valor": 250, "unidad": "L", "base": "propuesta", "fuente": "a calibrar: inventario simulado de agua utilizable" },
+      "comida_kcal": { "valor": 200000, "unidad": "kcal", "base": "propuesta", "fuente": "a calibrar: alimento simulado utilizable" },
+      "energia_kwh": { "valor": 500, "unidad": "kWh", "base": "propuesta", "fuente": "a calibrar: energía almacenada utilizable, sin generación" },
+      "filtros_co2_h": { "valor": 1500, "unidad": "persona·h", "base": "propuesta", "fuente": "a calibrar: capacidad equivalente de filtros según el consumo nominal del refugio" },
+      "botiquin": { "valor": true, "unidad": "sí/no", "base": "propuesta", "fuente": "a calibrar: presencia simulada; no acredita contenido ni atención médica" },
+      "capacidad_personas": { "valor": 6, "unidad": "personas", "base": "propuesta", "fuente": "a calibrar: plazas simuladas" }
+    },
+    "refugio": {
+      "oxigeno_kg": { "valor": 4, "unidad": "kg", "base": "propuesta", "fuente": "a calibrar: inventario simulado utilizable" },
+      "agua_l": { "valor": 16, "unidad": "L", "base": "propuesta", "fuente": "a calibrar: inventario simulado de agua utilizable" },
+      "comida_kcal": { "valor": 14000, "unidad": "kcal", "base": "propuesta", "fuente": "a calibrar: alimento simulado utilizable" },
+      "energia_kwh": { "valor": 30, "unidad": "kWh", "base": "propuesta", "fuente": "a calibrar: energía almacenada utilizable" },
+      "filtros_co2_h": { "valor": 96, "unidad": "persona·h", "base": "propuesta", "fuente": "a calibrar: capacidad equivalente de filtros según el consumo nominal del refugio" },
+      "botiquin": { "valor": true, "unidad": "sí/no", "base": "propuesta", "fuente": "a calibrar: presencia simulada; sin validación médica" },
+      "capacidad_personas": { "valor": 2, "unidad": "personas", "base": "propuesta", "fuente": "a calibrar: plazas simuladas" }
+    },
+    "deposito": {
+      "oxigeno_kg": { "valor": 1, "unidad": "kg", "base": "propuesta", "fuente": "a calibrar: inventario simulado utilizable" },
+      "agua_l": { "valor": 12, "unidad": "L", "base": "propuesta", "fuente": "a calibrar: inventario simulado de agua utilizable" },
+      "comida_kcal": { "valor": 4000, "unidad": "kcal", "base": "propuesta", "fuente": "a calibrar: alimento simulado utilizable" },
+      "energia_kwh": { "valor": 3, "unidad": "kWh", "base": "propuesta", "fuente": "a calibrar: energía almacenada utilizable" },
+      "filtros_co2_h": { "valor": 32, "unidad": "persona·h", "base": "propuesta", "fuente": "a calibrar: capacidad equivalente de sorbentes, sin asegurar compatibilidad del cartucho" },
+      "botiquin": { "valor": false, "unidad": "sí/no", "base": "propuesta", "fuente": "a calibrar: depósito simulado sin botiquín" },
+      "capacidad_personas": { "valor": 0, "unidad": "personas", "base": "propuesta", "fuente": "a calibrar: un depósito no ofrece plazas de refugio" }
+    }
+  }
+}

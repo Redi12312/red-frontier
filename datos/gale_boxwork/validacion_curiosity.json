@@ -1,0 +1,60 @@
+{
+  "zona": "gale_boxwork",
+  "paradas": 508,
+  "soles": [
+    3216,
+    5073
+  ],
+  "registro": {
+    "corrimiento_este_m": 44.0,
+    "corrimiento_norte_m": -32.0,
+    "desvio_altura_sin_corregir_m": 5.16,
+    "desvio_altura_corregido_m": 2.27,
+    "sesgo_altura_m": 17.71,
+    "paradas_usadas": 508,
+    "metodo": "búsqueda en grilla (10 m y luego 1 m) del corrimiento que minimiza el desvío de altura DTM − altura publicada de cada parada"
+  },
+  "inclinacion_rover": {
+    "media": 10.17,
+    "max": 24.3
+  },
+  "comparaciones": {
+    "pend_celda": {
+      "n": 508,
+      "sesgo_grados": 0.78,
+      "desvio_grados": 5.77,
+      "error_abs_p50": 2.65,
+      "error_abs_p95": 11.92,
+      "subestima_p95": 5.84,
+      "correlacion": 0.412
+    },
+    "pend_max_celda": {
+      "n": 508,
+      "sesgo_grados": 3.95,
+      "desvio_grados": 8.01,
+      "error_abs_p50": 2.81,
+      "error_abs_p95": 19.65,
+      "subestima_p95": 4.31,
+      "correlacion": 0.302
+    },
+    "pend_plano_6m": {
+      "n": 508,
+      "sesgo_grados": 0.16,
+      "desvio_grados": 5.06,
+      "error_abs_p50": 2.37,
+      "error_abs_p95": 9.58,
+      "subestima_p95": 6.09,
+      "correlacion": 0.482
+    },
+    "pend_plano_10m": {
+      "n": 508,
+      "sesgo_grados": -0.29,
+      "desvio_grados": 4.47,
+      "error_abs_p50": 2.08,
+      "error_abs_p95": 8.44,
+      "subestima_p95": 6.33,
+      "correlacion": 0.542
+    }
+  },
+  "nota": "tilt = inclinación del rover (IMU) al final de cada tramo; incluye rocas bajo las ruedas y error de posición de la parada. 'subestima_p95' es el margen que hay que sumar a la pendiente del mapa para cubrir el 95 % de los casos medidos."
+}

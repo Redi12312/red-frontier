@@ -1,0 +1,94 @@
+{
+  "_nota": "Reglas de la Ventana EVA (clima, polvo y radiación). Los umbrales son propuestas del equipo salvo que la fuente diga otra cosa.",
+  "fuentes": {
+    "rems": {
+      "url": "https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json",
+      "nombre": "Parte meteorológico de Curiosity (REMS, Centro de Astrobiología, CAB-INTA/CSIC)",
+      "aviso": "El CAB publica este parte para divulgación; para ciencia se usan los datos de REMS en el PDS. Llega con semanas de atraso."
+    },
+    "donki": {
+      "base": "https://api.nasa.gov/DONKI/",
+      "clave": "DEMO_KEY",
+      "nombre": "DONKI, base de datos de clima espacial de NASA (CCMC/GSFC): eyecciones de masa coronal, simulaciones WSA-ENLIL con llegada a Marte y partículas solares energéticas (SEP)",
+      "dias": 59
+    }
+  },
+  "radiacion_superficie_mSv_dia": {
+    "valor": 0.64,
+    "base": "verificado",
+    "fuente": "Dosis equivalente medida por RAD (Curiosity) en la superficie de Gale (Hassler et al. 2014, Science)"
+  },
+  "tormenta_solar": {
+    "horas_antes": {
+      "valor": 24,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: margen antes de la llegada prevista a Marte de una eyección (WSA-ENLIL tiene incertidumbre de horas)"
+    },
+    "horas_despues": {
+      "valor": 48,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: tiempo de refugio después de la llegada prevista"
+    },
+    "sep_horas": {
+      "valor": 72,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: ventana de alerta después de un evento de partículas solares energéticas (SEP)"
+    },
+    "severidad": {
+      "directo": "rojo",
+      "refilon_o_menor": "ambar",
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: impacto directo de una eyección (WSA-ENLIL) = refugio; de refilón o menor = salidas cortas cerca del refugio"
+    }
+  },
+  "polvo": {
+    "temporada_ls": {
+      "desde": 180,
+      "hasta": 360,
+      "base": "verificado",
+      "fuente": "Temporada de tormentas de polvo: primavera y verano del sur (Ls 180°–360°), Kass et al. 2016"
+    },
+    "tormentas_regionales": [
+      {
+        "tipo": "A",
+        "desde": 210,
+        "hasta": 250,
+        "fuente": "Kass et al. 2016 (aprox.)"
+      },
+      {
+        "tipo": "B",
+        "desde": 250,
+        "hasta": 310,
+        "fuente": "Kass et al. 2016 (aprox.)"
+      },
+      {
+        "tipo": "C",
+        "desde": 310,
+        "hasta": 340,
+        "fuente": "Kass et al. 2016 (aprox.)"
+      }
+    ]
+  },
+  "horario": {
+    "margen_amanecer_h": {
+      "valor": 1,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: no salir la primera hora de luz (frío y sol bajo)"
+    },
+    "margen_atardecer_h": {
+      "valor": 1.5,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: volver antes de que oscurezca, con margen"
+    },
+    "remolinos_desde_h": {
+      "valor": 12,
+      "base": "verificado",
+      "fuente": "Pico de remolinos de polvo entre las 12 y las 13 hora solar local (MEDA, Jezero; Toledo et al. 2023)"
+    },
+    "remolinos_hasta_h": {
+      "valor": 14,
+      "base": "propuesta",
+      "fuente": "Propuesta del equipo: margen de una hora después del pico"
+    }
+  }
+}

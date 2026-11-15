@@ -1,0 +1,52 @@
+{
+  "_nota": "Capas extra de la zona de caminata: térmico nocturno (THEMIS), minerales (CRISM) y suelo blando probable. Las genera pipeline/preparar_capas_extra.py después de preparar_zona.py.",
+  "paso_salida_m": 10,
+  "termico": {
+    "servicio": "https://trek.nasa.gov/tiles/Mars/EQ/{capa}/1.0.0/default/default028mm/{nivel}/{fila}/{col}.png",
+    "capa": "THEMIS_NightIR_ControlledMosaics_100m_v2_oct2018",
+    "nivel": 9,
+    "tamano_tesela_px": 256,
+    "nombre": "Térmico de noche (THEMIS, 100 m)",
+    "mision": "Mars Odyssey · THEMIS · mosaico controlado de noche v2 (JPL Mars Trek)",
+    "aviso": "Brillo relativo, no inercia térmica calibrada. De noche la roca y el suelo firme guardan calor (claro); el polvo y la arena fina se enfrían rápido (oscuro). Las costuras entre imágenes pueden dar contrastes falsos."
+  },
+  "minerales": {
+    "ode": "https://oderest.rsl.wustl.edu/live2/?query=product&results=f&output=JSON&target=mars&ihid=MRO&iid=CRISM&pt=MTRDR&westernlon={oeste}&easternlon={este}&minlat={sur}&maxlat={norte}",
+    "fuente": "CRISM MTRDR (MRO), productos resumen de Viviano-Beck et al. (2014), JGR Planets 119, 1403–1431. Archivo: PDS Geosciences Node (ODE).",
+    "productos": {
+      "crism_hyd": {
+        "sufijo": "BRHYDJ",
+        "nombre": "Agua en minerales (CRISM HYD)",
+        "bandas": ["SINDEX2", "BD2100_2", "BD1900_2"],
+        "leyenda": [
+          ["#d23cd2", "magenta: sulfatos polihidratados (bandas de 1,9 y 2,4 µm)"],
+          ["#d2d23c", "amarillo/verde: minerales monohidratados (2,1 µm)"],
+          ["#3c78d2", "azul: otros minerales con agua ligada (1,9 µm)"]
+        ]
+      },
+      "crism_phy": {
+        "sufijo": "BRPHYJ",
+        "nombre": "Arcillas y minerales con OH (CRISM PHY)",
+        "bandas": ["D2300", "D2200", "BD1900R2"],
+        "leyenda": [
+          ["#d23c3c", "rojo: filosilicatos de Fe/Mg (2,3 µm); magenta si además tienen agua"],
+          ["#3cd23c", "verde: Al-OH o sílice hidratada (2,2 µm); cian si además tienen agua"],
+          ["#3c78d2", "azul: agua ligada (1,9 µm)"]
+        ]
+      }
+    }
+  },
+  "suelo_blando": {
+    "percentil_termico": {
+      "valor": 20,
+      "base": "propuesta",
+      "fuente": "A calibrar: el 20 % más oscuro de noche dentro de la zona (menor inercia térmica relativa)"
+    },
+    "rugosidad_max_m": {
+      "valor": 0.10,
+      "base": "propuesta",
+      "fuente": "A calibrar: superficie lisa a escala de 2 m, típica de arena o polvo y no de roca"
+    },
+    "aviso": "Modelado: combina inercia térmica relativa (THEMIS) y textura (HiRISE). Marca dónde conviene mirar con más cuidado; no reemplaza la inspección en el lugar. Spirit quedó atrapado en suelo blando en 2009."
+  }
+}
