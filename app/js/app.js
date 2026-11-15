@@ -19,6 +19,8 @@ import { guardar, borrar } from "./guardado.js";
 import { amanecerAtardecer } from "./luz.js";
 import { evaluarConfiabilidad } from "./confiabilidad.js";
 import { crearGuia } from "./guia.js";
+import { conectarBotonNavegacion } from "./navegacion-ui.js";
+import { instanteSalidaNavegacion } from "./navegacion.js";
 // Carpeta de datos relativa a la app: sirve en localhost y en un subdirectorio (GitHub Pages).
 const RAIZ_DATOS = new URL("../../datos", import.meta.url).href;
 
@@ -680,6 +682,24 @@ const planZona = crearPlanZona({
   simular: (ruta, titulo) => simulacion.iniciar(ruta, titulo, (() => { const i = ruta.sim.celdas[0]; return { f: Math.floor(i / estado.zona.ancho), c: i % estado.zona.ancho }; })()),
   alCambiarPlan: () => alCambiarPlan(),
 });
+
+// «Iniciar navegación»: HUD de casco sobre la ruta aprobada que se ve (o sobre un tramo por bases).
+function contextoNavegacion(ruta = rutaActual(), evaluacion = null) {
+  const zona = estado.zona;
+  const ev = evaluacion ?? ruta?.evaluacion ?? (estado.plan === "itinerario" ? planZona.ultimoItinerario()?.evaluacion : null);
+  return {
+    zona, ruta, aprobada: !!ev && evaluacionCompleta(ev).decision === "SI",
+    plan: { marcas: planZona.bases() },
+    opciones: {
+      riesgo: estado.riesgo, worker: estado.worker, perfil: estado.perfiles[0],
+      region: estado.region, prohibido: estado.prohibido,
+      inicio_ms: zona && ruta?.sim?.celdas?.length ? instanteSalidaNavegacion(zona, ruta, estado.salida.hora_salida, Date.now()) : Date.now(),
+      antenas: estado.marcas.base ? [{ ...estado.marcas.base.celda, tipo: "base" }, ...planZona.balizas()] : [],
+      vigente: () => estado.zona === zona,
+    },
+  };
+}
+conectarBotonNavegacion($("#btn-navegar"), () => contextoNavegacion(), (e) => avisar(e.message));
 const herramientas = crearHerramientasMapa({
   mapa, estado, $, num, fmt, aMapa, avisar, celdaALonLat, lonLatACelda, leerHttp, RAIZ, imagenDesdeLut,
   bordes: () => [[-estado.zona.alto, 0], [0, estado.zona.ancho]], rutaActual,
@@ -860,6 +880,13 @@ function mostrarRutaBases(d) {
     const i = t.celdas[0];
     simulacion.iniciar(t, `Tramo ${+b.dataset.tramo + 1}: ${t.nombreDesde} → ${t.nombreHasta}`, { f: Math.floor(i / z.ancho), c: i % z.ancho });
   }));
+  caja.querySelectorAll("[data-tramo]").forEach((b) => {
+    const tramo = c.tramos[+b.dataset.tramo];
+    const nav = document.createElement("button");
+    nav.type = "button"; nav.className = "chico";
+    b.after(nav);
+    conectarBotonNavegacion(nav, () => contextoNavegacion(tramo, tramo.evaluacion), (e) => avisar(e.message));
+  });
   $("#rutas").prepend(caja);
 }
 
@@ -1182,6 +1209,7 @@ async function abrirZona(id) {
       ubicacion.alResultado(data);
     } else if (data.tipo === "manual") {
       estado.ultimoManual = data.ruta;
+      if (estado.ultimoManual) estado.ultimoManual.evaluacion = data.evaluacion;
       manual.alResponder(data);
       if (data.ruta?.sim && data.evaluacion) {
         $("#manual-plan").insertAdjacentHTML("beforeend", confiabilidadHtml(data.ruta));

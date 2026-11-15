@@ -114,7 +114,7 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
       </details><details><summary>${t("Sumar medidas")}</summary><form class="nav-medidas">
         <label>${t("Tipo")}<select name="tipo">${Object.entries(tiposMedidas).map(([s, etiqueta]) => `<option value="${s}">${t(etiqueta)}</option>`).join("")}</select></label>
         <div data-campos></div><button type="submit">${t("Corregir posición")}</button></form>
-        <p>${t("Medidas independientes, errores de 1 sigma. Reutiliza la fusión T18; no cargues dos veces la misma lectura.")}</p></details>
+        <p>${t("Medidas independientes, errores de 1 sigma. Reutiliza la fusión de «Geoubicación sin GPS»; no cargues dos veces la misma lectura.")}</p></details>
       <details><summary>${t("Simulación y fallas")}</summary><label><input data-sensores type="checkbox" checked>${t("Correcciones simuladas de sensores")}</label>
         ${["fuga", "companero", "tormenta", "radio"].map((f) => `<button data-falla="${f}">${t({ fuga: "Fuga de oxígeno", companero: "Compañero incapacitado", tormenta: "Partículas solares", radio: "Pérdida de radio" }[f])}</button>`).join("")}
         <button data-orientacion>${t("Orientación del teléfono solo para mirar")}</button>
@@ -131,6 +131,7 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
   let vista = crearVistaMarte({ canvas: $(".nav-vista"), zona, cfg: cfg.render, movimientoReducido: matchMedia("(prefers-reduced-motion: reduce)").matches });
   let contexto = null, textura = null, fotoActual = null, fotosSubidas = [], metadatos = [], indiceOptico = null;
   let worker = null, secuencia = 0, trabajo = null, permisoOrientacion = false, orientacionBase = null, giroCamara = 0;
+  let estuvoPantallaCompleta = false;
   let ultimoAviso = "", nombreRefugio = "", pidiendoCamino = false, turnoCamino = 0, radioVisible = null;
   let ocaso = null;
   const escenarioActivo = [...sensores]; // se conserva al desactivar y volver a activar
@@ -228,7 +229,7 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
       const imagen = await createImageBitmap(a), c = document.createElement("canvas"); c.width = imagen.width; c.height = imagen.height;
       const g = c.getContext("2d"); g.drawImage(imagen, 0, 0); imagen.close();
       const rgba = g.getImageData(0, 0, c.width, c.height).data, gris = new Float32Array(c.width * c.height);
-      // Igual que la conversión de T18 y PIL (ITU-R 601).
+      // Igual que la conversión de geoubicacion.js y PIL (ITU-R 601).
       for (let i = 0; i < gris.length; i++) gris[i] = Math.floor((rgba[i * 4] * 299 + rgba[i * 4 + 1] * 587 + rgba[i * 4 + 2] * 114) / 1000 + 0.5);
       salida.push({ foto, gris, ancho: c.width, alto: c.height });
     }
@@ -334,6 +335,11 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
   }
   raiz.addEventListener("keydown", teclado);
   raiz.addEventListener("keyup", (e) => { if (e.key.toLowerCase() === "v") voz.detenerEscucha(); });
+  function pantallaCompleta() {
+    if (document.fullscreenElement === raiz) estuvoPantallaCompleta = true;
+    else if (estuvoPantallaCompleta) cerrar();
+  }
+  document.addEventListener?.("fullscreenchange", pantallaCompleta);
   const urlsDescarga = new Set();
   raiz.querySelectorAll("[data-exportar]").forEach((b) => b.addEventListener("click", () => {
     const formato = b.dataset.exportar, blob = new Blob([JSON.stringify(motor.exportar(formato), null, 2)], { type: "application/json" });
@@ -432,6 +438,7 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
     if (cerrado) return; cerrado = true; turnoCamino++; motor.registrar("fin_navegacion", {});
     cancelAnimationFrame(raf); clearTimeout(trabajo?.reloj); worker?.terminate(); enlace?.cerrar(); voz.cerrar(); raiz.removeEventListener("keydown", teclado);
     if (permisoOrientacion) window.removeEventListener("deviceorientation", orientar);
+    document.removeEventListener?.("fullscreenchange", pantallaCompleta);
     if (document.fullscreenElement === raiz) document.exitFullscreen().catch(() => {});
     document.body.style.overflow = scrollAnterior; raiz.remove(); focoAnterior?.focus();
     for (const href of urlsDescarga) URL.revokeObjectURL(href);

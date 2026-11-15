@@ -30,7 +30,7 @@
     "Sumar medidas": "Add measurements",
     "Tipo": "Type",
     "Corregir posición": "Correct position",
-    "Medidas independientes, errores de 1 sigma. Reutiliza la fusión T18; no cargues dos veces la misma lectura.": "Independent measurements, 1 sigma errors. Uses T18 fusion; do not enter the same reading twice.",
+    "Medidas independientes, errores de 1 sigma. Reutiliza la fusión de «Geoubicación sin GPS»; no cargues dos veces la misma lectura.": "Independent measurements, 1 sigma errors. Uses the GPS-free geolocation fusion; do not enter the same reading twice.",
     "Simulación y fallas": "Simulation and failures",
     "Correcciones simuladas de sensores": "Simulated sensor corrections",
     "Fuga de oxígeno": "Oxygen leak",

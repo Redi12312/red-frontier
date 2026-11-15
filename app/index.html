@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/estilos.css">
   <link rel="stylesheet" href="css/visor.css">
   <link rel="stylesheet" href="css/guia.css">
+  <link rel="stylesheet" href="css/navegacion.css">
   <script>
     // Oculta la consola hasta elegir idioma en la primera visita.
     try {
@@ -115,6 +116,7 @@
         </div>
         <div class="plan-global">
           <div class="guia-titulo-fila"><h3 class="subtitulo-caja">Marcas del plan <small>· clic derecho en el mapa</small></h3><button type="button" class="guia-info" data-guia-tema="marcas" data-no-traducir aria-label="Información / Information" aria-controls="guia-panel">ⓘ</button></div>
+          <button type="button" id="btn-navegar" class="primario" disabled>Iniciar navegación</button>
           <button type="button" id="plan-ejemplo" class="primario chico" hidden>Cargar misión de ejemplo: boxwork de Monte Sharp</button>
           <div id="plan-marcas" class="plan-marcas"></div>
           <p id="plan-guardado" class="ayuda plan-guardado" aria-live="polite"></p>

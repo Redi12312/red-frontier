@@ -112,7 +112,7 @@ export function crearFiltro({ zona, inicio, cfg }) {
       const hy = (alturaEn(zona, i - zona.ancho) - alturaEn(zona, i + zona.ancho)) / (2 * zona.paso);
       if (Number.isFinite(hx + hy + z + base)) escalar(base + dz.dz - z, hx, hy, dz.sigma);
       else throw new Error("Sin relieve para corregir presión.");
-    } else throw new Error("Usá geoubicar de T18 para este tipo de medida.");
+    } else throw new Error("Usá «Geoubicación sin GPS» para este tipo de medida.");
     ids.add(m.id); fuente = m.fuente ?? m.tipo; secuencia++; estima = false;
     return resumen();
   }
