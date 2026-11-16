@@ -702,7 +702,10 @@ function contextoNavegacion(ruta = rutaActual(), evaluacion = null) {
     },
   };
 }
-conectarBotonNavegacion($("#btn-navegar"), () => contextoNavegacion(), (e) => avisar(e.message));
+// Versión sin navegación (<html data-navegacion="no">): se oculta el botón y no se ofrece en los tramos.
+const NAVEGACION_ACTIVA = document.documentElement.dataset.navegacion !== "no";
+if (NAVEGACION_ACTIVA) conectarBotonNavegacion($("#btn-navegar"), () => contextoNavegacion(), (e) => avisar(e.message));
+else $("#btn-navegar").hidden = true;
 // La navegación se abre en una pestaña aparte: esa pestaña repone la sesión (zona, base, destino, plan),
 // rehace la ruta y arranca el visor sola. En la pestaña de navegación el botón funciona en el lugar.
 const PESTANA_NAVEGACION = new URL(location.href).searchParams.get("navegar") === "1";
@@ -908,7 +911,7 @@ function mostrarRutaBases(d) {
     const i = t.celdas[0];
     simulacion.iniciar(t, `Tramo ${+b.dataset.tramo + 1}: ${t.nombreDesde} → ${t.nombreHasta}`, { f: Math.floor(i / z.ancho), c: i % z.ancho });
   }));
-  caja.querySelectorAll("[data-tramo]").forEach((b) => {
+  if (NAVEGACION_ACTIVA) caja.querySelectorAll("[data-tramo]").forEach((b) => {
     const tramo = c.tramos[+b.dataset.tramo];
     const nav = document.createElement("button");
     nav.type = "button"; nav.className = "chico";

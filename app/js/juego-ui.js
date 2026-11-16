@@ -139,5 +139,7 @@ export async function iniciarJuego(entrada){
   vistaCanvas?.addEventListener("click",()=>{if(iniciada&&matchMedia("(pointer:fine)").matches)vistaCanvas.requestPointerLock?.();});
   document.addEventListener("mousemove",mirarMouse);
   limpiar=()=>{document.removeEventListener("mousemove",mirarMouse);if(document.pointerLockElement)document.exitPointerLock();herramientas?.cerrar();vaciar();window.removeEventListener("keydown",teclado,true);window.removeEventListener("keyup",teclado,true);window.removeEventListener("blur",vaciar);};
+  // Solo para pruebas (?depurar=1): acceso al motor desde la consola.
+  if(new URL(location.href).searchParams.get("depurar")==="1")globalThis.__rfJuego={motor,contexto,pasoJuego,trabajarJuego};
   return {...control,contexto,get juego(){return motor.juego;},motorJuego:motor};
 }
