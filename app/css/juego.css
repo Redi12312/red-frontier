@@ -1,0 +1,12 @@
+.juego-casco .nav-controles,.juego-casco .nav-nota,.juego-casco .nav-cajon{display:none!important}
+.juego-casco footer{pointer-events:none}.juego-casco .nav-recursos,.juego-casco .nav-mapa{bottom:29%}.juego-casco .nav-estado{bottom:27%}
+.juego-capa{pointer-events:none;position:absolute;inset:0}.juego-capa button,.juego-capa input,.juego-capa select,.juego-capa summary{pointer-events:auto}
+.juego-honestidad{position:absolute;left:10%;right:10%;top:22%;text-align:center;font-size:10px;opacity:.85}
+.juego-desvio{position:absolute;left:6%;top:26%;width:38%;font-size:13px;color:#dcffde}.juego-desvio [role=status]{font-size:11px;color:#ffe09c}
+.juego-joystick{position:absolute;left:7%;bottom:4%;width:110px;height:110px;border:1px solid #b6ffcd88;border-radius:50%;background:#143f2855;touch-action:none;pointer-events:auto;display:grid;place-items:center;user-select:none}
+.juego-joystick span{width:52px;height:52px;border-radius:50%;background:#b5ffd333;display:grid;place-items:center;font-size:30px;border:1px solid #baffd388}
+.juego-brazalete{position:absolute;left:24%;right:6%;bottom:5%;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;pointer-events:auto}.juego-brazalete button{min-height:46px}
+.juego-inicio,.juego-final{pointer-events:auto;position:absolute;inset:8% 16%;margin:auto;padding:26px;overflow:auto;background:#091b17f5;border:1px solid #a2dfbd;box-shadow:0 20px 80px #000b;border-radius:12px;font-size:15px;line-height:1.65;max-height:80vh}
+.juego-inicio h1,.juego-final h2{font:22px ui-monospace,monospace;color:#e2ffe7;margin-top:0}.juego-inicio button{margin:12px 8px 0 0}.juego-capa [hidden]{display:none!important}
+@media(max-width:800px){.juego-inicio,.juego-final{inset:5%;padding:18px;font-size:12px}.juego-honestidad{top:21%;font-size:8px}.juego-desvio{top:26%;font-size:10px;width:65%}.juego-brazalete{left:26%;right:5%;bottom:4%;gap:3px}.juego-brazalete button{font-size:9px;min-height:44px;padding:5px}.juego-joystick{width:88px;height:88px;left:4%;bottom:5%}.juego-casco .nav-recursos,.juego-casco .nav-mapa{bottom:36%}.juego-casco .nav-estado{bottom:51%}}
+@media(prefers-reduced-motion:reduce){.juego-capa *{animation:none!important;transition:none!important}}

@@ -1,7 +1,8 @@
 // Interfaz aislada: no modifica el plan ni la ruta de la app. Toda integración es explícita.
-import { crearNavegacion, validarArranque, parametro, puntoCelda, alturaEn, angular } from "./navegacion.js";
-import { crearVistaMarte, leerTextura } from "./vista-marte.js";
-import { crearVoz, COMANDOS } from "./voz.js";
+import { crearNavegacion, validarArranque, parametro, puntoCelda, alturaEn, angular, ventanaMapa, cintaRumbo, antenasDelPlan } from "./navegacion.js";
+import { crearVistaMarte, leerTextura, proyectarHito } from "./vista-marte.js";
+import { COMANDOS } from "./voz.js";
+import { buscarMetadatosNasa, crearCacheMetadatos } from "./metadatos-nasa.js";
 import { leerHttp, cargarZona, lonLatACelda, celdaALonLat } from "./zona.js";
 import { amanecerAtardecer } from "./luz.js";
 import { locale, crearTraductor } from "./idioma.js";
@@ -15,6 +16,7 @@ const textosComandos = { estado: "Estado", oxigeno: "Oxígeno", posicion: "¿Dó
 const tiposMedidas = { barometro: "Barómetro", radio: "Distancia por radio", uwb: "Baliza UWB", pasos: "Pasos", odometria: "Odometría",
   reseccion: "Rumbo a un cerro", sol: "Sol", doppler: "Posición Doppler externa", estrellas: "Posición astronómica externa" };
 const avisosES = { aborto: "ABORTAR: no alcanza el margen de regreso. Volvé al refugio por el camino calculado.",
+  terreno_incierto: "Posición incierta junto a terreno prohibido: pausá y corregí la ubicación.",
   regreso: "ABORTAR: regreso desconocido o fuera del límite de emergencia.", terreno: "ABORTAR: la posición estimada queda en terreno prohibido o sin datos.",
   aborto_ordenado: "ABORTAR: regreso ordenado por la tripulación.",
   terminar: "Terminá la salida: queda poco margen de regreso.", corredor: "Te saliste del corredor. Pausá y localizate antes de seguir.",
@@ -83,34 +85,40 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
   const tr = crearTraductor(diccionario, idioma), t = tr.t, en = idioma === "en";
   const valido = validarArranque({ zona, ruta, aprobada });
   if (!valido.ok) throw new Error(t("Elegí una zona de caminata y una ruta aprobada con datos de simulación."));
-  sesion?.cerrar();
+  sesion?.cerrar(false);
   const [cfg, riesgoArchivo, consumibles, cfgGeo, cfgBarometro, cfgExpedicion] = await Promise.all([
     "config/navegacion.json", "config/riesgo.json", "config/consumibles.json", "config/geoubicacion.json", "config/barometro.json", "config/expedicion.json"].map(json));
   const riesgo = opciones.riesgo ?? riesgoArchivo, escenario = opciones.escenario ?? {};
   const sensores = (escenario.sensores ?? []).map((s) => s.tipo === "barometro" ? { ...s, cfg: cfgBarometro } : s);
   const z = { ...zona, prohibido: opciones.prohibido ?? zona.prohibido };
-  const motor = crearNavegacion({ zona: z, ruta, cfg, riesgo, consumibles, escenario: { ...escenario, sensores },
+  const motor = (opciones.juego?.crearMotor ?? crearNavegacion)({ zona: z, ruta, cfg, riesgo, consumibles, escenario: { ...escenario, sensores },
     inicio_ms: opciones.inicio_ms ?? escenario.inicio_ms ?? Date.now() });
   const baseZona = opciones.zonaBase ?? url(`datos/${zona.meta.id}`);
   const enlace = opciones.worker ? crearEnlaceRutasNavegacion({ worker: opciones.worker,
     inicio: opciones.inicio ?? puntoCelda(zona, motor.ruta.celdas[0]), perfil: opciones.perfil,
-    antenas: opciones.antenas ?? [{ ...puntoCelda(zona, motor.ruta.celdas[0]), tipo: "base" }], espera_s: parametro(cfg, "espera_localizador_s") }) : null;
+    antenas: antenasDelPlan(zona, plan.marcas, null, opciones.antenas ?? []), espera_s: parametro(cfg, "espera_localizador_s") }) : null;
   const focoAnterior = document.activeElement, scrollAnterior = document.body.style.overflow;
   const raiz = document.createElement("section"); raiz.className = "nav-casco"; raiz.dataset.noTraducir = "";
   raiz.setAttribute("role", "dialog"); raiz.setAttribute("aria-modal", "true"); raiz.setAttribute("aria-label", t("Navegación de casco"));
   raiz.lang = idioma; raiz.tabIndex = -1;
   // Todos los datos externos entran con textContent; el HTML siguiente solo contiene texto propio.
   raiz.innerHTML = `<canvas class="nav-vista" aria-label="${t("Vista simulada del relieve")}"></canvas>
-    <header><strong>${t("Navegación de casco")}</strong><span>${t("Tiempo real simulado · a calibrar")}</span><button data-c="terminar">${t("Terminar navegación")} (Esc)</button></header>
-    <p class="nav-origen">${t("Vista simulada desde el relieve HiRISE (no es video real)")} · ${t("Sombras aproximadas")}</p>
-    <div class="nav-cuerpo"><div class="nav-datos"><p data-v="decision"></p><p data-v="guia"></p><p data-v="posicion"></p>
-      <canvas class="nav-minimapa" width="260" height="200" aria-label="${t("Minimapa: ruta, incertidumbre y bases")}"></canvas>
-      <dl data-v="datos"></dl><div data-v="recursos"></div></div>
-    <aside><div class="nav-avisos" role="status" aria-live="polite"></div>
-      <details open><summary>${t("Cámara")}</summary><img class="nav-foto" hidden alt="${t("Foto real de Curiosity Navcam")}"><p data-v="credito"></p>
+    <div class="nav-mascara" aria-hidden="true"></div>
+    <header class="nav-reloj"><strong>${t("Navegación de casco")}</strong><p data-v="reloj"></p><p data-v="exterior"></p></header>
+    <div class="nav-brujula"><canvas data-cinta width="520" height="76" aria-label="${t("Cinta de rumbo")}"></canvas><span data-v="rumbo"></span></div>
+    <div class="nav-retorno"><p data-v="retorno"></p><p data-v="enlace"></p><p data-v="posicion"></p></div>
+    <p class="nav-origen">${t("Vista simulada desde el relieve HiRISE (no es video real)")}</p>
+    <div class="nav-hito-escena" aria-hidden="true" hidden>◇<span></span></div><div class="nav-reticula" aria-hidden="true">＋</div><div class="nav-guia"><span data-v="flecha">⌃</span><p data-v="guia"></p><small data-v="destino"></small></div>
+    <div class="nav-recursos" data-v="recursos"></div>
+    <section class="nav-mapa"><div><span>${t("HiRISE · ruta modelada")}</span><button data-norte aria-pressed="false">${t("Norte arriba")}</button></div>
+      <button data-mapa aria-expanded="false" aria-label="${t("Ampliar o reducir mapa")}"><canvas class="nav-minimapa" aria-label="${t("Minimapa: ruta, incertidumbre y bases")}"></canvas></button><small data-v="mapa"></small></section>
+    <div class="nav-estado" role="status" aria-live="polite"><p data-v="decision"></p><p data-v="motivo"></p><div class="nav-avisos"></div></div>
+    <aside class="nav-cajon" hidden><button data-c="datos">${t("Cerrar datos")}</button>
+      <details><summary>${t("Datos del traje y terreno")}</summary><dl data-v="datos"></dl></details>
+      <details><summary>${t("Cámara")}</summary><img class="nav-foto" hidden alt="${t("Foto real de Curiosity Navcam")}"><p data-v="credito"></p>
         <button data-c="foto">${t("Localizar con la foto actual")}</button><button data-cancelar>${t("Cancelar corrección")}</button><progress max="1" value="0" hidden></progress>
         <label>${t("Fotos del entorno (JPG/PNG)")}<input data-archivos type="file" accept="image/jpeg,image/png" multiple></label>
-        <label>${t("Metadatos CAHVOR y orientación (JSON)")}<input data-meta type="file" accept="application/json"></label><p>${t("Las fotos necesitan CAHVOR y attitude; sin metadatos no se estima una posición.")}</p>
+        <label>${t("Metadatos CAHVOR y orientación (JSON, opcional)")}<input data-meta type="file" accept="application/json"></label><p>${t("Subí fotos Navcam de Curiosity con su nombre original: los datos de cámara (CAHVOR y orientación) se buscan solos en NASA. Sin conexión, cargá también su JSON.")}</p>
       </details><details><summary>${t("Sumar medidas")}</summary><form class="nav-medidas">
         <label>${t("Tipo")}<select name="tipo">${Object.entries(tiposMedidas).map(([s, etiqueta]) => `<option value="${s}">${t(etiqueta)}</option>`).join("")}</select></label>
         <div data-campos></div><button type="submit">${t("Corregir posición")}</button></form>
@@ -120,24 +128,38 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
         <button data-orientacion>${t("Orientación del teléfono solo para mirar")}</button>
         <p>${t("Radiación y DONKI: revisá la fecha del parte. Sin dosímetro; no se supone ausencia de riesgo.")}</p><p data-v="radiacion"></p>
       </details><details><summary>${t("Bitácora y rendimiento")}</summary><button data-exportar="json">JSON</button><button data-exportar="geojson">GeoJSON</button><p data-v="fps"></p><p data-v="registro"></p></details>
-    </aside></div><footer><div class="nav-controles">${COMANDOS.map((c) => `<button data-c="${c}">${t(textosComandos[c])}</button>`).join("")}
-      ${cfg.velocidades.valor.map((v) => `<button data-vel="${v}">×${v}</button>`).join("")}<button data-saltar>${t("Saltar al próximo hito")}</button>
-      <button data-micro>${t("Hablar")} (V)</button></div><p data-v="transcripcion" aria-live="polite"></p><p data-v="mensaje" role="status"></p></footer>`;
+    </aside><footer><div class="nav-controles">
+      <button data-c="alternar">${t("Pausa")}</button><button data-saltar>${t("Próximo hito")}</button>
+      ${["regreso", "aborto", "foto", "peligro"].map((c) => `<button data-c="${c}">${t(textosComandos[c])}</button>`).join("")}
+      <button data-c="rapido">${t("Velocidad")} ×1</button><button data-c="datos" aria-expanded="false">${t("Datos")}</button><button data-c="terminar">${t("Terminar navegación")}</button>
+      </div><p class="nav-nota">${t("En un traje real estos controles podrían manejarse con gestos de los dedos (un guante con sensores) o botones en el antebrazo.")}</p><p data-v="transcripcion" aria-live="polite"></p><p data-v="mensaje" role="status"></p></footer>`;
   document.body.append(raiz); document.body.style.overflow = "hidden"; raiz.focus();
   const $ = (s) => raiz.querySelector(s), escribir = (clave, texto) => { const n = $(`[data-v="${clave}"]`); if (n.textContent !== texto) n.textContent = texto; };
   const n = (v, dec = 0) => Number.isFinite(v) ? v.toLocaleString(en ? "en-US" : "es-UY", { maximumFractionDigits: dec }) : "—";
   const tiempo = (s) => Number.isFinite(s) ? `${n(s / 60, 1)} min` : "—";
   let cerrado = false, pausa = false, velocidad = cfg.velocidades.valor[0], ultimo = performance.now(), raf = null, hudUltimo = -Infinity;
-  let vista = crearVistaMarte({ canvas: $(".nav-vista"), zona, cfg: cfg.render, movimientoReducido: matchMedia("(prefers-reduced-motion: reduce)").matches });
+  const crearVista = opciones.juego?.crearVista ?? crearVistaMarte;
+  let vista = crearVista({ canvas: $(".nav-vista"), zona, cfg: cfg.render, movimientoReducido: matchMedia("(prefers-reduced-motion: reduce)").matches });
+  if (!opciones.juego) {
+    const practicar = document.createElement("button"); practicar.textContent = en ? "Practice mode (game)" : "Modo práctica (juego)";
+    practicar.addEventListener("click", async () => { try { const { iniciarJuego } = await import("./juego-ui.js"); await iniciarJuego({ zona, ruta, aprobada, plan, opciones }); } catch (e) { mensaje(e.message); } });
+    $(".nav-controles").append(practicar);
+  }
   let contexto = null, textura = null, fotoActual = null, fotosSubidas = [], metadatos = [], indiceOptico = null;
+  const cacheNasa = crearCacheMetadatos();
   let worker = null, secuencia = 0, trabajo = null, permisoOrientacion = false, orientacionBase = null, giroCamara = 0;
   let estuvoPantallaCompleta = false;
   let ultimoAviso = "", nombreRefugio = "", pidiendoCamino = false, turnoCamino = 0, radioVisible = null;
-  let ocaso = null;
+  let ocaso = null, norteArriba = false, orto = null, estadoAnterior = "", cambioEstado = 0, registroFps = performance.now();
+  const recorridoEstimado = [];
+  const mapaCanvas = $(".nav-minimapa"); mapaCanvas.width = parametro(cfg.mapa, "ancho"); mapaCanvas.height = parametro(cfg.mapa, "alto");
+  $("[data-norte]").addEventListener("click", () => { norteArriba = !norteArriba; $("[data-norte]").setAttribute("aria-pressed", String(norteArriba)); dibujarHud(); });
+  $("[data-mapa]").addEventListener("click", () => { const grande = raiz.dataset.mapa !== "grande"; raiz.dataset.mapa = grande ? "grande" : "chico"; $("[data-mapa]").setAttribute("aria-expanded", String(grande)); });
   const escenarioActivo = [...sensores]; // se conserva al desactivar y volver a activar
   const filasSeguras = new Map();
   for (const [f, desde, hasta] of escenario.zonaSegura ?? []) { const fila = filasSeguras.get(f) ?? []; fila.push([desde, hasta]); filasSeguras.set(f, fila); }
-  const voz = crearVoz({ idioma, alComando: ejecutar, alTexto: (s) => escribir("transcripcion", s), alError: mensaje });
+  // Control táctil por ahora: sin voz sintetizada ni comandos hablados (voz.js queda para el futuro).
+  const voz = { disponible: false, hablar() {}, escuchar() {}, detenerEscucha() {}, cerrar() {} };
   function mensaje(s) { if (!cerrado) escribir("mensaje", s); }
   const campos = {
     barometro: ["base_lat", "base_lon", "p", "pBase", "T"], radio: ["base_lat", "base_lon", "distancia_m", "sigma_m"], uwb: ["base_lat", "base_lon", "distancia_m", "sigma_m"],
@@ -224,7 +246,9 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
   async function fotosParaWorker(archivos) {
     const salida = [];
     for (const a of archivos) {
-      const foto = metadatos.find((m) => (m.imageid ?? m.id) === a.name.replace(/\.[^.]+$/, ""));
+      const id = a.name.replace(/\.[^.]+$/, "");
+      // Primero el JSON cargado; si no está, se buscan en NASA por el nombre de la foto (necesita conexión).
+      const foto = metadatos.find((m) => (m.imageid ?? m.id) === id) ?? (navigator.onLine === false ? null : await buscarMetadatosNasa(id, cacheNasa, (url) => fetch(url, { signal: AbortSignal.timeout(parametro(cfg, "espera_metadatos_s") * 1000) })));
       if (!foto?.camera_model_component_list || !foto.attitude) throw new Error("metadata");
       const imagen = await createImageBitmap(a), c = document.createElement("canvas"); c.width = imagen.width; c.height = imagen.height;
       const g = c.getContext("2d"); g.drawImage(imagen, 0, 0); imagen.close();
@@ -248,7 +272,7 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
       else mensaje(t("No hay foto en esta posición. Cargá fotos con metadatos o acercate a la parada del escenario."));
     } catch { mensaje(t("No se pudo leer la foto o sus metadatos. Necesitás CAHVOR y attitude.")); }
   }
-  $("[data-archivos]").addEventListener("change", (e) => { fotosSubidas = Array.from(e.target.files); mensaje(t("Fotos cargadas. Agregá sus metadatos y tocá Foto.")); });
+  $("[data-archivos]").addEventListener("change", (e) => { fotosSubidas = Array.from(e.target.files); mensaje(t("Fotos cargadas. Tocá Foto: los datos de cámara se buscan en NASA por el nombre del archivo.")); });
   $("[data-meta]").addEventListener("change", async (e) => {
     try { const m = JSON.parse(await e.target.files[0].text()); metadatos = Array.isArray(m) ? m : m.items ?? [m]; mensaje(t("Metadatos cargados.")); }
     catch { mensaje(t("No se pudo leer la foto o sus metadatos. Necesitás CAHVOR y attitude.")); }
@@ -279,6 +303,8 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
     if (cerrado) return;
     motor.registrar("comando", { comando, transcripcion });
     const e = motor.estado;
+    if (comando === "datos") { const cajon = $(".nav-cajon"); cajon.hidden = !cajon.hidden; raiz.querySelectorAll('[data-c="datos"]').forEach((b) => b.setAttribute("aria-expanded", String(!cajon.hidden))); }
+    if (comando === "alternar") pausa = !pausa;
     if (comando === "terminar") { cerrar(); return; }
     if (comando === "pausa") pausa = true;
     if (comando === "seguir" && !trabajo) pausa = false;
@@ -302,10 +328,6 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
   raiz.querySelectorAll("[data-c]").forEach((b) => b.addEventListener("click", () => ejecutar(b.dataset.c)));
   raiz.querySelectorAll("[data-falla]").forEach((b) => b.addEventListener("click", () => falla(b.dataset.falla)));
   raiz.querySelectorAll("[data-vel]").forEach((b) => b.addEventListener("click", () => { velocidad = +b.dataset.vel; dibujarHud(); }));
-  $("[data-micro]").addEventListener("pointerdown", () => voz.escuchar());
-  $("[data-micro]").addEventListener("pointerup", () => voz.detenerEscucha());
-  $("[data-micro]").addEventListener("pointercancel", () => voz.detenerEscucha());
-  $("[data-micro]").addEventListener("click", (e) => { if (e.detail === 0) voz.escuchar(); });
   $("[data-saltar]").addEventListener("click", () => { if (!trabajo) { motor.avanzar(motor.estado.hito.tiempo_s); pedirCamino(); dibujarHud(); } });
   $("[data-sensores]").addEventListener("change", (e) => { sensores.splice(0, sensores.length, ...(e.target.checked ? escenarioActivo : [])); motor.registrar("sensores", { habilitados: e.target.checked }); });
   // Solo cambia la vista. No se usa GPS terrestre ni rumbo magnético para ubicar en Marte.
@@ -329,12 +351,10 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
     }
     if (/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.repeat) return;
     const c = { " ": pausa ? "seguir" : "pausa", s: "estado", o: "oxigeno", p: "posicion", n: "hito", r: "regreso", a: "aborto", f: "foto", h: "ayuda", m: "peligro", "+": "rapido" }[e.key.toLowerCase()];
-    if (e.key.toLowerCase() === "v") { e.preventDefault(); voz.escuchar(); }
-    else if (e.key === "ArrowLeft" || e.key === "ArrowRight") { giroCamara += e.key === "ArrowLeft" ? -5 : 5; vista.mirar(giroCamara); e.preventDefault(); }
+    if (e.key === "ArrowLeft" || e.key === "ArrowRight") { giroCamara += e.key === "ArrowLeft" ? -5 : 5; vista.mirar(giroCamara); e.preventDefault(); }
     else if (c) { e.preventDefault(); ejecutar(c); }
   }
   raiz.addEventListener("keydown", teclado);
-  raiz.addEventListener("keyup", (e) => { if (e.key.toLowerCase() === "v") voz.detenerEscucha(); });
   function pantallaCompleta() {
     if (document.fullscreenElement === raiz) estuvoPantallaCompleta = true;
     else if (estuvoPantallaCompleta) cerrar();
@@ -359,40 +379,84 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
     escribir("credito", fotoActual ? `${t("Foto real NASA/JPL-Caltech, Curiosity Navcam, sol")} ${fotoActual.sol}` : t("No hay foto real en esta posición."));
   }
   function minimapa(e) {
-    const c = $(".nav-minimapa"), g = c.getContext("2d"), r = motor.ruta;
-    const puntos = r.celdas.map((i) => puntoCelda(zona, i)); puntos.push(e.posicion);
-    const margen = Math.max(parametro(cfg, "corredor_m"), e.posicion.error_95_m) / zona.paso;
-    let fMin = Infinity, fMax = -Infinity, cMin = Infinity, cMax = -Infinity;
-    for (const p of puntos) { fMin = Math.min(fMin, p.f); fMax = Math.max(fMax, p.f); cMin = Math.min(cMin, p.c); cMax = Math.max(cMax, p.c); }
-    const f0 = fMin - margen, c0 = cMin - margen;
-    const escala = Math.min(c.width / (cMax - c0 + margen), c.height / (fMax - f0 + margen));
-    const xy = (p) => [(p.c - c0) * escala, (p.f - f0) * escala];
-    g.fillStyle = "#081817"; g.fillRect(0, 0, c.width, c.height);
+    const c = mapaCanvas, g = c.getContext("2d"), r = motor.rutaActiva;
+    if (recorridoEstimado.at(-1)?.t !== e.t) recorridoEstimado.push({ ...e.posicion, t: e.t });
+    const v = ventanaMapa(zona, e.posicion, { ancho: c.width, alto: c.height, alcance_m: parametro(cfg.mapa, "alcance_m"), rumbo: norteArriba ? 0 : e.rumbo });
+    const xy = v.proyectar;
+    g.fillStyle = "#171c17"; g.fillRect(0, 0, c.width, c.height);
+    if (orto) {
+      g.save(); g.translate(c.width / 2, c.height / 2); g.rotate(v.angulo);
+      g.drawImage(orto, -(e.posicion.c + 0.5) * Math.abs(zona.meta.grilla.transform[0]) * v.escala,
+        -(e.posicion.f + 0.5) * Math.abs(zona.meta.grilla.transform[4]) * v.escala, v.ancho_mapa, v.alto_mapa); g.restore();
+    }
+    escribir("mapa", orto ? t("Orto real · verde: zona segura modelada · ámbar: error 95 %") : t("Sin ortoimagen: solo geometría de la ruta"));
     if (opciones.region || escenario.zonaSegura) {
-      g.fillStyle = "#285c3a";
-      for (let y = 0; y < c.height; y += 4) for (let x = 0; x < c.width; x += 4) {
-        const f = Math.round(f0 + y / escala), col = Math.round(c0 + x / escala);
-        const segura = opciones.region ? opciones.region[f * zona.ancho + col] : filasSeguras.get(f)?.some(([desde, hasta]) => col >= desde && col <= hasta);
-        if (f >= 0 && col >= 0 && f < zona.alto && col < zona.ancho && segura) g.fillRect(x, y, 4, 4);
+      // Máscara translúcida local: conserva la textura visible.
+      const paso = parametro(cfg.mapa, "paso_mascara_px"), cos = Math.cos(-v.angulo), sin = Math.sin(-v.angulo);
+      g.fillStyle = "#64ff9925";
+      for (let y = 0; y < c.height; y += paso) for (let x = 0; x < c.width; x += paso) {
+        const dx = (x - c.width / 2) / v.escala, dy = (y - c.height / 2) / v.escala;
+        const f = Math.round(e.posicion.f + (dx * sin + dy * cos) / Math.abs(zona.meta.grilla.transform[4]));
+        const col = Math.round(e.posicion.c + (dx * cos - dy * sin) / Math.abs(zona.meta.grilla.transform[0]));
+        const dentro = f >= 0 && col >= 0 && f < zona.alto && col < zona.ancho;
+        if (dentro && (opciones.region ? opciones.region[f * zona.ancho + col] : filasSeguras.get(f)?.some(([a, b]) => col >= a && col <= b))) g.fillRect(x, y, paso, paso);
       }
     }
-    g.strokeStyle = "#c1ffe7"; g.lineWidth = 2; g.beginPath();
-    r.celdas.forEach((i, k) => { const p = xy(puntoCelda(zona, i)); if (!k) g.moveTo(...p); else g.lineTo(...p); }); g.stroke();
+    const trazar = (hasta, color) => { g.strokeStyle = color; g.lineWidth = 2; g.beginPath();
+      r.celdas.slice(0, hasta).forEach((i, k) => { const p = xy(puntoCelda(zona, i)); if (!k) g.moveTo(...p); else g.lineTo(...p); }); g.stroke(); };
+    trazar(r.celdas.length, "#d6ffe4");
+    opciones.juego?.dibujarCorredor?.({ g, proyectar: xy, escala: v.escala });
+    g.strokeStyle = "#59ff99"; g.lineWidth = 2; g.beginPath();
+    recorridoEstimado.forEach((p, k) => { const xyP = xy(p); if (k) g.lineTo(...xyP); else g.moveTo(...xyP); }); g.stroke();
+    for (const k of motor.hitos) { const [x, y] = xy(puntoCelda(zona, motor.ruta.celdas[k])); g.strokeStyle = "#d6ffe4"; g.strokeRect(x - 3, y - 3, 6, 6); }
     for (const m of plan.marcas ?? []) {
       const p = m.celda ?? lonLatACelda(zona.meta, m.lon, m.lat), [x, y] = xy(p);
-      g.fillStyle = "#ffce73"; g.fillRect(x - 3, y - 3, 6, 6); g.fillText(m.nombre ?? m.id, x + 5, y);
+      g.fillStyle = "#ffe3a3"; g.fillRect(x - 4, y - 4, 8, 8); g.fillText(m.nombre ?? m.id, x + 6, y - 6);
     }
-    const [x, y] = xy(e.posicion); g.strokeStyle = "#ffd97e"; g.beginPath(); g.arc(x, y, e.posicion.error_95_m / zona.paso * escala, 0, 2 * Math.PI); g.stroke();
-    g.fillStyle = "#fff"; g.beginPath(); g.arc(x, y, 3, 0, 2 * Math.PI); g.fill();
+    // Covarianza completa del filtro en metros este/norte, rotada con el mapa.
+    const [a, b, d] = e.posicion.covarianza, racine = Math.hypot(a - d, 2 * b), q = Math.sqrt(-2 * Math.log(0.05));
+    const grand = q * Math.sqrt(Math.max(0, (a + d + racine) / 2)) * v.escala, petit = q * Math.sqrt(Math.max(0, (a + d - racine) / 2)) * v.escala;
+    g.strokeStyle = "#ffdc83"; g.beginPath(); g.ellipse(c.width / 2, c.height / 2, grand, petit, -Math.atan2(2 * b, a - d) / 2 + v.angulo, 0, Math.PI * 2); g.stroke();
+    g.save(); g.translate(c.width / 2, c.height / 2); g.rotate((norteArriba ? e.rumbo : 0) * Math.PI / 180);
+    g.fillStyle = "#e5ffe7"; g.beginPath(); g.moveTo(0, -8); g.lineTo(-5, 6); g.lineTo(5, 6); g.closePath(); g.fill(); g.restore();
+    const largo = parametro(cfg.mapa, "escala_m") * v.escala;
+    g.strokeStyle = "#fff"; g.lineWidth = 2; g.beginPath(); g.moveTo(14, c.height - 20); g.lineTo(14 + largo, c.height - 20); g.stroke();
+    g.font = "13px monospace"; g.fillStyle = "#fff"; g.fillText(`${n(parametro(cfg.mapa, "escala_m"))} m`, 14, c.height - 28);
+    const norte = xy({ f: e.posicion.f - parametro(cfg.mapa, "alcance_m") / zona.paso / 4, c: e.posicion.c });
+    g.fillText("N", norte[0], norte[1]);
+  }
+  function dibujarCinta(e) {
+    const c = $("[data-cinta]"), g = c.getContext("2d"), campo = parametro(cfg.visor, "campo_cinta_grados");
+    const cinta = cintaRumbo(e.rumbo + giroCamara, e.rumboObjetivo, e.sol.azimut, campo, parametro(cfg.visor, "paso_cinta_grados"));
+    g.clearRect(0, 0, c.width, c.height); g.strokeStyle = "#b6ffce"; g.fillStyle = "#c6ffda"; g.font = "12px monospace"; g.textAlign = "center";
+    for (const m of cinta.marcas) { const x = m.x * c.width; g.beginPath(); g.moveTo(x, 30); g.lineTo(x, m.grados % 30 ? 38 : 45); g.stroke();
+      if (m.grados % 30 === 0) g.fillText(({ 0: "N", 90: "E", 180: "S", 270: "W" })[m.grados] ?? String(m.grados).padStart(3, "0"), x, 62); }
+    g.fillText("▼", c.width / 2, 24);
+    if (cinta.objetivo.visible) g.fillText("◇", cinta.objetivo.x * c.width, 24);
+    if (cinta.sol.visible) { g.fillStyle = "#ffdc83"; g.fillText("☼", cinta.sol.x * c.width, 24); }
+    escribir("rumbo", `${n(((e.rumbo + giroCamara) % 360 + 360) % 360)}°`);
   }
   function dibujarHud() {
     if (cerrado) return;
     const e = motor.estado, p = e.posicion, i = Math.round(p.f) * zona.ancho + Math.round(p.c);
     raiz.dataset.nivel = e.avisos.some((a) => a.nivel === 3) ? "rojo" : e.avisos.length ? "ambar" : e.nivel;
-    escribir("decision", `${t(e.veredicto)} · ${pausa ? t("En pausa") : `×${velocidad}`} · ${t("Modelado")}`);
-    const direccion = Math.abs(e.giro) < 1 ? t("Seguí de frente") : `${t("Desviate")} ${n(Math.abs(e.giro))}° ${t(e.giro < 0 ? "a la izquierda" : "a la derecha")}`;
-    escribir("guia", `${e.giro < 0 ? "↖" : "↗"} ${direccion} · ${n(e.rumboObjetivo)}° · ${n(e.hito.distancia_m)} m · ${tiempo(e.hito.tiempo_s)}`);
-    escribir("posicion", `${n(e.geo.lat, 5)}°, ${n(((e.geo.lon % 360) + 360) % 360, 5)}° E · ${t("Error 95 % modelado")}: ${n(p.error_95_m, 1)} m · ${t(p.fuente)}${p.estima ? ` + ${t("estima")}` : ""}`);
+    const decision = raiz.dataset.nivel === "rojo" ? "ABORTAR" : raiz.dataset.nivel === "ambar" ? "PRECAUCIÓN" : e.veredicto;
+    if (decision !== estadoAnterior) { estadoAnterior = decision; cambioEstado = performance.now(); motor.registrar("estado_visor", { decision, motivo: e.motivo }); }
+    raiz.dataset.cambio = performance.now() - cambioEstado < parametro(cfg.visor, "aviso_s") * 1000 ? "si" : "no";
+    escribir("decision", t(decision));
+    escribir("motivo", e.avisos.length ? t(avisosES[e.avisos[0].codigo]) : t(e.motivo));
+    const horas = Math.floor(e.sol.lmst), minutos = Math.floor((e.sol.lmst - horas) * 60);
+    escribir("reloj", `${String(horas).padStart(2, "0")}:${String(minutos).padStart(2, "0")} LMST · ${t("Modelado")}`);
+    escribir("exterior", `${t("Tiempo afuera")} ${tiempo(e.t)} · ${t("Luz")} ${ocaso === null ? "—" : tiempo(Math.max(0, (ocaso - e.ms) / 1000))}`);
+    escribir("retorno", `${t("Regreso")} ${tiempo(e.regreso_s)} · ${t("Margen")} ${tiempo(e.margen_s)}`);
+    escribir("enlace", `${t("Radio")}: ${e.radio === null ? t("Sin dato") : t(e.radio ? "Con enlace geométrico" : "Sin enlace geométrico")}`);
+    escribir("posicion", `${t("Posición")} ±${n(p.error_95_m, 1)} m · ${t("Error 95 % modelado")}`);
+    escribir("guia", `${t("Próximo hito")} · ${n(e.hito.distancia_m)} m · ${tiempo(e.hito.tiempo_s)}`);
+    escribir("destino", `${t("Destino final")} · ${n(e.destino_m)} m · ${tiempo(e.destino_s)}`);
+    $("[data-v=flecha]").style.transform = `rotate(${e.giro}deg)`;
+    $("[data-c=alternar]").textContent = t(pausa ? "Seguir" : "Pausa");
+    $("[data-c=rapido]").textContent = `${t("Velocidad")} ×${velocidad}`;
+    dibujarCinta(e);
     const filas = [["Tiempo afuera", tiempo(e.t)], ["Destino", `${n(e.destino_m)} m · ${tiempo(e.destino_s)}`],
       ["Regreso al refugio", `${nombreRefugio} ${tiempo(e.regreso_s)} + ${tiempo(riesgo.pie.ingreso_refugio_min.valor * 60)} ${t("de ingreso")}`],
       ["Margen de regreso", tiempo(e.margen_s)], ["Rumbo IMU + Sol (simulado)", `${n(e.rumbo)}° · ${t("Sol modelado")}: ${n(e.sol.azimut)}° / ${n(e.sol.elevacion)}°`],
@@ -408,8 +472,15 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
     const rs = [{ nombre: "Oxígeno primario", valor: e.o2.primario_s, capacidad: cfgMotor.primario },
       { nombre: "Oxígeno secundario", valor: e.o2.secundario_s, capacidad: cfgMotor.secundario },
       ...e.recursos.map((r) => ({ nombre: { co2: "CO₂ por absorber", agua: "Agua de enfriamiento", bateria: "Batería" }[r.id], valor: r.restante, capacidad: r.capacidad }))];
-    for (const r of rs) { const label = document.createElement("label"), barra = document.createElement("meter"); barra.min = 0; barra.max = r.capacidad; barra.value = r.valor;
-      label.textContent = `${t(r.nombre)} · ${n(r.valor / r.capacidad * 100)} % · ${t("Modelado")}`; label.append(barra); recursos.append(label); }
+    for (const r of rs) {
+      const label = document.createElement("label"), barra = document.createElement("meter"), texto = document.createElement("span");
+      barra.min = 0; barra.max = r.capacidad; barra.value = r.valor;
+      const autonomia = r.nombre === "Oxígeno primario" || r.nombre === "Oxígeno secundario" ? r.valor / e.tasa : e.recursos.find((x) => ({ co2: "CO₂ por absorber", agua: "Agua de enfriamiento", bateria: "Batería" })[x.id] === r.nombre)?.autonomia_s;
+      const abreviado = ({ "Oxígeno primario": "O₂ P", "Oxígeno secundario": "O₂ S", "CO₂ por absorber": "CO₂", "Batería": "BAT", "Agua de enfriamiento": "H₂O" })[r.nombre];
+      label.title = `${t(r.nombre)} · ${t("Modelado")}`; barra.setAttribute("aria-label", t(r.nombre));
+      texto.textContent = `${abreviado}\n${n(r.valor / r.capacidad * 100)} %\n${tiempo(autonomia)}`;
+      label.append(barra, texto); recursos.append(label);
+    }
     const firma = e.avisos.map((a) => a.codigo).join(",");
     if (firma !== ultimoAviso) {
       ultimoAviso = firma; const caja = $(".nav-avisos"); caja.replaceChildren();
@@ -420,7 +491,7 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
     else if (escenario.radio) motor.fijarRadio(escenario.radio[i] === undefined ? null : !!escenario.radio[i]);
     actualizarFoto(e); minimapa(e);
     escribir("registro", `${t("Eventos registrados")}: ${motor.cantidadEventos}`);
-    escribir("fps", `${n(vista.estadisticas.fps, 1)} fps · ${n(vista.estadisticas.total_ms / vista.estadisticas.cuadros, 1)} ms ${t("por cuadro de render")} · ${t("Resolución interna")}: ${vista.estadisticas.ancho}×${vista.estadisticas.alto}`);
+    escribir("fps", `${vista.estadisticas.salida} · ${n(vista.estadisticas.fps, 1)} fps · ${n(vista.estadisticas.total_ms / vista.estadisticas.cuadros, 1)} ms ${t("por cuadro de render")} · ${t("Resolución interna")}: ${vista.estadisticas.ancho}×${vista.estadisticas.alto}`);
   }
   function cuadro(ahora) {
     if (cerrado) return;
@@ -429,20 +500,36 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
     try {
       if (!pausa && !trabajo && !pidiendoCamino) motor.avanzar(dt * velocidad);
       pedirCamino();
-      vista.dibujar(motor.estado, ahora);
+      const estadoCuadro = motor.estado;
+      vista.dibujar(estadoCuadro, ahora);
+      opciones.juego?.alCuadro?.(estadoCuadro, ahora);
+      const hitoEscena = proyectarHito({ zona, posicion: estadoCuadro.verdad, hito: estadoCuadro.hito, rumbo: estadoCuadro.rumbo, giro: giroCamara, cfg: cfg.render });
+      const marcador = $(".nav-hito-escena"); marcador.hidden = !hitoEscena || hitoEscena.y < 0 || hitoEscena.y > parametro(cfg.render, "alto");
+      if (hitoEscena) { marcador.style.left = (hitoEscena.x / parametro(cfg.render, "ancho") * 100) + "%"; marcador.style.top = (hitoEscena.y / parametro(cfg.render, "alto") * 100) + "%"; }
+      if (ahora - registroFps >= parametro(cfg.visor, "intervalo_fps_s") * 1000) {
+        motor.registrar("rendimiento", { ...vista.estadisticas, pantalla_ancho: globalThis.innerWidth, pantalla_alto: globalThis.innerHeight }); registroFps = ahora;
+      }
       if (ahora - hudUltimo >= 1000 / parametro(cfg.render, "hud_hz")) { dibujarHud(); hudUltimo = ahora; }
       raf = requestAnimationFrame(cuadro);
     } catch { pausa = true; mensaje(t("La navegación se detuvo por datos inválidos. Exportá la bitácora.")); }
   }
-  function cerrar() {
+  function cerrar(ofrecerSalida = true) {
     if (cerrado) return; cerrado = true; turnoCamino++; motor.registrar("fin_navegacion", {});
-    cancelAnimationFrame(raf); clearTimeout(trabajo?.reloj); worker?.terminate(); enlace?.cerrar(); voz.cerrar(); raiz.removeEventListener("keydown", teclado);
+    opciones.juego?.cerrar?.();
+    vista.cerrar?.(); cancelAnimationFrame(raf); clearTimeout(trabajo?.reloj); worker?.terminate(); enlace?.cerrar(); voz.cerrar(); raiz.removeEventListener("keydown", teclado);
     if (permisoOrientacion) window.removeEventListener("deviceorientation", orientar);
     document.removeEventListener?.("fullscreenchange", pantallaCompleta);
     if (document.fullscreenElement === raiz) document.exitFullscreen().catch(() => {});
     document.body.style.overflow = scrollAnterior; raiz.remove(); focoAnterior?.focus();
     for (const href of urlsDescarga) URL.revokeObjectURL(href);
     if (sesion?.motor === motor) sesion = null;
+    if (ofrecerSalida && new URL(globalThis.location?.href ?? "http://localhost/").searchParams.get("navegar") === "1") {
+      const fin = document.createElement("section"); fin.className = "nav-fin";
+      const titulo = document.createElement("h2"); titulo.textContent = t("Navegación terminada");
+      const cerrarTab = document.createElement("button"); cerrarTab.textContent = t("Cerrar pestaña"); cerrarTab.addEventListener("click", () => window.close());
+      const volver = document.createElement("button"); volver.textContent = t("Volver al plan"); volver.addEventListener("click", () => { fin.remove(); const u = new URL(location.href); u.searchParams.delete("navegar"); history.replaceState(null, "", u); focoAnterior?.focus(); });
+      fin.append(titulo, cerrarTab, volver); document.body.append(fin); volver.focus();
+    }
   }
   const controlador = { motor, cerrar, ejecutar, corregir: (m) => motor.corregir(m),
     get rendimiento() { return { ...vista.estadisticas }; }, exportar: (f) => motor.exportar(f), elemento: raiz };
@@ -450,13 +537,12 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
   // Pedir fullscreen puede ser rechazado tras cargas async; el panel fixed siempre cubre la app.
   raiz.requestFullscreen?.().catch(() => {});
   dibujarHud(); raf = requestAnimationFrame(cuadro);
-  mensaje(t("V para hablar; Espacio pausa; S estado; O oxígeno; P posición; N hito; R regreso; A aborto; F foto; M peligro; H ayuda; + velocidad; flechas para mirar; Esc termina."));
-  if (!voz.disponible || navigator.onLine === false) mensaje(t("Reconocimiento de voz no disponible sin soporte o conexión. Usá los botones y el teclado. La voz sintetizada requiere una voz local instalada."));
+  mensaje(t("Espacio pausa; S estado; O oxígeno; P posición; N hito; R regreso; A aborto; F foto; M peligro; H ayuda; + velocidad; flechas para mirar; Esc termina."));
   const p0 = motor.estado;
   const puesta = amanecerAtardecer(p0.ms, p0.geo.lon, p0.geo.lat);
   if (puesta.atardecer !== null) ocaso = p0.ms + (puesta.atardecer - p0.sol.lmst) * 1.0274912517 * 86400000 / 24;
   if (escenario.parada) leerHttp(`${baseZona}/localizacion/${escenario.parada.id}/fotos.json`, "json").then((f) => { if (!cerrado) fotosEscenario = f; }).catch(() => mensaje(t("No se pudieron cargar las fotos del escenario.")));
-  if (zona.meta.capas?.orto) leerTextura(`${baseZona}/${zona.meta.capas.orto.archivo}`, cfg.render.ancho.valor).then((x) => { if (!cerrado) { textura = x; reconstruirVista(); } }).catch(() => mensaje(t("Ortoimagen no disponible: colores ilustrativos del relieve.")));
+  if (zona.meta.capas?.orto) leerTextura(`${baseZona}/${zona.meta.capas.orto.archivo}`, parametro(cfg.render, "textura_ancho")).then((x) => { if (!cerrado) { textura = x; orto = x.imagen; reconstruirVista(); } }).catch(() => mensaje(t("Ortoimagen no disponible: colores ilustrativos del relieve.")));
   if (zona.meta.id === "gale_boxwork") cargarZona(url("datos/region_20_gale_crater"), leerHttp).then((x) => { if (!cerrado) { contexto = x; reconstruirVista(); } }).catch(() => mensaje(t("Contexto lejano no disponible: horizonte limitado al DTM local.")));
   // La cobertura pesada puede llegar del Worker de rutas mediante la app; no se calcula en el hilo del HUD.
   if (opciones.radioVisible) radioVisible = opciones.radioVisible;
@@ -466,6 +552,6 @@ export async function iniciarNavegacion({ zona, ruta, aprobada, plan = {}, opcio
     escribir("radiacion", `${t("DONKI archivado")}: ${r.desde} / ${r.hasta}. ${t("Descargado")}: ${r.descargado}. ${t("Llegadas a Marte modeladas")}: ${n(r.llegadas?.length ?? 0)}. ${t("Sin dosímetro; sin tasa de dosis medida.")}`);
     if (r.llegadas?.length) escribir("radiacion", `${$("[data-v=radiacion]").textContent} ${t("Última llegada prevista (archivo)")}: ${new Date(r.llegadas[0].llegada).toLocaleString(en ? "en-US" : "es-UY", { timeZone: "UTC" })} UTC.`);
   } else escribir("radiacion", t("Sin parte cargado."));
-  function reconstruirVista() { vista = crearVistaMarte({ canvas: $(".nav-vista"), zona, contexto, textura, cfg: cfg.render, movimientoReducido: matchMedia("(prefers-reduced-motion: reduce)").matches }); vista.mirar(giroCamara); }
+  function reconstruirVista() { vista.cerrar?.(); vista = crearVista({ canvas: $(".nav-vista"), zona, contexto, textura, cfg: cfg.render, movimientoReducido: matchMedia("(prefers-reduced-motion: reduce)").matches }); vista.mirar(giroCamara); }
   return controlador;
 }

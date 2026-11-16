@@ -1,7 +1,7 @@
 // Panel "Ventana EVA · clima": hora y estación en la zona, último parte de Curiosity, clima espacial de
 // NASA y semáforo de salida. Funciona con los datos guardados; con internet se puede actualizar.
 import { tiempoMarte, horaLocal, solCuriosity, resumenRems, llegadasMarte, semaforo, franjasDelSol } from "./clima.js";
-import { t, locale } from "./idioma.js";
+import { t, t as traducir, locale } from "./idioma.js";
 
 const NIVEL = { verde: "SE PUEDE SALIR", ambar: "SALIR CON PRECAUCIÓN", rojo: "NO SALIR · REFUGIO" };
 const UV = { Low: "bajo", Moderate: "moderado", High: "alto", Very_High: "muy alto", Extreme: "extremo" };
@@ -84,7 +84,7 @@ export function crearVentana({ $, num, fmt, leerHttp, RAIZ, estado }) {
     $("#clima-espacial").innerHTML = `<h3 class="subtitulo-caja">Clima espacial (DONKI, NASA)</h3>
       <ul class="lista-clima">${proximas.join("") || "<li>Sin llegadas de eyecciones a Marte en el período</li>"}</ul>
       <p class="ayuda">${sep ? `${sep} eventos de partículas solares (SEP)` : "Sin eventos de partículas solares (SEP)"} en los últimos ${cfg.fuentes.donki.dias} días.</p>`;
-    $("#clima-origen").textContent = `${t(origen)} ${t(cfg.fuentes.rems.aviso)}`;
+    $("#clima-origen").textContent = `${traducir(origen)} ${traducir(cfg.fuentes.rems.aviso)}`;
   }
 
   function dibujarSerie(serie) {

@@ -12,7 +12,7 @@ import { crearHerramientasMapa } from "./herramientas-mapa.js";
 import { crearSimulacion } from "./simulacion.js";
 import { crearBarometro } from "./barometro-ui.js";
 import { formatoCoordenadas } from "./herramientas.js";
-import { elegirIdioma, crearTraductor, usarTraductor, traducirNodo, observarTraduccion, t } from "./idioma.js";
+import { elegirIdioma, crearTraductor, usarTraductor, traducirNodo, observarTraduccion, t, locale } from "./idioma.js";
 import { crearFormatos, OPCIONES, unidades, fijarUnidades } from "./unidades.js";
 import { capaLienzo, lienzoDesdeLut } from "./lienzo.js";
 import { guardar, borrar } from "./guardado.js";
@@ -694,12 +694,40 @@ function contextoNavegacion(ruta = rutaActual(), evaluacion = null) {
       riesgo: estado.riesgo, worker: estado.worker, perfil: estado.perfiles[0],
       region: estado.region, prohibido: estado.prohibido,
       inicio_ms: zona && ruta?.sim?.celdas?.length ? instanteSalidaNavegacion(zona, ruta, estado.salida.hora_salida, Date.now()) : Date.now(),
-      antenas: estado.marcas.base ? [{ ...estado.marcas.base.celda, tipo: "base" }, ...planZona.balizas()] : [],
+      antenas: [
+        ...planZona.bases().filter((m) => ["habitat", "refugio"].includes(m.tipo)).map((m) => ({ ...m.celda, tipo: "base" })),
+        ...(estado.marcas.base ? [{ ...estado.marcas.base.celda, tipo: "base" }] : []), ...planZona.balizas(),
+      ],
       vigente: () => estado.zona === zona,
     },
   };
 }
 conectarBotonNavegacion($("#btn-navegar"), () => contextoNavegacion(), (e) => avisar(e.message));
+// La navegación se abre en una pestaña aparte: esa pestaña repone la sesión (zona, base, destino, plan),
+// rehace la ruta y arranca el visor sola. En la pestaña de navegación el botón funciona en el lugar.
+const PESTANA_NAVEGACION = new URL(location.href).searchParams.get("navegar") === "1";
+$("#btn-navegar").addEventListener("click", (e) => {
+  if (PESTANA_NAVEGACION) return;
+  e.stopImmediatePropagation();
+  guardarSesion();
+  const u = new URL(location.href);
+  u.searchParams.set("navegar", "1");
+  u.searchParams.set("zona", estado.zona.meta.id);
+  u.searchParams.set("lang", locale().startsWith("en") ? "en" : "es");
+  if (!window.open(u.href, "_blank")) avisar("El navegador bloqueó la pestaña nueva: permití las ventanas emergentes para este sitio.");
+}, { capture: true });
+if (PESTANA_NAVEGACION) {
+  // Espera a que la ruta repuesta quede aprobada y arranca el visor una sola vez.
+  const boton = $("#btn-navegar"), limite = Date.now() + 90000;
+  let pedido = false;
+  const intento = setInterval(() => {
+    if (!boton.disabled) { clearInterval(intento); boton.click(); return; }
+    // Si la sesión no trajo el itinerario calculado, se pide una vez cuando el motor ya tiene la zona.
+    const calc = $("#itinerario-calcular");
+    if (!pedido && estado.plan === "itinerario" && planZona.hayItinerario() && calc && !calc.disabled) { pedido = true; calc.click(); }
+    else if (Date.now() > limite) { clearInterval(intento); avisar("No hay una ruta aprobada para navegar: calculala en esta pestaña y tocá «Iniciar navegación»."); }
+  }, 500);
+}
 const herramientas = crearHerramientasMapa({
   mapa, estado, $, num, fmt, aMapa, avisar, celdaALonLat, lonLatACelda, leerHttp, RAIZ, imagenDesdeLut,
   bordes: () => [[-estado.zona.alto, 0], [0, estado.zona.ancho]], rutaActual,

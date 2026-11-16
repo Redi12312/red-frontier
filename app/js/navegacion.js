@@ -3,7 +3,7 @@
 // La aproximación gaussiana local no representa ambigüedades ópticas multimodales.
 import { crearMotor, recursosTraje } from "./motor-simulacion.js";
 import { perfilRuta } from "./consumibles.js";
-import { altura, celdaALonLat } from "./zona.js";
+import { altura, celdaALonLat, lonLatACelda } from "./zona.js";
 import { desnivel } from "./barometro.js";
 import { posicionSol } from "./luz.js";
 
@@ -17,6 +17,47 @@ export function parametro(cfg, clave) {
 const finito = (x, nombre) => { if (!Number.isFinite(x)) throw new Error(`Revisá ${nombre}.`); return x; };
 export const puntoCelda = (z, i) => ({ f: Math.floor(i / z.ancho), c: i % z.ancho });
 export const alturaEn = (z, i) => z.elevacion ? z.elevacion[i] : altura(z.meta, z.crudo.elevQ[i]);
+
+// Coordenadas continuas: la orto cubre los bordes de la grilla; f/c indican centros.
+export function ventanaMapa(zona, posicion, { ancho, alto, alcance_m, rumbo = 0 }) {
+  const [a, , , , e] = zona.meta.grilla.transform;
+  const escala = ancho / alcance_m, angulo = -rumbo * Math.PI / 180;
+  const cos = Math.cos(angulo), sin = Math.sin(angulo);
+  const proyectar = (p) => {
+    const x = (p.c - posicion.c) * Math.abs(a) * escala;
+    const y = (p.f - posicion.f) * Math.abs(e) * escala;
+    return [ancho / 2 + x * cos - y * sin, alto / 2 + x * sin + y * cos];
+  };
+  return { escala, angulo, proyectar, origen: proyectar({ f: -0.5, c: -0.5 }),
+    ancho_mapa: zona.ancho * Math.abs(a) * escala, alto_mapa: zona.alto * Math.abs(e) * escala,
+    // Rectángulo de origen sin rotar, expresado en fracción de la imagen.
+    recorte: { x: (posicion.c + 0.5 - ancho / escala / Math.abs(a) / 2) / zona.ancho,
+      y: (posicion.f + 0.5 - alto / escala / Math.abs(e) / 2) / zona.alto,
+      ancho: ancho / escala / Math.abs(a) / zona.ancho, alto: alto / escala / Math.abs(e) / zona.alto } };
+}
+
+export function cintaRumbo(rumbo, objetivo, sol, campo, paso) {
+  const marcas = [];
+  for (let v = Math.ceil((rumbo - campo / 2) / paso) * paso; v <= rumbo + campo / 2; v += paso) {
+    marcas.push({ grados: ((v % 360) + 360) % 360, x: (v - rumbo) / campo + 0.5 });
+  }
+  const posicion = (v) => ({ x: angular(v - rumbo) / campo + 0.5, visible: Math.abs(angular(v - rumbo)) <= campo / 2 });
+  return { marcas, objetivo: posicion(objetivo), sol: posicion(sol) };
+}
+
+export function antenasDelPlan(zona, marcas = [], base = null, balizas = []) {
+  const lista = [...marcas.filter((m) => ["habitat", "refugio", "baliza", "base"].includes(m.tipo)), ...balizas];
+  if (base) lista.push({ ...base, tipo: "base" });
+  const unicas = new Map();
+  for (const m of lista) {
+    const p = m.celda ?? (Number.isFinite(m.f + m.c) ? m : lonLatACelda(zona.meta, m.lon, m.lat));
+    const f = Math.round(p.f), c = Math.round(p.c);
+    if (Number.isFinite(f + c) && f >= 0 && c >= 0 && f < zona.alto && c < zona.ancho && zona.valido[f * zona.ancho + c]) {
+      unicas.set(`${f},${c}`, { ...m, f, c, tipo: m.tipo === "baliza" ? "baliza" : "base" });
+    }
+  }
+  return [...unicas.values()];
+}
 
 export function instanteSalidaNavegacion(zona, ruta, hora, ahora) {
   finito(ahora, "fecha de salida");
@@ -149,6 +190,19 @@ export function crearNavegacion({ zona, ruta, cfg, riesgo, consumibles, escenari
   let acumulado = parametro(cfg, "separacion_hitos_m");
   for (let k = 1; k < rutaMotor.d.length; k++) if (rutaMotor.d[k] >= acumulado) { hitos.push(k); acumulado += parametro(cfg, "separacion_hitos_m"); }
   if (!hitos.includes(rutaMotor.celdas.length - 1)) hitos.push(rutaMotor.celdas.length - 1);
+  // El primer hito termina el primer tramo recto, antes de cualquier curva.
+  const inicial = puntoCelda(zona, rutaMotor.celdas[0]);
+  const siguiente = rutaMotor.celdas.find((i) => i !== rutaMotor.celdas[0]);
+  if (siguiente !== undefined) {
+    const p = puntoCelda(zona, siguiente), df = inicial.f - p.f, dc = p.c - inicial.c;
+    rumbo = (Math.atan2(dc, df) * 180 / Math.PI + 360) % 360;
+    for (let k = 2; k < rutaMotor.celdas.length; k++) {
+      const a = puntoCelda(zona, rutaMotor.celdas[k - 1]), b = puntoCelda(zona, rutaMotor.celdas[k]);
+      if (b.c === a.c && b.f === a.f) continue;
+      if ((b.c - a.c) * df !== (a.f - b.f) * dc) { if (!hitos.includes(k - 1)) hitos.unshift(k - 1); break; }
+    }
+    hitos.sort((a, b) => a - b);
+  }
   function verdad(e) {
     const k = e.k, a = puntoCelda(zona, activo.celdas[k] ?? e.celda), b = puntoCelda(zona, activo.celdas[k + 1] ?? e.celda);
     const t = e.t - origenTiempo, desde = activo.t[k], hasta = activo.t[k + 1];
@@ -166,7 +220,11 @@ export function crearNavegacion({ zona, ruta, cfg, riesgo, consumibles, escenari
     if (["ABORTAR", "NO_ALCANZA"].includes(e.veredicto)) aviso("aborto", 3);
     if (abortoOrdenado && !e.fin) aviso("aborto_ordenado", 3);
     if (e.regreso_s === null || e.regreso_s + riesgo.pie.ingreso_refugio_min.valor * 60 > riesgo.pie.regreso_emergencia_max_min.valor * 60) aviso("regreso", 3);
-    if (!dentro || !zona.valido[i] || zona.prohibido?.[i]) aviso("terreno", 3);
+    if (!dentro || !zona.valido[i] || zona.prohibido?.[i]) {
+      // Una media EKF sobre el borde no confirma que se haya pisado terreno prohibido.
+      // Si su radio todavía toca la ruta aprobada, exige localizarse y pausar.
+      aviso(corredor.distancia_m <= p.error_95_m ? "terreno_incierto" : "terreno", corredor.distancia_m <= p.error_95_m ? 2 : 3);
+    }
     if (e.veredicto === "TERMINAR") aviso("terminar", 2);
     if (corredor.distancia_m > parametro(cfg, "corredor_m")) aviso("corredor", 2);
     if (p.error_95_m > riesgo.pie.incertidumbre_posicion_m.valor) aviso("localizar", 2);
@@ -177,11 +235,12 @@ export function crearNavegacion({ zona, ruta, cfg, riesgo, consumibles, escenari
     for (const id of [...avisados]) if (!avisos.some((a) => a.codigo === id)) avisados.delete(id);
     const h = e.enRegreso ? Math.min(e.k + 1, activo.celdas.length - 1) : hitos.find((k) => k > e.k) ?? hitos.at(-1);
     const objetivo = puntoCelda(zona, activo.celdas[h]), df = p.f - objetivo.f, dc = objetivo.c - p.c;
-    const rumboObjetivo = (Math.atan2(dc, df) * 180 / Math.PI + 360) % 360;
+    const rumboObjetivo = df || dc ? (Math.atan2(dc, df) * 180 / Math.PI + 360) % 360 : rumbo;
+    const recorrido = activo.d[e.k] + Math.hypot(verdad(e).f - puntoCelda(zona, e.celda).f, verdad(e).c - puntoCelda(zona, e.celda).c) * zona.paso;
     const geo = celdaALonLat(zona.meta, p.f, p.c), ms = inicio_ms + e.t * 1000;
     return { ...e, ...(abortoOrdenado && !e.fin && !e.pedirCamino ? { veredicto: "ABORTAR", nivel: "rojo" } : {}), posicion: p, verdad: verdad(e), rumbo, rumboObjetivo, giro: angular(rumboObjetivo - rumbo),
       hito: { k: h, ...objetivo, distancia_m: Math.hypot(df, dc) * zona.paso, tiempo_s: Math.max(0, activo.t[h] - (e.t - origenTiempo)) },
-      destino_m: Math.max(0, activo.d.at(-1) - (e.enRegreso ? activo.d[e.k] : rutaMotor.d[e.k])),
+      destino_m: Math.max(0, activo.d.at(-1) - recorrido),
       destino_s: Math.max(0, activo.t.at(-1) - (e.t - origenTiempo)), corredor, avisos,
       sol: posicionSol(ms, geo.lon, geo.lat), geo, ms, radio: coberturaRadio,
       metabolismo_w: rutaMotor.metabolismo_w[Math.min(e.k, rutaMotor.metabolismo_w.length - 1)],
@@ -233,7 +292,7 @@ export function crearNavegacion({ zona, ruta, cfg, riesgo, consumibles, escenari
     }
     return estado();
   }
-  return { avanzar, corregir, inyectar, ruta: rutaMotor, hitos,
+  return { avanzar, corregir, inyectar, ruta: rutaMotor, hitos, get rutaActiva() { return activo; },
     abortar() { abortoOrdenado = true; return inyectar("volver"); },
     get cantidadEventos() { return registro.length; },
     get estado() { return estado(); }, registrar: anotar, fijarRadio: (valor) => { coberturaRadio = valor; },
