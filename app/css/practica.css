@@ -1,0 +1,84 @@
+:root {
+  --fondo: #1a1110;
+  --panel: rgba(18, 14, 14, 0.82);
+  --texto: #f6ece2;
+  --tenue: #c9b6a6;
+  --acento: #ff9a3c;
+  --cian: #5ee6e0;
+  --alerta: #ff5a4a;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: var(--fondo); color: var(--texto); font-family: system-ui, "Segoe UI", Roboto, sans-serif; }
+#lienzo { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+#casco {
+  position: fixed; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 78% 82% at 50% 48%, transparent 72%, rgba(10, 8, 8, 0.55) 84%, rgba(6, 5, 5, 0.96) 96%);
+}
+#casco::after {
+  content: ""; position: absolute; left: 8%; right: 8%; top: 4%; height: 18%;
+  border-top: 2px solid rgba(255, 255, 255, 0.12); border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+}
+[hidden] { display: none !important; }
+.panel-centro {
+  position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: min(680px, calc(100% - 32px)); max-height: calc(100% - 32px); overflow: auto;
+  background: var(--panel); border: 1px solid rgba(255, 154, 60, 0.35); border-radius: 14px; padding: 22px 24px;
+  backdrop-filter: blur(4px); z-index: 10;
+}
+.panel-centro h1 { margin: 0 0 8px; font-size: 1.4rem; color: var(--acento); }
+.panel-centro h2 { margin: 16px 0 6px; font-size: 1rem; color: var(--tenue); }
+.panel-centro p { line-height: 1.45; }
+.controles { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin-top: 12px; }
+.ctrl { display: flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.05); border-radius: 10px; padding: 8px 10px; font-size: 0.85rem; color: var(--tenue); }
+.teclas { display: flex; gap: 3px; flex-wrap: wrap; max-width: 92px; }
+kbd { display: inline-block; min-width: 22px; padding: 2px 5px; border: 1px solid #8a7466; border-bottom-width: 3px; border-radius: 5px; font: bold 0.8rem system-ui, sans-serif; text-align: center; color: var(--texto); background: #2b2220; }
+.raton { width: 26px; height: 38px; border: 2px solid #8a7466; border-radius: 13px; position: relative; flex: none; }
+.raton i { position: absolute; left: 0; top: 0; width: 50%; height: 45%; background: var(--acento); border-radius: 11px 0 0 0; opacity: 0.8; }
+.pasos { margin: 0; padding-left: 22px; line-height: 1.5; }
+.pasos li.hecho { text-decoration: line-through; color: #8fd99a; }
+.boton { margin-top: 16px; padding: 12px 22px; font: bold 1rem system-ui, sans-serif; color: #1a1110; background: var(--acento); border: 0; border-radius: 10px; cursor: pointer; }
+.tactil, #herramientas button.tactil { display: none; }
+@media (pointer: coarse) { .tactil, #herramientas button.tactil { display: flex; } }
+
+#hud { position: fixed; inset: 0; pointer-events: none; z-index: 5; }
+#brujula { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: min(560px, calc(100% - 32px)); height: 26px; background: rgba(10, 8, 8, 0.45); border-radius: 6px; }
+#datos-hud { position: absolute; top: 52px; left: 50%; transform: translateX(-50%); display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; width: min(900px, calc(100% - 32px)); }
+#datos-hud div { background: rgba(10, 8, 8, 0.5); border: 1px solid rgba(94, 230, 224, 0.25); border-radius: 6px; padding: 3px 8px; display: flex; flex-direction: column; min-width: 92px; }
+#datos-hud small { font-size: 0.66rem; color: var(--tenue); text-transform: uppercase; letter-spacing: 0.04em; }
+#datos-hud b { font-size: 0.92rem; color: var(--cian); font-variant-numeric: tabular-nums; }
+#datos-hud div.alerta { border-color: var(--alerta); }
+#datos-hud div.alerta b { color: var(--alerta); }
+.pasos.chicos { position: absolute; left: 22px; top: 50%; transform: translateY(-50%); max-width: 270px; font-size: 0.78rem; background: rgba(10, 8, 8, 0.45); border-radius: 8px; padding: 8px 8px 8px 26px; }
+#mira { position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; margin: -3px; border: 1px solid rgba(255, 255, 255, 0.7); border-radius: 50%; }
+#aviso { position: absolute; left: 50%; bottom: 150px; transform: translateX(-50%); background: rgba(10, 8, 8, 0.75); padding: 8px 14px; border-radius: 8px; margin: 0; max-width: calc(100% - 32px); text-align: center; }
+#lectura {
+  position: absolute; right: 22px; top: 118px; width: min(340px, calc(100% - 32px)); max-height: calc(100% - 260px); overflow: auto;
+  background: rgba(8, 20, 20, 0.86); border: 1px solid var(--cian); border-radius: 10px; padding: 10px 12px; pointer-events: auto; cursor: pointer;
+  font-size: 0.85rem;
+}
+#lectura h3 { margin: 0 0 4px; color: var(--cian); font-size: 0.95rem; }
+#lectura p { margin: 4px 0; }
+#lectura .grande { font-size: 1.6rem; font-weight: bold; font-variant-numeric: tabular-nums; }
+#lectura .chico, .chico { font-size: 0.72rem; color: var(--tenue); }
+#lectura img { width: 100%; border-radius: 6px; display: block; margin-top: 6px; }
+#herramientas { position: absolute; bottom: 44px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; pointer-events: auto; width: min(760px, calc(100% - 32px)); }
+#herramientas button { display: flex; align-items: center; gap: 6px; padding: 7px 10px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(10, 8, 8, 0.6); color: var(--texto); font: 0.82rem system-ui, sans-serif; cursor: pointer; }
+#herramientas button.activa { border-color: var(--cian); background: rgba(20, 70, 70, 0.75); }
+#herramientas button.accion { background: rgba(255, 154, 60, 0.85); color: #1a1110; font-weight: bold; }
+.joy { display: none; position: absolute; bottom: 100px; width: 120px; height: 120px; border-radius: 50%; border: 2px solid rgba(255, 255, 255, 0.3); background: rgba(10, 8, 8, 0.25); pointer-events: auto; touch-action: none; }
+.joy span { position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; margin: -22px; border-radius: 50%; background: rgba(255, 255, 255, 0.4); }
+#joy-izq { left: 24px; }
+#joy-der { right: 24px; }
+@media (pointer: coarse) {
+  .joy { display: block; }
+  .pasos.chicos { display: none; }
+  #lectura { top: auto; bottom: 240px; }
+}
+#final-datos ul { padding-left: 20px; line-height: 1.6; }
+#final-datos .grande { font-size: 2rem; font-weight: bold; color: var(--cian); margin: 6px 0; }
+#rotulo { position: fixed; right: 10px; bottom: 6px; margin: 0; font-size: 0.68rem; color: rgba(246, 236, 226, 0.75); background: rgba(10, 8, 8, 0.5); padding: 2px 8px; border-radius: 4px; z-index: 20; pointer-events: none; }
+@media (max-width: 600px) {
+  #datos-hud div { min-width: 0; padding: 2px 6px; }
+  #datos-hud div:nth-child(6), #datos-hud div:nth-child(8) { display: none; }
+  #rotulo { left: 10px; right: 10px; text-align: center; }
+}

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Red Frontier · Modo práctica</title>
+  <link rel="stylesheet" href="css/practica.css">
+</head>
+<body>
+  <canvas id="lienzo"></canvas>
+  <div id="casco" aria-hidden="true"></div>
+
+  <div id="carga" class="panel-centro"><p data-en="Loading HiRISE terrain and the route…">Cargando relieve HiRISE y la ruta…</p></div>
+
+  <section id="inicio" class="panel-centro" hidden>
+    <h1 data-en="EVA practice · Gale crater">Práctica de caminata · cráter Gale</h1>
+    <p data-en="You leave the habitat (a Curiosity stop, sol 4414) and walk the safe route to the <b>boxwork field base</b> (sol 4496 stop). Take 2 ridge photos and 3 samples, and <b>come back safely</b>. There is no GPS: your estimated position drifts and you correct it with your instruments.">Salís del hábitat (una parada de Curiosity, sol 4414) y caminás la ruta segura hasta la <b>base de campo del boxwork</b> (parada del sol 4496). Sacá 2 fotos de crestas y 3 muestras, y <b>volvé sano</b>. No hay GPS: tu posición estimada se va corriendo y la corregís con tus instrumentos.</p>
+    <div class="controles">
+      <div class="ctrl"><div class="teclas"><kbd class="w">W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></div><span data-en="walk · Shift jog">caminar · Shift trotar</span></div>
+      <div class="ctrl"><div class="raton"><i></i></div><span data-en="mouse: look · click: use tool">mouse: mirar · clic: usar herramienta</span></div>
+      <div class="ctrl"><div class="teclas"><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd></div><span data-en="barometer · camera · sun compass · radio">barómetro · cámara · brújula solar · radio</span></div>
+      <div class="ctrl"><div class="teclas"><kbd>E</kbd></div><span data-en="take sample (at the field base)">tomar muestra (en la base de campo)</span></div>
+      <div class="ctrl tactil"><div class="teclas"><kbd>◎</kbd><kbd>◎</kbd></div><span data-en="phone: left stick walks, right stick looks">celular: joystick izquierdo camina, derecho mira</span></div>
+    </div>
+    <h2 data-en="Steps">Pasos</h2>
+    <ol id="pasos-inicio" class="pasos"></ol>
+    <button id="empezar" class="boton" data-en="Leave the habitat">Salir del hábitat</button>
+  </section>
+
+  <div id="hud" hidden>
+    <canvas id="brujula" width="560" height="26"></canvas>
+    <div id="datos-hud">
+      <div><small data-en="O₂">O₂</small><b id="h-o2">—</b></div>
+      <div><small data-en="Return to habitat">Regreso al hábitat</small><b id="h-regreso">—</b></div>
+      <div><small data-en="Off route">Desvío de la ruta</small><b id="h-desvio">—</b></div>
+      <div><small data-en="Next">Próximo</small><b id="h-obj">—</b></div>
+      <div><small data-en="Position error">Error de posición</small><b id="h-error">—</b></div>
+      <div><small data-en="Estimated position">Posición estimada</small><b id="h-est">—</b></div>
+      <div><small data-en="Tool">Herramienta</small><b id="h-herr">—</b></div>
+      <div><small data-en="Solar time">Hora solar</small><b id="h-hora">—</b></div>
+      <div><small data-en="Science">Ciencia</small><b id="h-ciencia">—</b></div>
+    </div>
+    <ol id="pasos" class="pasos chicos"></ol>
+    <div id="mira" aria-hidden="true"></div>
+    <p id="aviso" role="status" hidden></p>
+    <div id="lectura" hidden></div>
+    <div id="herramientas">
+      <button data-herr="barometro"><kbd>1</kbd><span data-en="Barometer">Barómetro</span></button>
+      <button data-herr="camara"><kbd>2</kbd><span data-en="Camera">Cámara</span></button>
+      <button data-herr="brujula"><kbd>3</kbd><span data-en="Sun compass">Brújula solar</span></button>
+      <button data-herr="radio"><kbd>4</kbd><span data-en="Radio">Radio</span></button>
+      <button id="btn-usar" class="accion" data-en="Use">Usar</button>
+      <button id="btn-muestra" class="accion" data-en="Sample (E)">Muestra (E)</button>
+      <button id="btn-trote" class="accion tactil" data-en="Jog">Trotar</button>
+    </div>
+    <div id="joy-izq" class="joy"><span></span></div>
+    <div id="joy-der" class="joy"><span></span></div>
+  </div>
+
+  <section id="final" class="panel-centro" hidden>
+    <h1 data-en="Back at the habitat">De vuelta en el hábitat</h1>
+    <div id="final-datos"></div>
+    <button id="otra-vez" class="boton" data-en="Play again">Jugar otra vez</button>
+  </section>
+
+  <p id="rotulo" data-en="Simulation: real HiRISE relief, real Curiosity photos, modeled resources">Simulación: relieve real HiRISE, fotos reales de Curiosity, recursos modelados</p>
+  <script type="module" src="js/practica/juego.js"></script>
+</body>
+</html>

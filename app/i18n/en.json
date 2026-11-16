@@ -1438,7 +1438,9 @@
   "Llegá al boxwork, documentá dos crestas, tomá tres muestras y volvé sano. La posición estimada deriva: corregila con tus instrumentos.": "Reach the boxwork, document two ridges, take three samples and return safely. Your estimated position drifts: correct it with your instruments.",
   "W/↑ avanzá · S/↓ retrocedé · A/D o ←/→ girá · Shift trotá · Espacio pausa · Esc salí. En pantalla táctil, usá el joystick.": "W/↑ forward · S/↓ back · A/D or ←/→ turn · Shift jog · Space pause · Esc exit. On touch screens, use the joystick.",
   "Empezar caminata": "Start walk",
-  "Practice mode (game)": "Practice mode (game)"
+  "Practice mode (game)": "Practice mode (game)",
+  "Simulador de caminata": "Walk simulator",
+  "Caminata 3D en primera persona sobre el relieve real": "First-person 3D walk on the real terrain"
  },
  "patrones": [
   [

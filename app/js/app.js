@@ -702,6 +702,10 @@ function contextoNavegacion(ruta = rutaActual(), evaluacion = null) {
     },
   };
 }
+// Simulador de caminata 3D: página propia en una pestaña nueva, en el idioma de la app.
+$("#abrir-practica")?.addEventListener("click", () => {
+  window.open(`practica.html?lang=${locale().startsWith("en") ? "en" : "es"}`, "_blank", "noopener");
+});
 // Versión sin navegación (<html data-navegacion="no">): se oculta el botón y no se ofrece en los tramos.
 const NAVEGACION_ACTIVA = document.documentElement.dataset.navegacion !== "no";
 if (NAVEGACION_ACTIVA) conectarBotonNavegacion($("#btn-navegar"), () => contextoNavegacion(), (e) => avisar(e.message));
