@@ -59,36 +59,49 @@ export function mallaTerreno(gl, t, brillo) {
   return subirMalla(gl, pos, col, idx);
 }
 
-// Cúpula de cielo con color por vértice (horizonte polvoriento, cenit más oscuro, halo azulado alrededor del Sol).
+// Cielo de Marte de día: caramelo/beige, más claro y polvoriento en el horizonte; Sol pequeño (≈ 2/3 del
+// diámetro visto desde la Tierra) con halo; con el Sol bajo, el halo se vuelve azulado (atardecer marciano).
+export const HORIZONTE = [0.86, 0.72, 0.58];
 export function mallaCielo(gl, solDir) {
   const m = new Malla();
-  const L = 24, P = 8, R = 2000;
+  const L = 48, P = 18, R = 2000;
+  const bajo = Math.max(0, Math.min(1, (0.35 - solDir[1]) / 0.3)); // 0 con el Sol alto, 1 cerca del horizonte
   const v = (i, j) => {
-    const fi = -0.15 + (j / P) * (Math.PI / 2 + 0.15), t = (i / L) * Math.PI * 2;
+    const fi = -0.2 + (j / P) * (Math.PI / 2 + 0.2), t = (i / L) * Math.PI * 2;
     return [Math.cos(t) * Math.cos(fi), Math.sin(fi), Math.sin(t) * Math.cos(fi)];
   };
   const color = (d) => {
-    const alt = Math.max(0, d[1]);
+    const alt = Math.pow(Math.max(0, d[1]), 0.6);
     const s = Math.max(0, d[0] * solDir[0] + d[1] * solDir[1] + d[2] * solDir[2]);
-    const halo = Math.pow(s, 12);
-    return [0.86 - 0.35 * alt + 0.05 * halo, 0.62 - 0.25 * alt + 0.12 * halo, 0.45 - 0.12 * alt + 0.3 * halo, 1];
+    const halo = Math.pow(s, 18), aureola = Math.pow(s, 4) * 0.35;
+    const base = [HORIZONTE[0] - 0.2 * alt, HORIZONTE[1] - 0.22 * alt, HORIZONTE[2] - 0.2 * alt];
+    const tinte = [0.62 + 0.38 * (1 - bajo), 0.72 + 0.26 * (1 - bajo), 0.95];
+    const k = Math.min(1, halo * 0.85 + aureola * (0.5 + bajo));
+    return [base[0] * (1 - k) + tinte[0] * k, base[1] * (1 - k) + tinte[1] * k, base[2] * (1 - k) + tinte[2] * k, 1];
   };
   for (let j = 0; j < P; j++) for (let i = 0; i < L; i++) {
     const a = v(i, j), b = v(i + 1, j), c = v(i + 1, j + 1), d = v(i, j + 1);
-    const ca = color(a);
+    const ca = color([(a[0] + c[0]) / 2, (a[1] + c[1]) / 2, (a[2] + c[2]) / 2]);
     m.quad(a.map((x) => x * R), b.map((x) => x * R), c.map((x) => x * R), d.map((x) => x * R), ca);
   }
-  // Disco solar.
+  // Disco solar: radio angular ≈ 0,18° (2/3 del terrestre), agrandado al doble para que se vea en pantalla.
   const cS = solDir.map((x) => x * (R * 0.95));
   const ref = Math.abs(solDir[1]) < 0.9 ? [0, 1, 0] : [1, 0, 0];
   let u = [solDir[1] * ref[2] - solDir[2] * ref[1], solDir[2] * ref[0] - solDir[0] * ref[2], solDir[0] * ref[1] - solDir[1] * ref[0]];
   const lu = Math.hypot(...u); u = u.map((x) => x / lu);
   const w = [solDir[1] * u[2] - solDir[2] * u[1], solDir[2] * u[0] - solDir[0] * u[2], solDir[0] * u[1] - solDir[1] * u[0]];
-  const rs = 22;
-  for (let k = 0; k < 10; k++) {
-    const t1 = (k / 10) * Math.PI * 2, t2 = ((k + 1) / 10) * Math.PI * 2;
-    const p = (t) => [cS[0] + (u[0] * Math.cos(t) + w[0] * Math.sin(t)) * rs, cS[1] + (u[1] * Math.cos(t) + w[1] * Math.sin(t)) * rs, cS[2] + (u[2] * Math.cos(t) + w[2] * Math.sin(t)) * rs];
-    m.tri(cS, p(t1), p(t2), [1, 0.97, 0.88, 1]);
+  const anillo = (rad, t) => [cS[0] + (u[0] * Math.cos(t) + w[0] * Math.sin(t)) * rad, cS[1] + (u[1] * Math.cos(t) + w[1] * Math.sin(t)) * rad, cS[2] + (u[2] * Math.cos(t) + w[2] * Math.sin(t)) * rad];
+  const rs = R * 0.95 * Math.tan((0.18 * 2 * Math.PI) / 180);
+  const cHalo = bajo > 0.3 ? [0.78, 0.86, 1, 1] : [1, 0.96, 0.88, 1];
+  for (let k = 0; k < 16; k++) {
+    const t1 = (k / 16) * Math.PI * 2, t2 = ((k + 1) / 16) * Math.PI * 2;
+    // Halo: abanico de la luz del Sol al color del cielo.
+    const h1 = anillo(rs * 6, t1), h2 = anillo(rs * 6, t2);
+    const c1 = color(h1.map((x) => x / (R * 0.95)));
+    const mid1 = anillo(rs * 1.6, t1), mid2 = anillo(rs * 1.6, t2);
+    m.quad(mid1, h1, h2, mid2, [(cHalo[0] + c1[0]) / 2, (cHalo[1] + c1[1]) / 2, (cHalo[2] + c1[2]) / 2, 1]);
+    m.quad(anillo(rs, t1), mid1, mid2, anillo(rs, t2), cHalo);
+    m.tri(cS, anillo(rs, t1), anillo(rs, t2), [1, 0.99, 0.95, 1]);
   }
   return m.subir(gl);
 }
@@ -162,27 +175,8 @@ export function mallaObjetos(gl, t, datos) {
     m.segmento([x - Math.cos(g) * L, z0 + 0.15, -(y - Math.sin(g) * L)], [x + Math.cos(g) * L, z0 + 0.15, -(y + Math.sin(g) * L)], 0.3, [0.78, 0.66, 0.52], 3);
   }
 
-  // Cinta de la ruta y balizas cada ~30 m.
+  // La ruta segura no se marca en el terreno: solo la conoce la app.
   const r = datos.ruta;
-  let acum = 0;
-  for (let k = 1; k < r.length; k++) {
-    const [ax, ay] = r[k - 1], [bx2, by2] = r[k];
-    const dx = bx2 - ax, dy = by2 - ay, L = Math.hypot(dx, dy) || 1;
-    const nx = -dy / L * 0.35, ny = dx / L * 0.35;
-    const pasos = Math.max(1, Math.ceil(L / 2));
-    for (let s = 0; s < pasos; s++) {
-      const t0 = s / pasos, t1 = (s + 1) / pasos;
-      const p0 = [ax + dx * t0, ay + dy * t0], p1 = [ax + dx * t1, ay + dy * t1];
-      m.quad(W(p0[0] - nx, p0[1] - ny, 0.12), W(p1[0] - nx, p1[1] - ny, 0.12), W(p1[0] + nx, p1[1] + ny, 0.12), W(p0[0] + nx, p0[1] + ny, 0.12), [0.25, 0.85, 0.9, 0.55]);
-    }
-    acum += L;
-    if (acum >= 30 || k === r.length - 1) {
-      acum = 0;
-      const b = W(bx2 + nx * 4, by2 + ny * 4);
-      m.segmento(b, [b[0], b[1] + 1.6, b[2]], 0.05, GRIS, 4);
-      m.caja(b[0], b[1] + 1.75, b[2], 0.3, 0.3, 0.3, [0.3, 1, 0.95, 1]);
-    }
-  }
 
   // Rocas: donde la rugosidad o la pendiente son altas, más algunas sueltas cerca de la ruta.
   const azr = azarSemilla(23);

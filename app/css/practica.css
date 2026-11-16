@@ -48,7 +48,7 @@ kbd { display: inline-block; min-width: 22px; padding: 2px 5px; border: 1px soli
 #datos-hud b { font-size: 0.92rem; color: var(--cian); font-variant-numeric: tabular-nums; }
 #datos-hud div.alerta { border-color: var(--alerta); }
 #datos-hud div.alerta b { color: var(--alerta); }
-.pasos.chicos { position: absolute; left: 22px; top: 50%; transform: translateY(-50%); max-width: 270px; font-size: 0.78rem; background: rgba(10, 8, 8, 0.45); border-radius: 8px; padding: 8px 8px 8px 26px; }
+.pasos.chicos { position: absolute; left: 22px; top: 38%; transform: translateY(-50%); max-width: 270px; font-size: 0.78rem; background: rgba(10, 8, 8, 0.45); border-radius: 8px; padding: 8px 8px 8px 26px; }
 #mira { position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; margin: -3px; border: 1px solid rgba(255, 255, 255, 0.7); border-radius: 50%; }
 #aviso { position: absolute; left: 50%; bottom: 150px; transform: translateX(-50%); background: rgba(10, 8, 8, 0.75); padding: 8px 14px; border-radius: 8px; margin: 0; max-width: calc(100% - 32px); text-align: center; }
 #lectura {
@@ -82,3 +82,20 @@ kbd { display: inline-block; min-width: 22px; padding: 2px 5px; border: 1px soli
   #datos-hud div:nth-child(6), #datos-hud div:nth-child(8) { display: none; }
   #rotulo { left: 10px; right: 10px; text-align: center; }
 }
+
+#pantalla-herr { position: absolute; border-radius: 6px; box-shadow: 0 0 12px rgba(94, 230, 224, 0.35); pointer-events: none; }
+#app {
+  position: absolute; left: 16px; bottom: 44px; width: min(300px, calc(100% - 32px)); pointer-events: auto; cursor: pointer;
+  background: rgba(8, 18, 18, 0.88); border: 1px solid var(--cian); border-radius: 12px; padding: 8px 10px; font-size: 0.8rem;
+  box-shadow: 0 0 16px rgba(94, 230, 224, 0.2);
+}
+#app.grande { width: min(460px, calc(100% - 32px)); font-size: 0.95rem; }
+#app .app-cab { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid rgba(94, 230, 224, 0.3); padding-bottom: 4px; margin-bottom: 4px; }
+#app .app-cab b { color: var(--acento); }
+#app .app-cab span { font-size: 0.68rem; color: var(--tenue); }
+#app p { margin: 4px 0; line-height: 1.35; }
+#app .app-nav { color: #e9fffd; font-weight: 600; }
+#app .app-pide { color: #ffd27a; }
+#app .app-ok { color: #8fd99a; }
+#app .app-pie { font-size: 0.7rem; color: var(--tenue); }
+@media (pointer: coarse) { #app { bottom: 230px; } }

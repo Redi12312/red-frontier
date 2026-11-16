@@ -50,13 +50,23 @@ void main(){
   float dif = max(dot(n, uSol), 0.0);
   vec3 lit = vCol.rgb * (0.36 + 0.78 * dif * uLuz + 0.1 * n.y);
   float e = vCol.a;
-  vec3 c = mix(lit, vCol.rgb * (0.85 + 0.25 * sin(uT * 4.0)), clamp(e, 0.0, 1.0));
+  float pulso = e < 0.95 ? 0.2 * sin(uT * 4.0) : 0.0;
+  vec3 c = mix(lit, vCol.rgb * (1.0 + pulso), clamp(e, 0.0, 1.0));
   float d = length(vPos - uOjo);
   float f = 1.0 - exp(-pow(d * uDens, 1.4));
   color = vec4(mix(c, uNiebla, clamp(f, 0.0, 1.0)), 1.0);
 }`;
 
-export function crearPrograma(gl) {
+// Fragmento del cielo: color por dirección de vista con el modelo de cielo marciano (GLSL que se recibe).
+export const fsCielo = (glsl) => `#version 300 es
+precision highp float;
+in vec3 vPos; in vec4 vCol;
+uniform vec3 uSol, uOjo;
+out vec4 color;
+${glsl}
+void main(){ color = vec4(cieloMarte(normalize(vPos - uOjo), normalize(uSol)), 1.0); }`;
+
+export function crearPrograma(gl, fsFuente = FS) {
   const sh = (t, src) => {
     const s = gl.createShader(t);
     gl.shaderSource(s, src); gl.compileShader(s);
@@ -64,7 +74,7 @@ export function crearPrograma(gl) {
     return s;
   };
   const p = gl.createProgram();
-  gl.attachShader(p, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(p, sh(gl.FRAGMENT_SHADER, FS));
+  gl.attachShader(p, sh(gl.VERTEX_SHADER, VS)); gl.attachShader(p, sh(gl.FRAGMENT_SHADER, fsFuente));
   gl.linkProgram(p);
   if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));
   const u = {};

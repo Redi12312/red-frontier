@@ -906,6 +906,8 @@ function mostrarRutaBases(d) {
       { color: k % 2 ? "#2bd4c4" : "#46d28c", weight: 5, opacity: d.recomendada === "bases" ? 0.95 : 0.55 }).addTo(mapa));
     estado.lineasBases.forEach(animarTrazo);
     estado.rotulos ??= L.layerGroup().addTo(mapa);
+    // Los tramos por bases reemplazan el rótulo de la ruta directa (si no, se dibujan uno encima del otro).
+    estado.rotulos.clearLayers();
     rotularTramos(estado.rotulos, c.tramos.map((t, k) => ({ celdas: t.celdas, texto: `${k + 1} · ${fmt.dist(t.distancia)} · ${duracion(t.tiempo)}${t.dia ? ` · día ${num(t.dia)}` : ""}` })));
   }
   if (d.aviso) html += `<p class="ayuda">${escHtml(d.aviso)}</p>`;

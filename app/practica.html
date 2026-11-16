@@ -20,8 +20,11 @@
       <div class="ctrl"><div class="raton"><i></i></div><span data-en="mouse: look · click: use tool">mouse: mirar · clic: usar herramienta</span></div>
       <div class="ctrl"><div class="teclas"><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd></div><span data-en="barometer · camera · sun compass · radio">barómetro · cámara · brújula solar · radio</span></div>
       <div class="ctrl"><div class="teclas"><kbd>E</kbd></div><span data-en="take sample (at the field base)">tomar muestra (en la base de campo)</span></div>
+      <div class="ctrl"><div class="teclas"><kbd>Espacio</kbd></div><span data-en="jump (Mars gravity, 0.38 g)">saltar (gravedad de Marte, 0,38 g)</span></div>
+      <div class="ctrl"><div class="teclas"><kbd>Tab</kbd><kbd>M</kbd></div><span data-en="enlarge the app · mute">ampliar la app · silenciar</span></div>
       <div class="ctrl tactil"><div class="teclas"><kbd>◎</kbd><kbd>◎</kbd></div><span data-en="phone: left stick walks, right stick looks">celular: joystick izquierdo camina, derecho mira</span></div>
     </div>
+    <p data-en="The safe route is <b>not marked</b> on the ground: your wrist app <b>Red Frontier</b> (bottom left) tells you how many steps to walk and which way, and asks you for data (360 photo, barometer, sun compass, radio) when its position estimate gets too uncertain.">La ruta segura <b>no está marcada</b> en el suelo: la app <b>Red Frontier</b> de tu muñeca (abajo a la izquierda) te dice cuántos pasos caminar y hacia dónde, y te pide datos (foto 360, barómetro, brújula solar, radio) cuando su estimación de posición se vuelve dudosa.</p>
     <h2 data-en="Steps">Pasos</h2>
     <ol id="pasos-inicio" class="pasos"></ol>
     <button id="empezar" class="boton" data-en="Leave the habitat">Salir del hábitat</button>
@@ -42,6 +45,11 @@
     </div>
     <ol id="pasos" class="pasos chicos"></ol>
     <div id="mira" aria-hidden="true"></div>
+    <canvas id="pantalla-herr" width="260" height="200" hidden></canvas>
+    <div id="app" title="Tab">
+      <div class="app-cab"><b>Red Frontier</b><span data-en="wrist app · Tab">app de muñeca · Tab</span></div>
+      <div id="app-cuerpo"></div>
+    </div>
     <p id="aviso" role="status" hidden></p>
     <div id="lectura" hidden></div>
     <div id="herramientas">
@@ -52,6 +60,8 @@
       <button id="btn-usar" class="accion" data-en="Use">Usar</button>
       <button id="btn-muestra" class="accion" data-en="Sample (E)">Muestra (E)</button>
       <button id="btn-trote" class="accion tactil" data-en="Jog">Trotar</button>
+      <button id="btn-saltar" class="accion" data-en="Jump (Space)">Saltar (Espacio)</button>
+      <button id="btn-mudo" data-en="Sound: on (M)">Sonido: sí (M)</button>
     </div>
     <div id="joy-izq" class="joy"><span></span></div>
     <div id="joy-der" class="joy"><span></span></div>
