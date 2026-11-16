@@ -39,7 +39,7 @@ export function crearJuego({ zona, ruta, cfg, riesgo, consumibles, ciencia, even
   const v = (k) => valorJuego(cfg, k);
   const perfil = perfilRuta({ celdas: [s.celdas[0], s.celdas[0]], t: [0, 1], d: [0, 0],
     elevaciones: [altura(zona, inicio), altura(zona, inicio)], cfg: consumibles, personas: 1 });
-  return { real: inicio, estimada: { ...inicio, error_m: v("error_inicial_m") }, rumbo: rumboEntre(inicio, puntoJuego(zona, s.celdas[1])),
+  return { real: inicio, estimada: { ...inicio, error_m: v("error_inicial_m") }, rumbo: rumboEntre(inicio, puntoJuego(zona, s.celdas[Math.min(10, s.celdas.length - 1)])),
     t: 0, distancia_m: 0, integral_desvio: 0, fuera_s: 0, semilla: v("semilla") >>> 0,
     proximoEvento: v("evento_desde_s"), eventos, polvo: false, fallas: [], plazos: {},
     o2: { primario_s: riesgo.pie.consumibles_primarios_h.valor * 3600, secundario_s: riesgo.pie.regreso_emergencia_max_min.valor * 60 },
@@ -114,8 +114,11 @@ export function pasoJuego(estado, { dt, avanzar = 0, girar = 0, trotar = false, 
     e.distancia_m += d;
     const desvio = desvioRuta(z, celdas, e.real), estimado = desvioRuta(z, celdas, e.estimada);
     if (estimado.lateral_m > v("corredor_m") || !segura) e.aviso ||= "corredor";
-    const sobre = desvio.indice, conocido = desvio.lateral_m <= z.paso ? (ruta.sim ?? ruta).regreso[sobre] : null;
-    // Fuera de la ruta nunca extrapola un tiempo: exige un campo calculado por el worker.
+    // Sobre la ruta usa el regreso calculado; dentro del corredor ámbar suma, conservador, volver a la ruta a 0,5 m/s;
+    // más afuera no hay tiempo conocido y se aborta (hay que volver al corredor).
+    const sobre = desvio.indice, regresoRuta = (ruta.sim ?? ruta).regreso[sobre];
+    const conocido = desvio.lateral_m <= z.paso ? regresoRuta
+      : desvio.lateral_m <= v("corredor_ambar_m") && Number.isFinite(regresoRuta) ? regresoRuta + desvio.lateral_m / 0.5 : null;
     const regreso = regreso_s === undefined ? conocido : regreso_s;
     const antes = e.t;
     consumir(e, h, z, cfg, riesgo, consumibles, anterior, Number.isFinite(regreso) ? regreso : null);
