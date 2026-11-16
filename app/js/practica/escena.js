@@ -110,7 +110,7 @@ const BLANCO = [0.9, 0.9, 0.87], GRIS = [0.55, 0.56, 0.58], OSCURO = [0.2, 0.21,
 const LUZ_V = [0.4, 1, 0.6, 1], LUZ_A = [1, 0.75, 0.2, 1], LUZ_R = [1, 0.25, 0.2, 1];
 
 // Bases, ruta, balizas y rocas en una sola malla estática.
-export function mallaObjetos(gl, t, datos) {
+export function mallaObjetos(gl, t, datos, extra = {}) {
   const m = new Malla();
   const H = (x, y) => t.altura(x, y);
   const W = (x, y, dy = 0) => [x, H(x, y) + dy, -y];
@@ -175,6 +175,33 @@ export function mallaObjetos(gl, t, datos) {
     m.segmento([x - Math.cos(g) * L, z0 + 0.15, -(y - Math.sin(g) * L)], [x + Math.cos(g) * L, z0 + 0.15, -(y + Math.sin(g) * L)], 0.3, [0.78, 0.66, 0.52], 3);
   }
 
+  // Anillos de llegada («pará acá») de ~3 m en el suelo, luminosos.
+  for (const [ax, ay] of extra.anillos ?? []) {
+    const n = 24, r0 = 1.35, r1 = 1.65;
+    for (let k = 0; k < n; k++) {
+      const a1 = (k / n) * Math.PI * 2, a2 = ((k + 1) / n) * Math.PI * 2;
+      const p = (r, a) => W(ax + Math.cos(a) * r, ay + Math.sin(a) * r, 0.08);
+      m.quad(p(r0, a1), p(r1, a1), p(r1, a2), p(r0, a2), [0.35, 1, 0.75, 0.9]);
+    }
+  }
+  // Refugios chicos: módulo con franja naranja, luz verde y antena.
+  for (const r of extra.refugios ?? []) {
+    const z0 = H(r.bx, r.by);
+    m.caja(r.bx, z0 - 0.4, -r.by, 4, 1, 4, [0.5, 0.36, 0.27]);
+    m.cilindro(r.bx, z0, -r.by, 1.7, 2.2, BLANCO, 8);
+    m.cupula(r.bx, z0 + 2.2, -r.by, 1.7, BLANCO, 8, 2);
+    m.cilindro(r.bx, z0 + 1.6, -r.by, 1.75, 0.25, NARANJA, 8);
+    m.caja(r.bx, z0 + 3.9, -r.by, 0.3, 0.3, 0.3, LUZ_V);
+    m.segmento([r.bx + 1, z0 + 2.5, -r.by], [r.bx + 1, z0 + 5, -r.by], 0.05, GRIS, 4);
+  }
+  // Crestas objetivo para las fotos: placa clara y rombo amarillo encima.
+  for (const [qx, qy, g] of extra.crestas ?? []) {
+    const z0 = H(qx, qy), L = 3;
+    m.segmento([qx - Math.cos(g) * L, z0 + 0.25, -(qy - Math.sin(g) * L)], [qx + Math.cos(g) * L, z0 + 0.25, -(qy + Math.sin(g) * L)], 0.45, [0.85, 0.74, 0.58], 3);
+    const c = [qx, z0 + 2.4, -qy], s2 = 0.45;
+    const v = [[c[0] + s2, c[1], c[2]], [c[0] - s2, c[1], c[2]], [c[0], c[1] + s2 * 1.4, c[2]], [c[0], c[1] - s2 * 1.4, c[2]], [c[0], c[1], c[2] + s2], [c[0], c[1], c[2] - s2]];
+    for (const [a, b, d] of [[0, 2, 4], [4, 2, 1], [1, 2, 5], [5, 2, 0], [4, 3, 0], [1, 3, 4], [5, 3, 1], [0, 3, 5]]) m.tri(v[a], v[b], v[d], [1, 0.85, 0.15, 0.9]);
+  }
   // La ruta segura no se marca en el terreno: solo la conoce la app.
   const r = datos.ruta;
 
@@ -254,4 +281,26 @@ export function mallasCuerpo(gl) {
   rad.caja(P[0] + 0.025, P[1] + 0.265, P[2], 0.02, 0.02, 0.02, [1, 0.25, 0.2, 1]);
   herr.radio = rad.subir(gl);
   return { izq: izq.subir(gl), der: der.subir(gl), herr };
+}
+
+// Compañero astronauta: traje blanco, mochila, casco con visor dorado. Pies en y = 0, mira a −Z.
+export function mallaCompanero(gl) {
+  const m = new Malla();
+  const T = [0.92, 0.92, 0.9], G = [0.7, 0.7, 0.68], N = [0.95, 0.5, 0.15];
+  m.segmento([-0.14, 0, 0], [-0.13, 0.85, 0], 0.11, T, 6); // piernas
+  m.segmento([0.14, 0, 0], [0.13, 0.85, 0], 0.11, T, 6);
+  m.caja(-0.14, 0.06, -0.04, 0.2, 0.12, 0.3, G); // botas
+  m.caja(0.14, 0.06, -0.04, 0.2, 0.12, 0.3, G);
+  m.caja(0, 1.18, 0, 0.56, 0.7, 0.36, T); // torso
+  m.caja(0, 1.3, -0.19, 0.3, 0.2, 0.04, [0.3, 0.32, 0.36]); // panel de pecho
+  m.caja(0, 1.2, 0.3, 0.5, 0.75, 0.26, [0.82, 0.82, 0.8]); // mochila
+  m.caja(0, 1.5, 0.44, 0.12, 0.1, 0.04, [0.3, 1, 0.6, 1]); // luz de la mochila
+  m.segmento([-0.32, 1.45, 0], [-0.4, 0.95, -0.05], 0.08, T, 6); // brazos
+  m.segmento([0.32, 1.45, 0], [0.4, 0.95, -0.05], 0.08, T, 6);
+  m.segmento([-0.33, 1.2, 0], [-0.33, 1.25, 0], 0.11, N, 6);
+  m.segmento([0.33, 1.2, 0], [0.33, 1.25, 0], 0.11, N, 6);
+  m.cupula(0, 1.55, 0, 0.24, [0.95, 0.95, 0.93], 10, 3); // casco
+  m.cilindro(0, 1.53, 0, 0.24, 0.05, T, 10);
+  m.caja(0, 1.66, -0.2, 0.3, 0.17, 0.08, [0.95, 0.72, 0.2]); // visor dorado
+  return m.subir(gl);
 }

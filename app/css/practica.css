@@ -99,3 +99,18 @@ kbd { display: inline-block; min-width: 22px; padding: 2px 5px; border: 1px soli
 #app .app-ok { color: #8fd99a; }
 #app .app-pie { font-size: 0.7rem; color: var(--tenue); }
 @media (pointer: coarse) { #app { bottom: 230px; } }
+
+#radio { position: absolute; left: 50%; bottom: 190px; transform: translateX(-50%); margin: 0; max-width: calc(100% - 32px); background: rgba(40, 30, 8, 0.82); border: 1px solid #ffd27a; color: #ffe9b8; padding: 6px 12px; border-radius: 8px; font-size: 0.9rem; }
+#app .app-guia { display: flex; align-items: center; gap: 10px; }
+#app .app-flecha { font: bold 2.4rem system-ui, sans-serif; color: var(--cian); width: 46px; text-align: center; transition: transform 0.2s; }
+#app .app-pasos { font-size: 1.5rem; font-weight: bold; margin: 0; color: #e9fffd; }
+#app .app-rumbo { margin: 0; color: var(--tenue); }
+#app .app-dest { font-weight: 600; color: #e9fffd; }
+#app .app-pend { color: var(--cian); }
+
+#hud .rf-mapa-caja { pointer-events: auto; z-index: 6; }
+#hud .rf-mapa-caja:not(.rf-mapa-grande) { bottom: 100px; }
+@media (pointer: coarse) { #hud .rf-mapa-caja:not(.rf-mapa-grande) { top: 110px; bottom: auto; width: 120px; height: 120px; } }
+
+.opcion { display: block; margin-top: 12px; color: var(--tenue); cursor: pointer; }
+#cuenta { position: absolute; left: 50%; top: 120px; transform: translateX(-50%); margin: 0; padding: 8px 18px; border-radius: 10px; background: rgba(70, 10, 8, 0.85); border: 2px solid var(--alerta); color: #fff; font: bold 1.6rem system-ui, sans-serif; font-variant-numeric: tabular-nums; }

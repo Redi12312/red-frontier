@@ -28,6 +28,11 @@ export const mat = {
   },
   identidad() { return mat.trasladar(0, 0, 0); },
   // Rotación alrededor de X (para levantar la herramienta) seguida de traslación.
+  // Giro alrededor de Y (rumbo: 0 = norte, crece al este) y traslación.
+  rotYTras(rumbo, x, y, z) {
+    const c = Math.cos(rumbo), s = Math.sin(rumbo);
+    return new Float32Array([c, 0, s, 0, 0, 1, 0, 0, -s, 0, c, 0, x, y, z, 1]);
+  },
   rotXTras(a, x, y, z) {
     const c = Math.cos(a), s = Math.sin(a);
     return new Float32Array([1, 0, 0, 0, 0, c, s, 0, 0, -s, c, 0, x, y, z, 1]);

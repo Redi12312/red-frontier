@@ -2,8 +2,9 @@
 // usando los instrumentos del proyecto para no desviarse. Relieve real, fotos reales, recursos modelados.
 import { mat, crearPrograma, dibujar, fsCielo } from "./gl.js";
 import { GLSL_CIELO, colorNiebla } from "./cielo.js";
-import { crearTerreno, mallaTerreno, mallaCielo, mallaObjetos, mallasCuerpo, azarSemilla, HORIZONTE } from "./escena.js";
+import { crearTerreno, mallaTerreno, mallaCielo, mallaObjetos, mallasCuerpo, mallaCompanero, azarSemilla, HORIZONTE } from "./escena.js";
 import { crearSonido } from "./sonido.js";
+import { crearMapa } from "./mapa.js";
 import { leerHttp } from "../zona.js";
 import { posicionSol } from "../luz.js";
 import { velocidad, valoresVel } from "../ruteo.js";
@@ -103,7 +104,31 @@ async function iniciar() {
   };
   const mTerreno = mallaTerreno(gl, t, brillo);
   const mCielo = mallaCielo(gl, dirSol(s0));
-  const mObjetos = mallaObjetos(gl, t, datos);
+  const cxC = datos.ciencia.x, cyC = datos.ciencia.y;
+  const anilloHab = (() => {
+    let a = 0;
+    for (let k = 1; k < datos.ruta.length; k++) {
+      a += Math.hypot(datos.ruta[k][0] - datos.ruta[k - 1][0], datos.ruta[k][1] - datos.ruta[k - 1][1]);
+      if (a >= 16) return [datos.ruta[k][0], datos.ruta[k][1]];
+    }
+    return [0, -16];
+  })();
+  const anilloCie = [cxC, cyC];
+  // Refugios chicos sobre la ruta segura, a 1/3 y 2/3 del camino; el módulo queda a un costado del anillo.
+  const refugios = (() => {
+    const r = datos.ruta, ac = [0];
+    for (let k = 1; k < r.length; k++) ac.push(ac[k - 1] + Math.hypot(r[k][0] - r[k - 1][0], r[k][1] - r[k - 1][1]));
+    return [1 / 3, 2 / 3].map((f) => {
+      const sR = ac.at(-1) * f;
+      let k = 1;
+      while (k < ac.length - 1 && ac[k] < sR) k++;
+      const dx = r[k][0] - r[k - 1][0], dy = r[k][1] - r[k - 1][1], l = Math.hypot(dx, dy) || 1;
+      return { s: sR, x: r[k][0], y: r[k][1], bx: r[k][0] + (dy / l) * 5, by: r[k][1] - (dx / l) * 5 };
+    });
+  })();
+  const crestas = [[cxC - 6, cyC - 10, 0.6], [cxC + 8, cyC - 7, 2.2]];
+  const mObjetos = mallaObjetos(gl, t, datos, { anillos: [anilloHab, anilloCie, ...refugios.map((r) => [r.x, r.y])], crestas, refugios });
+  const mComp = mallaCompanero(gl);
   const cuerpo = mallasCuerpo(gl);
 
   // REMS: último parte con presión y temperaturas (referencia en el hábitat).
@@ -146,7 +171,30 @@ async function iniciar() {
     paso: 0, uso: 0, yawGirado: 0, aviso: "", avisoT: 0, empezado: false,
     z: 0, vz: 0, enAire: false, hundir: 0, giroCam: 0, pedido: null, nPedido: 0, ultimoPedidoM: 0,
     respuesta: "", respuestaT: 0, lect: {}, fuera: false, appGrande: false,
+    pend: null, crestasHechas: new Set(), radioMsg: "", radioT: 0, emerg: null,
   };
+  // Compañero: posición a lo largo de la ruta (m desde el hábitat) y estado.
+  const O2_SECUNDARIO_S = 30 * 60; // propuesta, a calibrar: reserva de O₂ secundaria tras una fuga
+  const comp = { s: 34, estado: "guia", espera: 0, o2: O2_SECUNDARIO_S, charla: 20, chequeo: 3, rumbo: 0 };
+  e.comp = comp;
+  // Eventos de la partida (1–2, elegidos por semilla; se pueden apagar en la pantalla de inicio).
+  const semilla = Number(new URLSearchParams(location.search).get("semilla")) || Math.floor(Math.random() * 1e6);
+  const azarEv = azarSemilla(semilla);
+  const eventos = [];
+  const LIMITE_FUGA_S = (v(riesgo.pie?.regreso_emergencia_max_min, 60) - v(riesgo.pie?.ingreso_refugio_min, 10)) * 60;
+  const INGRESO_S = v(riesgo.pie?.ingreso_refugio_min, 10) * 60;
+  const TORMENTA_S = 12 * 60; // propuesta, a calibrar: duración de la tormenta en la práctica
+  e.eventos = eventos;
+  // Mapa de la app (minimapa con la posición estimada); si falla, el juego sigue sin mapa.
+  let mapa = null;
+  const rastro = [];
+  let ultimoRastro = -10;
+  try {
+    mapa = crearMapa($("#hud"), {
+      terreno: { ...t, brillo }, ruta: datos.ruta, idioma: EN ? "en" : "es",
+      bases: [{ x: anilloHab[0], y: anilloHab[1], nombre: L("Hábitat", "Habitat"), tipo: "habitat" }, { x: anilloCie[0], y: anilloCie[1], nombre: L("Base de campo", "Field camp"), tipo: "campo" }],
+    });
+  } catch (err) { console.warn(err); }
   // Arranque sobre la ruta, a la salida de la plataforma, mirando hacia donde sigue.
   {
     const a = puntoEn(22), b = puntoEn(52);
@@ -193,10 +241,12 @@ async function iniciar() {
     $("#lectura").innerHTML = `<h3>${titulo}</h3>${html}`;
     $("#lectura").hidden = false;
   };
-  const corregir = (factor, minimo) => {
+  const aplicarCorreccion = (factor, minimo) => {
     e.err = e.err.map((x) => x * factor);
     e.sigma = Math.max(minimo, e.sigma * factor);
   };
+  // Cada instrumento deja una lectura lista; el jugador decide cuándo enviarla a la app (Q o botón).
+  const corregir = (factor, minimo) => { e.pend = { ...(e.pend ?? {}), factor, minimo }; };
   const distHab = () => Math.hypot(e.x, e.y, t.altura(e.x, e.y) - t.altura(0, 0));
   const distCiencia = () => Math.hypot(e.x - datos.ciencia.x, e.y - datos.ciencia.y);
   const fotosCache = new Map();
@@ -232,8 +282,17 @@ async function iniciar() {
         <p>${L("Sol", "Sun")}: ${L("azimut", "azimuth")} ${num(s.azimut, 1)}°, ${L("elevación", "elevation")} ${num(s.elevacion, 1)}° · ${L("hora solar local", "local solar time")} ${horaSolar(s.ltst)}</p>
         <p class="chico">${L("Posición del Sol calculada (modelo Mars24 del proyecto). Corrige la deriva del rumbo.", "Sun position computed (project's Mars24 model). Corrects heading drift.")}</p>`);
     } else if (h === "camara") {
-      const enCiencia = distCiencia() < cfg.accion * 2;
-      if (enCiencia && e.fotos < 2) e.fotos++;
+      const rumboV = ((e.yaw * 180) / Math.PI % 360 + 360) % 360;
+      const cresta = crestas.findIndex(([qx, qy], k) => {
+        if (e.crestasHechas.has(k) || Math.hypot(qx - e.x, qy - e.y) > 35) return false;
+        const az = ((Math.atan2(qx - e.x, qy - e.y) * 180) / Math.PI + 360) % 360;
+        return Math.abs(((az - rumboV + 540) % 360) - 180) < 30;
+      });
+      const enCiencia = cresta >= 0;
+      if (enCiencia) {
+        e.crestasHechas.add(cresta); e.fotos = e.crestasHechas.size;
+        e.pend = { tipo: "cresta", factor: 0.1, minimo: 4 };
+      } else if (distCiencia() < 40) avisar(L("Apuntá a una cresta marcada con el rombo amarillo.", "Aim at a ridge marked with the yellow diamond."));
       const cerca = datos.fotos.map((f) => ({ ...f, d: Math.hypot(f.x - e.x, f.y - e.y) })).sort((a, b) => a.d - b.d)[0];
       let html = "";
       if (cerca) {
@@ -252,7 +311,7 @@ async function iniciar() {
     }
   }
   function muestra() {
-    if (distCiencia() > cfg.accion * 2) { avisar(L("Las muestras se toman en la base de campo del boxwork.", "Samples are taken at the boxwork field base.")); return; }
+    if (!e.llego || distCiencia() > cfg.accion * 2) { avisar(L("Las muestras se toman en la base de campo del boxwork.", "Samples are taken at the boxwork field base.")); return; }
     if (e.muestras >= 3) { avisar(L("Ya tenés las 3 muestras.", "You already have 3 samples.")); return; }
     e.muestras++;
     e.uso = 1;
@@ -268,6 +327,8 @@ async function iniciar() {
     const n = ["Digit1", "Digit2", "Digit3", "Digit4"].indexOf(ev.code);
     if (n >= 0) elegir(ORDEN[n]);
     if (ev.code === "KeyE") muestra();
+    if (ev.code === "KeyQ") enviar();
+    if (ev.code === "KeyG") mapa?.alternar();
     if (ev.code === "KeyF" || ev.code === "Enter") usar();
     if (ev.code === "Escape") $("#lectura").hidden = true;
     if (ev.code === "Space") saltar();
@@ -294,7 +355,7 @@ async function iniciar() {
         e.giroCam = 0; e.usadas.add("camara"); e.lecturas++;
         corregir(0.15, 3);
         audio?.obturador();
-        avisar(L("Foto 360 enviada a la app.", "360 photo sent to the app."));
+        avisar(L("Foto 360 lista: Q para enviarla a la app.", "360 photo ready: Q to send it to the app."));
         responder("foto360");
       }
     }
@@ -329,14 +390,21 @@ async function iniciar() {
   $("#btn-trote").addEventListener("touchstart", () => teclas.add("ShiftLeft"));
   $("#btn-trote").addEventListener("touchend", () => teclas.delete("ShiftLeft"));
   $("#btn-saltar").addEventListener("click", () => saltar());
+  $("#btn-enviar").addEventListener("click", () => enviar());
   $("#btn-mudo").addEventListener("click", () => silenciar());
   $("#app").addEventListener("click", () => { e.appGrande = !e.appGrande; $("#app").classList.toggle("grande", e.appGrande); });
   $("#lectura").addEventListener("click", () => { $("#lectura").hidden = true; });
   $("#empezar").addEventListener("click", () => {
     e.empezado = true;
+    if ($("#eventos")?.checked) {
+      const lista = ["fuga_companero", "tormenta", "fuga_propia"];
+      const n = azarEv() < 0.5 ? 1 : 2;
+      while (eventos.length < n) eventos.push(lista.splice(Math.floor(azarEv() * lista.length), 1)[0]);
+    }
     try { audio = audio ?? adaptarSonido(crearSonido()); audio.reanudar(); } catch (err) { console.warn(err); audio = null; }
     $("#inicio").hidden = true;
     $("#hud").hidden = false;
+    dispatchEvent(new Event("resize")); // el mapa se mide de nuevo ya visible
     if (!matchMedia("(pointer: coarse)").matches) bloquear();
   });
   $("#otra-vez").addEventListener("click", () => location.reload());
@@ -346,7 +414,7 @@ async function iniciar() {
   // Obstáculos (x este, y norte, radio en m), según la disposición de escena.js.
   const cx0 = datos.ciencia.x, cy0 = datos.ciencia.y;
   const obstaculos = [[-7, -4, 7], [8, -5, 5.6], [-3, 6, 3], [3, 6, 3], [-1.5, -4.7, 2], [12, 4, 0.8],
-    [cx0 + 9, cy0 + 4, 4], [cx0 - 8, cy0 + 6, 2.8], [cx0 + 3, cy0 - 2, 0.4]];
+    [cx0 + 9, cy0 + 4, 4], [cx0 - 8, cy0 + 6, 2.8], [cx0 + 3, cy0 - 2, 0.4], ...refugios.map((r) => [r.bx, r.by, 2.2])];
   // Movimiento con Tobler y límite de pendiente.
   function mover(dt) {
     let f = 0, s = 0;
@@ -382,8 +450,9 @@ async function iniciar() {
     }
     e.x = nx; e.y = ny; e.recorrido += d;
     // La posición estimada deriva con los pasos (modelo simple, a calibrar).
-    e.sigma += d * cfg.derivaPasos;
-    e.err[0] += gauss() * d * cfg.derivaPasos; e.err[1] += gauss() * d * cfg.derivaPasos;
+    const deriva = cfg.derivaPasos * (1 + 2 * tormentaK());
+    e.sigma += d * deriva;
+    e.err[0] += gauss() * d * deriva; e.err[1] += gauss() * d * deriva;
     return d;
   }
 
@@ -402,8 +471,10 @@ async function iniciar() {
       guia(dt);
       const r = sobreRuta(e.x, e.y);
       e.sumaDesvio += r.d * d; e.nDesvio += d; e.maxDesvio = Math.max(e.maxDesvio, r.d);
-      if (!e.llego && distCiencia() < cfg.accion) { e.llego = true; avisar(L("¡Llegaste a la base de campo! Fotos (2) y muestras (E).", "You reached the field base! Photos (2) and samples (E).")); }
-      if (e.llego && e.fotos >= 2 && e.muestras >= 3 && Math.hypot(e.x, e.y) < 16) terminar();
+      if (!e.llego && Math.hypot(e.x - anilloCie[0], e.y - anilloCie[1]) < 2.5) { e.llego = true; avisar(L("¡Llegaste a la base de campo! Fotos (2) y muestras (E).", "You reached the field base! Photos (2) and samples (E).")); }
+      if (e.llego && vuelta() && !emergenciaActiva() && Math.hypot(e.x - anilloHab[0], e.y - anilloHab[1]) < 2.5) terminar();
+      companero(dt);
+      procesarEventos(dt);
       for (const p of pasos) if (!hechos.has(p.id) && p.ok()) hechos.add(p.id);
     }
     e.uso = Math.max(0, e.uso - dt * 2.5);
@@ -420,7 +491,9 @@ async function iniciar() {
     if (lienzo.width !== Math.round(w * dpr) || lienzo.height !== Math.round(h * dpr)) { lienzo.width = Math.round(w * dpr); lienzo.height = Math.round(h * dpr); }
     gl.viewport(0, 0, lienzo.width, lienzo.height);
     const sReal = dirSolReal(solEn(e.t));
-    const niebla = progCielo ? colorNiebla(sReal) : HORIZONTE;
+    const kT = tormentaK();
+    const niebla0 = progCielo ? colorNiebla(sReal) : HORIZONTE;
+    const niebla = niebla0.map((c, i) => c * (1 - kT) + [0.36, 0.25, 0.17][i] * kT);
     gl.clearColor(...niebla, 1);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     gl.enable(gl.DEPTH_TEST);
@@ -432,7 +505,7 @@ async function iniciar() {
     const s = solEn(e.t), sd = dirSol(s);
     const u = prog.u;
     gl.uniform3fv(u.uSol, sd); gl.uniform3fv(u.uNiebla, niebla); gl.uniform1f(u.uT, performance.now() / 1000);
-    gl.uniform1f(u.uLuz, Math.max(0.15, Math.min(1, s.elevacion / 25)));
+    gl.uniform1f(u.uLuz, Math.max(0.15, Math.min(1, s.elevacion / 25)) * (1 - 0.6 * kT));
     // Cielo centrado en el ojo, sin niebla.
     gl.uniformMatrix4fv(u.uVP, false, vp);
     gl.uniform3fv(u.uOjo, ojo);
@@ -445,14 +518,21 @@ async function iniciar() {
       gl.uniformMatrix4fv(progCielo.u.uM, false, mat.trasladar(ojo[0], ojo[1], ojo[2]));
       gl.uniform3fv(progCielo.u.uSol, sReal); gl.uniform3fv(progCielo.u.uOjo, ojo);
     }
-    dibujar(gl, mCielo);
+    if (kT < 0.6) dibujar(gl, mCielo);
     gl.useProgram(prog.p);
     gl.depthMask(true);
-    gl.uniform1f(u.uDens, 1 / 900);
+    gl.uniform1f(u.uDens, 1 / 900 + kT * (1 / 40 - 1 / 900));
     gl.uniformMatrix4fv(u.uM, false, mat.identidad());
     dibujar(gl, mTerreno);
     dibujar(gl, mObjetos);
     dibujarPolvo();
+    {
+      const [qx, qy] = posComp();
+      const bob = comp.estado === "fuga" ? 0 : Math.abs(Math.sin(performance.now() / 380)) * 0.05;
+      gl.uniformMatrix4fv(u.uM, false, mat.rotYTras(comp.rumbo, qx, t.altura(qx, qy) + bob, -qy));
+      dibujar(gl, mComp);
+      gl.uniformMatrix4fv(u.uM, false, mat.identidad());
+    }
     // Cuerpo en espacio de cámara.
     gl.clear(gl.DEPTH_BUFFER_BIT);
     gl.uniformMatrix4fv(u.uVP, false, proy);
@@ -476,6 +556,20 @@ async function iniciar() {
     const o2 = Math.max(0, 100 * (1 - e.t / 3600 / cfg.autonomiaH));
     const r = sobreRuta(e.x + e.err[0], e.y + e.err[1]);
     pintarApp(1 / 60);
+    if (mapa) {
+      const [mx, my] = estimada();
+      if (e.recorrido - ultimoRastro > 4) { rastro.push({ x: mx, y: my }); ultimoRastro = e.recorrido; if (rastro.length > 800) rastro.shift(); }
+      const [qx, qy] = posComp();
+      const fin = destinoActual().p;
+      try {
+        mapa.actualizar({
+          estimada: { x: mx, y: my, error: e.sigma }, rumbo: (((e.yaw * 180) / Math.PI) % 360 + 360) % 360,
+          companero: { x: qx, y: qy }, recorrido: rastro,
+          destino: { x: fin[0], y: fin[1], nombre: destinoActual().nombre },
+          desvio: emergenciaActiva() || (e.fugaPropia && !e.fugaPropia.fin) ? { x: fin[0], y: fin[1], nombre: L("Refugio de emergencia", "Emergency shelter") } : undefined,
+        });
+      } catch (err) { console.warn(err); mapa = null; }
+    }
     const regresoMin = (r.s + r.d) / vPlano / 60;
     const objetivo = e.llego && e.fotos >= 2 && e.muestras >= 3 ? { n: L("hábitat", "habitat"), d: Math.hypot(e.x, e.y) } : { n: L("base de campo", "field base"), d: distCiencia() };
     const est = [e.x + e.err[0], e.y + e.err[1]];
@@ -536,13 +630,31 @@ async function iniciar() {
   })[p];
   const estimada = () => [e.x + e.err[0], e.y + e.err[1]];
   const vuelta = () => e.fotos >= 2 && e.muestras >= 3;
+  const emergenciaActiva = () => e.emerg && comp.estado !== "salvo" && comp.estado !== "perdido";
+  const haciaHab = () => (emergenciaActiva() ? e.emerg.destino === "hab" : vuelta());
+  const destinos = () => [
+    { id: "hab", s: 16, p: anilloHab, nombre: L("hábitat", "habitat") },
+    ...refugios.map((r, k) => ({ id: `ref${k}`, s: r.s, p: [r.x, r.y], nombre: `${L("refugio", "shelter")} ${k + 1}` })),
+    { id: "cie", s: largo, p: anilloCie, nombre: L("base de campo", "field base") },
+  ];
+  function destinoActual() {
+    if (e.fugaPropia && !e.fugaPropia.fin) return e.fugaPropia.dest;
+    const d = destinos();
+    if (emergenciaActiva()) return e.emerg.destino === "hab" ? d[0] : d.at(-1);
+    return vuelta() ? d[0] : d.at(-1);
+  }
+  const tormentaK = () => {
+    const tt = e.tormenta;
+    if (!tt || tt.fin) return 0;
+    return Math.max(0, Math.min(1, tt.t / 60, (tt.dur - tt.t) / 60));
+  };
   const giroTxt = (g, volver = false) => (Math.abs(g) < 10 ? (volver ? L("volvé derecho", "go straight back") : L("seguí derecho", "keep straight"))
     : `${volver ? L("volvé girando", "go back turning") : L("girá", "turn")} ${num(Math.abs(g))}° ${g > 0 ? L("a la derecha", "right") : L("a la izquierda", "left")}`);
   function indicacion() {
     const [x, y] = estimada();
     const r = sobreRuta(x, y);
-    const fin = vuelta() ? [0, 0] : [datos.ciencia.x, datos.ciencia.y];
-    let obj = vuelta() ? puntoEn(r.s - 25) : puntoEn(r.s + 25);
+    const D = destinoActual(), fin = D.p;
+    let obj = puntoEn(r.s + Math.sign(D.s - r.s) * 25);
     if (Math.hypot(fin[0] - x, fin[1] - y) < 30) obj = fin;
     const fuera = r.d > cfg.corredor;
     if (fuera) obj = puntoEn(r.s);
@@ -553,22 +665,29 @@ async function iniciar() {
   }
   const textoSeguir = (ind) => `${num(ind.pasos)} ${L("pasos", "steps")} (≈${num(ind.d)} m) ${L("rumbo", "heading")} ${num(ind.rumbo)}°`;
   function responder(tipo) {
-    if (!e.pedido) return;
-    if (e.pedido !== tipo && !(tipo === "radio" || tipo === "foto360")) return;
-    e.pedido = null;
-    e.ultimoPedidoM = e.recorrido;
-    e.respuesta = `${L("Listo: ubicación corregida a", "Done: position corrected to")} ±${num(e.sigma)} m. ${L("Seguí:", "Go on:")} ${textoSeguir(indicacion())}.`;
-    e.respuestaT = 6;
+    e.pend = { factor: 0.8, minimo: 2, ...(e.pend ?? {}), tipo };
     appT = 0;
+  }
+  const NOMBRE_DATO = {
+    barometro: L("Recibí la presión", "Got the pressure"), radio: L("Recibí la distancia por radio", "Got the radio range"),
+    brujula: L("Recibí el rumbo solar", "Got the sun heading"), foto360: L("Recibí la foto 360", "Got the 360 photo"),
+    cresta: L("Reconocí la cresta", "Recognized the ridge"),
+  };
+  function enviar() {
+    if (!e.empezado || e.fin) return;
+    if (!e.pend?.tipo) { avisar(L("Primero usá un instrumento (1–4) y después enviá la lectura con Q.", "First use an instrument (1–4), then send the reading with Q.")); return; }
+    if (tormentaK() > 0.3 && (e.pend.tipo === "cresta" || e.pend.tipo === "foto360")) {
+      e.respuesta = L("Con la tormenta no reconozco el horizonte: usá el barómetro o la radio.", "With the storm I can't recognize the horizon: use the barometer or the radio.");
+      e.respuestaT = 5; e.pend = null; appT = 0; return;
+    }
+    aplicarCorreccion(e.pend.factor ?? 0.8, e.pend.minimo ?? 2);
+    e.respuesta = `${NOMBRE_DATO[e.pend.tipo] ?? L("Recibí el dato", "Got the data")}: ±${num(e.sigma)} m`;
+    e.respuestaT = 5; e.pend = null; appT = 0;
+    audio?.bip();
   }
   let appT = 0;
   function guia(dt) {
     e.respuestaT -= dt;
-    if (!e.pedido && (e.sigma > 15 || e.recorrido - e.ultimoPedidoM > 150)) {
-      e.pedido = PEDIDOS[e.nPedido++ % PEDIDOS.length];
-      e.ultimoPedidoM = e.recorrido;
-      audio?.alerta();
-    }
     const ind = indicacion();
     if (ind.fuera && !e.fuera) audio?.alerta();
     e.fuera = ind.fuera;
@@ -578,18 +697,24 @@ async function iniciar() {
     if (appT > 0) return;
     appT = 0.2;
     const ind = indicacion();
-    const destino = vuelta() ? L("hábitat", "habitat") : L("base de campo", "field base");
-    let principal;
-    if (e.fin) principal = L("Misión completa. ¡Bienvenido!", "Mission complete. Welcome back!");
-    else if (ind.fuera) principal = `${L("Te saliste de la ruta segura", "You left the safe route by")} ${num(ind.r.d)} m: ${giroTxt(ind.giro, true)}. ${textoSeguir(ind)}.`;
-    else principal = `${L("Caminá", "Walk")} ${textoSeguir(ind)} — ${giroTxt(ind.giro)}.`;
-    const pedido = e.pedido ? `<p class="app-pide">${L("Mi estimación tiene", "My estimate is")} ±${num(e.sigma)} m. ${textoPedido(e.pedido)}${e.pedido === "foto360" && e.herr === "camara" ? ` <b>${num((e.giroCam * 180) / Math.PI)}°/360°</b>` : ""}</p>` : "";
+    const [ex, ey] = estimada();
+    const D = destinoActual(), fin = D.p;
+    const dFin = Math.hypot(fin[0] - ex, fin[1] - ey);
+    const urgente = emergenciaActiva() || (e.fugaPropia && !e.fugaPropia.fin);
+    const destino = (urgente ? L("EMERGENCIA: ", "EMERGENCY: ") : "") + D.nombre;
+    const giro = Math.abs(ind.giro) < 10 ? 0 : ind.giro;
+    const txtGiro = e.fin ? L("Misión completa", "Mission complete")
+      : giro === 0 ? L("Derecho", "Straight") : `${num(Math.abs(giro))}° ${giro > 0 ? L("a la derecha", "right") : L("a la izquierda", "left")}`;
     const resp = e.respuestaT > 0 ? `<p class="app-ok">${e.respuesta}</p>` : "";
-    const ciencia = e.llego && !vuelta() ? `<p>${L("En la base de campo: 2 fotos (2) y 3 muestras (E).", "At the field base: 2 photos (2) and 3 samples (E).")}</p>` : "";
-    const sig = pasos.find((p) => !hechos.has(p.id));
-    $("#app-cuerpo").innerHTML = `${resp}${pedido}<p class="app-nav">${principal}</p>${ciencia}
-      <p class="app-pie">${L("Destino", "Target")}: ${destino} · ±${num(e.sigma)} m · ${L("Gravedad", "Gravity")} ${num(G / 9.81, 2)} g</p>
-      ${sig && e.appGrande ? `<p class="app-pie">${L("Paso del tutorial", "Tutorial step")}: ${sig.txt}</p>` : ""}`;
+    const pend = e.pend?.tipo ? `<p class="app-pend">${L("Lectura lista: Q o «Enviar» para pasársela a la app.", "Reading ready: Q or «Send» to give it to the app.")}</p>` : "";
+    const tormenta = tormentaK() > 0 ? `<p class="app-pide">${L("Tormenta: ubicación por barómetro y radio (las fotos no sirven).", "Storm: position by barometer and radio (photos don't help).")}</p>` : "";
+    const ambar = e.sigma > 15 ? `<p class="app-pide">${L("Tu ubicación es incierta: podés darme una foto o una medida.", "Your position is uncertain: you can give me a photo or a measurement.")}</p>` : "";
+    const fuera = ind.fuera ? `<p class="app-pide">${L("Fuera de la ruta segura", "Off the safe route")} ${num(ind.r.d)} m</p>` : "";
+    const ciencia = e.llego && !vuelta() && !emergenciaActiva() ? `<p>${L("Ciencia: fotos a las 2 crestas con rombo amarillo (2) y 3 muestras (E).", "Science: photos of the 2 ridges with a yellow diamond (2) and 3 samples (E).")} ${e.fotos}/2 · ${e.muestras}/3</p>` : "";
+    $("#app-cuerpo").innerHTML = `<div class="app-guia"><div class="app-flecha" style="transform: rotate(${giro}deg)">↑</div>
+        <div><p class="app-pasos">${num(ind.pasos)} ${L("pasos", "steps")}</p><p class="app-rumbo">${txtGiro} · ${L("rumbo", "heading")} ${num(ind.rumbo)}°</p></div></div>
+      <p class="app-dest">${destino} · ${num(dFin)} m</p>${tormenta}${fuera}${resp}${pend}${ambar}${ciencia}
+      <p class="app-pie">${L("Ubicación", "Position")} ±${num(e.sigma)} m · ${L("Gravedad", "Gravity")} ${num(G / 9.81, 2)} g</p>`;
   }
 
   // Salto con la gravedad de Marte (en tiempo real, no acelerado).
@@ -617,14 +742,19 @@ async function iniciar() {
       }
     }
     e.hundir = Math.max(0, e.hundir - dt * 0.35);
+    const kT = tormentaK();
+    for (let k = 0; k < Math.round(kT * 6); k++) {
+      const a = azar() * Math.PI * 2, r = 2 + azar() * 14;
+      particulas.push({ x: e.x + Math.cos(a) * r - 10, y: e.y + Math.sin(a) * r, z: t.altura(e.x, e.y) + azar() * 3, vx: 9 + azar() * 6, vy: (azar() - 0.5) * 2, vz: (azar() - 0.5), vida: 1.6, viento: true });
+    }
     for (const p of particulas) {
-      p.vz -= G * dt * 0.6; p.x += p.vx * dt; p.y += p.vy * dt; p.z += p.vz * dt;
-      p.vx *= 1 - dt * 0.6; p.vy *= 1 - dt * 0.6;
+      p.x += p.vx * dt; p.y += p.vy * dt; p.z += p.vz * dt;
+      if (!p.viento) { p.vz -= G * dt * 0.6; p.vx *= 1 - dt * 0.6; p.vy *= 1 - dt * 0.6; }
       const piso = t.altura(p.x, p.y);
       if (p.z < piso) { p.z = piso; p.vz = 0; }
       p.vida -= dt;
     }
-    while (particulas.length && particulas[0].vida <= 0) particulas.shift();
+    for (let i = particulas.length - 1; i >= 0; i--) if (particulas[i].vida <= 0) particulas.splice(i, 1);
   }
   const polvoVao = gl.createVertexArray(), polvoPos = gl.createBuffer(), polvoCol = gl.createBuffer();
   gl.bindVertexArray(polvoVao);
@@ -685,9 +815,118 @@ async function iniciar() {
     }
   }
 
+  // Compañero: camina por la ruta segura delante tuyo, habla por radio y a mitad de la ida sufre una fuga.
+  const posComp = () => puntoEn(comp.s);
+  const radio = (txt, alerta = false) => { e.radioMsg = txt; e.radioT = 6; if (alerta) audio?.alerta(); };
+  const fmtMin = (sg) => `${num(sg / 60)} min`;
+  function companero(dt) {
+    const [qx, qy] = posComp();
+    const distJ = Math.hypot(qx - e.x, qy - e.y);
+    const sJ = sobreRuta(e.x, e.y).s;
+    e.radioT -= dt;
+    const mover = (objetivo, vel) => {
+      const ds = objetivo - comp.s, paso = Math.min(Math.abs(ds), vel * dt);
+      if (paso > 0.01) {
+        const [ax, ay] = puntoEn(comp.s), [bx, by] = puntoEn(comp.s + Math.sign(ds) * 2);
+        comp.rumbo = Math.atan2(bx - ax, by - ay);
+        comp.s += Math.sign(ds) * paso;
+      }
+    };
+    const vel = vPlano * cfg.reloj * 1.05;
+    if (comp.estado === "guia") {
+      const hab = vuelta();
+      if (distJ > 24) { if (comp.espera <= 0) radio(L("Te espero acá, no te alejes de la ruta.", "I'll wait here, don't stray from the route.")); comp.espera = 8; }
+      else mover(Math.max(0, Math.min(largo, sJ + (hab ? -11 : 11))), vel);
+      comp.espera -= dt;
+      comp.charla -= dt; comp.chequeo -= dt;
+      if (comp.chequeo <= 0) {
+        comp.chequeo = 4;
+        const [ax, ay] = puntoEn(comp.s), [bx, by] = puntoEn(comp.s + 4);
+        const dx = bx - ax, dy = by - ay, l = Math.hypot(dx, dy) || 1;
+        const lado = (sg) => { const i = t.indice(ax - (dy / l) * 10 * sg, ay + (dx / l) * 10 * sg); return i >= 0 ? t.pend[i] / 2 : 0; };
+        if (lado(1) > 12 && comp.charla < 12) { radio(L("Ojo, pendiente fuerte a la izquierda.", "Careful, steep slope on the left.")); comp.charla = 20; }
+        else if (lado(-1) > 12 && comp.charla < 12) { radio(L("Ojo, pendiente fuerte a la derecha.", "Careful, steep slope on the right.")); comp.charla = 20; }
+      }
+      if (comp.charla <= 0) { radio(L("Seguime, vamos bien.", "Follow me, we're doing fine.")); comp.charla = 35; }
+      if (eventos.includes("fuga_companero") && !e.emerg && !hab && comp.s > largo * 0.5 && !e.fugaPropia) {
+        // Fuga: la app compara el regreso al hábitat con seguir a la base de campo (tiempo de marcha por la ruta).
+        const tHab = comp.s / vPlano, tCie = (largo - comp.s) / vPlano;
+        e.emerg = { tHab, tCie, destino: tHab <= tCie ? "hab" : "cie", s0: comp.s };
+        comp.estado = "fuga"; comp.espera = 4;
+        radio(L("¡Alarma! Tengo una fuga en el traje, paso al O₂ secundario.", "Alarm! I have a suit leak, switching to secondary O₂."), true);
+        e.respuesta = `${L("Emergencia: volver al hábitat", "Emergency: back to habitat")} ${fmtMin(tHab)} · ${L("seguir a la base de campo", "on to field base")} ${fmtMin(tCie)} → ${e.emerg.destino === "hab" ? L("volver", "go back") : L("seguir", "go on")}`;
+        e.respuestaT = 12;
+      }
+    } else if (comp.estado === "fuga" || comp.estado === "rescate") {
+      comp.o2 -= dt * cfg.reloj;
+      if (comp.estado === "fuga") { comp.espera -= dt; if (comp.espera <= 0) { comp.estado = "rescate"; radio(L("Te sigo. Llevame al refugio que marca la app.", "I'll follow you. Take me to the shelter the app shows."), true); } }
+      else {
+        const destS = e.emerg.destino === "hab" ? 16 : largo;
+        if (distJ < 15) mover(Math.max(0, Math.min(largo, sJ + (e.emerg.destino === "hab" ? -6 : 6))), vel * 0.9);
+        const fin = e.emerg.destino === "hab" ? anilloHab : anilloCie;
+        if (Math.hypot(qx - fin[0], qy - fin[1]) < 4 && Math.hypot(e.x - fin[0], e.y - fin[1]) < 3) {
+          comp.estado = "salvo"; e.emerg.tUsado = O2_SECUNDARIO_S - comp.o2;
+          radio(L("¡Llegamos! Compañero a salvo. Gracias.", "We made it! Partner safe. Thanks."));
+          audio?.exito();
+          if (e.emerg.destino === "hab") terminar();
+          else { comp.estado = "guia"; e.emerg.cerrada = true; }
+        } else if (comp.o2 <= 0) {
+          comp.estado = "perdido";
+          radio(L("Se acabó mi O₂ secundario…", "My secondary O₂ ran out…"), true);
+        }
+        void destS;
+      }
+    }
+    $("#radio").hidden = !(e.radioT > 0);
+    if (e.radioT > 0) $("#radio").textContent = `${L("Radio", "Radio")} · ${e.radioMsg}`;
+    const o2c = $("#h-comp");
+    if (o2c) o2c.textContent = e.emerg && comp.estado !== "salvo" && !e.emerg.cerrada ? `O₂ ${num(Math.max(0, comp.o2) / 60)} min` : comp.estado === "perdido" ? L("sin O₂", "no O₂") : L("bien", "ok");
+  }
+
+  const reloj = (sg) => `${String(Math.floor(Math.max(0, sg) / 60)).padStart(2, "0")}:${String(Math.floor(Math.max(0, sg) % 60)).padStart(2, "0")}`;
+  function procesarEventos(dt) {
+    const simDt = dt * cfg.reloj;
+    const ocupado = emergenciaActiva() || (e.fugaPropia && !e.fugaPropia.fin);
+    if (eventos.includes("tormenta") && !e.tormenta && e.recorrido > 180 && !ocupado) {
+      e.tormenta = { t: 0, dur: TORMENTA_S };
+      audio?.alerta();
+      radio(L("Viene una tormenta de polvo: poca visibilidad. Ubicate con barómetro y radio.", "A dust storm is coming: low visibility. Use barometer and radio to locate yourself."));
+    }
+    if (e.tormenta && !e.tormenta.fin) {
+      e.tormenta.t += simDt;
+      if (e.tormenta.t >= e.tormenta.dur) { e.tormenta.fin = true; radio(L("La tormenta despejó.", "The storm has cleared.")); }
+    }
+    if (eventos.includes("fuga_propia") && !e.fugaPropia && e.recorrido > 380 && !ocupado) {
+      const [ex, ey] = estimada(), r = sobreRuta(ex, ey);
+      const opciones = destinos().map((d) => ({ ...d, t: (Math.abs(d.s - r.s) + r.d) / vPlano + INGRESO_S })).sort((a, b) => a.t - b.t);
+      e.fugaPropia = { resto: LIMITE_FUGA_S, opciones, dest: opciones[0] };
+      audio?.alerta();
+      radio(L("¡Alarma de tu traje! Fuga: pasás al O₂ secundario.", "Your suit alarm! Leak: switching to secondary O₂."));
+      e.respuesta = `${L("Refugio más cercano en tiempo", "Nearest shelter in time")}: ${opciones[0].nombre} (${fmtMin(opciones[0].t)})`;
+      e.respuestaT = 10; appT = 0;
+    }
+    const f = e.fugaPropia;
+    if (f && !f.fin) {
+      f.resto -= simDt;
+      if (Math.hypot(e.x - f.dest.p[0], e.y - f.dest.p[1]) < 2.5) {
+        f.fin = true; f.ok = true; f.usado = LIMITE_FUGA_S - f.resto;
+        audio?.exito();
+        radio(L("Estás a salvo: llegaste al refugio y se reparó el traje. Podés seguir.", "You're safe: you reached the shelter and the suit was repaired. You can go on."));
+      } else if (f.resto <= 0) {
+        f.fin = true; f.ok = false;
+        terminar();
+      }
+    }
+    const cuenta = $("#cuenta");
+    cuenta.hidden = !(f && !f.fin);
+    if (f && !f.fin) cuenta.textContent = `${L("Llegá a un refugio en", "Reach a shelter in")} ${reloj(f.resto)}`;
+  }
+
   function terminar() {
     e.fin = true;
-    audio?.exito();
+    if (e.fugaPropia && e.fugaPropia.ok === false) $("#final h1").textContent = L("Se acabó el O₂ secundario", "Secondary O₂ ran out");
+    else if (comp.estado === "perdido") $("#final h1").textContent = L("Misión terminada con una baja", "Mission ended with a loss");
+    else audio?.exito();
     document.exitPointerLock?.();
     const desvio = e.nDesvio ? e.sumaDesvio / e.nDesvio : 0;
     const puntos = Math.max(0, Math.round(1000 - desvio * 25 - Math.max(0, e.maxDesvio - cfg.corredor) * 5 + e.usadas.size * 50 - Math.max(0, e.t / 60 - 120) * 2));
@@ -698,6 +937,10 @@ async function iniciar() {
         <li>${L("Tiempo de misión", "Mission time")}: <b>${num(e.t / 60, 0)} min</b> (${L("reloj acelerado", "accelerated clock")} ×${num(cfg.reloj)})</li>
         <li>${L("Herramientas usadas", "Tools used")}: <b>${[...e.usadas].map((h) => NOMBRES[h]).join(", ") || "—"}</b> (${e.lecturas} ${L("lecturas", "readings")})</li>
         <li>${L("Ciencia", "Science")}: ${e.fotos}/2 ${L("fotos", "photos")}, ${e.muestras}/3 ${L("muestras", "samples")}</li>
+        ${e.fugaPropia ? `<li>${L("Fuga en tu traje: la app eligió", "Leak in your suit: the app chose")} <b>${e.fugaPropia.dest.nombre}</b> ${L("por ser el más cercano en tiempo", "as the nearest in time")} (${e.fugaPropia.opciones.map((o) => `${o.nombre} ${fmtMin(o.t)}`).join(" · ")}). ${e.fugaPropia.ok ? `${L("Llegaste en", "You made it in")} ${fmtMin(e.fugaPropia.usado)}.` : L("No llegaste antes de que se acabara el O₂ secundario.", "You didn't make it before the secondary O₂ ran out.")}</li>` : ""}
+        ${e.tormenta ? `<li>${L("Tormenta de polvo: las fotos no servían para ubicarse; solo barómetro y radio.", "Dust storm: photos couldn't locate you; only barometer and radio.")}</li>` : ""}
+        <li>${L("Eventos", "Events")}: ${eventos.length ? eventos.join(", ") : L("ninguno", "none")} · ${L("semilla", "seed")} ${semilla}</li>
+        ${e.emerg ? `<li>${L("La app recalculó el regreso de emergencia", "The app recalculated the emergency return")}: ${L("hábitat", "habitat")} ${fmtMin(e.emerg.tHab)} ${L("contra base de campo", "vs field base")} ${fmtMin(e.emerg.tCie)} → ${e.emerg.destino === "hab" ? L("volver al hábitat", "back to habitat") : L("seguir a la base de campo", "on to field base")}. ${comp.estado === "perdido" ? L("El compañero se quedó sin O₂.", "Your partner ran out of O₂.") : e.emerg.tUsado != null ? `${L("Compañero a salvo en", "Partner safe in")} ${fmtMin(e.emerg.tUsado)}.` : ""}</li>` : ""}
       </ul>`;
     $("#final").hidden = false;
   }

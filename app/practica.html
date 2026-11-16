@@ -21,12 +21,14 @@
       <div class="ctrl"><div class="teclas"><kbd>1</kbd><kbd>2</kbd><kbd>3</kbd><kbd>4</kbd></div><span data-en="barometer · camera · sun compass · radio">barómetro · cámara · brújula solar · radio</span></div>
       <div class="ctrl"><div class="teclas"><kbd>E</kbd></div><span data-en="take sample (at the field base)">tomar muestra (en la base de campo)</span></div>
       <div class="ctrl"><div class="teclas"><kbd>Espacio</kbd></div><span data-en="jump (Mars gravity, 0.38 g)">saltar (gravedad de Marte, 0,38 g)</span></div>
-      <div class="ctrl"><div class="teclas"><kbd>Tab</kbd><kbd>M</kbd></div><span data-en="enlarge the app · mute">ampliar la app · silenciar</span></div>
+      <div class="ctrl"><div class="teclas"><kbd>Tab</kbd><kbd>G</kbd><kbd>M</kbd></div><span data-en="enlarge app · map · mute">ampliar app · mapa · silenciar</span></div>
+      <div class="ctrl"><div class="teclas"><kbd>Q</kbd></div><span data-en="send your last reading to the app">enviar tu última lectura a la app</span></div>
       <div class="ctrl tactil"><div class="teclas"><kbd>◎</kbd><kbd>◎</kbd></div><span data-en="phone: left stick walks, right stick looks">celular: joystick izquierdo camina, derecho mira</span></div>
     </div>
-    <p data-en="The safe route is <b>not marked</b> on the ground: your wrist app <b>Red Frontier</b> (bottom left) tells you how many steps to walk and which way, and asks you for data (360 photo, barometer, sun compass, radio) when its position estimate gets too uncertain.">La ruta segura <b>no está marcada</b> en el suelo: la app <b>Red Frontier</b> de tu muñeca (abajo a la izquierda) te dice cuántos pasos caminar y hacia dónde, y te pide datos (foto 360, barómetro, brújula solar, radio) cuando su estimación de posición se vuelve dudosa.</p>
+    <p data-en="The safe route is <b>not marked</b> on the ground: your wrist app <b>Red Frontier</b> (bottom left) tells you how many steps to walk and which way. You decide when to give it data: use an instrument and send the reading with <b>Q</b>. You walk with a partner; stop at the <b>green rings</b> at each base.">La ruta segura <b>no está marcada</b> en el suelo: la app <b>Red Frontier</b> de tu muñeca (abajo a la izquierda) te dice cuántos pasos caminar y hacia dónde. Vos decidís cuándo darle datos: usá un instrumento y mandale la lectura con <b>Q</b>. Vas con un compañero; pará en los <b>anillos verdes</b> de cada base.</p>
     <h2 data-en="Steps">Pasos</h2>
     <ol id="pasos-inicio" class="pasos"></ol>
+    <label class="opcion"><input type="checkbox" id="eventos" checked> <span data-en="Events: dust storm, suit leaks (1–2 per game)">Eventos: tormenta de polvo, fugas en el traje (1–2 por partida)</span></label>
     <button id="empezar" class="boton" data-en="Leave the habitat">Salir del hábitat</button>
   </section>
 
@@ -42,6 +44,7 @@
       <div><small data-en="Tool">Herramienta</small><b id="h-herr">—</b></div>
       <div><small data-en="Solar time">Hora solar</small><b id="h-hora">—</b></div>
       <div><small data-en="Science">Ciencia</small><b id="h-ciencia">—</b></div>
+      <div><small data-en="Partner">Compañero</small><b id="h-comp">—</b></div>
     </div>
     <ol id="pasos" class="pasos chicos"></ol>
     <div id="mira" aria-hidden="true"></div>
@@ -51,6 +54,8 @@
       <div id="app-cuerpo"></div>
     </div>
     <p id="aviso" role="status" hidden></p>
+    <p id="radio" role="status" hidden></p>
+    <p id="cuenta" role="alert" hidden></p>
     <div id="lectura" hidden></div>
     <div id="herramientas">
       <button data-herr="barometro"><kbd>1</kbd><span data-en="Barometer">Barómetro</span></button>
@@ -58,6 +63,7 @@
       <button data-herr="brujula"><kbd>3</kbd><span data-en="Sun compass">Brújula solar</span></button>
       <button data-herr="radio"><kbd>4</kbd><span data-en="Radio">Radio</span></button>
       <button id="btn-usar" class="accion" data-en="Use">Usar</button>
+      <button id="btn-enviar" class="accion" data-en="Send to app (Q)">Enviar a la app (Q)</button>
       <button id="btn-muestra" class="accion" data-en="Sample (E)">Muestra (E)</button>
       <button id="btn-trote" class="accion tactil" data-en="Jog">Trotar</button>
       <button id="btn-saltar" class="accion" data-en="Jump (Space)">Saltar (Espacio)</button>
